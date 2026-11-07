@@ -1,14 +1,3 @@
-.drawerPaper {
-  width: min(820px, 94vw);
-  background-color: #f6f8fa;
-}
-
-.drawerContent {
-  min-height: 100%;
-  box-sizing: border-box;
-  padding: 28px;
-}
-
 .panel {
   display: grid;
   gap: 16px;
@@ -90,10 +79,6 @@
 }
 
 @media (max-width: 599px) {
-  .drawerContent {
-    padding: 20px;
-  }
-
   .summaryGrid {
     flex-direction: column;
   }

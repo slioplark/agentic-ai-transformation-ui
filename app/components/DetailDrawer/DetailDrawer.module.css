@@ -1,0 +1,16 @@
+.paper {
+  width: min(820px, 94vw);
+  background-color: #f6f8fa;
+}
+
+.content {
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 28px;
+}
+
+@media (max-width: 599px) {
+  .content {
+    padding: 20px;
+  }
+}

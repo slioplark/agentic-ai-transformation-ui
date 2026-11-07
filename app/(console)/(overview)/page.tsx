@@ -1,28 +1,41 @@
 "use client"
 
+import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import PageHeader from "../components/PageHeader"
+import ExecutiveDecisionDetail from "./components/ExecutiveDecisions/ExecutiveDecisionDetail"
+import ExecutiveDecisions from "./components/ExecutiveDecisions/ExecutiveDecisions"
 import KpiCard from "./components/KpiCard/KpiCard"
-import KpiDetailDrawer from "./components/KpiDetailDrawer/KpiDetailDrawer"
+import KpiDetailContent from "./components/KpiDetailDrawer/KpiDetailContent"
+import ReportingStatusGrid from "./components/ReportingStatusGrid/ReportingStatusGrid"
 import TransformationSignalTable from "./components/TransformationSignalTable/TransformationSignalTable"
 import {
+  executiveDecisions,
   overviewKpis,
   reportingStatusMetrics,
   transformationSignals,
+  type ExecutiveDecision,
   type OverviewKpi,
 } from "./overview.mock"
-import PageHeader from "../components/PageHeader"
-import ReportingStatusGrid from "./components/ReportingStatusGrid/ReportingStatusGrid"
 import styles from "./page.module.css"
 
+type ActiveDetail =
+  | { type: "kpi"; kpi: OverviewKpi }
+  | { type: "decision"; decision: ExecutiveDecision }
+
 export default function HomePage() {
-  const [activeKpi, setActiveKpi] = useState<OverviewKpi | null>(null)
+  const [activeDetail, setActiveDetail] = useState<ActiveDetail | null>(null)
+  const [drawerOpen, setDrawerOpen] = useState(false)
   const router = useRouter()
+  const titleId = "overview-detail-title"
+  const closeDrawer = () => setDrawerOpen(false)
 
   const handleKpiClick = (kpi: OverviewKpi) => {
     if (kpi.drawer) {
-      setActiveKpi(kpi)
+      setActiveDetail({ type: "kpi", kpi })
+      setDrawerOpen(true)
       return
     }
     if (kpi.href) router.push(kpi.href)
@@ -38,17 +51,37 @@ export default function HomePage() {
             <KpiCard
               key={kpi.id}
               kpi={kpi}
-              onClick={kpi.drawer || kpi.href ? () => handleKpiClick(kpi) : undefined}
+              onClick={
+                kpi.drawer || kpi.href ? () => handleKpiClick(kpi) : undefined
+              }
             />
           ))}
         </section>
         <TransformationSignalTable signals={transformationSignals} />
+        <ExecutiveDecisions
+          decisions={executiveDecisions}
+          onSelect={(decision) => {
+            setActiveDetail({ type: "decision", decision })
+            setDrawerOpen(true)
+          }}
+        />
       </Stack>
-      <KpiDetailDrawer
-        kpi={activeKpi}
-        open={Boolean(activeKpi)}
-        onClose={() => setActiveKpi(null)}
-      />
+      <DetailDrawer open={drawerOpen} onClose={closeDrawer} titleId={titleId}>
+        {activeDetail?.type === "kpi" ? (
+          <KpiDetailContent
+            kpi={activeDetail.kpi}
+            onClose={closeDrawer}
+            titleId={titleId}
+          />
+        ) : null}
+        {activeDetail?.type === "decision" ? (
+          <ExecutiveDecisionDetail
+            decision={activeDetail.decision}
+            onClose={closeDrawer}
+            titleId={titleId}
+          />
+        ) : null}
+      </DetailDrawer>
     </>
   )
 }
