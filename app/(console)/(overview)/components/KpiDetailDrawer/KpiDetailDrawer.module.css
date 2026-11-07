@@ -1,0 +1,104 @@
+.drawerPaper {
+  width: min(820px, 94vw);
+  background-color: #f6f8fa;
+}
+
+.drawerContent {
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 28px;
+}
+
+.panel {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.summaryGrid {
+  display: flex;
+  gap: 16px;
+}
+
+.summaryGrid>section {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.summarySection {
+  padding: 16px;
+}
+
+.ladderRow {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 8px;
+}
+
+.ladderBar {
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.ladderBar>div {
+  min-width: 0;
+  padding: 5px 0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+}
+
+.targetRow {
+  opacity: 0.6;
+}
+
+.r1 {
+  background-color: #c4dbea;
+}
+
+.r2 {
+  background-color: #8fb9d8;
+}
+
+.r3 {
+  background-color: #4f8fbf;
+}
+
+.r4 {
+  background-color: #2464a0;
+}
+
+.r5 {
+  background-color: #132c47;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+@media (max-width: 599px) {
+  .drawerContent {
+    padding: 20px;
+  }
+
+  .summaryGrid {
+    flex-direction: column;
+  }
+
+  .ladderRow {
+    grid-template-columns: 76px minmax(0, 1fr) 28px;
+  }
+}

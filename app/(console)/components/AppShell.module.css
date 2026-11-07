@@ -1,0 +1,177 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.drawerContent {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  background-color: #132c47;
+}
+
+.drawerHeader {
+  min-height: 68px;
+  padding: 24px;
+}
+
+.brandName {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.brandTagline {
+  color: rgb(255 255 255 / 58%);
+}
+
+.navigationContainer {
+  padding: 16px;
+}
+
+.navigationList {
+  display: grid;
+  gap: 4px;
+  padding: 0;
+}
+
+.navigationItem {
+  min-height: 44px;
+  padding: 12px;
+  color: #bdcdda;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.navigationItem:hover {
+  color: #fff;
+  background-color: #244c5a;
+}
+
+.navigationItem:global(.Mui-selected) {
+  color: #fff;
+  background-color: #28506c;
+  box-shadow: inset 3px 0 #60d2c0;
+}
+
+.navigationItem:global(.Mui-selected):hover {
+  background-color: #28506c;
+}
+
+.navigationIcon {
+  min-width: 40px;
+  color: inherit;
+}
+
+.navigationLabel {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.navigationItem:global(.Mui-selected) .navigationLabel {
+  font-weight: 700;
+}
+
+.drawerFooter {
+  padding: 24px;
+}
+
+.footerText {
+  color: rgb(255 255 255 / 64%);
+}
+
+.footerSubtext {
+  color: rgb(255 255 255 / 42%);
+}
+
+.mobileAppBar {
+  color: #fff;
+  background-color: #132c47;
+}
+
+.mobileToolbar {
+  gap: 8px;
+}
+
+.menuButton {
+  color: inherit;
+}
+
+.navigationRegion {
+  flex-shrink: 0;
+}
+
+.drawerPaper {
+  width: 252px;
+  box-sizing: border-box;
+  border-right: 0;
+  background-color: #132c47;
+}
+
+.mobileDrawer {
+  display: block;
+}
+
+.desktopDrawer {
+  display: none;
+}
+
+.mainContent {
+  position: relative;
+  min-width: 0;
+  flex-grow: 1;
+  padding: 80px 16px;
+}
+
+.accountButton {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  border: 0;
+  background-color: #087f80;
+}
+
+.accountIdentity {
+  gap: 12px;
+}
+
+.accountMenuAvatar {
+  color: #fff;
+  background-color: #087f80;
+}
+
+@media (min-width: 600px) {
+  .mainContent {
+    padding: 80px 24px;
+  }
+}
+
+@media (min-width: 900px) {
+  .drawerHeader {
+    min-height: 76px;
+  }
+
+  .mobileAppBar,
+  .mobileDrawer {
+    display: none;
+  }
+
+  .desktopDrawer {
+    display: block;
+  }
+
+  .navigationRegion {
+    width: 252px;
+  }
+
+  .mainContent {
+    padding: 24px;
+  }
+}

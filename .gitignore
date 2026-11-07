@@ -1,0 +1,17 @@
+## Dependencies
+/node_modules/
+
+## Next.js output
+/.next/
+/out/
+/build/
+
+## Local environment variables
+.env*
+!.env.example
+
+## TypeScript build output
+*.tsbuildinfo
+
+## macOS
+.DS_Store

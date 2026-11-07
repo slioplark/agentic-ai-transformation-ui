@@ -1,0 +1,10 @@
+:root {
+  color-scheme: light;
+  --app-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", "Noto Sans TC", "PingFang TC", Arial, sans-serif;
+}
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--app-font-sans);
+}
+a { text-decoration: none; }
