@@ -76,7 +76,6 @@ function DrawerHeader({
           {eyebrow}
         </Typography>
         <Typography
-          component="h2"
           id={titleId}
           variant="h4"
         >
@@ -219,12 +218,7 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
         className={styles.tablePanel}
         variant="outlined"
       >
-        <Typography
-          component="h3"
-          variant="h4"
-        >
-          各 BU 分布（2026-Q4）
-        </Typography>
+        <Typography variant="h4">各 BU 分布（2026-Q4）</Typography>
         <TableContainer>
           <Table
             aria-label="各 BU 能力成熟度分布"
@@ -292,7 +286,6 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
           className={styles.summarySection}
         >
           <Typography
-            component="h3"
             id="benefit-verified-label"
             color="text.secondary"
             variant="h4"
@@ -309,7 +302,6 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
           className={styles.summarySection}
         >
           <Typography
-            component="h3"
             id="benefit-growth-label"
             color="text.secondary"
             variant="h4"

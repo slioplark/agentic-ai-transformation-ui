@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box"
+import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import type { OverviewKpi } from "../../overview.mock"
@@ -19,25 +20,46 @@ const changeColor = {
 export default function KpiCard({ kpi, onClick }: KpiCardProps) {
   const content = (
     <>
-      <Typography color="secondary.main" variant="caption">
+      <Typography
+        color="secondary.main"
+        variant="caption"
+      >
         {kpi.theme}
       </Typography>
-      <Typography color="text.secondary" variant="body2">
+      <Typography
+        color="text.secondary"
+        variant="body2"
+      >
         {kpi.label}
       </Typography>
-      <Typography component="p" variant="h4">
+      <Typography
+        component="p"
+        variant="h4"
+      >
         {kpi.value}
       </Typography>
       <Box className={styles.changeSummary}>
-        <Typography color={changeColor[kpi.changeTone]} variant="caption">
+        <Typography
+          color={changeColor[kpi.changeTone]}
+          variant="caption"
+        >
           {kpi.change}
         </Typography>
-        <Typography color="text.secondary" variant="caption">
+        <Typography
+          color="text.secondary"
+          variant="caption"
+        >
           {kpi.comparison}
         </Typography>
       </Box>
-      <Sparkline label={kpi.label} values={kpi.series} />
-      <Typography color="text.secondary" variant="caption">
+      <Sparkline
+        label={kpi.label}
+        values={kpi.series}
+      />
+      <Typography
+        color="text.secondary"
+        variant="caption"
+      >
         {kpi.detail}
       </Typography>
     </>
@@ -45,23 +67,24 @@ export default function KpiCard({ kpi, onClick }: KpiCardProps) {
 
   if (onClick) {
     return (
-      <Paper
-        component="button"
-        type="button"
+      <ButtonBase
+        component={Paper}
         variant="outlined"
         className={`${styles.card} ${styles.interactiveCard}`}
         onClick={onClick}
         sx={{
+          bgcolor: "background.paper",
+          border: 1,
+          borderColor: "divider",
+          borderRadius: 1,
           "&:hover": { borderColor: "secondary.main" },
           "&:focus-visible": {
-            outline: "2px solid",
             outlineColor: "secondary.main",
-            outlineOffset: 2,
           },
         }}
       >
         {content}
-      </Paper>
+      </ButtonBase>
     )
   }
 

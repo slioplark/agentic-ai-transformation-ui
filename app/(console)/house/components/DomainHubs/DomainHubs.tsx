@@ -161,7 +161,7 @@ export default function DomainHubs({ hubs }: { hubs: Hub[] }) {
           })}
         </Box>
       ))}
-      <Box className={styles.row}>
+      <Box className={`${styles.row} ${styles.readinessRow}`}>
         <Box className={styles.label}>
           <Typography
             component="h3"

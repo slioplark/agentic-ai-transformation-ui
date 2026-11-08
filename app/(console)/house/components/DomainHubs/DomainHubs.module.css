@@ -19,13 +19,28 @@
   gap: 6px;
 }
 
+.readinessRow {
+  grid-template-rows: repeat(3, auto);
+  row-gap: 3px;
+}
+
+.readinessRow .label,
+.readinessRow .cell {
+  grid-row: span 3;
+}
+
+.readinessRow .cell {
+  display: grid;
+  grid-template-rows: subgrid;
+}
+
 .label,
 .cell {
   display: flex;
   min-width: 0;
   flex-direction: column;
   gap: 3px;
-  padding: 8px 9px;
+  padding: 8px;
 }
 
 .label {
@@ -36,7 +51,6 @@
 
 .cell {
   font-size: 0.75rem;
-  line-height: 1.45;
 }
 
 .line {

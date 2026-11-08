@@ -36,7 +36,6 @@ export default function DecisionDrawerContent({ decision, onClose, titleId }: Pr
             EXECUTIVE DECISION / {decision.id}
           </Typography>
           <Typography
-            component="h2"
             id={titleId}
             variant="h4"
           >
@@ -86,12 +85,7 @@ export default function DecisionDrawerContent({ decision, onClose, titleId }: Pr
           useFlexGap
         >
           <Box>
-            <Typography
-              component="h3"
-              variant="h4"
-            >
-              為何現在需要決策
-            </Typography>
+            <Typography variant="h4">為何現在需要決策</Typography>
             <Typography variant="body2">{decision.impact}</Typography>
             <Typography
               color="text.secondary"
@@ -101,21 +95,11 @@ export default function DecisionDrawerContent({ decision, onClose, titleId }: Pr
             </Typography>
           </Box>
           <Box>
-            <Typography
-              component="h3"
-              variant="h4"
-            >
-              建議行動
-            </Typography>
+            <Typography variant="h4">建議行動</Typography>
             <Typography variant="body2">{decision.recommendation}</Typography>
           </Box>
           <Box>
-            <Typography
-              component="h3"
-              variant="h4"
-            >
-              可選方案
-            </Typography>
+            <Typography variant="h4">可選方案</Typography>
             <Typography variant="body2">{decision.options}</Typography>
           </Box>
         </Stack>
@@ -125,12 +109,7 @@ export default function DecisionDrawerContent({ decision, onClose, titleId }: Pr
         variant="outlined"
         className={styles.detail}
       >
-        <Typography
-          component="h3"
-          variant="h4"
-        >
-          連動專案與責任
-        </Typography>
+        <Typography variant="h4">連動專案與責任</Typography>
         <Typography variant="body2">
           {decision.project} · 議題 owner：{decision.owner}
         </Typography>

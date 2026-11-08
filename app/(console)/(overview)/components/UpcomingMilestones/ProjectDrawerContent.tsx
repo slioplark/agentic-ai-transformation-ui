@@ -91,7 +91,6 @@ export default function ProjectDrawerContent({
             useFlexGap
           >
             <Typography
-              component="h2"
               id={titleId}
               variant="h4"
             >
@@ -219,12 +218,7 @@ export default function ProjectDrawerContent({
             gap={1}
             useFlexGap
           >
-            <Typography
-              component="h3"
-              variant="h4"
-            >
-              負責人最新填報
-            </Typography>
+            <Typography variant="h4">負責人最新填報</Typography>
             <Chip
               size="small"
               label={project.reportedAt ? "已填報" : "尚未人工填報"}
@@ -261,12 +255,7 @@ export default function ProjectDrawerContent({
             gap={1}
             useFlexGap
           >
-            <Typography
-              component="h3"
-              variant="h4"
-            >
-              部署進度
-            </Typography>
+            <Typography variant="h4">部署進度</Typography>
             <LinearProgress
               color={status}
               variant="determinate"
@@ -291,12 +280,7 @@ export default function ProjectDrawerContent({
           gap={1}
           useFlexGap
         >
-          <Typography
-            component="h3"
-            variant="h4"
-          >
-            下一步與復原計畫
-          </Typography>
+          <Typography variant="h4">下一步與復原計畫</Typography>
           <Typography variant="body2">
             <strong>{project.issue}</strong>
           </Typography>
@@ -324,12 +308,7 @@ export default function ProjectDrawerContent({
           gap={1}
           useFlexGap
         >
-          <Typography
-            component="h3"
-            variant="h4"
-          >
-            D-gate · 排程基準與實際
-          </Typography>
+          <Typography variant="h4">D-gate · 排程基準與實際</Typography>
           <Typography
             color="text.secondary"
             variant="caption"
@@ -395,12 +374,7 @@ export default function ProjectDrawerContent({
           gap={1}
           useFlexGap
         >
-          <Typography
-            component="h3"
-            variant="h4"
-          >
-            上游依賴
-          </Typography>
+          <Typography variant="h4">上游依賴</Typography>
           {upstream.length ? (
             upstream.map((item) => (
               <Stack
@@ -452,12 +426,7 @@ export default function ProjectDrawerContent({
           variant="outlined"
           className={styles.detail}
         >
-          <Typography
-            component="h3"
-            variant="h4"
-          >
-            產能釋放與再投入
-          </Typography>
+          <Typography variant="h4">產能釋放與再投入</Typography>
           <Typography variant="body2">
             每月釋放 {project.hours} h，再投入 {redeployHours[project.id]} h 至「{redeployTo[project.id]}」。
           </Typography>
