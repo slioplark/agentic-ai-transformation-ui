@@ -4,12 +4,20 @@
   padding: 16px;
 }
 
+.tablePanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px;
+}
+
 .summaryGrid {
   display: flex;
   gap: 16px;
 }
 
-.summaryGrid>section {
+.summaryGrid > section {
   flex: 1 1 0;
   min-width: 0;
 }
@@ -32,7 +40,7 @@
   border-radius: 4px;
 }
 
-.ladderBar>div {
+.ladderBar > div {
   min-width: 0;
   padding: 5px 0;
   color: #fff;

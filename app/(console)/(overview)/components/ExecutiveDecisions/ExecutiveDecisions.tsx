@@ -60,7 +60,7 @@ export default function ExecutiveDecisions({ decisions, onSelect }: Props) {
                 </Typography>
                 <Typography
                   component="h3"
-                  variant="h6"
+                  variant="h4"
                 >
                   {decision.title}
                 </Typography>

@@ -89,7 +89,7 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
                     >
                       <Typography
                         component="h3"
-                        variant="h6"
+                        variant="h4"
                       >
                         {project.name}
                       </Typography>

@@ -14,11 +14,7 @@ type Props = {
   titleId: string
 }
 
-export default function ExecutiveDecisionDetail({
-  decision,
-  onClose,
-  titleId,
-}: Props) {
+export default function ExecutiveDecisionDetail({ decision, onClose, titleId }: Props) {
   return (
     <>
       <Stack
@@ -38,7 +34,7 @@ export default function ExecutiveDecisionDetail({
           <Typography
             component="h2"
             id={titleId}
-            variant="h5"
+            variant="h4"
           >
             {decision.title}
           </Typography>
@@ -61,9 +57,7 @@ export default function ExecutiveDecisionDetail({
           >
             決策期限
           </Typography>
-          <Typography variant="h6">
-            {decision.due.replaceAll("-", "/")}
-          </Typography>
+          <Typography variant="h6">{decision.due.replaceAll("-", "/")}</Typography>
         </Paper>
         <Paper
           variant="outlined"
@@ -90,7 +84,7 @@ export default function ExecutiveDecisionDetail({
           <Box>
             <Typography
               component="h3"
-              variant="h6"
+              variant="h4"
             >
               為何現在需要決策
             </Typography>
@@ -99,14 +93,13 @@ export default function ExecutiveDecisionDetail({
               color="text.secondary"
               variant="caption"
             >
-              阻塞影響範圍：{decision.project} 的下游有{" "}
-              {decision.downstreamCount} 項工作。
+              阻塞影響範圍：{decision.project} 的下游有 {decision.downstreamCount} 項工作。
             </Typography>
           </Box>
           <Box>
             <Typography
               component="h3"
-              variant="h6"
+              variant="h4"
             >
               建議行動
             </Typography>
@@ -115,7 +108,7 @@ export default function ExecutiveDecisionDetail({
           <Box>
             <Typography
               component="h3"
-              variant="h6"
+              variant="h4"
             >
               可選方案
             </Typography>
@@ -130,7 +123,7 @@ export default function ExecutiveDecisionDetail({
       >
         <Typography
           component="h3"
-          variant="h6"
+          variant="h4"
         >
           連動專案與責任
         </Typography>
@@ -139,9 +132,7 @@ export default function ExecutiveDecisionDetail({
         </Typography>
       </Paper>
       <InfoNote>
-        <Typography variant="body2">
-          此頁為決策資訊示範，沒有送出核准或通知功能。
-        </Typography>
+        <Typography variant="body2">此頁為決策資訊示範，沒有送出核准或通知功能。</Typography>
       </InfoNote>
     </>
   )

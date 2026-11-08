@@ -82,7 +82,7 @@ export default function ProjectDetail({
           <Typography
             component="h2"
             id={titleId}
-            variant="h5"
+            variant="h4"
           >
             {project.name}
           </Typography>
@@ -133,21 +133,26 @@ export default function ProjectDetail({
           variant="outlined"
           className={styles.detail}
         >
-          <Typography
-            color="text.secondary"
-            variant="caption"
+          <Stack
+            gap={1}
+            useFlexGap
           >
-            D-gate 已驗收 / 截至當日計畫
-          </Typography>
-          <Typography variant="h6">
-            {actualProgress(project)}% / {plannedProgress(project)}%
-          </Typography>
-          <LinearProgress
-            color={status}
-            variant="determinate"
-            value={actualProgress(project)}
-            aria-label={`已驗收 ${actualProgress(project)}%，計畫 ${plannedProgress(project)}%`}
-          />
+            <Typography
+              color="text.secondary"
+              variant="caption"
+            >
+              D-gate 已驗收 / 截至當日計畫
+            </Typography>
+            <Typography variant="h6">
+              {actualProgress(project)}% / {plannedProgress(project)}%
+            </Typography>
+            <LinearProgress
+              color={status}
+              variant="determinate"
+              value={actualProgress(project)}
+              aria-label={`已驗收 ${actualProgress(project)}%，計畫 ${plannedProgress(project)}%`}
+            />
+          </Stack>
         </Paper>
         <Paper
           variant="outlined"
@@ -204,7 +209,7 @@ export default function ProjectDetail({
           >
             <Typography
               component="h3"
-              variant="h6"
+              variant="h4"
             >
               負責人最新填報
             </Typography>
@@ -240,24 +245,29 @@ export default function ProjectDetail({
           variant="outlined"
           className={styles.detail}
         >
-          <Typography
-            component="h3"
-            variant="h6"
+          <Stack
+            gap={1}
+            useFlexGap
           >
-            部署進度
-          </Typography>
-          <LinearProgress
-            color={status}
-            variant="determinate"
-            value={project.deployment.actual ?? (project.deployment.done ?? 0) * 20}
-            aria-label="部署進度"
-          />
-          <Typography
-            color="text.secondary"
-            variant="caption"
-          >
-            原訂 {formatDate(project.deployment.base)} · 預測 {formatDate(project.deployment.fc)}
-          </Typography>
+            <Typography
+              component="h3"
+              variant="h4"
+            >
+              部署進度
+            </Typography>
+            <LinearProgress
+              color={status}
+              variant="determinate"
+              value={project.deployment.actual ?? (project.deployment.done ?? 0) * 20}
+              aria-label="部署進度"
+            />
+            <Typography
+              color="text.secondary"
+              variant="caption"
+            >
+              原訂 {formatDate(project.deployment.base)} · 預測 {formatDate(project.deployment.fc)}
+            </Typography>
+          </Stack>
         </Paper>
       ) : null}
       <Paper
@@ -271,7 +281,7 @@ export default function ProjectDetail({
         >
           <Typography
             component="h3"
-            variant="h6"
+            variant="h4"
           >
             下一步與復原計畫
           </Typography>
@@ -304,7 +314,7 @@ export default function ProjectDetail({
         >
           <Typography
             component="h3"
-            variant="h6"
+            variant="h4"
           >
             D-gate · 排程基準與實際
           </Typography>
@@ -375,7 +385,7 @@ export default function ProjectDetail({
         >
           <Typography
             component="h3"
-            variant="h6"
+            variant="h4"
           >
             上游依賴
           </Typography>
@@ -432,7 +442,7 @@ export default function ProjectDetail({
         >
           <Typography
             component="h3"
-            variant="h6"
+            variant="h4"
           >
             產能釋放與再投入
           </Typography>

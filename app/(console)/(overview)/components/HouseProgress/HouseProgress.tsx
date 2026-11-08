@@ -97,7 +97,7 @@ export default function HouseProgress() {
                 >
                   <Typography
                     component="h3"
-                    variant="h6"
+                    variant="h4"
                   >
                     {area.label}
                   </Typography>
