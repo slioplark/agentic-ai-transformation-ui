@@ -51,6 +51,17 @@
 
 .cell {
   font-size: 0.75rem;
+  align-items: stretch;
+  text-align: left;
+}
+
+button.cell:hover {
+  border-color: #62aaa8;
+}
+
+button.cell:focus-visible {
+  outline: 2px solid #2464a0;
+  outline-offset: 2px;
 }
 
 .line {

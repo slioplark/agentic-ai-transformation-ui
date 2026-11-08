@@ -78,17 +78,10 @@
 }
 
 @media (max-width: 1199.95px) {
-  .pillar {
+  .list {
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .card {
-    flex: 1 1 200px;
-  }
-
-  .list {
-    flex: 1 1 100%;
+    justify-content: center;
+    gap: 4px 12px;
   }
 }

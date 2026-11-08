@@ -1,5 +1,6 @@
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
+import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import type { Insight } from "../../house.mock"
@@ -9,14 +10,17 @@ const rankLabels = ["Connected", "Optimized", "Transparent", "Proactive", "Agile
 const rankColors = ["#c4dbea", "#8fb9d8", "#4f8fbf", "#2464a0", "#132c47"]
 const levelStatus = { 高: "success", 中: "warning", 低: "error" } as const
 
-function InsightCard({ insight }: { insight: Insight }) {
+function InsightCard({ insight, onSelect }: { insight: Insight; onSelect: (id: string) => void }) {
   const total = insight.ranks.reduce((sum, value) => sum + value, 0)
 
   return (
-    <Paper
-      component="article"
+    <ButtonBase
+      component={Paper}
       variant="outlined"
       className={styles.card}
+      sx={{ border: 1, borderColor: "divider", borderRadius: 1 }}
+      aria-label={`檢視 ${insight.name} Insight 與 Domain Hub`}
+      onClick={() => onSelect(insight.id)}
     >
       <Typography
         component="h3"
@@ -81,11 +85,17 @@ function InsightCard({ insight }: { insight: Insight }) {
           </Box>
         ))}
       </Box>
-    </Paper>
+    </ButtonBase>
   )
 }
 
-export default function InsightSolutions({ insights }: { insights: Insight[] }) {
+export default function InsightSolutions({
+  insights,
+  onSelect,
+}: {
+  insights: Insight[]
+  onSelect: (id: string) => void
+}) {
   const taskRows = Math.max(1, ...insights.map((insight) => insight.tasks.length))
 
   return (
@@ -127,6 +137,7 @@ export default function InsightSolutions({ insights }: { insights: Insight[] }) 
             <InsightCard
               key={insight.id}
               insight={insight}
+              onSelect={onSelect}
             />
           ))}
         </Box>

@@ -14,14 +14,13 @@ export default function StatusChip({ label, status }: StatusChipProps) {
       color={status}
       label={label}
       size="small"
-      sx={(theme) =>
-        status === "default"
-          ? {}
-          : {
-              backgroundColor: alpha(theme.palette[status].main, 0.12),
-              color: theme.palette[status].dark,
-            }
-      }
+      sx={(theme) => ({
+        fontWeight: theme.typography.fontWeightBold,
+        ...(status !== "default" && {
+          backgroundColor: alpha(theme.palette[status].main, 0.12),
+          color: theme.palette[status].dark,
+        }),
+      })}
     />
   )
 }

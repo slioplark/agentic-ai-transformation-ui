@@ -2,11 +2,9 @@ import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import PageHeader from "../components/PageHeader"
-import DomainHubs from "./components/DomainHubs/DomainHubs"
+import HouseMatrix from "./components/HouseMatrix/HouseMatrix"
 import HousePillar from "./components/HousePillar/HousePillar"
 import Infrastructure from "./components/Infrastructure/Infrastructure"
-import InsightSolutions from "./components/InsightSolutions/InsightSolutions"
-import { hubs, insights } from "./house.mock"
 import styles from "./page.module.css"
 
 export default function HousePage() {
@@ -64,8 +62,7 @@ export default function HousePage() {
                 useFlexGap
                 className={styles.matrix}
               >
-                <InsightSolutions insights={insights} />
-                <DomainHubs hubs={hubs} />
+                <HouseMatrix />
               </Stack>
             </Box>
             <Infrastructure />
