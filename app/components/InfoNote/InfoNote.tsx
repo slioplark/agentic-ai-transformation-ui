@@ -1,18 +1,28 @@
-import { styled } from "@mui/material/styles"
+import { alpha, styled } from "@mui/material/styles"
 import type { ReactNode } from "react"
 
 type InfoNoteProps = {
   children: ReactNode
+  status?: "success" | "warning" | "error" | "default"
 }
 
-const InfoNoteRoot = styled("aside")(({ theme }) => ({
+const InfoNoteRoot = styled("aside", {
+  shouldForwardProp: (prop) => prop !== "status",
+})<Pick<InfoNoteProps, "status">>(({ theme, status }) => ({
   padding: theme.spacing(1.75, 2.25),
   color: theme.palette.text.primary,
-  borderLeft: `3px solid ${theme.palette.secondary.main}`,
-  borderRadius: "0 7px 7px 0",
-  backgroundColor: "#e9f4f2",
+  borderLeft: `4px solid ${status === "default" ? theme.palette.text.secondary : theme.palette[status ?? "secondary"].main}`,
+  backgroundColor:
+    status === "default" ? theme.palette.action.hover : status ? alpha(theme.palette[status].main, 0.1) : "#e9f4f2",
 }))
 
-export default function InfoNote({ children }: InfoNoteProps) {
-  return <InfoNoteRoot role="note">{children}</InfoNoteRoot>
+export default function InfoNote({ children, status }: InfoNoteProps) {
+  return (
+    <InfoNoteRoot
+      role="note"
+      status={status}
+    >
+      {children}
+    </InfoNoteRoot>
+  )
 }

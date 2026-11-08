@@ -8,6 +8,7 @@ import PageHeader from "../components/PageHeader"
 import BlockerImpact from "./components/BlockerImpact/BlockerImpact"
 import ExecutiveDecisionDetail from "./components/ExecutiveDecisions/ExecutiveDecisionDetail"
 import ExecutiveDecisions from "./components/ExecutiveDecisions/ExecutiveDecisions"
+import HouseProgress from "./components/HouseProgress/HouseProgress"
 import KpiCard from "./components/KpiCard/KpiCard"
 import KpiDetailContent from "./components/KpiDetailDrawer/KpiDetailContent"
 import ReportingStatusGrid from "./components/ReportingStatusGrid/ReportingStatusGrid"
@@ -82,6 +83,7 @@ export default function HomePage() {
         />
         <UpcomingMilestones onSelect={selectProject} />
         <BlockerImpact onSelect={selectProject} />
+        <HouseProgress />
       </Stack>
       <DetailDrawer
         open={drawerOpen}
