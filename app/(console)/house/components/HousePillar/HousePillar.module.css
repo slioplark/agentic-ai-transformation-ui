@@ -1,0 +1,94 @@
+.pillar {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #dce5ec;
+  border-top-width: 6px;
+  border-radius: 8px;
+}
+
+.governance {
+  border-top-color: #087f80;
+  background: #e3f2ef;
+}
+
+.citizen {
+  border-top-color: #2464a0;
+  background: #e6eef8;
+}
+
+.card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 10px;
+  background: #ffffffc9;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.card:hover {
+  border-color: #62aaa8;
+}
+
+.card:focus-visible {
+  outline: 3px solid #087f80;
+  outline-offset: -3px;
+}
+
+.progressLabel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.progressTrack {
+  position: relative;
+}
+
+.planMarker {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: #132c47;
+  transform: translateX(-50%);
+}
+
+.progress {
+  height: 8px;
+  border-radius: 5px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+@media (max-width: 1199.95px) {
+  .pillar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .card {
+    flex: 1 1 200px;
+  }
+
+  .list {
+    flex: 1 1 100%;
+  }
+}

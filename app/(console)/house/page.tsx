@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import PageHeader from "../components/PageHeader"
 import DomainHubs from "./components/DomainHubs/DomainHubs"
+import HousePillar from "./components/HousePillar/HousePillar"
 import Infrastructure from "./components/Infrastructure/Infrastructure"
 import InsightSolutions from "./components/InsightSolutions/InsightSolutions"
 import { hubs, insights } from "./house.mock"
@@ -48,24 +49,7 @@ export default function HousePage() {
           className={styles.house}
           sx={{ gridTemplateColumns: { xs: "minmax(0, 1fr)", lg: "128px minmax(0, 1fr) 128px" } }}
         >
-          <Box
-            component="section"
-            className={`${styles.pillar} ${styles.governance}`}
-          >
-            <Typography
-              variant="caption"
-              color="secondary"
-            >
-              信任與資安
-            </Typography>
-            <Typography
-              component="h2"
-              variant="h6"
-              id="governance-title"
-            >
-              AI Governance &amp; Security
-            </Typography>
-          </Box>
+          <HousePillar kind="governance" />
           <Stack
             gap={1}
             useFlexGap
@@ -86,24 +70,7 @@ export default function HousePage() {
             </Box>
             <Infrastructure />
           </Stack>
-          <Box
-            component="section"
-            className={`${styles.pillar} ${styles.citizen}`}
-          >
-            <Typography
-              variant="caption"
-              color="info.main"
-            >
-              數位素養
-            </Typography>
-            <Typography
-              component="h2"
-              variant="h6"
-              id="citizen-title"
-            >
-              Digital Citizen
-            </Typography>
-          </Box>
+          <HousePillar kind="citizen" />
         </Box>
       </Box>
     </Stack>
