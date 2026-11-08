@@ -5,6 +5,7 @@ import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import PageHeader from "../components/PageHeader"
+import BlockerImpact from "./components/BlockerImpact/BlockerImpact"
 import ExecutiveDecisionDetail from "./components/ExecutiveDecisions/ExecutiveDecisionDetail"
 import ExecutiveDecisions from "./components/ExecutiveDecisions/ExecutiveDecisions"
 import KpiCard from "./components/KpiCard/KpiCard"
@@ -67,9 +68,7 @@ export default function HomePage() {
             <KpiCard
               key={kpi.id}
               kpi={kpi}
-              onClick={
-                kpi.drawer || kpi.href ? () => handleKpiClick(kpi) : undefined
-              }
+              onClick={kpi.drawer || kpi.href ? () => handleKpiClick(kpi) : undefined}
             />
           ))}
         </section>
@@ -82,6 +81,7 @@ export default function HomePage() {
           }}
         />
         <UpcomingMilestones onSelect={selectProject} />
+        <BlockerImpact onSelect={selectProject} />
       </Stack>
       <DetailDrawer
         open={drawerOpen}
