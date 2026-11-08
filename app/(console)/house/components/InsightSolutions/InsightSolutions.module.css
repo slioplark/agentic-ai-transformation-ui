@@ -1,0 +1,76 @@
+.scroll {
+  overflow-x: auto;
+}
+
+.scroll:focus-visible {
+  outline: 3px solid #087f80;
+  outline-offset: 2px;
+}
+
+.matrix {
+  min-width: 790px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 150px repeat(5, minmax(122px, 1fr));
+  grid-template-rows: repeat(5, auto) repeat(var(--task-rows), auto);
+  gap: 5px 6px;
+  padding-top: 6px;
+}
+
+.label {
+  grid-row: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 9px;
+  border-radius: 8px;
+  background: #e3edf6;
+}
+
+.card {
+  display: grid;
+  grid-row: 1 / -1;
+  grid-template-rows: subgrid;
+  min-width: 0;
+  padding: 10px;
+}
+
+.rankBar {
+  display: flex;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #eef3f6;
+}
+
+.rankBar > * + * {
+  border-left: 1px solid #fff;
+}
+
+.tasks {
+  display: grid;
+  grid-row: span var(--task-rows);
+  grid-template-rows: subgrid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}

@@ -1,0 +1,70 @@
+.houseSection {
+  container-type: inline-size;
+}
+
+.roof {
+  display: flex;
+  min-height: 200px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  clip-path: polygon(0 28%, 50% 0, 100% 28%, 100% 100%, 0 100%);
+  text-align: center;
+}
+
+.roofTitle {
+  max-width: 80%;
+  font-size: clamp(1.25rem, 3cqw, 2.5rem);
+}
+
+.roofText {
+  max-width: 90%;
+  font-size: clamp(0.875rem, 1.6cqw, 1.5rem);
+}
+
+.house {
+  display: grid;
+  align-items: stretch;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.pillar {
+  display: flex;
+  min-width: 0;
+  min-height: 120px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid #dce5ec;
+  border-top-width: 6px;
+  border-radius: 8px;
+}
+
+.governance {
+  border-top-color: #087f80;
+  background: #e3f2ef;
+}
+
+.citizen {
+  border-top-color: #2464a0;
+  background: #e6eef8;
+}
+
+.layer {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #dce5ec;
+  border-radius: 8px;
+}
+
+.layerHeading {
+  padding: 8px 12px;
+}
+
+.emptyLayer {
+  min-height: 100px;
+  background: #fff;
+}

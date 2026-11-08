@@ -1,3 +1,5 @@
+"use client"
+
 import Chip from "@mui/material/Chip"
 import { alpha } from "@mui/material/styles"
 
