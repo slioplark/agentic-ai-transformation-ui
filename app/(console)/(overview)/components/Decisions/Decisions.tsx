@@ -5,14 +5,14 @@ import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import type { ExecutiveDecision } from "../../overview.mock"
-import styles from "./ExecutiveDecisions.module.css"
+import styles from "./Decisions.module.css"
 
 type Props = {
   decisions: readonly ExecutiveDecision[]
   onSelect: (decision: ExecutiveDecision) => void
 }
 
-export default function ExecutiveDecisions({ decisions, onSelect }: Props) {
+export default function Decisions({ decisions, onSelect }: Props) {
   return (
     <>
       <Paper

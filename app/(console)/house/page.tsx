@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import PageHeader from "../components/PageHeader"
 import DomainHubs from "./components/DomainHubs/DomainHubs"
+import Infrastructure from "./components/Infrastructure/Infrastructure"
 import InsightSolutions from "./components/InsightSolutions/InsightSolutions"
 import { hubs, insights } from "./house.mock"
 import styles from "./page.module.css"
@@ -83,27 +84,7 @@ export default function HousePage() {
                 <DomainHubs hubs={hubs} />
               </Stack>
             </Box>
-            <Box
-              component="section"
-              className={styles.layer}
-            >
-              <Box
-                className={styles.layerHeading}
-                sx={{ bgcolor: "primary.main", color: "common.white" }}
-              >
-                <Typography
-                  component="h2"
-                  variant="h6"
-                  id="infrastructure-title"
-                >
-                  AI Infrastructure
-                </Typography>
-              </Box>
-              <Box
-                className={styles.emptyLayer}
-                aria-hidden="true"
-              />
-            </Box>
+            <Infrastructure />
           </Stack>
           <Box
             component="section"

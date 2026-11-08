@@ -6,14 +6,14 @@ import { useRouter } from "next/navigation"
 import { useState } from "react"
 import PageHeader from "../components/PageHeader"
 import BlockerImpact from "./components/BlockerImpact/BlockerImpact"
-import ExecutiveDecisionDetail from "./components/ExecutiveDecisions/ExecutiveDecisionDetail"
-import ExecutiveDecisions from "./components/ExecutiveDecisions/ExecutiveDecisions"
+import DecisionDrawerContent from "./components/Decisions/DecisionDrawerContent"
+import Decisions from "./components/Decisions/Decisions"
 import HouseProgress from "./components/HouseProgress/HouseProgress"
 import KpiCard from "./components/KpiCard/KpiCard"
-import KpiDetailContent from "./components/KpiDetailDrawer/KpiDetailContent"
+import KpiDrawerContent from "./components/KpiDetailDrawer/KpiDrawerContent"
 import ReportingStatusGrid from "./components/ReportingStatusGrid/ReportingStatusGrid"
 import TransformationSignalTable from "./components/TransformationSignalTable/TransformationSignalTable"
-import ProjectDetail from "./components/UpcomingMilestones/ProjectDetail"
+import ProjectDrawerContent from "./components/UpcomingMilestones/ProjectDrawerContent"
 import UpcomingMilestones from "./components/UpcomingMilestones/UpcomingMilestones"
 import type { Project } from "./components/UpcomingMilestones/milestones"
 import {
@@ -74,7 +74,7 @@ export default function HomePage() {
           ))}
         </section>
         <TransformationSignalTable signals={transformationSignals} />
-        <ExecutiveDecisions
+        <Decisions
           decisions={executiveDecisions}
           onSelect={(decision) => {
             setActiveDetail({ type: "decision", decision })
@@ -91,21 +91,21 @@ export default function HomePage() {
         titleId={titleId}
       >
         {activeDetail?.type === "kpi" ? (
-          <KpiDetailContent
+          <KpiDrawerContent
             kpi={activeDetail.kpi}
             onClose={closeDrawer}
             titleId={titleId}
           />
         ) : null}
         {activeDetail?.type === "decision" ? (
-          <ExecutiveDecisionDetail
+          <DecisionDrawerContent
             decision={activeDetail.decision}
             onClose={closeDrawer}
             titleId={titleId}
           />
         ) : null}
         {activeDetail?.type === "project" ? (
-          <ProjectDetail
+          <ProjectDrawerContent
             project={activeDetail.project}
             onClose={closeDrawer}
             onSelect={selectProject}

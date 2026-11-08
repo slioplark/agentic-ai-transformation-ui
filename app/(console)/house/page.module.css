@@ -53,22 +53,6 @@
   background: #e6eef8;
 }
 
-.layer {
-  min-width: 0;
-  overflow: hidden;
-  border: 1px solid #dce5ec;
-  border-radius: 8px;
-}
-
-.layerHeading {
-  padding: 8px 12px;
-}
-
-.emptyLayer {
-  min-height: 100px;
-  background: #fff;
-}
-
 .matrixScroll {
   min-width: 0;
   overflow-x: auto;

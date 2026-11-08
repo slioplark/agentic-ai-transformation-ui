@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import type { ExecutiveDecision } from "../../overview.mock"
-import styles from "./ExecutiveDecisions.module.css"
+import styles from "./Decisions.module.css"
 
 type Props = {
   decision: ExecutiveDecision
@@ -14,7 +14,7 @@ type Props = {
   titleId: string
 }
 
-export default function ExecutiveDecisionDetail({ decision, onClose, titleId }: Props) {
+export default function DecisionDrawerContent({ decision, onClose, titleId }: Props) {
   return (
     <>
       <Stack
@@ -24,7 +24,11 @@ export default function ExecutiveDecisionDetail({ decision, onClose, titleId }: 
         gap={2}
         useFlexGap
       >
-        <Box>
+        <Stack
+          gap={1}
+          alignItems="flex-start"
+          useFlexGap
+        >
           <Typography
             color="secondary.main"
             variant="caption"
@@ -38,7 +42,7 @@ export default function ExecutiveDecisionDetail({ decision, onClose, titleId }: 
           >
             {decision.title}
           </Typography>
-        </Box>
+        </Stack>
         <IconButton
           aria-label="關閉決策詳情"
           onClick={onClose}

@@ -1,0 +1,54 @@
+.section {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.heading {
+  padding: 8px 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  padding-top: 8px;
+}
+
+.card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.card:hover {
+  border-color: #62aaa8;
+}
+
+.card:focus-visible {
+  outline: 3px solid #087f80;
+  outline-offset: -3px;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.progress {
+  height: 8px;
+  margin-top: 4px;
+  border-radius: 5px;
+}
+
+@media (max-width: 599.95px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

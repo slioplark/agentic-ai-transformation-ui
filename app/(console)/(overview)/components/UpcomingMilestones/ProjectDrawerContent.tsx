@@ -43,7 +43,7 @@ const labels = {
   success: "依計畫",
 } as const
 
-export default function ProjectDetail({
+export default function ProjectDrawerContent({
   project,
   onClose,
   onSelect,
@@ -72,37 +72,49 @@ export default function ProjectDetail({
         gap={2}
         useFlexGap
       >
-        <Box>
+        <Stack
+          gap={1}
+          alignItems="flex-start"
+          useFlexGap
+        >
           <Typography
             color="secondary.main"
             variant="caption"
           >
             {project.area} / {project.id.toUpperCase()}
           </Typography>
-          <Typography
-            component="h2"
-            id={titleId}
-            variant="h4"
+          <Stack
+            direction="row"
+            alignItems="center"
+            flexWrap="wrap"
+            gap={1}
+            useFlexGap
           >
-            {project.name}
-          </Typography>
+            <Typography
+              component="h2"
+              id={titleId}
+              variant="h4"
+            >
+              {project.name}
+            </Typography>
+            <StatusChip
+              status={status}
+              label={labels[status]}
+            />
+          </Stack>
           <Typography
             color="text.secondary"
             variant="body2"
           >
             {project.project}
           </Typography>
-          <StatusChip
-            status={status}
-            label={labels[status]}
-          />
           {daysBetween(project.updated, snapshot) > 7 ? (
             <Chip
               size="small"
               label="資料待更新"
             />
           ) : null}
-        </Box>
+        </Stack>
         <IconButton
           aria-label="關閉專案詳情"
           onClick={onClose}

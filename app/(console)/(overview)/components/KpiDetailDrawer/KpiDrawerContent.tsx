@@ -21,7 +21,7 @@ import {
 } from "../../overview.mock"
 import styles from "./KpiDetailDrawer.module.css"
 
-type KpiDetailContentProps = {
+type KpiDrawerContentProps = {
   kpi: OverviewKpi
   onClose: () => void
   titleId: string
@@ -64,7 +64,11 @@ function DrawerHeader({
       gap={2}
       useFlexGap
     >
-      <Box>
+      <Stack
+        gap={1}
+        alignItems="flex-start"
+        useFlexGap
+      >
         <Typography
           color="secondary.main"
           variant="caption"
@@ -78,7 +82,7 @@ function DrawerHeader({
         >
           {title}
         </Typography>
-      </Box>
+      </Stack>
       <IconButton
         aria-label={`關閉${title}`}
         onClick={onClose}
@@ -89,7 +93,7 @@ function DrawerHeader({
   )
 }
 
-function MaturityDrawer({ onClose, titleId }: { onClose: () => void; titleId: string }) {
+function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titleId: string }) {
   return (
     <>
       <DrawerHeader
@@ -263,7 +267,7 @@ function MaturityDrawer({ onClose, titleId }: { onClose: () => void; titleId: st
   )
 }
 
-function BenefitsDrawer({ onClose, titleId }: { onClose: () => void; titleId: string }) {
+function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titleId: string }) {
   return (
     <>
       <DrawerHeader
@@ -371,17 +375,17 @@ function BenefitsDrawer({ onClose, titleId }: { onClose: () => void; titleId: st
   )
 }
 
-export default function KpiDetailContent({ kpi, onClose, titleId }: KpiDetailContentProps) {
+export default function KpiDrawerContent({ kpi, onClose, titleId }: KpiDrawerContentProps) {
   return (
     <>
       {kpi.drawer === "maturity" ? (
-        <MaturityDrawer
+        <MaturityDrawerContent
           onClose={onClose}
           titleId={titleId}
         />
       ) : null}
       {kpi.drawer === "benefits" ? (
-        <BenefitsDrawer
+        <BenefitsDrawerContent
           onClose={onClose}
           titleId={titleId}
         />
