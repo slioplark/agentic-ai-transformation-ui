@@ -1,4 +1,4 @@
-import Chip from "@mui/material/Chip"
+import StatusChip from "@app/components/StatusChip/StatusChip"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
@@ -8,7 +8,6 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import { alpha } from "@mui/material/styles"
 import type { TransformationSignal } from "../../overview.mock"
 import styles from "./TransformationSignalTable.module.css"
 
@@ -17,8 +16,8 @@ type TransformationSignalTableProps = {
 }
 
 const statusDetails = {
-  alert: { chipColor: "error", label: "警示" },
-  attention: { chipColor: "warning", label: "注意" },
+  alert: { status: "error", label: "警示" },
+  attention: { status: "warning", label: "注意" },
 } as const
 
 export default function TransformationSignalTable({ signals }: TransformationSignalTableProps) {
@@ -29,7 +28,10 @@ export default function TransformationSignalTable({ signals }: TransformationSig
       component="section"
       variant="outlined"
     >
-      <Stack spacing={1.5} useFlexGap>
+      <Stack
+        spacing={1.5}
+        useFlexGap
+      >
         <Stack
           alignItems={{ sm: "baseline" }}
           direction={{ xs: "column", sm: "row" }}
@@ -37,16 +39,27 @@ export default function TransformationSignalTable({ signals }: TransformationSig
           spacing={1}
           useFlexGap
         >
-          <Typography component="h2" id="transformation-signal-title" variant="h4">
+          <Typography
+            component="h2"
+            id="transformation-signal-title"
+            variant="h4"
+          >
             轉型真偽檢核 · Elephants in the room
           </Typography>
-          <Typography color="text.secondary" variant="caption">
+          <Typography
+            color="text.secondary"
+            variant="caption"
+          >
             這些訊號不改善，代表只是導入工具，並未改變工作方式
           </Typography>
         </Stack>
 
         <TableContainer>
-          <Table aria-label="轉型真偽檢核" className={styles.table} size="small">
+          <Table
+            aria-label="轉型真偽檢核"
+            className={styles.table}
+            size="small"
+          >
             <TableHead>
               <TableRow>
                 <TableCell>訊號</TableCell>
@@ -64,20 +77,33 @@ export default function TransformationSignalTable({ signals }: TransformationSig
                 return (
                   <TableRow key={signal.id}>
                     <TableCell>
-                      <Typography component="div" fontWeight={700} variant="body2">
+                      <Typography
+                        component="div"
+                        fontWeight={700}
+                        variant="body2"
+                      >
                         {signal.label}
                       </Typography>
-                      <Typography color="text.secondary" variant="caption">
+                      <Typography
+                        color="text.secondary"
+                        variant="caption"
+                      >
                         {signal.englishLabel}
                       </Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography component="span" variant="h6">
+                      <Typography
+                        component="span"
+                        variant="h6"
+                      >
                         {signal.currentValue}
                       </Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography color="success.main" variant="caption">
+                      <Typography
+                        color="success.main"
+                        variant="caption"
+                      >
                         {signal.change}
                       </Typography>
                     </TableCell>
@@ -85,18 +111,16 @@ export default function TransformationSignalTable({ signals }: TransformationSig
                       <Typography variant="caption">{signal.threshold}</Typography>
                     </TableCell>
                     <TableCell>
-                      <Chip
-                        color={status.chipColor}
+                      <StatusChip
+                        status={status.status}
                         label={status.label}
-                        size="small"
-                        sx={(theme) => ({
-                          backgroundColor: alpha(theme.palette[status.chipColor].main, 0.12),
-                          color: theme.palette[status.chipColor].dark,
-                        })}
                       />
                     </TableCell>
                     <TableCell>
-                      <Typography color="text.secondary" variant="caption">
+                      <Typography
+                        color="text.secondary"
+                        variant="caption"
+                      >
                         {signal.rationale}
                       </Typography>
                     </TableCell>

@@ -1,0 +1,21 @@
+.panel {
+  min-width: 0;
+  padding: 20px;
+}
+.table {
+  min-width: 700px;
+}
+.summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.detail {
+  min-width: 0;
+  padding: 16px;
+}
+@media (max-width: 599px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+}

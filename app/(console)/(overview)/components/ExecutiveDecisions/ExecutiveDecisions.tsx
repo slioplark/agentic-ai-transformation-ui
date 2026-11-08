@@ -52,38 +52,31 @@ export default function ExecutiveDecisions({ decisions, onSelect }: Props) {
                 className={styles.card}
                 key={decision.id}
               >
-                <Stack
-                  alignItems="flex-start"
-                  gap={1}
-                  useFlexGap
+                <Typography
+                  color="text.secondary"
+                  variant="caption"
                 >
-                  <Typography
-                    color="text.secondary"
-                    variant="caption"
-                  >
-                    {decision.id} · 決策期限{" "}
-                    {decision.due.slice(5).replace("-", "/")} · {decision.who}
-                  </Typography>
-                  <Typography
-                    component="h3"
-                    variant="h6"
-                  >
-                    {decision.title}
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    variant="body2"
-                  >
-                    {decision.impact}
-                  </Typography>
-                  <TextButton
-                    className={styles.action}
-                    onClick={() => onSelect(decision)}
-                    aria-label={`看${decision.title}的選項與影響`}
-                  >
-                    看選項與影響 →
-                  </TextButton>
-                </Stack>
+                  {decision.id} · 決策期限 {decision.due.slice(5).replace("-", "/")} · {decision.who}
+                </Typography>
+                <Typography
+                  component="h3"
+                  variant="h6"
+                >
+                  {decision.title}
+                </Typography>
+                <Typography
+                  color="text.secondary"
+                  variant="body2"
+                >
+                  {decision.impact}
+                </Typography>
+                <TextButton
+                  className={styles.action}
+                  onClick={() => onSelect(decision)}
+                  aria-label={`看${decision.title}的選項與影響`}
+                >
+                  看選項與影響 →
+                </TextButton>
               </Paper>
             ))}
           </Box>

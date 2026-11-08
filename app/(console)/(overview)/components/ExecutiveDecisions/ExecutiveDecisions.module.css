@@ -6,16 +6,20 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  column-gap: 12px;
+  row-gap: 8px;
 }
 
 .card {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
   min-width: 0;
   padding: 14px;
 }
 
 .action {
-  align-self: flex-end;
+  justify-self: end;
 }
 
 .details {

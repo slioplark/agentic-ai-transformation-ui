@@ -11,6 +11,9 @@ import KpiCard from "./components/KpiCard/KpiCard"
 import KpiDetailContent from "./components/KpiDetailDrawer/KpiDetailContent"
 import ReportingStatusGrid from "./components/ReportingStatusGrid/ReportingStatusGrid"
 import TransformationSignalTable from "./components/TransformationSignalTable/TransformationSignalTable"
+import ProjectDetail from "./components/UpcomingMilestones/ProjectDetail"
+import UpcomingMilestones from "./components/UpcomingMilestones/UpcomingMilestones"
+import type { Project } from "./components/UpcomingMilestones/milestones"
 import {
   executiveDecisions,
   overviewKpis,
@@ -24,6 +27,7 @@ import styles from "./page.module.css"
 type ActiveDetail =
   | { type: "kpi"; kpi: OverviewKpi }
   | { type: "decision"; decision: ExecutiveDecision }
+  | { type: "project"; project: Project }
 
 export default function HomePage() {
   const [activeDetail, setActiveDetail] = useState<ActiveDetail | null>(null)
@@ -41,12 +45,24 @@ export default function HomePage() {
     if (kpi.href) router.push(kpi.href)
   }
 
+  const selectProject = (project: Project) => {
+    setActiveDetail({ type: "project", project })
+    setDrawerOpen(true)
+  }
+
   return (
     <>
-      <Stack className={styles.dashboard} spacing={2} useFlexGap>
+      <Stack
+        className={styles.dashboard}
+        spacing={2}
+        useFlexGap
+      >
         <PageHeader>成效總覽</PageHeader>
         <ReportingStatusGrid items={reportingStatusMetrics} />
-        <section aria-label="關鍵成效指標" className={styles.kpiGrid}>
+        <section
+          aria-label="關鍵成效指標"
+          className={styles.kpiGrid}
+        >
           {overviewKpis.map((kpi) => (
             <KpiCard
               key={kpi.id}
@@ -65,8 +81,13 @@ export default function HomePage() {
             setDrawerOpen(true)
           }}
         />
+        <UpcomingMilestones onSelect={selectProject} />
       </Stack>
-      <DetailDrawer open={drawerOpen} onClose={closeDrawer} titleId={titleId}>
+      <DetailDrawer
+        open={drawerOpen}
+        onClose={closeDrawer}
+        titleId={titleId}
+      >
         {activeDetail?.type === "kpi" ? (
           <KpiDetailContent
             kpi={activeDetail.kpi}
@@ -78,6 +99,14 @@ export default function HomePage() {
           <ExecutiveDecisionDetail
             decision={activeDetail.decision}
             onClose={closeDrawer}
+            titleId={titleId}
+          />
+        ) : null}
+        {activeDetail?.type === "project" ? (
+          <ProjectDetail
+            project={activeDetail.project}
+            onClose={closeDrawer}
+            onSelect={selectProject}
             titleId={titleId}
           />
         ) : null}

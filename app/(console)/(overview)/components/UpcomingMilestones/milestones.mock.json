@@ -1,0 +1,1895 @@
+{
+  "projects": [
+    {
+      "id": "operations",
+      "area": "Insight Solutions",
+      "name": "Operations 製造運營",
+      "project": "製程異常 Agent 試點",
+      "owner": "製造數位產品負責人",
+      "sponsor": "製造轉型主管",
+      "risk": 2,
+      "issue": "MES 讀取權限未核准",
+      "updated": "2026-10-16",
+      "budget": 1.5,
+      "spent": 1.2,
+      "hours": 480,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 OPERATIONS-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 OPERATIONS-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 OPERATIONS-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-06",
+          "forecast": "2026-10-23",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-02",
+          "forecast": "2026-11-14",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "製程異常判讀時間",
+        "unit": "分鐘",
+        "baseline": 45,
+        "target": 15,
+        "actual": 30,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "MES 讀取權限未核准",
+      "nextAction": "",
+      "blocker": "MES 讀取權限未核准",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "customer",
+      "area": "Insight Solutions",
+      "name": "Customer 業務行銷",
+      "project": "客戶洞察與回覆助手",
+      "owner": "客戶應用產品負責人",
+      "sponsor": "業務主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 0.8,
+      "spent": 0.3,
+      "hours": 120,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 CUSTOMER-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 CUSTOMER-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-27",
+          "forecast": "2026-10-27",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-06",
+          "forecast": "2026-11-06",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-16",
+          "forecast": "2026-11-16",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "客戶詢問首次回覆時間",
+        "unit": "小時",
+        "baseline": 24,
+        "target": 4,
+        "actual": null,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "td",
+      "area": "Insight Solutions",
+      "name": "TD 技術研發",
+      "project": "研發知識檢索與實驗助手",
+      "owner": "研發應用產品負責人",
+      "sponsor": "研發主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 1,
+      "spent": 0.6,
+      "hours": 200,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 TD-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 TD-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 TD-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-29",
+          "forecast": "2026-10-29",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-08",
+          "forecast": "2026-11-08",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "文獻與實驗資料檢索時間",
+        "unit": "分鐘",
+        "baseline": 60,
+        "target": 10,
+        "actual": 25,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "planning",
+      "area": "Insight Solutions",
+      "name": "Planning 策略規劃",
+      "project": "需求預測與規劃決策",
+      "owner": "規劃應用產品負責人",
+      "sponsor": "規劃主管",
+      "risk": 1,
+      "issue": "預測資料口徑尚未一致",
+      "updated": "2026-10-15",
+      "budget": 0.9,
+      "spent": 0.45,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 PLANNING-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 PLANNING-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-15",
+          "forecast": "2026-10-20",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-01",
+          "forecast": "2026-11-06",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-11",
+          "forecast": "2026-11-16",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "需求預測誤差 MAPE",
+        "unit": "%",
+        "baseline": 28,
+        "target": 15,
+        "actual": null,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "預測資料口徑尚未一致",
+      "nextAction": "",
+      "blocker": "預測資料口徑尚未一致",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "biz",
+      "area": "Insight Solutions",
+      "name": "Biz Support 業務支援",
+      "project": "內部服務流程自動化",
+      "owner": "企業服務產品負責人",
+      "sponsor": "企業服務主管",
+      "risk": 0,
+      "issue": "已通過 D5 驗收；持續追蹤採用",
+      "updated": "2026-10-16",
+      "budget": 0.6,
+      "spent": 0.5,
+      "hours": 160,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 BIZ-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 BIZ-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 BIZ-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-07",
+          "forecast": "2026-10-07",
+          "done": true,
+          "accepted": "2026-10-07",
+          "evidence": "示範：驗收記錄 BIZ-D4",
+          "firstPass": true
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-10-14",
+          "forecast": "2026-10-14",
+          "done": true,
+          "accepted": "2026-10-14",
+          "evidence": "示範：驗收記錄 BIZ-D5",
+          "firstPass": true
+        }
+      ],
+      "projectKpi": {
+        "name": "內部服務請求處理週期",
+        "unit": "天",
+        "baseline": 5,
+        "target": 1,
+        "actual": 1.6,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "已通過 D5 驗收；持續追蹤採用",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "lake",
+      "area": "Domain Hubs",
+      "name": "Domain Data Lakes",
+      "project": "關鍵領域資料產品",
+      "owner": "資料平台負責人",
+      "sponsor": "資料治理主管",
+      "risk": 2,
+      "issue": "資料擁有人與授權未定",
+      "updated": "2026-10-16",
+      "budget": 1.4,
+      "spent": 0.8,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 LAKE-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 LAKE-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-06",
+          "forecast": "2026-10-20",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-30",
+          "forecast": "2026-11-11",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-09",
+          "forecast": "2026-11-21",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "核定資料產品可用數",
+        "unit": "項",
+        "baseline": 0,
+        "target": 29,
+        "actual": 15,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "資料擁有人與授權未定",
+      "nextAction": "",
+      "blocker": "資料擁有人與授權未定",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "knowledge",
+      "area": "Domain Hubs",
+      "name": "AI Knowledge Repositories",
+      "project": "Skills、Contexts、URAG 與 UGPT 知識治理",
+      "owner": "知識平台負責人",
+      "sponsor": "知識管理主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-15",
+      "budget": 0.5,
+      "spent": 0.3,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 KNOWLEDGE-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 KNOWLEDGE-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 KNOWLEDGE-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-28",
+          "forecast": "2026-10-28",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-07",
+          "forecast": "2026-11-07",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "知識來源可檢索覆蓋率",
+        "unit": "%",
+        "baseline": 40,
+        "target": 90,
+        "actual": 68,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "agents",
+      "area": "Domain Hubs",
+      "name": "Agents Repositories",
+      "project": "共用 Agent 目錄與評測",
+      "owner": "Agent 平台負責人",
+      "sponsor": "Digital 主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 0.4,
+      "spent": 0.15,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 AGENTS-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 AGENTS-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-29",
+          "forecast": "2026-10-29",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-08",
+          "forecast": "2026-11-08",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-18",
+          "forecast": "2026-11-18",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "已註冊且通過評測的 Agent",
+        "unit": "個",
+        "baseline": 0,
+        "target": 25,
+        "actual": 12,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "process",
+      "area": "Domain Hubs",
+      "name": "Domain Process Repositories",
+      "project": "標準流程註冊與複用模組",
+      "owner": "流程平台負責人",
+      "sponsor": "流程治理主管",
+      "risk": 1,
+      "issue": "流程核定待兩單位確認",
+      "updated": "2026-10-15",
+      "budget": 0.3,
+      "spent": 0.15,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 PROCESS-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 PROCESS-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-15",
+          "forecast": "2026-10-20",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-02",
+          "forecast": "2026-11-07",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-12",
+          "forecast": "2026-11-17",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "已註冊標準流程",
+        "unit": "項",
+        "baseline": 0,
+        "target": 63,
+        "actual": 33,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "流程核定待兩單位確認",
+      "nextAction": "",
+      "blocker": "流程核定待兩單位確認",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "rgate",
+      "area": "Domain Hubs",
+      "name": "Governance & Rx Rules",
+      "project": "專業治理規則與 R-gate 審查",
+      "owner": "業務治理負責人",
+      "sponsor": "風險管理主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 0.3,
+      "spent": 0.2,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 RGATE-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 RGATE-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 RGATE-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-26",
+          "forecast": "2026-10-26",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-05",
+          "forecast": "2026-11-05",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "Rx 規則核定覆蓋率",
+        "unit": "%",
+        "baseline": 0,
+        "target": 100,
+        "actual": 50,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "flow",
+      "area": "Digital Infrastructure",
+      "name": "Agentic Flow Automation",
+      "project": "Agent BPM 與 HITL",
+      "owner": "自動化平台負責人",
+      "sponsor": "Digital 主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 0.7,
+      "spent": 0.4,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 FLOW-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 FLOW-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 FLOW-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-28",
+          "forecast": "2026-10-28",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-07",
+          "forecast": "2026-11-07",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "HITL 流程上線數",
+        "unit": "條",
+        "baseline": 0,
+        "target": 20,
+        "actual": 6,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 40,
+        "plan": 40,
+        "base": "2026-11-20",
+        "fc": "2026-11-20"
+      },
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "software",
+      "area": "Digital Infrastructure",
+      "name": "AI-Enabled Software Development",
+      "project": "非 IT 團隊自主開發與即用工具",
+      "owner": "工程效率負責人",
+      "sponsor": "資訊主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 0.6,
+      "spent": 0.35,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 SOFTWARE-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 SOFTWARE-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 SOFTWARE-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-26",
+          "forecast": "2026-10-26",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-05",
+          "forecast": "2026-11-05",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "非 IT 自建工具上線數",
+        "unit": "個",
+        "baseline": 0,
+        "target": 40,
+        "actual": 14,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 60,
+        "plan": 60,
+        "base": "2026-12-15",
+        "fc": "2026-12-15"
+      },
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "api",
+      "area": "Digital Infrastructure",
+      "name": "Enterprise API & Agent Orchestration",
+      "project": "APIM、新 API 標準與工具閘道",
+      "owner": "整合平台負責人",
+      "sponsor": "Digital 主管",
+      "risk": 2,
+      "issue": "工具閘道資安審查未完成",
+      "updated": "2026-10-16",
+      "budget": 0.9,
+      "spent": 0.55,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 API-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 API-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-06",
+          "forecast": "2026-10-21",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-31",
+          "forecast": "2026-11-12",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-10",
+          "forecast": "2026-11-22",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "納管 API 比例",
+        "unit": "%",
+        "baseline": 10,
+        "target": 80,
+        "actual": null,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 20,
+        "plan": 40,
+        "base": "2026-10-21",
+        "fc": "2026-11-02"
+      },
+      "summary": "工具閘道資安審查未完成",
+      "nextAction": "",
+      "blocker": "工具閘道資安審查未完成",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "core",
+      "area": "Digital Infrastructure",
+      "name": "AI Core Technology",
+      "project": "UGPT · URAG · Model Gateway",
+      "owner": "AI 平台負責人",
+      "sponsor": "Digital 主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 1.2,
+      "spent": 0.7,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 CORE-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 CORE-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 CORE-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-27",
+          "forecast": "2026-10-27",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-06",
+          "forecast": "2026-11-06",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "UGPT / URAG 任務成功率",
+        "unit": "%",
+        "baseline": 70,
+        "target": 92,
+        "actual": 86,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 60,
+        "plan": 60,
+        "base": "2027-01-20",
+        "fc": "2027-01-20"
+      },
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "data",
+      "area": "Digital Infrastructure",
+      "name": "AI-Ready Data Platform",
+      "project": "語意層、特徵庫與向量庫",
+      "owner": "資料平台負責人",
+      "sponsor": "資料治理主管",
+      "risk": 1,
+      "issue": "向量索引品質待改善",
+      "updated": "2026-10-15",
+      "budget": 0.8,
+      "spent": 0.5,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 DATA-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 DATA-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-15",
+          "forecast": "2026-10-20",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-01",
+          "forecast": "2026-11-06",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-11",
+          "forecast": "2026-11-16",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "語意層覆蓋關鍵指標",
+        "unit": "%",
+        "baseline": 0,
+        "target": 80,
+        "actual": 35,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 40,
+        "plan": 60,
+        "base": "2026-10-22",
+        "fc": "2026-10-27"
+      },
+      "summary": "向量索引品質待改善",
+      "nextAction": "",
+      "blocker": "向量索引品質待改善",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "bs",
+      "area": "Digital Infrastructure",
+      "name": "BS Modernization",
+      "project": "ERP / Workday / Notes → M365 等企業系統現代化與 API 化",
+      "owner": "BS 現代化負責人",
+      "sponsor": "資訊主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 0.7,
+      "spent": 0.2,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 BS-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 BS-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-30",
+          "forecast": "2026-10-30",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-09",
+          "forecast": "2026-11-09",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-19",
+          "forecast": "2026-11-19",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "企業系統 API 化比例",
+        "unit": "%",
+        "baseline": 20,
+        "target": 70,
+        "actual": 38,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 40,
+        "plan": 40,
+        "base": "2026-12-01",
+        "fc": "2026-12-01"
+      },
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "cim8",
+      "area": "Digital Infrastructure",
+      "name": "CIM 8 吋 Modernization",
+      "project": "8 吋廠 MES / EAP / 自動化系統現代化",
+      "owner": "CIM 8 吋負責人",
+      "sponsor": "製造轉型主管",
+      "risk": 1,
+      "issue": "舊機台介面相容性測試延後",
+      "updated": "2026-10-16",
+      "budget": 1.1,
+      "spent": 0.4,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 CIM8-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 CIM8-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-15",
+          "forecast": "2026-10-20",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-03",
+          "forecast": "2026-11-08",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-13",
+          "forecast": "2026-11-18",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "8 吋廠系統容器化 / API 化比例",
+        "unit": "%",
+        "baseline": 5,
+        "target": 60,
+        "actual": 22,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 20,
+        "plan": 40,
+        "base": "2026-10-24",
+        "fc": "2026-11-05"
+      },
+      "summary": "舊機台介面相容性測試延後",
+      "nextAction": "",
+      "blocker": "舊機台介面相容性測試延後",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "cim12",
+      "area": "Digital Infrastructure",
+      "name": "CIM 12 吋 Modernization",
+      "project": "12 吋廠 MES / EAP / APC 現代化與即時資料串流",
+      "owner": "CIM 12 吋負責人",
+      "sponsor": "製造轉型主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 1.6,
+      "spent": 0.9,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 CIM12-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 CIM12-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-09-30",
+          "forecast": "2026-09-30",
+          "done": true,
+          "accepted": "2026-09-30",
+          "evidence": "示範：驗收記錄 CIM12-D3",
+          "firstPass": true
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-10-28",
+          "forecast": "2026-10-28",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-07",
+          "forecast": "2026-11-07",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "12 吋廠即時資料串流覆蓋率",
+        "unit": "%",
+        "baseline": 30,
+        "target": 90,
+        "actual": 61,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 60,
+        "plan": 60,
+        "base": "2027-02-15",
+        "fc": "2027-02-15"
+      },
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "sdi",
+      "area": "Digital Infrastructure",
+      "name": "Software-Defined Infrastructure",
+      "project": "Edge-to-fab 與 FinOps",
+      "owner": "基礎設施負責人",
+      "sponsor": "資訊主管",
+      "risk": 0,
+      "issue": "依計畫進行",
+      "updated": "2026-10-16",
+      "budget": 0.8,
+      "spent": 0.3,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 SDI-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 SDI-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-29",
+          "forecast": "2026-10-29",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-08",
+          "forecast": "2026-11-08",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-18",
+          "forecast": "2026-11-18",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "容器化工作負載比例",
+        "unit": "%",
+        "baseline": 5,
+        "target": 60,
+        "actual": null,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": {
+        "actual": 20,
+        "plan": 20,
+        "base": "2026-11-15",
+        "fc": "2026-11-15"
+      },
+      "summary": "依計畫進行",
+      "nextAction": "",
+      "blocker": "",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "governance",
+      "area": "Pillars",
+      "name": "AI Governance & Security",
+      "project": "治理框架、資安與模型風險",
+      "owner": "AI 治理負責人",
+      "sponsor": "資安主管",
+      "risk": 1,
+      "issue": "高風險模型審查規範待核定",
+      "updated": "2026-10-16",
+      "budget": 0.4,
+      "spent": 0.15,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 GOVERNANCE-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 GOVERNANCE-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-15",
+          "forecast": "2026-10-20",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-01",
+          "forecast": "2026-11-06",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-11",
+          "forecast": "2026-11-16",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "高風險模型審查覆蓋率",
+        "unit": "%",
+        "baseline": 0,
+        "target": 100,
+        "actual": 40,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "高風險模型審查規範待核定",
+      "nextAction": "",
+      "blocker": "高風險模型審查規範待核定",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    },
+    {
+      "id": "citizen",
+      "area": "Pillars",
+      "name": "Digital Citizen",
+      "project": "L1 / L2 / L3 培育與自助開發",
+      "owner": "數位人才負責人",
+      "sponsor": "人資主管",
+      "risk": 1,
+      "issue": "L2 認證導師時數不足",
+      "updated": "2026-10-08",
+      "budget": 0.5,
+      "spent": 0.2,
+      "hours": 0,
+      "milestones": [
+        {
+          "name": "D1 · 範疇與基準核定",
+          "weight": 10,
+          "baseline": "2026-09-16",
+          "forecast": "2026-09-16",
+          "done": true,
+          "accepted": "2026-09-16",
+          "evidence": "示範：驗收記錄 CITIZEN-D1",
+          "firstPass": true
+        },
+        {
+          "name": "D2 · 設計與權限就緒",
+          "weight": 20,
+          "baseline": "2026-09-23",
+          "forecast": "2026-09-23",
+          "done": true,
+          "accepted": "2026-09-23",
+          "evidence": "示範：驗收記錄 CITIZEN-D2",
+          "firstPass": true
+        },
+        {
+          "name": "D3 · 開發與整合",
+          "weight": 25,
+          "baseline": "2026-10-15",
+          "forecast": "2026-10-20",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D4 · 試點與品質驗證",
+          "weight": 25,
+          "baseline": "2026-11-02",
+          "forecast": "2026-11-07",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        },
+        {
+          "name": "D5 · 上線驗收與移交",
+          "weight": 20,
+          "baseline": "2026-11-12",
+          "forecast": "2026-11-17",
+          "done": false,
+          "accepted": null,
+          "evidence": "待提交驗收證據",
+          "firstPass": null
+        }
+      ],
+      "projectKpi": {
+        "name": "L2 認證通過人數",
+        "unit": "人",
+        "baseline": 0,
+        "target": 120,
+        "actual": 46,
+        "measured": false,
+        "evidence": ""
+      },
+      "deployment": null,
+      "summary": "L2 認證導師時數不足",
+      "nextAction": "",
+      "blocker": "L2 認證導師時數不足",
+      "unblockBy": "",
+      "decisionRequest": "",
+      "decisionDue": "",
+      "decisionMaker": "",
+      "reportedAt": null
+    }
+  ],
+  "dependency": {
+    "operations": [
+      "lake",
+      "api",
+      "core",
+      "cim12",
+      "cim8"
+    ],
+    "planning": [
+      "lake",
+      "data"
+    ],
+    "api": [
+      "governance"
+    ],
+    "core": [
+      "data",
+      "sdi"
+    ],
+    "flow": [
+      "api",
+      "process"
+    ],
+    "citizen": [
+      "knowledge"
+    ],
+    "td": [
+      "knowledge",
+      "core"
+    ],
+    "customer": [
+      "core",
+      "knowledge"
+    ],
+    "biz": [
+      "flow"
+    ],
+    "knowledge": [
+      "lake"
+    ],
+    "agents": [
+      "core",
+      "governance"
+    ],
+    "process": [
+      "rgate"
+    ],
+    "software": [
+      "governance"
+    ],
+    "data": [
+      "lake"
+    ],
+    "bs": [
+      "api"
+    ],
+    "cim8": [
+      "api"
+    ],
+    "cim12": [
+      "api",
+      "data"
+    ],
+    "rgate": [
+      "governance"
+    ],
+    "lake": [],
+    "sdi": [],
+    "governance": []
+  },
+  "redeployTo": {
+    "operations": "新產品線良率分析與製程優化",
+    "customer": "新客戶導入與技術支援",
+    "td": "實驗設計 (DOE) 與數據分析",
+    "biz": "流程改善與內控檢核"
+  },
+  "redeployHrs": {
+    "operations": 360,
+    "customer": 90,
+    "td": 150,
+    "biz": 100
+  }
+}
