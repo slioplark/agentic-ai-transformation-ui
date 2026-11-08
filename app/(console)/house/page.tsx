@@ -2,8 +2,9 @@ import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import PageHeader from "../components/PageHeader"
+import DomainHubs from "./components/DomainHubs/DomainHubs"
 import InsightSolutions from "./components/InsightSolutions/InsightSolutions"
-import { insights } from "./house.mock"
+import { hubs, insights } from "./house.mock"
 import styles from "./page.module.css"
 
 export default function HousePage() {
@@ -49,7 +50,6 @@ export default function HousePage() {
           <Box
             component="section"
             className={`${styles.pillar} ${styles.governance}`}
-            aria-labelledby="governance-title"
           >
             <Typography
               variant="caption"
@@ -70,33 +70,22 @@ export default function HousePage() {
             useFlexGap
             sx={{ minWidth: 0 }}
           >
-            <InsightSolutions insights={insights} />
             <Box
-              component="section"
-              className={styles.layer}
-              aria-labelledby="hubs-title"
+              className={styles.matrixScroll}
+              tabIndex={0}
             >
-              <Box
-                className={styles.layerHeading}
-                sx={{ bgcolor: "secondary.main", color: "common.white" }}
+              <Stack
+                gap={1}
+                useFlexGap
+                className={styles.matrix}
               >
-                <Typography
-                  component="h2"
-                  variant="h6"
-                  id="hubs-title"
-                >
-                  Domain Hubs
-                </Typography>
-              </Box>
-              <Box
-                className={styles.emptyLayer}
-                aria-hidden="true"
-              />
+                <InsightSolutions insights={insights} />
+                <DomainHubs hubs={hubs} />
+              </Stack>
             </Box>
             <Box
               component="section"
               className={styles.layer}
-              aria-labelledby="infrastructure-title"
             >
               <Box
                 className={styles.layerHeading}
@@ -119,7 +108,6 @@ export default function HousePage() {
           <Box
             component="section"
             className={`${styles.pillar} ${styles.citizen}`}
-            aria-labelledby="citizen-title"
           >
             <Typography
               variant="caption"

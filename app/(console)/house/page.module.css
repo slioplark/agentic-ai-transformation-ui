@@ -68,3 +68,17 @@
   min-height: 100px;
   background: #fff;
 }
+
+.matrixScroll {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.matrixScroll:focus-visible {
+  outline: 3px solid #087f80;
+  outline-offset: 2px;
+}
+
+.matrix {
+  min-width: 790px;
+}

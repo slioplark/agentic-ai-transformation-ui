@@ -17,7 +17,6 @@ export default function UpcomingMilestones({ onSelect }: { onSelect: (project: P
   return (
     <Paper
       component="section"
-      aria-labelledby="upcoming-title"
       variant="outlined"
       className={styles.panel}
     >

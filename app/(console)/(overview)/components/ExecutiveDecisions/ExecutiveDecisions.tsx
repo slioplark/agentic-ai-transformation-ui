@@ -17,7 +17,6 @@ export default function ExecutiveDecisions({ decisions, onSelect }: Props) {
     <>
       <Paper
         component="section"
-        aria-labelledby="executive-decisions-title"
         variant="outlined"
         className={styles.panel}
       >

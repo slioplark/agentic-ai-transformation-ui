@@ -47,7 +47,6 @@ export default function HouseProgress() {
   return (
     <Paper
       component="section"
-      aria-labelledby="house-progress-title"
       variant="outlined"
       className={styles.panel}
     >

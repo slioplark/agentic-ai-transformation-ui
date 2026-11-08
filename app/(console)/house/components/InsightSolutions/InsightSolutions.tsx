@@ -91,52 +91,44 @@ export default function InsightSolutions({ insights }: { insights: Insight[] }) 
   return (
     <Box
       component="section"
-      aria-labelledby="insight-solutions-title"
       sx={{ minWidth: 0 }}
     >
-      <Box
-        className={styles.scroll}
-        role="region"
-        aria-label="Insight Solutions 矩陣，可水平捲動"
-        tabIndex={0}
-      >
-        <Box className={styles.matrix}>
-          <Box
-            className={styles.heading}
-            sx={{ bgcolor: "info.main", color: "common.white" }}
+      <Box className={styles.matrix}>
+        <Box
+          className={styles.heading}
+          sx={{ bgcolor: "info.main", color: "common.white" }}
+        >
+          <Typography
+            component="h2"
+            id="insight-solutions-title"
+            variant="h6"
           >
+            Insight Solutions with Rx Gating
+          </Typography>
+          <Typography variant="caption">
+            {rankLabels.map((label, index) => `R${index + 1} ${label}`).join(" · ")} · R4.x
+          </Typography>
+        </Box>
+        <Box
+          className={styles.grid}
+          sx={{ "--task-rows": taskRows }}
+        >
+          <Box className={styles.label}>
             <Typography
-              component="h2"
-              id="insight-solutions-title"
+              component="h3"
               variant="h6"
             >
-              Insight Solutions with Rx Gating
+              Insight
             </Typography>
-            <Typography variant="caption">
-              {rankLabels.map((label, index) => `R${index + 1} ${label}`).join(" · ")} · R4.x
-            </Typography>
+            <Typography variant="caption">Forest View R1→R5 能力數</Typography>
+            <Typography variant="caption">Top tasks 是否滿足</Typography>
           </Box>
-          <Box
-            className={styles.grid}
-            sx={{ "--task-rows": taskRows }}
-          >
-            <Box className={styles.label}>
-              <Typography
-                component="h3"
-                variant="h6"
-              >
-                Insight
-              </Typography>
-              <Typography variant="caption">Forest View R1→R5 能力數</Typography>
-              <Typography variant="caption">Top tasks 是否滿足</Typography>
-            </Box>
-            {insights.map((insight) => (
-              <InsightCard
-                key={insight.id}
-                insight={insight}
-              />
-            ))}
-          </Box>
+          {insights.map((insight) => (
+            <InsightCard
+              key={insight.id}
+              insight={insight}
+            />
+          ))}
         </Box>
       </Box>
     </Box>

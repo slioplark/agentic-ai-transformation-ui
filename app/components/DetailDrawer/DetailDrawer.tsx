@@ -12,15 +12,20 @@ type DetailDrawerProps = {
   titleId: string
 }
 
-export default function DetailDrawer({ children, onClose, open, titleId }: DetailDrawerProps) {
+export default function DetailDrawer({ children, onClose, open }: DetailDrawerProps) {
   return (
     <Drawer
       anchor="right"
       open={open}
       onClose={onClose}
-      slotProps={{ paper: { className: styles.paper, "aria-labelledby": titleId } }}
+      slotProps={{ paper: { className: styles.paper } }}
     >
-      <Stack component="section" aria-labelledby={titleId} className={styles.content} gap={2} useFlexGap>
+      <Stack
+        component="section"
+        className={styles.content}
+        gap={2}
+        useFlexGap
+      >
         {children}
       </Stack>
     </Drawer>

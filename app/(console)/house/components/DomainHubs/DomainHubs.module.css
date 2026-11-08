@@ -1,0 +1,92 @@
+.grid {
+  display: grid;
+  gap: 6px;
+  min-width: 790px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 150px repeat(5, minmax(122px, 1fr));
+  gap: 6px;
+}
+
+.label,
+.cell {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px 9px;
+}
+
+.label {
+  justify-content: center;
+  border-radius: 8px;
+  background: #e3edf6;
+}
+
+.cell {
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.bar {
+  display: flex;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #eef3f6;
+}
+
+.bar0 {
+  background: #087f80;
+}
+.bar1 {
+  background: #7fbcbc;
+}
+.bar2 {
+  background: #d3e3e8;
+}
+
+.coverage {
+  align-self: flex-start;
+  margin: 0 -4px;
+  padding: 0 4px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.coverage.high,
+.cell.high {
+  background: #e6f4ee;
+  color: #14755c;
+}
+.coverage.medium,
+.cell.medium {
+  background: #fff3db;
+  color: #976019;
+}
+.coverage.low,
+.cell.low {
+  background: #fcebec;
+  color: #b3303b;
+}
+
+.note {
+  padding: 0 2px;
+}

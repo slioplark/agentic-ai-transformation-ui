@@ -21,7 +21,6 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
   return (
     <Paper
       component="section"
-      aria-labelledby="blocker-impact-title"
       variant="outlined"
       className={styles.panel}
     >

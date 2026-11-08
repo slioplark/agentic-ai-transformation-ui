@@ -23,7 +23,6 @@ const statusDetails = {
 export default function TransformationSignalTable({ signals }: TransformationSignalTableProps) {
   return (
     <Paper
-      aria-labelledby="transformation-signal-title"
       className={styles.panel}
       component="section"
       variant="outlined"

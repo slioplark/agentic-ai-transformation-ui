@@ -286,7 +286,6 @@ function BenefitsDrawer({ onClose, titleId }: { onClose: () => void; titleId: st
           component="section"
           variant="outlined"
           className={styles.summarySection}
-          aria-labelledby="benefit-verified-label"
         >
           <Typography
             component="h3"
@@ -304,7 +303,6 @@ function BenefitsDrawer({ onClose, titleId }: { onClose: () => void; titleId: st
           component="section"
           variant="outlined"
           className={styles.summarySection}
-          aria-labelledby="benefit-growth-label"
         >
           <Typography
             component="h3"
