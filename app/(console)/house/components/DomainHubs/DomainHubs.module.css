@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  gap: 6px;
+  gap: 4px;
   min-width: 790px;
 }
 
@@ -16,12 +16,12 @@
 .row {
   display: grid;
   grid-template-columns: 150px repeat(5, minmax(122px, 1fr));
-  gap: 6px;
+  gap: 4px;
 }
 
 .readinessRow {
   grid-template-rows: repeat(3, auto);
-  row-gap: 3px;
+  row-gap: 4px;
 }
 
 .readinessRow .label,
@@ -32,6 +32,7 @@
 .readinessRow .cell {
   display: grid;
   grid-template-rows: subgrid;
+  align-items: start;
 }
 
 .label,
@@ -39,7 +40,7 @@
   display: flex;
   min-width: 0;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   padding: 8px;
 }
 
@@ -67,7 +68,7 @@
 .line {
   display: flex;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px;
 }
 
 .bar {

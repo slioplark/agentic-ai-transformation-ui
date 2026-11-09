@@ -1,6 +1,6 @@
 import StatusChip from "@app/components/StatusChip/StatusChip"
-import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import TextButton from "@app/components/TextButton/TextButton"
+import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
@@ -32,7 +32,7 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          gap={1}
+          gap={0.5}
           useFlexGap
         >
           <Typography
@@ -76,14 +76,14 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
                     direction="row"
                     alignItems="flex-start"
                     justifyContent="space-between"
-                    gap={1}
+                    gap={0.5}
                     useFlexGap
                   >
                     <Stack
                       direction="row"
                       alignItems="center"
                       flexWrap="wrap"
-                      gap={1}
+                      gap={0.5}
                       useFlexGap
                     >
                       <Typography
@@ -108,7 +108,7 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
                     direction="row"
                     alignItems="center"
                     justifyContent="space-between"
-                    gap={1}
+                    gap={0.5}
                     useFlexGap
                   >
                     <Typography

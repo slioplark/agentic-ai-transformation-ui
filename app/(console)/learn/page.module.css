@@ -17,7 +17,7 @@
 
 .funnelDetails {
   display: grid;
-  gap: 6px;
+  gap: 4px;
   min-width: 0;
 }
 
@@ -27,7 +27,7 @@
 
 .funnelBars {
   display: grid;
-  gap: 3px;
+  gap: 4px;
 }
 
 .currentBar,
@@ -131,7 +131,7 @@
 @media (max-width: 600px) {
   .funnelRow {
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 8px 16px;
+    gap: 4px 16px;
   }
 
   .funnelDetails {

@@ -232,7 +232,7 @@ export default function LearnPage() {
           >
             <Stack
               useFlexGap
-              gap={1}
+              gap={0.5}
               direction="row"
               flexWrap="wrap"
               alignItems="center"
@@ -626,7 +626,7 @@ export default function LearnPage() {
           >
             <Stack
               useFlexGap
-              gap={1}
+              gap={0.5}
               direction="row"
               flexWrap="wrap"
               alignItems="center"

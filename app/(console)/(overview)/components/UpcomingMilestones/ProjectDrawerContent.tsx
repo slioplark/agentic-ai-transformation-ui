@@ -72,7 +72,7 @@ export default function ProjectDrawerContent({
       >
         <Stack
           useFlexGap
-          gap={1}
+          gap={0.5}
           alignItems="flex-start"
         >
           <Typography
@@ -83,7 +83,7 @@ export default function ProjectDrawerContent({
           </Typography>
           <Stack
             useFlexGap
-            gap={1}
+            gap={0.5}
             flexWrap="wrap"
             direction="row"
             alignItems="center"
@@ -136,7 +136,7 @@ export default function ProjectDrawerContent({
         >
           <Stack
             useFlexGap
-            gap={1}
+            gap={0.5}
           >
             <Typography
               color="text.secondary"
@@ -199,11 +199,11 @@ export default function ProjectDrawerContent({
       >
         <Stack
           useFlexGap
-          gap={1}
+          gap={0.5}
         >
           <Stack
             useFlexGap
-            gap={1}
+            gap={0.5}
             direction="row"
             alignItems="center"
           >
@@ -242,7 +242,7 @@ export default function ProjectDrawerContent({
         >
           <Stack
             useFlexGap
-            gap={1}
+            gap={0.5}
           >
             <Typography variant="h4">部署進度</Typography>
             <ThresholdProgress
@@ -265,7 +265,7 @@ export default function ProjectDrawerContent({
       >
         <Stack
           useFlexGap
-          gap={1}
+          gap={0.5}
         >
           <Typography variant="h4">下一步與復原計畫</Typography>
           <Typography variant="body2">
@@ -293,7 +293,7 @@ export default function ProjectDrawerContent({
       >
         <Stack
           useFlexGap
-          gap={1}
+          gap={0.5}
         >
           <Typography variant="h4">D-gate · 排程基準與實際</Typography>
           <Typography
@@ -358,7 +358,7 @@ export default function ProjectDrawerContent({
       >
         <Stack
           useFlexGap
-          gap={1}
+          gap={0.5}
         >
           <Typography variant="h4">上游依賴</Typography>
           {upstream.length ? (
@@ -366,7 +366,7 @@ export default function ProjectDrawerContent({
               <Stack
                 useFlexGap
                 key={item.id}
-                gap={1}
+                gap={0.5}
                 direction="row"
                 alignItems="center"
                 justifyContent="space-between"

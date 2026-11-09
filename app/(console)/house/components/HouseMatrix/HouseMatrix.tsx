@@ -32,7 +32,13 @@ const titleId = "house-matrix-detail-title"
 
 type Detail = { type: "bu"; insight: Insight; hub: Hub } | { type: "project"; project: Project }
 
-function ForestViewTree({ categories, insightId }: { categories: { title: string; items: string[] }[]; insightId: string }) {
+function ForestViewTree({
+  categories,
+  insightId,
+}: {
+  categories: { title: string; items: string[] }[]
+  insightId: string
+}) {
   return (
     <SimpleTreeView
       sx={{
@@ -89,7 +95,7 @@ function BuContent({
         alignItems="flex-start"
         gap={2}
       >
-        <Stack gap={1}>
+        <Stack gap={0.5}>
           <Typography
             variant="caption"
             color="secondary.main"
@@ -122,9 +128,7 @@ function BuContent({
             待遷移 R4 方案 {hub.migrate} 項
           </Typography>
         </Stack>
-        <IconButton
-          onClick={onClose}
-        >
+        <IconButton onClick={onClose}>
           <CloseIcon />
         </IconButton>
       </Stack>
@@ -133,7 +137,7 @@ function BuContent({
         variant="outlined"
         sx={{ p: 2 }}
       >
-        <Stack gap={1}>
+        <Stack gap={0.5}>
           <Typography
             component="h3"
             variant="h5"
@@ -170,9 +174,7 @@ function BuContent({
             Top tasks 需求滿足度
           </Typography>
           <TableContainer>
-            <Table
-              size="small"
-            >
+            <Table size="small">
               <TableHead>
                 <TableRow>
                   <TableCell>Top task</TableCell>
@@ -201,7 +203,7 @@ function BuContent({
               direction="row"
               alignItems="center"
               flexWrap="wrap"
-              gap={1}
+              gap={0.5}
             >
               <Box sx={{ flex: "1 1 200px", minWidth: 0 }}>
                 <Typography variant="subtitle2">{project.name}</Typography>
@@ -215,7 +217,7 @@ function BuContent({
               <Stack
                 direction="row"
                 alignItems="center"
-                gap={1}
+                gap={0.5}
                 sx={{ ml: "auto" }}
               >
                 <StatusChip
@@ -228,11 +230,7 @@ function BuContent({
                   }
                   status={projectStatus(project)}
                 />
-                <TextButton
-                  onClick={() => onProject(project)}
-                >
-                  檢視明細 →
-                </TextButton>
+                <TextButton onClick={() => onProject(project)}>檢視明細 →</TextButton>
               </Stack>
             </Stack>
           ) : null}

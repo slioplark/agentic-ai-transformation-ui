@@ -35,7 +35,7 @@ export default function TransformationSignalTable({ signals }: TransformationSig
           alignItems={{ sm: "baseline" }}
           direction={{ xs: "column", sm: "row" }}
           justifyContent="space-between"
-          spacing={1}
+          spacing={0.5}
           useFlexGap
         >
           <Typography

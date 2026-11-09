@@ -1,3 +1,4 @@
+import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
@@ -8,7 +9,6 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import StatusChip from "@app/components/StatusChip/StatusChip"
 import PageHeader from "../components/PageHeader"
 import { domainMetrics, metricPrinciples, sourceRows } from "./metrics.data"
 
@@ -18,7 +18,7 @@ function PrincipleCard({ description, note, number, statusDetails, title }: (typ
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: 1,
+        gap: 0.5,
         p: 2,
       }}
       variant="outlined"
@@ -39,7 +39,7 @@ function PrincipleCard({ description, note, number, statusDetails, title }: (typ
       {statusDetails ? (
         <Stack
           useFlexGap
-          gap={0.75}
+          gap={0.5}
           flexWrap="wrap"
           direction="row"
         >

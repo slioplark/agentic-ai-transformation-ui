@@ -65,7 +65,7 @@ function DrawerHeader({
       useFlexGap
     >
       <Stack
-        gap={1}
+        gap={0.5}
         alignItems="flex-start"
         useFlexGap
       >
@@ -104,7 +104,7 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
         className={styles.panel}
       >
         <Stack
-          gap={1.25}
+          gap={0.5}
           useFlexGap
         >
           {maturityDistribution.map((row) => (
@@ -138,7 +138,7 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
           <Stack
             direction="row"
             flexWrap="wrap"
-            gap={1}
+            gap={0.5}
             useFlexGap
           >
             {maturityLevels.map(({ className, label }) => (

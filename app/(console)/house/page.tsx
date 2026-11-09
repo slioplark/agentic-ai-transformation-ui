@@ -25,15 +25,9 @@ export default function HousePage() {
             color: "common.white",
           }}
         >
-          <Typography variant="h3">
-            UMC Agentic AI Transformation
-          </Typography>
-          <Typography variant="body2">
-            洞察為本、AI 為擎，以數位員工實現
-          </Typography>
-          <Typography variant="body2">
-            Learn Faster · Work Smarter · Execute Better
-          </Typography>
+          <Typography variant="h3">UMC Agentic AI Transformation</Typography>
+          <Typography variant="body2">洞察為本、AI 為擎，以數位員工實現</Typography>
+          <Typography variant="body2">Learn Faster · Work Smarter · Execute Better</Typography>
         </Box>
         <Box
           className={styles.house}
@@ -41,7 +35,7 @@ export default function HousePage() {
         >
           <HousePillar kind="governance" />
           <Stack
-            gap={1}
+            gap={0.5}
             useFlexGap
             sx={{ minWidth: 0 }}
           >
@@ -50,7 +44,7 @@ export default function HousePage() {
               tabIndex={0}
             >
               <Stack
-                gap={1}
+                gap={0.5}
                 useFlexGap
                 className={styles.matrix}
               >

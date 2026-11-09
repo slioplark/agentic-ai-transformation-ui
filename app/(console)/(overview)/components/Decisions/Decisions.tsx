@@ -28,7 +28,7 @@ export default function Decisions({ decisions, onSelect }: Props) {
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            gap={1}
+            gap={0.5}
             useFlexGap
           >
             <Typography

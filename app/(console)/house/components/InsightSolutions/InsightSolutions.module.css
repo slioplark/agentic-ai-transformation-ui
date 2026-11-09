@@ -15,7 +15,7 @@
   display: grid;
   grid-template-columns: 150px repeat(5, minmax(122px, 1fr));
   grid-template-rows: repeat(5, auto) repeat(var(--task-rows), auto);
-  gap: 5px 6px;
+  gap: 4px;
   padding-top: 6px;
 }
 
@@ -65,6 +65,7 @@
   display: grid;
   grid-row: span var(--task-rows);
   grid-template-rows: subgrid;
+  align-items: start;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -72,7 +73,7 @@
 
 .task {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
-  gap: 6px;
+  gap: 4px;
 }

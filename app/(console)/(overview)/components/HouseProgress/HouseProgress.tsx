@@ -1,6 +1,6 @@
 import InfoNote from "@app/components/InfoNote/InfoNote"
-import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import TextButton from "@app/components/TextButton/TextButton"
+import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
@@ -56,7 +56,7 @@ export default function HouseProgress() {
       >
         <Stack
           useFlexGap
-          gap={1}
+          gap={0.5}
           direction="row"
           alignItems="center"
           justifyContent="space-between"
@@ -89,7 +89,7 @@ export default function HouseProgress() {
               >
                 <Stack
                   useFlexGap
-                  gap={1}
+                  gap={0.5}
                   direction="row"
                   alignItems="center"
                   justifyContent="space-between"

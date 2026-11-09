@@ -25,7 +25,7 @@ export default function DecisionDrawerContent({ decision, onClose, titleId }: Pr
         useFlexGap
       >
         <Stack
-          gap={1}
+          gap={0.5}
           alignItems="flex-start"
           useFlexGap
         >
@@ -42,9 +42,7 @@ export default function DecisionDrawerContent({ decision, onClose, titleId }: Pr
             {decision.title}
           </Typography>
         </Stack>
-        <IconButton
-          onClick={onClose}
-        >
+        <IconButton onClick={onClose}>
           <CloseIcon />
         </IconButton>
       </Stack>

@@ -7,13 +7,14 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: 12px;
-  row-gap: 8px;
+  row-gap: 4px;
 }
 
 .card {
   display: grid;
   grid-row: span 4;
   grid-template-rows: subgrid;
+  align-items: start;
   min-width: 0;
   padding: 14px;
 }
