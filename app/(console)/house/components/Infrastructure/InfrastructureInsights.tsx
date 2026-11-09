@@ -1,8 +1,8 @@
+import Sparkline from "@(control)/(overview)/components/Sparkline/Sparkline"
 import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
-import Sparkline from "../../../(overview)/components/Sparkline/Sparkline"
 import styles from "./Infrastructure.module.css"
 
 const adoption = [140, 185, 220, 270, 310, 350]

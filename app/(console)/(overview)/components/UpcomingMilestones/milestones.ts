@@ -1,4 +1,4 @@
-import { overviewSnapshot } from "../../overview.mock"
+import { overviewSnapshot } from "@(control)/(overview)/overview.mock"
 import data from "./milestones.mock.json"
 
 export type Milestone = {

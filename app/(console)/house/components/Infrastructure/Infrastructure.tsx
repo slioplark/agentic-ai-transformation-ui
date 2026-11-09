@@ -1,5 +1,9 @@
 "use client"
 
+import ProjectDrawerContent, {
+  DeploymentProgress,
+} from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import { projects, type Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
@@ -7,10 +11,6 @@ import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
-import ProjectDrawerContent, {
-  DeploymentProgress,
-} from "../../../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
-import { projects, type Project } from "../../../(overview)/components/UpcomingMilestones/milestones"
 import styles from "./Infrastructure.module.css"
 import InfrastructureInsights from "./InfrastructureInsights"
 

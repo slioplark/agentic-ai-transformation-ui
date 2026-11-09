@@ -1,3 +1,4 @@
+import type { ExecutiveDecision } from "@(control)/(overview)/overview.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
@@ -5,7 +6,6 @@ import IconButton from "@mui/material/IconButton"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
-import type { ExecutiveDecision } from "../../overview.mock"
 import styles from "./Decisions.module.css"
 
 type Props = {

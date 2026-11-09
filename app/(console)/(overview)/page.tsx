@@ -1,10 +1,10 @@
 "use client"
 
+import PageHeader from "@(control)/components/PageHeader"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import PageHeader from "../components/PageHeader"
 import BlockerImpact from "./components/BlockerImpact/BlockerImpact"
 import DecisionDrawerContent from "./components/Decisions/DecisionDrawerContent"
 import Decisions from "./components/Decisions/Decisions"
@@ -61,9 +61,7 @@ export default function HomePage() {
       >
         <PageHeader>成效總覽</PageHeader>
         <ReportingStatusGrid items={reportingStatusMetrics} />
-        <section
-          className={styles.kpiGrid}
-        >
+        <section className={styles.kpiGrid}>
           {overviewKpis.map((kpi) => (
             <KpiCard
               key={kpi.id}

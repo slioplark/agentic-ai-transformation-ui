@@ -1,10 +1,10 @@
+import { actualProgress, projects } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import type { Hub, HubAsset } from "@(control)/house/house.mock"
 import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
-import { actualProgress, projects } from "../../../(overview)/components/UpcomingMilestones/milestones"
-import type { Hub, HubAsset } from "../../house.mock"
 import styles from "./DomainHubs.module.css"
 
 export const assets: { key: HubAsset; name: string; projectId: string; registry?: string }[] = [

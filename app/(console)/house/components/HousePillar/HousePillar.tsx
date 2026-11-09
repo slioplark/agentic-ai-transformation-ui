@@ -1,13 +1,6 @@
 "use client"
 
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
-import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
-import Box from "@mui/material/Box"
-import ButtonBase from "@mui/material/ButtonBase"
-import Paper from "@mui/material/Paper"
-import Typography from "@mui/material/Typography"
-import { useState } from "react"
-import ProjectDrawerContent from "../../../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import ProjectDrawerContent from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
 import {
   actualProgress,
   daysBetween,
@@ -15,7 +8,14 @@ import {
   projects,
   snapshot,
   type Project,
-} from "../../../(overview)/components/UpcomingMilestones/milestones"
+} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
+import Box from "@mui/material/Box"
+import ButtonBase from "@mui/material/ButtonBase"
+import Paper from "@mui/material/Paper"
+import Typography from "@mui/material/Typography"
+import { useState } from "react"
 import styles from "./HousePillar.module.css"
 
 const pillars = {

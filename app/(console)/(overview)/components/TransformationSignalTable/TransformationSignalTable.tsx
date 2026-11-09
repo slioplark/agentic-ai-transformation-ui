@@ -1,3 +1,4 @@
+import type { TransformationSignal } from "@(control)/(overview)/overview.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
@@ -8,7 +9,6 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import type { TransformationSignal } from "../../overview.mock"
 import styles from "./TransformationSignalTable.module.css"
 
 type TransformationSignalTableProps = {

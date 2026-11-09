@@ -1,5 +1,11 @@
 "use client"
 
+import { projects, projectStatus, type Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import ProjectDrawerContent from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import DomainHubs, { assets, coverage } from "@(control)/house/components/DomainHubs/DomainHubs"
+import InsightSolutions from "@(control)/house/components/InsightSolutions/InsightSolutions"
+import { hubs, insights, type Hub, type Insight } from "@(control)/house/house.mock"
+import taxonomy from "@(control)/house/insight-taxonomy.mock.json"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -19,12 +25,6 @@ import Typography from "@mui/material/Typography"
 import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView"
 import { TreeItem } from "@mui/x-tree-view/TreeItem"
 import { useState } from "react"
-import { projects, projectStatus, type Project } from "../../../(overview)/components/UpcomingMilestones/milestones"
-import ProjectDrawerContent from "../../../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
-import { hubs, insights, type Hub, type Insight } from "../../house.mock"
-import taxonomy from "../../insight-taxonomy.mock.json"
-import DomainHubs, { assets, coverage } from "../DomainHubs/DomainHubs"
-import InsightSolutions from "../InsightSolutions/InsightSolutions"
 
 const levels = { 高: "success", 中: "warning", 低: "error" } as const
 const explanations = { 高: "現有方案滿足主要需求", 中: "部分滿足，仍需人工補位", 低: "尚無可用方案，需排入 Rx 路線圖" }

@@ -1,3 +1,9 @@
+import {
+  downstreamProjects,
+  projects,
+  projectStatus,
+  type Project,
+} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
@@ -6,7 +12,6 @@ import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
-import { downstreamProjects, projects, projectStatus, type Project } from "../UpcomingMilestones/milestones"
 import styles from "./BlockerImpact.module.css"
 
 const blockers = projects

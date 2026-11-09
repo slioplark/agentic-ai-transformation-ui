@@ -1,5 +1,8 @@
 "use client"
 
+import ProjectDrawerContent from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import { projects, type Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import PageHeader from "@(control)/components/PageHeader"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -17,9 +20,6 @@ import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
-import ProjectDrawerContent from "../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
-import { projects, type Project } from "../(overview)/components/UpcomingMilestones/milestones"
-import PageHeader from "../components/PageHeader"
 import styles from "./page.module.css"
 
 const tools = ["Vibe coding", "Codex", "UGPT", "Skills", "Tableau", "AgilePoint"] as const

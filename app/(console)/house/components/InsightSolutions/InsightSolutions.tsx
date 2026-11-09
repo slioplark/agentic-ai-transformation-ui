@@ -1,9 +1,9 @@
+import type { Insight } from "@(control)/house/house.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
-import type { Insight } from "../../house.mock"
 import styles from "./InsightSolutions.module.css"
 
 const rankLabels = ["Connected", "Optimized", "Transparent", "Proactive", "Agile"]

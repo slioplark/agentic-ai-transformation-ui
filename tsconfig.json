@@ -24,6 +24,8 @@
     ],
     "paths": {
       "@app/*": ["./app/*"],
+      "@(auth)/*": ["./app/(auth)/*"],
+      "@(control)/*": ["./app/(console)/*"],
       "@lib/*": ["./lib/*"]
     }
   },

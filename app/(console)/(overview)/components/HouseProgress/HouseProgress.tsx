@@ -1,3 +1,12 @@
+import {
+  actualProgress,
+  daysBetween,
+  plannedProgress,
+  projects,
+  projectStatus,
+  snapshot,
+} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import { benefitSummary } from "@(control)/(overview)/overview.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
@@ -6,15 +15,6 @@ import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
-import { benefitSummary } from "../../overview.mock"
-import {
-  actualProgress,
-  daysBetween,
-  plannedProgress,
-  projects,
-  projectStatus,
-  snapshot,
-} from "../UpcomingMilestones/milestones"
 import styles from "./HouseProgress.module.css"
 
 const areas = [

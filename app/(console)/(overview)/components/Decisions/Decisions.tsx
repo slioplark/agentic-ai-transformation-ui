@@ -1,10 +1,10 @@
+import type { ExecutiveDecision } from "@(control)/(overview)/overview.mock"
 import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
 import Chip from "@mui/material/Chip"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
-import type { ExecutiveDecision } from "../../overview.mock"
 import styles from "./Decisions.module.css"
 
 type Props = {

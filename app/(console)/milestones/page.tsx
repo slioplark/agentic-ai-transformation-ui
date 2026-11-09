@@ -1,19 +1,19 @@
 "use client"
 
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
-import Stack from "@mui/material/Stack"
-import Typography from "@mui/material/Typography"
-import { useSearchParams } from "next/navigation"
-import { Suspense, useMemo, useState } from "react"
-import ProjectDrawerContent from "../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import ProjectDrawerContent from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
 import {
   daysBetween,
   projectStatus,
   projects,
   snapshot,
   type Project,
-} from "../(overview)/components/UpcomingMilestones/milestones"
-import PageHeader from "../components/PageHeader"
+} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import PageHeader from "@(control)/components/PageHeader"
+import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import Stack from "@mui/material/Stack"
+import Typography from "@mui/material/Typography"
+import { useSearchParams } from "next/navigation"
+import { Suspense, useMemo, useState } from "react"
 import MilestoneFilterBar, {
   type AreaFilter,
   type StatusFilter,

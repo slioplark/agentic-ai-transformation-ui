@@ -1,3 +1,4 @@
+import PageHeader from "@(control)/components/PageHeader"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
@@ -9,7 +10,6 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import PageHeader from "../components/PageHeader"
 import { domainMetrics, metricPrinciples, sourceRows } from "./metrics.data"
 
 function PrincipleCard({ description, note, number, statusDetails, title }: (typeof metricPrinciples)[number]) {

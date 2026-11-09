@@ -1,9 +1,9 @@
+import Sparkline from "@(control)/(overview)/components/Sparkline/Sparkline"
+import type { OverviewKpi } from "@(control)/(overview)/overview.mock"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
-import type { OverviewKpi } from "../../overview.mock"
-import Sparkline from "../Sparkline/Sparkline"
 import styles from "./KpiCard.module.css"
 
 type KpiCardProps = {
@@ -52,9 +52,7 @@ export default function KpiCard({ kpi, onClick }: KpiCardProps) {
           {kpi.comparison}
         </Typography>
       </Box>
-      <Sparkline
-        values={kpi.series}
-      />
+      <Sparkline values={kpi.series} />
       <Typography
         color="text.secondary"
         variant="caption"

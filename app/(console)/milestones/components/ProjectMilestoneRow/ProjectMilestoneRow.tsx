@@ -1,10 +1,3 @@
-import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
-import StatusChip from "@app/components/StatusChip/StatusChip"
-import Box from "@mui/material/Box"
-import Chip from "@mui/material/Chip"
-import TableCell from "@mui/material/TableCell"
-import TableRow from "@mui/material/TableRow"
-import Typography from "@mui/material/Typography"
 import {
   actualProgress,
   daysBetween,
@@ -13,7 +6,14 @@ import {
   projectStatus,
   snapshot,
   type Project,
-} from "../../../(overview)/components/UpcomingMilestones/milestones"
+} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import StatusChip from "@app/components/StatusChip/StatusChip"
+import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
+import Box from "@mui/material/Box"
+import Chip from "@mui/material/Chip"
+import TableCell from "@mui/material/TableCell"
+import TableRow from "@mui/material/TableRow"
+import Typography from "@mui/material/Typography"
 import styles from "./ProjectMilestoneRow.module.css"
 
 const statusLabels = { error: "紅燈 / 阻塞", warning: "黃燈 / 風險", success: "綠燈 / 依計畫" } as const

@@ -1,3 +1,11 @@
+import {
+  benefitScenarios,
+  benefitSummary,
+  businessUnitMaturity,
+  maturityDistribution,
+  type MaturityDistribution,
+  type OverviewKpi,
+} from "@(control)/(overview)/overview.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
@@ -11,14 +19,6 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import {
-  benefitScenarios,
-  benefitSummary,
-  businessUnitMaturity,
-  maturityDistribution,
-  type MaturityDistribution,
-  type OverviewKpi,
-} from "../../overview.mock"
 import styles from "./KpiDetailDrawer.module.css"
 
 type KpiDrawerContentProps = {

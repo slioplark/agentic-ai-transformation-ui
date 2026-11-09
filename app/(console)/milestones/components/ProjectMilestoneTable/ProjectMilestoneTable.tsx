@@ -1,3 +1,5 @@
+import type { Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
 import Paper from "@mui/material/Paper"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -6,8 +8,6 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import type { Project } from "../../../(overview)/components/UpcomingMilestones/milestones"
-import ProjectMilestoneRow from "../ProjectMilestoneRow/ProjectMilestoneRow"
 import styles from "./ProjectMilestoneTable.module.css"
 
 type ProjectMilestoneTableProps = {
