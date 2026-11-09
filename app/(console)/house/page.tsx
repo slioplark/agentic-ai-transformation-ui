@@ -16,30 +16,22 @@ export default function HousePage() {
       <PageHeader>房子進度圖</PageHeader>
       <Box
         component="section"
-        aria-label="轉型房子架構"
         className={styles.houseSection}
       >
         <Box
           className={styles.roof}
-          sx={{ bgcolor: "primary.main", color: "common.white" }}
+          sx={{
+            bgcolor: "primary.main",
+            color: "common.white",
+          }}
         >
-          <Typography
-            component="h2"
-            variant="h3"
-            className={styles.roofTitle}
-          >
+          <Typography variant="h3">
             UMC Agentic AI Transformation
           </Typography>
-          <Typography
-            variant="body2"
-            className={styles.roofText}
-          >
+          <Typography variant="body2">
             洞察為本、AI 為擎，以數位員工實現
           </Typography>
-          <Typography
-            variant="body2"
-            className={styles.roofText}
-          >
+          <Typography variant="body2">
             Learn Faster · Work Smarter · Execute Better
           </Typography>
         </Box>

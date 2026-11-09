@@ -19,12 +19,12 @@ type NavItem = { label: string; href: string; icon: SvgIconComponent }
 const workspaceItems: readonly NavItem[] = [
   { label: "成效總覽", href: "/", icon: DiamondOutlinedIcon },
   { label: "房子進度圖", href: "/house", icon: HomeOutlinedIcon },
-  { label: "負責人填報", href: "/updates", icon: EditNoteOutlinedIcon },
-  { label: "Domain Hubs", href: "/hubs", icon: GridViewOutlinedIcon },
+  // { label: "負責人填報", href: "/updates", icon: EditNoteOutlinedIcon },
+  // { label: "Domain Hubs", href: "/hubs", icon: GridViewOutlinedIcon },
   { label: "專案與 D-gate", href: "/milestones", icon: AccountTreeOutlinedIcon },
   { label: "公民開發與治理", href: "/learn", icon: HistoryOutlinedIcon },
   { label: "指標與管理規則", href: "/metrics", icon: ReorderOutlinedIcon },
-  { label: "帳號與授權", href: "/accounts", icon: SettingsOutlinedIcon },
+  // { label: "帳號與授權", href: "/accounts", icon: SettingsOutlinedIcon },
 ]
 
 type SidebarNavigationProps = {

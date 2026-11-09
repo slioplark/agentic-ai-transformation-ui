@@ -55,9 +55,8 @@ export default function TransformationSignalTable({ signals }: TransformationSig
 
         <TableContainer>
           <Table
-            aria-label="轉型真偽檢核"
-            className={styles.table}
             size="small"
+            className={styles.table}
           >
             <TableHead>
               <TableRow>

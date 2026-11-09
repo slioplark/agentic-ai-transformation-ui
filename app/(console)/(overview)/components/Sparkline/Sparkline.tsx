@@ -2,7 +2,6 @@ import Box from "@mui/material/Box"
 import styles from "./Sparkline.module.css"
 
 type SparklineProps = {
-  label: string
   values: readonly number[]
 }
 
@@ -10,7 +9,7 @@ const width = 200
 const height = 32
 const padding = 4
 
-export default function Sparkline({ label, values }: SparklineProps) {
+export default function Sparkline({ values }: SparklineProps) {
   const low = Math.min(...values)
   const high = Math.max(...values)
   const range = high - low || 1
@@ -23,13 +22,12 @@ export default function Sparkline({ label, values }: SparklineProps) {
 
   return (
     <Box
-      component="svg"
-      viewBox={`0 0 ${width} ${height}`}
-      preserveAspectRatio="none"
-      aria-label={`${label} 趨勢`}
-      className={styles.chart}
-      role="img"
       sx={{ color: "secondary.main" }}
+      role="img"
+      viewBox={`0 0 ${width} ${height}`}
+      className={styles.chart}
+      component="svg"
+      preserveAspectRatio="none"
     >
       <path
         d={path}

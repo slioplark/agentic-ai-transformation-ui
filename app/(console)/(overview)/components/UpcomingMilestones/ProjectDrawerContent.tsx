@@ -1,10 +1,10 @@
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
+import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import Chip from "@mui/material/Chip"
 import IconButton from "@mui/material/IconButton"
-import LinearProgress from "@mui/material/LinearProgress"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
@@ -47,12 +47,10 @@ export default function ProjectDrawerContent({
   project,
   onClose,
   onSelect,
-  titleId,
 }: {
   project: Project
   onClose: () => void
   onSelect: (project: Project) => void
-  titleId: string
 }) {
   const next = project.milestones.find((gate) => !gate.done)
   const downstream = downstreamProjects(project.id)
@@ -66,16 +64,16 @@ export default function ProjectDrawerContent({
   return (
     <>
       <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="flex-start"
-        gap={2}
         useFlexGap
+        gap={2}
+        direction="row"
+        alignItems="flex-start"
+        justifyContent="space-between"
       >
         <Stack
+          useFlexGap
           gap={1}
           alignItems="flex-start"
-          useFlexGap
         >
           <Typography
             color="secondary.main"
@@ -84,21 +82,16 @@ export default function ProjectDrawerContent({
             {project.area} / {project.id.toUpperCase()}
           </Typography>
           <Stack
+            useFlexGap
+            gap={1}
+            flexWrap="wrap"
             direction="row"
             alignItems="center"
-            flexWrap="wrap"
-            gap={1}
-            useFlexGap
           >
-            <Typography
-              id={titleId}
-              variant="h4"
-            >
-              {project.name}
-            </Typography>
+            <Typography variant="h4">{project.name}</Typography>
             <StatusChip
-              status={status}
               label={labels[status]}
+              status={status}
             />
           </Stack>
           <Typography
@@ -115,7 +108,6 @@ export default function ProjectDrawerContent({
           ) : null}
         </Stack>
         <IconButton
-          aria-label="關閉專案詳情"
           onClick={onClose}
         >
           <CloseIcon />
@@ -145,8 +137,8 @@ export default function ProjectDrawerContent({
           className={styles.detail}
         >
           <Stack
-            gap={1}
             useFlexGap
+            gap={1}
           >
             <Typography
               color="text.secondary"
@@ -157,11 +149,10 @@ export default function ProjectDrawerContent({
             <Typography variant="h6">
               {actualProgress(project)}% / {plannedProgress(project)}%
             </Typography>
-            <LinearProgress
+            <ThresholdProgress
               color={status}
-              variant="determinate"
               value={actualProgress(project)}
-              aria-label={`已驗收 ${actualProgress(project)}%，計畫 ${plannedProgress(project)}%`}
+              threshold={plannedProgress(project)}
             />
           </Stack>
         </Paper>
@@ -204,19 +195,19 @@ export default function ProjectDrawerContent({
         </Paper>
       </Box>
       <Paper
-        component="section"
         variant="outlined"
+        component="section"
         className={styles.detail}
       >
         <Stack
-          gap={1}
           useFlexGap
+          gap={1}
         >
           <Stack
+            useFlexGap
+            gap={1}
             direction="row"
             alignItems="center"
-            gap={1}
-            useFlexGap
           >
             <Typography variant="h4">負責人最新填報</Typography>
             <Chip
@@ -247,20 +238,18 @@ export default function ProjectDrawerContent({
       </Paper>
       {project.deployment ? (
         <Paper
-          component="section"
           variant="outlined"
+          component="section"
           className={styles.detail}
         >
           <Stack
-            gap={1}
             useFlexGap
+            gap={1}
           >
             <Typography variant="h4">部署進度</Typography>
-            <LinearProgress
+            <ThresholdProgress
               color={status}
-              variant="determinate"
               value={project.deployment.actual ?? (project.deployment.done ?? 0) * 20}
-              aria-label="部署進度"
             />
             <Typography
               color="text.secondary"
@@ -272,13 +261,13 @@ export default function ProjectDrawerContent({
         </Paper>
       ) : null}
       <Paper
-        component="section"
         variant="outlined"
+        component="section"
         className={styles.detail}
       >
         <Stack
-          gap={1}
           useFlexGap
+          gap={1}
         >
           <Typography variant="h4">下一步與復原計畫</Typography>
           <Typography variant="body2">
@@ -300,13 +289,13 @@ export default function ProjectDrawerContent({
         </Stack>
       </Paper>
       <Paper
-        component="section"
         variant="outlined"
+        component="section"
         className={styles.detail}
       >
         <Stack
-          gap={1}
           useFlexGap
+          gap={1}
         >
           <Typography variant="h4">D-gate · 排程基準與實際</Typography>
           <Typography
@@ -318,7 +307,6 @@ export default function ProjectDrawerContent({
           <TableContainer>
             <Table
               size="small"
-              aria-label="D-gate 排程基準與實際"
               className={styles.table}
             >
               <TableHead>
@@ -352,8 +340,8 @@ export default function ProjectDrawerContent({
                           {gate.done ? "實際" : "預測"}
                         </Typography>
                         <StatusChip
-                          status={gate.done ? "success" : delay > 0 ? "error" : "default"}
                           label={gate.done ? "已驗收" : delay > 0 ? `預測延後 ${delay} 天` : "未完成"}
+                          status={gate.done ? "success" : delay > 0 ? "error" : "default"}
                         />
                       </TableCell>
                       <TableCell>{gate.evidence}</TableCell>
@@ -366,24 +354,24 @@ export default function ProjectDrawerContent({
         </Stack>
       </Paper>
       <Paper
-        component="section"
         variant="outlined"
+        component="section"
         className={styles.detail}
       >
         <Stack
-          gap={1}
           useFlexGap
+          gap={1}
         >
           <Typography variant="h4">上游依賴</Typography>
           {upstream.length ? (
             upstream.map((item) => (
               <Stack
+                useFlexGap
                 key={item.id}
+                gap={1}
                 direction="row"
                 alignItems="center"
                 justifyContent="space-between"
-                gap={1}
-                useFlexGap
               >
                 <Box>
                   <Typography variant="body2">{item.name}</Typography>
@@ -396,7 +384,6 @@ export default function ProjectDrawerContent({
                 </Box>
                 <TextButton
                   onClick={() => onSelect(item)}
-                  aria-label={`檢視 ${item.name}`}
                 >
                   查看 →
                 </TextButton>
@@ -422,8 +409,8 @@ export default function ProjectDrawerContent({
       </Paper>
       {project.hours ? (
         <Paper
-          component="section"
           variant="outlined"
+          component="section"
           className={styles.detail}
         >
           <Typography variant="h4">產能釋放與再投入</Typography>

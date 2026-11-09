@@ -4,15 +4,8 @@ import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import CloseIcon from "@mui/icons-material/Close"
-import ExpandLessIcon from "@mui/icons-material/ExpandLess"
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import Box from "@mui/material/Box"
-import Collapse from "@mui/material/Collapse"
 import IconButton from "@mui/material/IconButton"
-import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
-import ListItemButton from "@mui/material/ListItemButton"
-import ListItemText from "@mui/material/ListItemText"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
@@ -22,6 +15,8 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
+import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView"
+import { TreeItem } from "@mui/x-tree-view/TreeItem"
 import { useState } from "react"
 import ProjectDrawerContent from "../../../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
 import { projects, projectStatus, type Project } from "../../../(overview)/components/UpcomingMilestones/milestones"
@@ -37,41 +32,32 @@ const titleId = "house-matrix-detail-title"
 
 type Detail = { type: "bu"; insight: Insight; hub: Hub } | { type: "project"; project: Project }
 
-function ForestCategory({ category }: { category: { title: string; items: string[] } }) {
-  const [expanded, setExpanded] = useState(false)
-
+function ForestViewTree({ categories, insightId }: { categories: { title: string; items: string[] }[]; insightId: string }) {
   return (
-    <ListItem
-      disablePadding
-      sx={{ display: "block" }}
+    <SimpleTreeView
+      sx={{
+        "& .MuiTreeItem-content": { borderRadius: 1 },
+        "& .MuiTreeItem-content:hover": { bgcolor: "action.hover" },
+        "& .MuiTreeItem-groupTransition": { borderColor: "divider", borderLeft: 1, ml: 2, pl: 1.5 },
+        "& .MuiTreeItem-label": { py: 0.5 },
+      }}
     >
-      <ListItemButton
-        onClick={() => setExpanded((current) => !current)}
-        aria-expanded={expanded}
-      >
-        <ListItemText primary={category.title} />
-        {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-      </ListItemButton>
-      <Collapse
-        in={expanded}
-        timeout="auto"
-        unmountOnExit
-      >
-        <List
-          component="ul"
-          disablePadding
+      {categories.map((category) => (
+        <TreeItem
+          key={category.title}
+          itemId={`${insightId}-${category.title}`}
+          label={category.title}
         >
           {category.items.map((item) => (
-            <ListItem
+            <TreeItem
               key={item}
-              sx={{ pl: 4 }}
-            >
-              <ListItemText primary={item} />
-            </ListItem>
+              itemId={`${insightId}-${category.title}-${item}`}
+              label={item}
+            />
           ))}
-        </List>
-      </Collapse>
-    </ListItem>
+        </TreeItem>
+      ))}
+    </SimpleTreeView>
   )
 }
 
@@ -137,7 +123,6 @@ function BuContent({
           </Typography>
         </Stack>
         <IconButton
-          aria-label="關閉 Insight 詳情"
           onClick={onClose}
         >
           <CloseIcon />
@@ -166,18 +151,10 @@ function BuContent({
           >
             {insight.ranks.map((rank, index) => `R${index + 1} ${rank}`).join(" · ")}
           </Typography>
-          <List
-            component="ul"
-            disablePadding
-            aria-label={`${insight.name} Forest View 分類`}
-          >
-            {(categories[insight.id] ?? []).map((category) => (
-              <ForestCategory
-                key={`${insight.id}-${category.title}`}
-                category={category}
-              />
-            ))}
-          </List>
+          <ForestViewTree
+            categories={categories[insight.id] ?? []}
+            insightId={insight.id}
+          />
         </Stack>
       </Paper>
       <Paper
@@ -195,7 +172,6 @@ function BuContent({
           <TableContainer>
             <Table
               size="small"
-              aria-label={`${insight.name} Top tasks 需求滿足度`}
             >
               <TableHead>
                 <TableRow>
@@ -254,7 +230,6 @@ function BuContent({
                 />
                 <TextButton
                   onClick={() => onProject(project)}
-                  aria-label={`檢視 ${project.name} 專案明細`}
                 >
                   檢視明細 →
                 </TextButton>
@@ -300,7 +275,6 @@ export default function HouseMatrix() {
       <DetailDrawer
         open={open}
         onClose={close}
-        titleId={titleId}
       >
         {detail?.type === "bu" ? (
           <BuContent
@@ -315,7 +289,6 @@ export default function HouseMatrix() {
             project={detail.project}
             onClose={close}
             onSelect={selectProject}
-            titleId={titleId}
           />
         ) : null}
       </DetailDrawer>

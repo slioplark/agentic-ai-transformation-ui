@@ -1,0 +1,18 @@
+.row {
+  cursor: pointer;
+}
+
+.row:focus-visible > td {
+  outline: 2px solid #087f80;
+  outline-offset: -2px;
+}
+
+.cellStack {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.date {
+  white-space: nowrap;
+}

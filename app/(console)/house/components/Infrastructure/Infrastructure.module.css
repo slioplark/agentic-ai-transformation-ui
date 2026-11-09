@@ -42,9 +42,7 @@
 }
 
 .progress {
-  height: 8px;
   margin-top: 4px;
-  border-radius: 5px;
 }
 
 @media (max-width: 599.95px) {

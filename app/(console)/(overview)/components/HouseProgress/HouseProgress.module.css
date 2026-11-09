@@ -21,18 +21,6 @@
   min-width: 0;
 }
 
-.progress {
-  position: relative;
-}
-
-.marker {
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  width: 2px;
-  transform: translateX(-50%);
-}
-
 @media (max-width: 899px) {
   .grid {
     grid-template-columns: 1fr;

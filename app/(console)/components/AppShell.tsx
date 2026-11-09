@@ -84,7 +84,6 @@ export default function AppShell({ children }: { children: ReactNode }) {
             edge="start"
             onClick={() => setMobileOpen(true)}
             className={styles.menuButton}
-            aria-label="開啟選單"
           >
             <MenuIcon />
           </IconButton>
@@ -94,7 +93,6 @@ export default function AppShell({ children }: { children: ReactNode }) {
       <Box
         className={styles.navigationRegion}
         component="nav"
-        aria-label="主要選單"
       >
         <Drawer
           open={mobileOpen}

@@ -72,7 +72,6 @@ export default function Decisions({ decisions, onSelect }: Props) {
                 <TextButton
                   className={styles.action}
                   onClick={() => onSelect(decision)}
-                  aria-label={`看${decision.title}的選項與影響`}
                 >
                   看選項與影響 →
                 </TextButton>

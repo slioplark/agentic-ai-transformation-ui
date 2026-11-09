@@ -30,6 +30,10 @@ Organize pages around meaningful visual or behavioral regions. Extract or reuse 
 
 Use semantic HTML and accessible names, keyboard interaction, visible states, and focus behavior. Build responsive layouts from the intended hierarchy and existing breakpoints. Preserve existing app behavior and data contracts unless the request explicitly changes them.
 
+Do not introduce `aria-label` or `aria-labelledby` automatically. Use either attribute only when the user explicitly requests it; do not add them as proactive accessibility annotations or propagate them to similar elements.
+
+In JSX opening tags, place shorthand attributes without a value before attributes with a value. Within each group, order attributes by property-name length from short to long, retaining the existing relative order when names have the same length. Apply this rule only to JSX attributes, not object keys, destructuring, types, or imports.
+
 ## API and data-fetching architecture
 
 Organize frontend API code by business domain as endpoints grow:

@@ -53,7 +53,6 @@ export default function KpiCard({ kpi, onClick }: KpiCardProps) {
         </Typography>
       </Box>
       <Sparkline
-        label={kpi.label}
         values={kpi.series}
       />
       <Typography

@@ -47,7 +47,6 @@ export default function UpcomingMilestones({ onSelect }: { onSelect: (project: P
         </Stack>
         <TableContainer>
           <Table
-            aria-label="未來 14 天里程碑"
             size="small"
             className={styles.table}
           >
@@ -69,7 +68,6 @@ export default function UpcomingMilestones({ onSelect }: { onSelect: (project: P
                     hover
                     tabIndex={0}
                     role="button"
-                    aria-label={`檢視 ${project.name}`}
                     onClick={() => onSelect(project)}
                     onKeyDown={(event) => {
                       if (event.key === "Enter" || event.key === " ") {

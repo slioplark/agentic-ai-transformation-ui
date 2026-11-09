@@ -1,9 +1,9 @@
 "use client"
 
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
-import LinearProgress from "@mui/material/LinearProgress"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
@@ -51,71 +51,59 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
     setOpen(true)
   }
   const close = () => setOpen(false)
-  const titleId = `${kind}-detail-title`
 
   return (
     <>
       <Box
         component="section"
-        aria-labelledby={`${kind}-title`}
         className={`${styles.pillar} ${styles[kind]}`}
       >
         <Box>
           <Typography
-            variant="caption"
             color={kind === "governance" ? "secondary.main" : "info.main"}
+            variant="caption"
           >
             {label}
           </Typography>
           <Typography
-            component="h2"
-            variant="h6"
             id={`${kind}-title`}
+            variant="h6"
+            component="h2"
           >
             {project.name}
           </Typography>
         </Box>
         <ButtonBase
-          component={Paper}
-          variant="outlined"
-          className={styles.card}
           sx={{ border: 1, borderColor: "divider", borderRadius: 1 }}
-          aria-label={`檢視 ${project.name}`}
+          variant="outlined"
           onClick={() => selectProject(project)}
+          component={Paper}
+          className={styles.card}
         >
           <Box className={styles.progressLabel}>
             <Typography
-              component="span"
               variant="h5"
+              component="span"
             >
               {actual}%
             </Typography>
             <Typography
-              component="span"
-              variant="caption"
               color="text.secondary"
+              variant="caption"
+              component="span"
             >
               計畫 {planned}%
             </Typography>
           </Box>
-          <Box className={styles.progressTrack}>
-            <LinearProgress
-              variant="determinate"
-              value={actual}
-              color="secondary"
-              className={styles.progress}
-              aria-label={`${project.name} 已驗收 ${actual}%，計畫 ${planned}%`}
-            />
-            <Box
-              aria-hidden="true"
-              className={styles.planMarker}
-              sx={{ left: `${planned}%` }}
-            />
-          </Box>
+          <ThresholdProgress
+            color="secondary"
+            value={actual}
+            threshold={planned}
+          />
           <Typography
-            component="span"
-            variant="caption"
             color="text.secondary"
+            variant="caption"
+            component="span"
           >
             {message}
           </Typography>
@@ -126,9 +114,9 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
         >
           {items.map((item) => (
             <Typography
-              component="li"
-              variant="body2"
               key={item}
+              variant="body2"
+              component="li"
             >
               {item}
             </Typography>
@@ -138,14 +126,12 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
       <DetailDrawer
         open={open}
         onClose={close}
-        titleId={titleId}
       >
         {detail ? (
           <ProjectDrawerContent
             project={detail}
             onClose={close}
             onSelect={selectProject}
-            titleId={titleId}
           />
         ) : null}
       </DetailDrawer>

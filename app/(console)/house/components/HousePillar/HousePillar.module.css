@@ -48,24 +48,6 @@
   gap: 4px;
 }
 
-.progressTrack {
-  position: relative;
-}
-
-.planMarker {
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  width: 2px;
-  background: #132c47;
-  transform: translateX(-50%);
-}
-
-.progress {
-  height: 8px;
-  border-radius: 5px;
-}
-
 .list {
   display: flex;
   flex-direction: column;

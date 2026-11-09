@@ -43,7 +43,6 @@ export default function DecisionDrawerContent({ decision, onClose, titleId }: Pr
           </Typography>
         </Stack>
         <IconButton
-          aria-label="關閉決策詳情"
           onClick={onClose}
         >
           <CloseIcon />

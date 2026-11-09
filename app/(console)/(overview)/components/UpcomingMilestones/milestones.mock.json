@@ -842,7 +842,7 @@
     },
     {
       "id": "flow",
-      "area": "Digital Infrastructure",
+      "area": "AI Infrastructure",
       "name": "Agentic Flow Automation",
       "project": "Agent BPM 與 HITL",
       "owner": "自動化平台負責人",
@@ -931,7 +931,7 @@
     },
     {
       "id": "software",
-      "area": "Digital Infrastructure",
+      "area": "AI Infrastructure",
       "name": "AI-Enabled Software Development",
       "project": "非 IT 團隊自主開發與即用工具",
       "owner": "工程效率負責人",
@@ -1020,9 +1020,9 @@
     },
     {
       "id": "api",
-      "area": "Digital Infrastructure",
-      "name": "Enterprise API & Agent Orchestration",
-      "project": "APIM、新 API 標準與工具閘道",
+      "area": "AI Infrastructure",
+      "name": "Enterprise API",
+      "project": "API gateway、event mesh 與 tool gateway",
       "owner": "整合平台負責人",
       "sponsor": "Digital 主管",
       "risk": 2,
@@ -1109,7 +1109,7 @@
     },
     {
       "id": "core",
-      "area": "Digital Infrastructure",
+      "area": "AI Infrastructure",
       "name": "AI Core Technology",
       "project": "UGPT · URAG · Model Gateway",
       "owner": "AI 平台負責人",
@@ -1198,7 +1198,7 @@
     },
     {
       "id": "data",
-      "area": "Digital Infrastructure",
+      "area": "AI Infrastructure",
       "name": "AI-Ready Data Platform",
       "project": "語意層、特徵庫與向量庫",
       "owner": "資料平台負責人",
@@ -1286,11 +1286,11 @@
       "reportedAt": null
     },
     {
-      "id": "bs",
-      "area": "Digital Infrastructure",
-      "name": "BS Modernization",
-      "project": "ERP / Workday / Notes → M365 等企業系統現代化與 API 化",
-      "owner": "BS 現代化負責人",
+      "id": "enterprise",
+      "area": "AI Infrastructure",
+      "name": "Enterprise Systems",
+      "project": "ERP、MES、Workday 與 Notes 的企業系統整合",
+      "owner": "企業系統負責人",
       "sponsor": "資訊主管",
       "risk": 0,
       "issue": "依計畫進行",
@@ -1306,7 +1306,7 @@
           "forecast": "2026-09-16",
           "done": true,
           "accepted": "2026-09-16",
-          "evidence": "示範：驗收記錄 BS-D1",
+          "evidence": "示範：驗收記錄 ENTERPRISE-D1",
           "firstPass": true
         },
         {
@@ -1316,7 +1316,7 @@
           "forecast": "2026-09-23",
           "done": true,
           "accepted": "2026-09-23",
-          "evidence": "示範：驗收記錄 BS-D2",
+          "evidence": "示範：驗收記錄 ENTERPRISE-D2",
           "firstPass": true
         },
         {
@@ -1351,7 +1351,7 @@
         }
       ],
       "projectKpi": {
-        "name": "企業系統 API 化比例",
+        "name": "企業系統整合覆蓋率",
         "unit": "%",
         "baseline": 20,
         "target": 70,
@@ -1375,17 +1375,17 @@
       "reportedAt": null
     },
     {
-      "id": "cim8",
-      "area": "Digital Infrastructure",
-      "name": "CIM 8 吋 Modernization",
-      "project": "8 吋廠 MES / EAP / 自動化系統現代化",
-      "owner": "CIM 8 吋負責人",
-      "sponsor": "製造轉型主管",
+      "id": "orchestration",
+      "area": "AI Infrastructure",
+      "name": "Agent Orchestration",
+      "project": "Agent runtime、任務協調與狀態管理",
+      "owner": "Agent 平台負責人",
+      "sponsor": "Digital 主管",
       "risk": 1,
-      "issue": "舊機台介面相容性測試延後",
+      "issue": "跨 Agent 任務狀態與例外處理待驗證",
       "updated": "2026-10-16",
-      "budget": 1.1,
-      "spent": 0.4,
+      "budget": 0.75,
+      "spent": 0.3,
       "hours": 0,
       "milestones": [
         {
@@ -1395,7 +1395,7 @@
           "forecast": "2026-09-16",
           "done": true,
           "accepted": "2026-09-16",
-          "evidence": "示範：驗收記錄 CIM8-D1",
+          "evidence": "示範：驗收記錄 ORCHESTRATION-D1",
           "firstPass": true
         },
         {
@@ -1405,7 +1405,7 @@
           "forecast": "2026-09-23",
           "done": true,
           "accepted": "2026-09-23",
-          "evidence": "示範：驗收記錄 CIM8-D2",
+          "evidence": "示範：驗收記錄 ORCHESTRATION-D2",
           "firstPass": true
         },
         {
@@ -1440,112 +1440,23 @@
         }
       ],
       "projectKpi": {
-        "name": "8 吋廠系統容器化 / API 化比例",
+        "name": "受管 Agent 工作流程比例",
         "unit": "%",
         "baseline": 5,
         "target": 60,
-        "actual": 22,
+        "actual": 25,
         "measured": false,
         "evidence": ""
       },
       "deployment": {
-        "actual": 20,
+        "actual": 30,
         "plan": 40,
         "base": "2026-10-24",
         "fc": "2026-11-05"
       },
-      "summary": "舊機台介面相容性測試延後",
+      "summary": "跨 Agent 任務狀態與例外處理待驗證",
       "nextAction": "",
-      "blocker": "舊機台介面相容性測試延後",
-      "unblockBy": "",
-      "decisionRequest": "",
-      "decisionDue": "",
-      "decisionMaker": "",
-      "reportedAt": null
-    },
-    {
-      "id": "cim12",
-      "area": "Digital Infrastructure",
-      "name": "CIM 12 吋 Modernization",
-      "project": "12 吋廠 MES / EAP / APC 現代化與即時資料串流",
-      "owner": "CIM 12 吋負責人",
-      "sponsor": "製造轉型主管",
-      "risk": 0,
-      "issue": "依計畫進行",
-      "updated": "2026-10-16",
-      "budget": 1.6,
-      "spent": 0.9,
-      "hours": 0,
-      "milestones": [
-        {
-          "name": "D1 · 範疇與基準核定",
-          "weight": 10,
-          "baseline": "2026-09-16",
-          "forecast": "2026-09-16",
-          "done": true,
-          "accepted": "2026-09-16",
-          "evidence": "示範：驗收記錄 CIM12-D1",
-          "firstPass": true
-        },
-        {
-          "name": "D2 · 設計與權限就緒",
-          "weight": 20,
-          "baseline": "2026-09-23",
-          "forecast": "2026-09-23",
-          "done": true,
-          "accepted": "2026-09-23",
-          "evidence": "示範：驗收記錄 CIM12-D2",
-          "firstPass": true
-        },
-        {
-          "name": "D3 · 開發與整合",
-          "weight": 25,
-          "baseline": "2026-09-30",
-          "forecast": "2026-09-30",
-          "done": true,
-          "accepted": "2026-09-30",
-          "evidence": "示範：驗收記錄 CIM12-D3",
-          "firstPass": true
-        },
-        {
-          "name": "D4 · 試點與品質驗證",
-          "weight": 25,
-          "baseline": "2026-10-28",
-          "forecast": "2026-10-28",
-          "done": false,
-          "accepted": null,
-          "evidence": "待提交驗收證據",
-          "firstPass": null
-        },
-        {
-          "name": "D5 · 上線驗收與移交",
-          "weight": 20,
-          "baseline": "2026-11-07",
-          "forecast": "2026-11-07",
-          "done": false,
-          "accepted": null,
-          "evidence": "待提交驗收證據",
-          "firstPass": null
-        }
-      ],
-      "projectKpi": {
-        "name": "12 吋廠即時資料串流覆蓋率",
-        "unit": "%",
-        "baseline": 30,
-        "target": 90,
-        "actual": 61,
-        "measured": false,
-        "evidence": ""
-      },
-      "deployment": {
-        "actual": 60,
-        "plan": 60,
-        "base": "2027-02-15",
-        "fc": "2027-02-15"
-      },
-      "summary": "依計畫進行",
-      "nextAction": "",
-      "blocker": "",
+      "blocker": "跨 Agent 任務狀態與例外處理待驗證",
       "unblockBy": "",
       "decisionRequest": "",
       "decisionDue": "",
@@ -1554,7 +1465,7 @@
     },
     {
       "id": "sdi",
-      "area": "Digital Infrastructure",
+      "area": "AI Infrastructure",
       "name": "Software-Defined Infrastructure",
       "project": "Edge-to-fab 與 FinOps",
       "owner": "基礎設施負責人",
@@ -1811,71 +1722,23 @@
     }
   ],
   "dependency": {
-    "operations": [
-      "lake",
-      "api",
-      "core",
-      "cim12",
-      "cim8"
-    ],
-    "planning": [
-      "lake",
-      "data"
-    ],
-    "api": [
-      "governance"
-    ],
-    "core": [
-      "data",
-      "sdi"
-    ],
-    "flow": [
-      "api",
-      "process"
-    ],
-    "citizen": [
-      "knowledge"
-    ],
-    "td": [
-      "knowledge",
-      "core"
-    ],
-    "customer": [
-      "core",
-      "knowledge"
-    ],
-    "biz": [
-      "flow"
-    ],
-    "knowledge": [
-      "lake"
-    ],
-    "agents": [
-      "core",
-      "governance"
-    ],
-    "process": [
-      "rgate"
-    ],
-    "software": [
-      "governance"
-    ],
-    "data": [
-      "lake"
-    ],
-    "bs": [
-      "api"
-    ],
-    "cim8": [
-      "api"
-    ],
-    "cim12": [
-      "api",
-      "data"
-    ],
-    "rgate": [
-      "governance"
-    ],
+    "operations": ["lake", "api", "core", "enterprise"],
+    "planning": ["lake", "data"],
+    "api": ["governance"],
+    "core": ["data", "sdi"],
+    "flow": ["api", "orchestration", "process"],
+    "citizen": ["knowledge"],
+    "td": ["knowledge", "core"],
+    "customer": ["core", "knowledge"],
+    "biz": ["flow"],
+    "knowledge": ["lake"],
+    "agents": ["core", "governance"],
+    "process": ["rgate"],
+    "software": ["governance"],
+    "data": ["lake"],
+    "enterprise": ["api"],
+    "orchestration": ["api", "core"],
+    "rgate": ["governance"],
     "lake": [],
     "sdi": [],
     "governance": []

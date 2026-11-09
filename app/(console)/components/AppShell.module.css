@@ -24,7 +24,8 @@
 }
 
 .brandTagline {
-  color: rgb(255 255 255 / 58%);
+  color: #9fc6d5;
+  font-weight: 800;
 }
 
 .navigationContainer {
@@ -41,7 +42,9 @@
   min-height: 44px;
   padding: 12px;
   color: #bdcdda;
-  transition: background-color 160ms ease, color 160ms ease;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
 }
 
 .navigationItem:hover {
@@ -78,11 +81,11 @@
 }
 
 .footerText {
-  color: rgb(255 255 255 / 64%);
+  color: #fff;
 }
 
 .footerSubtext {
-  color: rgb(255 255 255 / 42%);
+  color: #fff;
 }
 
 .mobileAppBar {

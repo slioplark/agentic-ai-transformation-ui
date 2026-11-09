@@ -19,7 +19,6 @@ function InsightCard({ insight, onSelect }: { insight: Insight; onSelect: (id: s
       variant="outlined"
       className={styles.card}
       sx={{ border: 1, borderColor: "divider", borderRadius: 1 }}
-      aria-label={`檢視 ${insight.name} Insight 與 Domain Hub`}
       onClick={() => onSelect(insight.id)}
     >
       <Typography

@@ -62,7 +62,6 @@ export default function LoginForm() {
                   <IconButton
                     edge="end"
                     onClick={() => setShowPassword((visible) => !visible)}
-                    aria-label={showPassword ? "隱藏密碼" : "顯示密碼"}
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>

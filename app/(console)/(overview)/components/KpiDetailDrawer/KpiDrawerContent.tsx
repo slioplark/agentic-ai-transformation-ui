@@ -83,7 +83,6 @@ function DrawerHeader({
         </Typography>
       </Stack>
       <IconButton
-        aria-label={`關閉${title}`}
         onClick={onClose}
       >
         <CloseIcon />
@@ -117,11 +116,10 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
             >
               <Typography variant="body2">{row.period}</Typography>
               <Box className={styles.ladderBar}>
-                {maturityLevels.map(({ className, key, label }) => {
+                {maturityLevels.map(({ className, key }) => {
                   const value = row[key]
                   return value ? (
                     <Box
-                      aria-label={`${label}：${value} 項`}
                       className={className}
                       key={key}
                       sx={{ flex: value }}
@@ -169,7 +167,6 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
       >
         <TableContainer>
           <Table
-            aria-label="能力成熟度歷史與目標"
             aria-describedby="maturity-table-note"
             size="small"
           >
@@ -221,7 +218,6 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
         <Typography variant="h4">各 BU 分布（2026-Q4）</Typography>
         <TableContainer>
           <Table
-            aria-label="各 BU 能力成熟度分布"
             size="small"
           >
             <TableHead>
@@ -323,7 +319,6 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
       >
         <TableContainer>
           <Table
-            aria-label="產能釋放與再投入場景"
             aria-describedby="benefits-table-note"
             size="small"
           >

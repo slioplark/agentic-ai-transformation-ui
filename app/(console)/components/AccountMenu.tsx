@@ -28,7 +28,6 @@ export default function AccountMenu({ user }: { user: User }) {
         onClick={(event) => setMenuAnchor(event.currentTarget)}
         className={styles.accountButton}
         component="button"
-        aria-label="開啟帳號選單"
         aria-expanded={Boolean(menuAnchor)}
         aria-haspopup="menu"
       >

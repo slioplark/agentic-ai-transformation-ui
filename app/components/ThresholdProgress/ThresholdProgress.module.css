@@ -1,0 +1,18 @@
+.root {
+  position: relative;
+  min-width: 0;
+}
+
+.progress {
+  height: 8px;
+  border-radius: 5px;
+}
+
+.marker {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: #132c47;
+  transform: translateX(-50%);
+}

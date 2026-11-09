@@ -62,7 +62,6 @@ export default function HomePage() {
         <PageHeader>成效總覽</PageHeader>
         <ReportingStatusGrid items={reportingStatusMetrics} />
         <section
-          aria-label="關鍵成效指標"
           className={styles.kpiGrid}
         >
           {overviewKpis.map((kpi) => (
@@ -88,7 +87,6 @@ export default function HomePage() {
       <DetailDrawer
         open={drawerOpen}
         onClose={closeDrawer}
-        titleId={titleId}
       >
         {activeDetail?.type === "kpi" ? (
           <KpiDrawerContent
@@ -109,7 +107,6 @@ export default function HomePage() {
             project={activeDetail.project}
             onClose={closeDrawer}
             onSelect={selectProject}
-            titleId={titleId}
           />
         ) : null}
       </DetailDrawer>

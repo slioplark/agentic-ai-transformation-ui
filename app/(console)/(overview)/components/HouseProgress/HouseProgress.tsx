@@ -1,7 +1,7 @@
 import InfoNote from "@app/components/InfoNote/InfoNote"
+import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
-import LinearProgress from "@mui/material/LinearProgress"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
@@ -20,7 +20,7 @@ import styles from "./HouseProgress.module.css"
 const areas = [
   { name: "Insight Solutions", label: "Insight Solutions · Rx Gating" },
   { name: "Domain Hubs", label: "Domain Hubs" },
-  { name: "Digital Infrastructure", label: "Digital Infrastructure" },
+  { name: "AI Infrastructure", label: "AI Infrastructure" },
   { name: "Pillars", label: "AI Governance & Digital Citizen" },
 ] as const
 
@@ -46,31 +46,31 @@ const budget = projects.reduce((sum, project) => sum + project.budget, 0)
 export default function HouseProgress() {
   return (
     <Paper
-      component="section"
       variant="outlined"
+      component="section"
       className={styles.panel}
     >
       <Stack
-        gap={1.5}
         useFlexGap
+        gap={1.5}
       >
         <Stack
+          useFlexGap
+          gap={1}
           direction="row"
           alignItems="center"
           justifyContent="space-between"
-          gap={1}
-          useFlexGap
         >
           <Typography
-            component="h2"
             id="house-progress-title"
             variant="h4"
+            component="h2"
           >
             房子各層 · 計畫與實際
           </Typography>
           <TextButton
-            component={Link}
             href="/house"
+            component={Link}
           >
             打開互動房子 →
           </TextButton>
@@ -78,33 +78,32 @@ export default function HouseProgress() {
         <Box className={styles.grid}>
           {summaries.map((area) => (
             <Box
-              component="article"
               key={area.name}
+              component="article"
               className={styles.row}
             >
               <Stack
-                gap={0.5}
                 useFlexGap
+                gap={0.5}
                 className={styles.content}
               >
                 <Stack
+                  useFlexGap
+                  gap={1}
                   direction="row"
                   alignItems="center"
                   justifyContent="space-between"
-                  gap={1}
-                  useFlexGap
                 >
                   <Typography
-                    component="h3"
                     variant="h4"
+                    component="h3"
                   >
                     {area.label}
                   </Typography>
                   <TextButton
-                    component={Link}
-                    href={`/milestones?area=${encodeURIComponent(area.name)}`}
-                    aria-label={`追蹤 ${area.label} 進度`}
                     sx={{ flexShrink: 0, whiteSpace: "nowrap" }}
+                    href={`/milestones?area=${encodeURIComponent(area.name)}`}
+                    component={Link}
                   >
                     追進度 →
                   </TextButton>
@@ -115,19 +114,11 @@ export default function HouseProgress() {
                 >
                   {area.count} 項 · {area.red} 紅 / {area.amber} 黃 / {area.stale} 灰
                 </Typography>
-                <Box className={styles.progress}>
-                  <LinearProgress
-                    variant="determinate"
-                    color="secondary"
-                    value={area.actual}
-                    aria-label={`${area.label}實際進度 ${area.actual}%，計畫進度 ${area.planned}%`}
-                  />
-                  <Box
-                    className={styles.marker}
-                    sx={{ left: `${area.planned}%`, bgcolor: "text.primary" }}
-                    aria-hidden="true"
-                  />
-                </Box>
+                <ThresholdProgress
+                  color="secondary"
+                  value={area.actual}
+                  threshold={area.planned}
+                />
               </Stack>
               <Stack alignItems="flex-end">
                 <Typography variant="h6">{area.actual}%</Typography>
@@ -143,10 +134,10 @@ export default function HouseProgress() {
         </Box>
         <InfoNote status={spent > budget ? "error" : "success"}>
           <Stack
-            direction="row"
-            flexWrap="wrap"
-            gap={2}
             useFlexGap
+            gap={2}
+            flexWrap="wrap"
+            direction="row"
           >
             <Typography variant="body2">
               累計支出 <strong>{money(spent)}</strong>

@@ -1,7 +1,7 @@
 import StatusChip from "@app/components/StatusChip/StatusChip"
+import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
-import LinearProgress from "@mui/material/LinearProgress"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
@@ -99,7 +99,6 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
                     </Stack>
                     <TextButton
                       onClick={() => onSelect(project)}
-                      aria-label={`檢視 ${project.name} 詳情`}
                       sx={{ flexShrink: 0 }}
                     >
                       詳情 →
@@ -120,11 +119,9 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
                     </Typography>
                     <Typography variant="h6">{downstream.length}</Typography>
                   </Stack>
-                  <LinearProgress
-                    variant="determinate"
+                  <ThresholdProgress
                     color={project.risk === 2 ? "error" : "secondary"}
                     value={(downstream.length / maxDownstream) * 100}
-                    aria-label={`${project.name}影響 ${downstream.length} 項下游工作`}
                   />
                   <Typography
                     color="text.secondary"

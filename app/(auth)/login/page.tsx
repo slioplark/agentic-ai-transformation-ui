@@ -15,7 +15,6 @@ export default function LoginPage() {
         <Link
           href="/"
           className={styles.brand}
-          aria-label="AGENTIC AI TRANSFORMATION"
         >
           <span className={styles.brandMark} aria-hidden="true">
             <i />

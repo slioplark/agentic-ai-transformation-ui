@@ -9,7 +9,7 @@ type ReportingStatusGridProps = {
 
 export default function ReportingStatusGrid({ items }: ReportingStatusGridProps) {
   return (
-    <section aria-label="填報與待辦摘要" className={styles.grid}>
+    <section className={styles.grid}>
       {items.map((item) => (
         <Paper className={styles.card} component="article" key={item.label} variant="outlined">
           <Typography component="p" variant="h4">

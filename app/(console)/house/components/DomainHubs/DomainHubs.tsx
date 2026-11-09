@@ -171,7 +171,6 @@ export default function DomainHubs({
                 className={styles.cell}
                 sx={{ border: 1, borderColor: "divider", borderRadius: 1 }}
                 key={hub.id}
-                aria-label={`${hub.name} ${asset.name}`}
                 onClick={() => onSelect(hub.id)}
               >
                 <AssetContent
@@ -208,7 +207,6 @@ export default function DomainHubs({
               variant="outlined"
               className={`${styles.cell} ${tone(weakest.ratio)}`}
               key={hub.id}
-              aria-label={`${hub.name} Hub 就緒度`}
             >
               <Typography variant="h5">{Math.round(weakest.ratio * 100)}%</Typography>
               <span>最弱：{weakest.name}</span>
