@@ -1,4 +1,5 @@
 import type { Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import { areas } from "@(control)/milestones/components/MilestoneFilterBar/MilestoneFilterBar"
 import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
 import Paper from "@mui/material/Paper"
 import Table from "@mui/material/Table"
@@ -8,6 +9,7 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
+import { alpha } from "@mui/material/styles"
 import styles from "./ProjectMilestoneTable.module.css"
 
 type ProjectMilestoneTableProps = {
@@ -16,6 +18,13 @@ type ProjectMilestoneTableProps = {
 }
 
 export default function ProjectMilestoneTable({ onSelect, projects }: ProjectMilestoneTableProps) {
+  const groups = new Map<string, Project[]>(areas.slice(1).map((area) => [area, []]))
+  for (const project of projects) {
+    const group = groups.get(project.area) ?? []
+    group.push(project)
+    groups.set(project.area, group)
+  }
+
   return (
     <Paper
       variant="outlined"
@@ -37,15 +46,33 @@ export default function ProjectMilestoneTable({ onSelect, projects }: ProjectMil
               <TableCell>最近更新</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
-            {projects.map((project) => (
-              <ProjectMilestoneRow
-                key={project.id}
-                project={project}
-                onSelect={onSelect}
-              />
-            ))}
-          </TableBody>
+          {Array.from(groups, ([area, group]) =>
+            group.length > 0 ? (
+              <TableBody key={area}>
+                <TableRow>
+                  <TableCell
+                    sx={{
+                      bgcolor: (theme) => alpha(theme.palette.primary.main, 0.1),
+                      color: "primary.main",
+                      fontWeight: "fontWeightBold",
+                    }}
+                    colSpan={7}
+                    component="th"
+                    scope="rowgroup"
+                  >
+                    {area} · {group.length} 項
+                  </TableCell>
+                </TableRow>
+                {group.map((project) => (
+                  <ProjectMilestoneRow
+                    key={project.id}
+                    project={project}
+                    onSelect={onSelect}
+                  />
+                ))}
+              </TableBody>
+            ) : null,
+          )}
         </Table>
       </TableContainer>
       {projects.length === 0 ? (
