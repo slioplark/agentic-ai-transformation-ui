@@ -82,9 +82,7 @@ function DrawerHeader({
           {title}
         </Typography>
       </Stack>
-      <IconButton
-        onClick={onClose}
-      >
+      <IconButton onClick={onClose}>
         <CloseIcon />
       </IconButton>
     </Stack>
@@ -175,13 +173,13 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
                 <TableCell>期間</TableCell>
                 {maturityLevels.map(({ label }) => (
                   <TableCell
-                    align="right"
+                    align="center"
                     key={label}
                   >
                     {label}
                   </TableCell>
                 ))}
-                <TableCell align="right">R3+ 占比</TableCell>
+                <TableCell align="center">R3+ 占比</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -190,13 +188,13 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
                   <TableCell>{row.period}</TableCell>
                   {maturityLevels.map(({ key }) => (
                     <TableCell
-                      align="right"
+                      align="center"
                       key={key}
                     >
                       {row[key]}
                     </TableCell>
                   ))}
-                  <TableCell align="right">{maturityShare(row).toFixed(1)}%</TableCell>
+                  <TableCell align="center">{maturityShare(row).toFixed(1)}%</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -217,21 +215,19 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
       >
         <Typography variant="h4">各 BU 分布（2026-Q4）</Typography>
         <TableContainer>
-          <Table
-            size="small"
-          >
+          <Table size="small">
             <TableHead>
               <TableRow>
                 <TableCell>BU</TableCell>
                 {maturityLevels.map(({ key }) => (
                   <TableCell
-                    align="right"
+                    align="center"
                     key={key}
                   >
                     {key.toUpperCase()}
                   </TableCell>
                 ))}
-                <TableCell align="right">合計</TableCell>
+                <TableCell align="center">合計</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -240,13 +236,13 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
                   <TableCell>{unit.name}</TableCell>
                   {maturityLevels.map(({ key }) => (
                     <TableCell
-                      align="right"
+                      align="center"
                       key={key}
                     >
                       {unit[key]}
                     </TableCell>
                   ))}
-                  <TableCell align="right">{maturityTotal(unit)}</TableCell>
+                  <TableCell align="center">{maturityTotal(unit)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -325,8 +321,8 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
             <TableHead>
               <TableRow>
                 <TableCell>場景</TableCell>
-                <TableCell align="right">釋放 h/月</TableCell>
-                <TableCell align="right">再投入 h/月</TableCell>
+                <TableCell align="center">釋放 h/月</TableCell>
+                <TableCell align="center">再投入 h/月</TableCell>
                 <TableCell>再投入去向</TableCell>
                 <TableCell>驗證 owner</TableCell>
               </TableRow>
@@ -335,8 +331,8 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
               {benefitScenarios.map((scenario) => (
                 <TableRow key={scenario.name}>
                   <TableCell>{scenario.name}</TableCell>
-                  <TableCell align="right">{scenario.freedHours}</TableCell>
-                  <TableCell align="right">{scenario.redeployedHours}</TableCell>
+                  <TableCell align="center">{scenario.freedHours}</TableCell>
+                  <TableCell align="center">{scenario.redeployedHours}</TableCell>
                   <TableCell>{scenario.redeployedTo}</TableCell>
                   <TableCell>{scenario.owner}</TableCell>
                 </TableRow>

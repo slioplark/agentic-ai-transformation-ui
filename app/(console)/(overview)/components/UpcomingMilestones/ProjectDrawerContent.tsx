@@ -107,9 +107,7 @@ export default function ProjectDrawerContent({
             />
           ) : null}
         </Stack>
-        <IconButton
-          onClick={onClose}
-        >
+        <IconButton onClick={onClose}>
           <CloseIcon />
         </IconButton>
       </Stack>
@@ -312,7 +310,7 @@ export default function ProjectDrawerContent({
               <TableHead>
                 <TableRow>
                   <TableCell>關卡 / 驗收條件</TableCell>
-                  <TableCell>權重</TableCell>
+                  <TableCell align="center">權重</TableCell>
                   <TableCell>原訂</TableCell>
                   <TableCell>預測 / 實際</TableCell>
                   <TableCell>證據</TableCell>
@@ -332,7 +330,7 @@ export default function ProjectDrawerContent({
                           {criteria[index]}
                         </Typography>
                       </TableCell>
-                      <TableCell>{gate.weight}%</TableCell>
+                      <TableCell align="center">{gate.weight}%</TableCell>
                       <TableCell>{formatDate(gate.baseline)}</TableCell>
                       <TableCell>
                         <Typography variant="body2">
@@ -382,11 +380,7 @@ export default function ProjectDrawerContent({
                     {item.issue}
                   </Typography>
                 </Box>
-                <TextButton
-                  onClick={() => onSelect(item)}
-                >
-                  查看 →
-                </TextButton>
+                <TextButton onClick={() => onSelect(item)}>查看 →</TextButton>
               </Stack>
             ))
           ) : (
