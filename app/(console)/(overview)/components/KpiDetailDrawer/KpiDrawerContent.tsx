@@ -200,14 +200,12 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
             </TableBody>
           </Table>
         </TableContainer>
-        <InfoNote>
-          <Typography
-            id="maturity-table-note"
-            variant="body2"
-          >
-            歷史與目標供趨勢比較。
-          </Typography>
-        </InfoNote>
+        <Typography
+          color="text.secondary"
+          variant="caption"
+        >
+          歷史與目標供趨勢比較。
+        </Typography>
       </Paper>
       <Paper
         className={styles.tablePanel}
@@ -340,14 +338,12 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
             </TableBody>
           </Table>
         </TableContainer>
-        <InfoNote>
-          <Typography
-            id="benefits-table-note"
-            variant="body2"
-          >
-            計算口徑：相同業務量 × 單次作業時間減少 − 新增人工覆核時間；再投入須有具名工作與 BU 主管確認。
-          </Typography>
-        </InfoNote>
+        <Typography
+          color="text.secondary"
+          variant="caption"
+        >
+          計算口徑：相同業務量 × 單次作業時間減少 − 新增人工覆核時間；再投入須有具名工作與 BU 主管確認。
+        </Typography>
       </Paper>
       <InfoNote>
         <Typography variant="body2">
