@@ -45,8 +45,35 @@
   margin-top: 4px;
 }
 
+.summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.summaryItem {
+  min-width: 0;
+  padding: 16px;
+}
+
+.toolList {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.chartLabels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px;
+}
+
 @media (max-width: 599.95px) {
   .grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .summary {
+    grid-template-columns: 1fr;
   }
 }

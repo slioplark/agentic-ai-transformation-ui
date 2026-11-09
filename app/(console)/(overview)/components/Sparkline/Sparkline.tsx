@@ -23,22 +23,30 @@ export default function Sparkline({ values }: SparklineProps) {
   return (
     <Box
       sx={{ color: "secondary.main" }}
-      role="img"
-      viewBox={`0 0 ${width} ${height}`}
-      className={styles.chart}
-      component="svg"
-      preserveAspectRatio="none"
+      className={styles.wrapper}
     >
-      <path
-        d={path}
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        vectorEffect="non-scaling-stroke"
+      <Box
+        role="img"
+        viewBox={`0 0 ${width} ${height}`}
+        className={styles.chart}
+        component="svg"
+        preserveAspectRatio="none"
+      >
+        <path
+          d={path}
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+        />
+      </Box>
+      <Box
+        sx={{ top: y(values[lastIndex]) }}
+        component="span"
+        className={styles.endpoint}
       />
-      <circle cx={x(lastIndex)} cy={y(values[lastIndex])} fill="currentColor" r="3" />
     </Box>
   )
 }

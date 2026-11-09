@@ -7,9 +7,12 @@ import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
-import ProjectDrawerContent from "../../../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import ProjectDrawerContent, {
+  DeploymentProgress,
+} from "../../../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
 import { projects, type Project } from "../../../(overview)/components/UpcomingMilestones/milestones"
 import styles from "./Infrastructure.module.css"
+import InfrastructureInsights from "./InfrastructureInsights"
 
 type InfrastructureCard = {
   id: string
@@ -62,6 +65,13 @@ const cards: readonly InfrastructureCard[] = [
 
 const findProject = (id: string) => projects.find((item) => item.id === id)
 const deploymentProgress = (project: Project) => project.deployment?.actual ?? (project.deployment?.done ?? 0) * 20
+
+const summaryItems = [
+  { title: "Milestone completion", value: "82%" },
+  { title: "Active developers", value: "350" },
+  { title: "Development efficiency", value: "+28%" },
+  { title: "Delivery health", value: "ON TRACK" },
+]
 
 type Detail = { type: "project"; project: Project }
 
@@ -147,8 +157,33 @@ export default function Infrastructure() {
       >
         {detail?.type === "project" ? (
           <ProjectDrawerContent
+            details={
+              <>
+                <DeploymentProgress project={detail.project} />
+                <InfrastructureInsights />
+              </>
+            }
             project={detail.project}
             onClose={close}
+            summary={
+              <Box className={styles.summary}>
+                {summaryItems.map((item) => (
+                  <Paper
+                    key={item.title}
+                    variant="outlined"
+                    className={styles.summaryItem}
+                  >
+                    <Typography
+                      color="text.secondary"
+                      variant="caption"
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography variant="h6">{item.value}</Typography>
+                  </Paper>
+                ))}
+              </Box>
+            }
             onSelect={selectProject}
           />
         ) : null}

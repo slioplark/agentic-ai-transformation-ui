@@ -8,6 +8,7 @@ import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
+import { alpha } from "@mui/material/styles"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableCell from "@mui/material/TableCell"
@@ -18,8 +19,8 @@ import Typography from "@mui/material/Typography"
 import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView"
 import { TreeItem } from "@mui/x-tree-view/TreeItem"
 import { useState } from "react"
-import ProjectDrawerContent from "../../../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
 import { projects, projectStatus, type Project } from "../../../(overview)/components/UpcomingMilestones/milestones"
+import ProjectDrawerContent from "../../../(overview)/components/UpcomingMilestones/ProjectDrawerContent"
 import { hubs, insights, type Hub, type Insight } from "../../house.mock"
 import taxonomy from "../../insight-taxonomy.mock.json"
 import DomainHubs, { assets, coverage } from "../DomainHubs/DomainHubs"
@@ -42,9 +43,21 @@ function ForestViewTree({
   return (
     <SimpleTreeView
       sx={{
-        "& .MuiTreeItem-content": { borderRadius: 1 },
-        "& .MuiTreeItem-content:hover": { bgcolor: "action.hover" },
-        "& .MuiTreeItem-groupTransition": { borderColor: "divider", borderLeft: 1, ml: 2, pl: 1.5 },
+        margin: "0 -8px",
+        "& .MuiTreeItem-content[data-focused], & .MuiTreeItem-content[data-selected]": {
+          bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.12),
+        },
+        "& .MuiTreeItem-content[data-selected][data-focused]": {
+          bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.16),
+        },
+        "@media (hover: hover)": {
+          "& .MuiTreeItem-content:hover:not([data-selected]):not([data-focused])": {
+            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.08),
+          },
+          "& .MuiTreeItem-content[data-selected]:hover": {
+            bgcolor: (theme) => alpha(theme.palette.secondary.main, 0.16),
+          },
+        },
         "& .MuiTreeItem-label": { py: 0.5 },
       }}
     >

@@ -1,5 +1,19 @@
+.wrapper {
+  position: relative;
+}
+
 .chart {
   display: block;
   height: 32px;
   width: 100%;
+}
+
+.endpoint {
+  position: absolute;
+  right: 2%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  transform: translate(50%, -50%);
 }
