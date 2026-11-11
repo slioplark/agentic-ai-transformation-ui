@@ -59,7 +59,6 @@ export default function MilestoneFilterBar({
     <Stack
       useFlexGap
       gap={1.5}
-      className={styles.root}
       direction="row"
       alignItems="center"
       justifyContent="space-between"
@@ -76,7 +75,6 @@ export default function MilestoneFilterBar({
           label="搜尋專案或負責人"
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
-          className={styles.search}
         />
         <FormControl
           size="small"

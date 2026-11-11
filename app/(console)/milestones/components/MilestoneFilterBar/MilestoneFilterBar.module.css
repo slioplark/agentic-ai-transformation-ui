@@ -1,15 +1,10 @@
-.root {
-  min-width: 0;
-}
-
-.controls {
-  min-width: 0;
-}
-
-.search {
-  min-width: min(100%, 248px);
-}
-
 .control {
-  min-width: 164px;
+  min-width: fit-content;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    display: flex;
+    flex-direction: column;
+  }
 }
