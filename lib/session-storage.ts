@@ -25,11 +25,7 @@ function isStoredSessionPayload(value: unknown): value is StoredSessionPayload {
   if (typeof value !== "object" || value === null) return false
 
   const session = value as Partial<StoredSessionPayload>
-  return (
-    isUser(session.user) &&
-    typeof session.expiresAt === "number" &&
-    Number.isFinite(session.expiresAt)
-  )
+  return isUser(session.user) && typeof session.expiresAt === "number" && Number.isFinite(session.expiresAt)
 }
 
 function getStoredSession(): StoredSessionPayload | null {
@@ -40,10 +36,7 @@ function getStoredSession(): StoredSessionPayload | null {
 
   try {
     const session: unknown = JSON.parse(storedSession)
-    if (
-      !isStoredSessionPayload(session) ||
-      session.expiresAt <= Date.now()
-    ) {
+    if (!isStoredSessionPayload(session) || session.expiresAt <= Date.now()) {
       clearSessionUser()
       return null
     }
