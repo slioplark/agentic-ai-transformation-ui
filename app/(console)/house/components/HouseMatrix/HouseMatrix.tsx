@@ -2,8 +2,8 @@
 
 import { projects, type Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
 import ProjectDrawerContent from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
-import DomainHubs from "@(control)/house/components/DomainHubs/DomainHubs"
-import InsightSolutions, { type InsightRanks } from "@(control)/house/components/InsightSolutions/InsightSolutions"
+import HouseDomainHubs from "@(control)/house/components/HouseDomainHubs/HouseDomainHubs"
+import HouseInsight, { type InsightRanks } from "@(control)/house/components/HouseInsight/HouseInsight"
 import forestViewBlueprint from "@(control)/house/foreset-view.mock.json"
 import { domainHubs, insights, type DomainHub, type Insight } from "@(control)/house/house.mock"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
@@ -47,13 +47,13 @@ export default function HouseMatrix() {
 
   return (
     <>
-      <InsightSolutions
+      <HouseInsight
         insights={insights}
         onSelect={selectInsight}
         rankStatus={isLoading ? "loading" : error ? "unavailable" : undefined}
         ranksByInsight={ranksByInsight}
       />
-      <DomainHubs
+      <HouseDomainHubs
         domainHubs={domainHubs}
         onSelect={selectInsight}
         onProject={(id) => {

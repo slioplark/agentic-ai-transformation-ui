@@ -4,7 +4,7 @@ import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import pageStyles from "../../page.module.css"
-import styles from "./InsightSolutions.module.css"
+import styles from "./HouseInsight.module.css"
 
 const rankLabels = ["Connected", "Optimized", "Transparent", "Proactive", "Agile"]
 const rankColors = ["#c4dbea", "#8fb9d8", "#4f8fbf", "#2464a0", "#132c47"]
@@ -110,7 +110,7 @@ function InsightCard({
   )
 }
 
-export default function InsightSolutions({
+export default function HouseInsight({
   insights,
   onSelect,
   rankStatus,
@@ -124,39 +124,34 @@ export default function InsightSolutions({
   const taskRows = Math.max(1, ...insights.map((insight) => insight.tasks.length))
 
   return (
-    <Box
-      component="section"
-      sx={{ minWidth: 0 }}
-    >
-      <Box className={pageStyles.section}>
-        <Box
-          className={pageStyles.heading}
-          sx={{ bgcolor: "info.main", color: "common.white" }}
-        >
-          <Typography variant="h6">Insight Solutions with Rx Gating</Typography>
-          <Typography variant="caption">
-            {rankLabels.map((label, index) => `R${index + 1} ${label}`).join(" · ")} · R4.x
-          </Typography>
+    <Box className={pageStyles.section}>
+      <Box
+        className={pageStyles.heading}
+        sx={{ bgcolor: "info.main", color: "common.white" }}
+      >
+        <Typography variant="h6">Insight Solutions with Rx Gating</Typography>
+        <Typography variant="caption">
+          {rankLabels.map((label, index) => `R${index + 1} ${label}`).join(" · ")} · R4.x
+        </Typography>
+      </Box>
+      <Box
+        className={styles.grid}
+        sx={{ "--task-rows": taskRows }}
+      >
+        <Box className={styles.label}>
+          <Typography variant="h6">Insight</Typography>
+          <Typography variant="caption">Forest View R1→R5 能力數</Typography>
+          <Typography variant="caption">Top tasks 是否滿足</Typography>
         </Box>
-        <Box
-          className={styles.grid}
-          sx={{ "--task-rows": taskRows }}
-        >
-          <Box className={styles.label}>
-            <Typography variant="h6">Insight</Typography>
-            <Typography variant="caption">Forest View R1→R5 能力數</Typography>
-            <Typography variant="caption">Top tasks 是否滿足</Typography>
-          </Box>
-          {insights.map((insight) => (
-            <InsightCard
-              key={insight.id}
-              ranks={ranksByInsight.get(insight.id)}
-              insight={insight}
-              onSelect={onSelect}
-              rankStatus={rankStatus}
-            />
-          ))}
-        </Box>
+        {insights.map((insight) => (
+          <InsightCard
+            key={insight.id}
+            ranks={ranksByInsight.get(insight.id)}
+            insight={insight}
+            onSelect={onSelect}
+            rankStatus={rankStatus}
+          />
+        ))}
       </Box>
     </Box>
   )

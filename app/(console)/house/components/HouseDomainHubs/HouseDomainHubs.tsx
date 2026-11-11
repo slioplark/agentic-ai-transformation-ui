@@ -6,7 +6,7 @@ import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import pageStyles from "../../page.module.css"
-import styles from "./DomainHubs.module.css"
+import styles from "./HouseDomainHubs.module.css"
 
 export const assets: { key: DomainHubAsset; name: string; projectId: string; registry?: string }[] = [
   { key: "data", name: "Domain Data Lakes", projectId: "lake", registry: "Data Directory" },
@@ -112,7 +112,7 @@ function AssetContent({ hub, asset }: { hub: DomainHub; asset: DomainHubAsset })
   )
 }
 
-export default function DomainHubs({
+export default function HouseDomainHubs({
   domainHubs,
   onSelect,
   onProject,
