@@ -2,6 +2,7 @@ import { projects, projectStatus, type Project } from "@(control)/(overview)/com
 import { assets, coverage } from "@(control)/house/components/HouseDomainHubs/HouseDomainHubs"
 import foresetView from "@(control)/house/foreset-view.mock.json"
 import { taskLevelDescriptions, type DomainHub, type Insight } from "@(control)/house/house.mock"
+import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
 import RankDistributionBar from "@app/components/RankDistributionBar/RankDistributionBar"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -197,6 +198,48 @@ export default function InsightDrawerContent({ insight, domainHub, onClose, onPr
               </Stack>
             </Stack>
           ) : null}
+        </Stack>
+      </Paper>
+      <Paper
+        component="section"
+        variant="outlined"
+        sx={{ p: 2, minWidth: 0 }}
+      >
+        <Stack gap={2}>
+          <Typography variant="h5">專案與 D-gate</Typography>
+          {project ? (
+            <TableContainer>
+              <Table
+                size="small"
+                sx={{ minWidth: 1320 }}
+              >
+                <TableHead>
+                  <TableRow>
+                    <TableCell>區塊 / 執行專案</TableCell>
+                    <TableCell>狀態</TableCell>
+                    <TableCell>D-gate 實際 / 計畫</TableCell>
+                    <TableCell>專案 KPI</TableCell>
+                    <TableCell>單一執行 owner</TableCell>
+                    <TableCell>下一個 D-gate · 原訂 → 預測</TableCell>
+                    <TableCell>最近更新</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <ProjectMilestoneRow
+                    project={project}
+                    onSelect={onProject}
+                  />
+                </TableBody>
+              </Table>
+            </TableContainer>
+          ) : (
+            <Typography
+              color="text.secondary"
+              variant="body2"
+            >
+              沒有對應的專案資料。
+            </Typography>
+          )}
         </Stack>
       </Paper>
     </>
