@@ -1,11 +1,7 @@
-.houseSection {
-  container-type: inline-size;
-}
-
 .section {
   display: grid;
   gap: 4px;
-  min-width: 790px;
+  cursor: pointer;
 }
 
 .heading {

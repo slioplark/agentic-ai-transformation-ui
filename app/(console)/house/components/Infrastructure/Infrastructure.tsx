@@ -8,6 +8,7 @@ import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDr
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
+import Collapse from "@mui/material/Collapse"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
@@ -77,6 +78,7 @@ const summaryItems = [
 type Detail = { type: "project"; project: Project }
 
 export default function Infrastructure() {
+  const [expanded, setExpanded] = useState(true)
   const [detail, setDetail] = useState<Detail | null>(null)
   const [open, setOpen] = useState(false)
   const selectProject = (project: Project) => {
@@ -93,55 +95,61 @@ export default function Infrastructure() {
       >
         <Box
           className={pageStyles.heading}
+          onClick={() => setExpanded((current) => !current)}
           sx={{ bgcolor: "primary.main", color: "common.white" }}
         >
           <Typography variant="h6">AI Infrastructure</Typography>
         </Box>
-        <Box className={styles.cards}>
-          {cards.map((card) => {
-            const project = findProject(card.id)
-            const progress = project ? deploymentProgress(project) : 0
-            return (
-              <HouseDrawerCard
-                key={card.title}
-                onClick={() => {
-                  if (project) {
-                    selectProject(project)
-                  }
-                }}
-                className={styles.card}
-              >
-                <Box className={styles.cardText}>
-                  <Typography
-                    component="span"
-                    variant="subtitle2"
-                  >
-                    {card.title}
-                  </Typography>
+        <Collapse
+          in={expanded}
+          timeout="auto"
+        >
+          <Box className={styles.cards}>
+            {cards.map((card) => {
+              const project = findProject(card.id)
+              const progress = project ? deploymentProgress(project) : 0
+              return (
+                <HouseDrawerCard
+                  key={card.title}
+                  onClick={() => {
+                    if (project) {
+                      selectProject(project)
+                    }
+                  }}
+                  className={styles.card}
+                >
+                  <Box className={styles.cardText}>
+                    <Typography
+                      component="span"
+                      variant="subtitle2"
+                    >
+                      {card.title}
+                    </Typography>
+                    <Typography
+                      component="span"
+                      variant="caption"
+                      color="text.secondary"
+                    >
+                      {card.description}
+                    </Typography>
+                  </Box>
+                  <ThresholdProgress
+                    color="secondary"
+                    value={progress}
+                    className={styles.progress}
+                  />
                   <Typography
                     component="span"
                     variant="caption"
                     color="text.secondary"
                   >
-                    {card.description}
+                    部署進度 {progress}%
                   </Typography>
-                </Box>
-                <ThresholdProgress
-                  color="secondary"
-                  value={progress}
-                  className={styles.progress}
-                />
-                <Typography
-                  component="span"
-                  variant="caption"
-                  color="text.secondary"
-                >
-                  部署進度 {progress}%
-                </Typography>
-              </HouseDrawerCard>
-            )
-          })}
-        </Box>
+                </HouseDrawerCard>
+              )
+            })}
+          </Box>
+        </Collapse>
       </Box>
       <DetailDrawer
         open={open}

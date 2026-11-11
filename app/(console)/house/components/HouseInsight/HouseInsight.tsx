@@ -2,7 +2,9 @@ import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDr
 import type { Insight } from "@(control)/house/house.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
+import Collapse from "@mui/material/Collapse"
 import Typography from "@mui/material/Typography"
+import { useState } from "react"
 import pageStyles from "../../page.module.css"
 import styles from "./HouseInsight.module.css"
 
@@ -121,12 +123,14 @@ export default function HouseInsight({
   rankStatus: "loading" | "unavailable" | undefined
   ranksByInsight: ReadonlyMap<string, InsightRanks>
 }) {
+  const [expanded, setExpanded] = useState(true)
   const taskRows = Math.max(1, ...insights.map((insight) => insight.tasks.length))
 
   return (
     <Box className={pageStyles.section}>
       <Box
         className={pageStyles.heading}
+        onClick={() => setExpanded((current) => !current)}
         sx={{ bgcolor: "info.main", color: "common.white" }}
       >
         <Typography variant="h6">Insight Solutions with Rx Gating</Typography>
@@ -134,25 +138,30 @@ export default function HouseInsight({
           {rankLabels.map((label, index) => `R${index + 1} ${label}`).join(" · ")} · R4.x
         </Typography>
       </Box>
-      <Box
-        className={styles.grid}
-        sx={{ "--task-rows": taskRows }}
+      <Collapse
+        in={expanded}
+        timeout="auto"
       >
-        <Box className={styles.label}>
-          <Typography variant="h6">Insight</Typography>
-          <Typography variant="caption">Forest View R1→R5 能力數</Typography>
-          <Typography variant="caption">Top tasks 是否滿足</Typography>
+        <Box
+          className={styles.grid}
+          sx={{ "--task-rows": taskRows }}
+        >
+          <Box className={styles.label}>
+            <Typography variant="h6">Insight</Typography>
+            <Typography variant="caption">Forest View R1→R5 能力數</Typography>
+            <Typography variant="caption">Top tasks 是否滿足</Typography>
+          </Box>
+          {insights.map((insight) => (
+            <InsightCard
+              key={insight.id}
+              ranks={ranksByInsight.get(insight.id)}
+              insight={insight}
+              onSelect={onSelect}
+              rankStatus={rankStatus}
+            />
+          ))}
         </Box>
-        {insights.map((insight) => (
-          <InsightCard
-            key={insight.id}
-            ranks={ranksByInsight.get(insight.id)}
-            insight={insight}
-            onSelect={onSelect}
-            rankStatus={rankStatus}
-          />
-        ))}
-      </Box>
+      </Collapse>
     </Box>
   )
 }

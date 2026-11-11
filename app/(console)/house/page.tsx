@@ -14,10 +14,7 @@ export default function HousePage() {
       useFlexGap
     >
       <PageHeader>房子進度圖</PageHeader>
-      <Box
-        component="section"
-        className={styles.houseSection}
-      >
+      <Box component="section">
         <Box
           className={styles.roof}
           sx={{
