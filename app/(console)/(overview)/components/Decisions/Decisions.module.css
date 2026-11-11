@@ -33,13 +33,13 @@
   padding: 16px;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 425px) {
   .details {
     grid-template-columns: 1fr;
   }

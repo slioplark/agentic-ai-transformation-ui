@@ -54,7 +54,6 @@ export default function HomePage() {
   return (
     <>
       <Stack
-        className={styles.dashboard}
         spacing={2}
         useFlexGap
       >

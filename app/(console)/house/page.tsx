@@ -31,7 +31,7 @@ export default function HousePage() {
         </Box>
         <Box
           className={styles.house}
-          sx={{ gridTemplateColumns: { xs: "minmax(0, 1fr)", lg: "128px minmax(0, 1fr) 128px" } }}
+          sx={{ gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "128px minmax(0, 1fr) 128px" } }}
         >
           <HousePillar kind="governance" />
           <Stack
@@ -49,9 +49,9 @@ export default function HousePage() {
                 className={styles.matrix}
               >
                 <HouseMatrix />
+                <Infrastructure />
               </Stack>
             </Box>
-            <Infrastructure />
           </Stack>
           <HousePillar kind="citizen" />
         </Box>

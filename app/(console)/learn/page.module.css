@@ -117,7 +117,7 @@
   opacity: 0.64;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 768px) {
   .panel {
     padding: 16px;
   }
@@ -127,7 +127,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 425px) {
   .funnelRow {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 4px 16px;

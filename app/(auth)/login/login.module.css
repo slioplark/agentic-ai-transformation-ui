@@ -32,14 +32,14 @@
 .brand > span:last-child {
   display: grid;
 }
-.brand strong,
-.mobileBrand strong {
-  font-size: 14px;
-  font-weight: 700;
-}
 .brand small {
   color: #b8c5dc;
   letter-spacing: 0.12em;
+}
+.brand strong,
+.brandWrap strong {
+  font-size: 14px;
+  font-weight: 700;
 }
 .brandMark {
   display: grid;
@@ -153,7 +153,7 @@
   min-height: 100vh;
   align-items: center;
   justify-items: center;
-  padding: 40px;
+  padding: 24px;
 }
 .formWrap {
   display: grid;
@@ -175,7 +175,7 @@
   font-size: 14px;
 }
 .formCard {
-  padding: 28px;
+  padding: 24px;
 }
 .helpText {
   text-align: center;
@@ -189,37 +189,21 @@
 .backLink:hover {
   text-decoration: underline;
 }
-.mobileBrand {
+.brandWrap {
   display: none;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .loginPage {
     grid-template-columns: 1fr;
   }
-  .brandPanel {
-    display: none;
-  }
-  .formPanel {
-    min-height: 100vh;
-    padding: 32px 22px;
-  }
-  .mobileBrand {
+  .brandWrap {
     display: flex;
     align-items: center;
     gap: 8px;
     color: #25344f;
   }
-}
-
-@media (max-width: 420px) {
-  .formPanel {
-    padding: 24px 16px;
-  }
-  .formCard {
-    padding: 20px;
-  }
-  .brandFooter {
-    font-size: 8px;
+  .brandPanel {
+    display: none;
   }
 }

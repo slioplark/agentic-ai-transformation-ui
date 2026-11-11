@@ -49,7 +49,7 @@ export default function LoginPage() {
       </section>
       <section className={styles.formPanel}>
         <div className={styles.formWrap}>
-          <div className={styles.mobileBrand}>
+          <div className={styles.brandWrap}>
             <span
               className={styles.brandMark}
               aria-hidden="true"

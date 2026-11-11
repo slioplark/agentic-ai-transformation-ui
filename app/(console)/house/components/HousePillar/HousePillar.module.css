@@ -43,7 +43,7 @@
   text-align: center;
 }
 
-@media (max-width: 1199.95px) {
+@media (max-width: 768px) {
   .list {
     flex-direction: row;
     flex-wrap: wrap;
