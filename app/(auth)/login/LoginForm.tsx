@@ -38,14 +38,13 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stack spacing={2.5}>
+      <Stack gap={2}>
         <TextField
           required
           name="username"
           type="text"
           label="帳號"
           value={username}
-          disabled={false}
           autoComplete="username"
           onValueChange={setUsername}
         />
@@ -55,7 +54,6 @@ export default function LoginForm() {
           type={showPassword ? "text" : "password"}
           label="密碼"
           value={password}
-          disabled={false}
           slotProps={{
             input: {
               endAdornment: (
@@ -85,7 +83,7 @@ export default function LoginForm() {
           type="submit"
           variant="contained"
           disabled={isMutating}
-          fullWidth
+          sx={{ height: "56px", mt: 2 }}
         >
           {isMutating ? "登入中…" : "登入"}
         </Button>

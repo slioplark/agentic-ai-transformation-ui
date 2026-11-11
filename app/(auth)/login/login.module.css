@@ -157,8 +157,8 @@
 }
 .formWrap {
   display: grid;
-  width: min(100%, 420px);
-  gap: 20px;
+  width: min(100%, 600px);
+  gap: 16px;
 }
 .formHeading {
   display: grid;

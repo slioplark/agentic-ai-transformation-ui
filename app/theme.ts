@@ -44,6 +44,17 @@ const theme = createTheme({
       defaultProps: {
         slotProps: { inputLabel: { shrink: true } },
       },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          "& .MuiInputBase-root": {
+            backgroundColor: theme.palette.background.paper,
+          },
+          "& .MuiInputBase-root.Mui-disabled .MuiInputBase-input": {
+            WebkitTextFillColor: `${theme.palette.text.primary} !important`,
+            cursor: "not-allowed",
+          },
+        }),
+      },
     },
     MuiTreeItem: {
       styleOverrides: {
