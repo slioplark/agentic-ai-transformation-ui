@@ -1,10 +1,17 @@
+export type TaskLevel = "高" | "中" | "低"
+
+export const taskLevelDescriptions: Record<TaskLevel, string> = {
+  高: "現有方案滿足主要需求",
+  中: "部分滿足，仍需人工補位",
+  低: "尚無可用方案，需排入 Rx 路線圖",
+}
+
 export type Insight = {
   id: string
   name: string
   chineseName: string
   benefit: string
-  ranks: [number, number, number, number, number]
-  tasks: { name: string; level: "高" | "中" | "低" }[]
+  tasks: { name: string; level: TaskLevel }[]
 }
 
 export const insights: Insight[] = [
@@ -13,7 +20,6 @@ export const insights: Insight[] = [
     name: "Operations",
     chineseName: "製造運營",
     benefit: "提升製造效率、品質及營運韌性",
-    ranks: [11, 9, 6, 6, 0],
     tasks: [
       { name: "製程異常判讀", level: "中" },
       { name: "機台派工建議", level: "低" },
@@ -25,7 +31,6 @@ export const insights: Insight[] = [
     name: "Customer",
     chineseName: "業務行銷",
     benefit: "深化客戶洞察、提升客戶價值",
-    ranks: [8, 9, 4, 3, 0],
     tasks: [
       { name: "客戶詢問回覆", level: "高" },
       { name: "交期承諾回覆", level: "中" },
@@ -37,7 +42,6 @@ export const insights: Insight[] = [
     name: "TD",
     chineseName: "技術研發",
     benefit: "加速技術研發與知識累積",
-    ranks: [10, 8, 5, 4, 0],
     tasks: [
       { name: "研發知識檢索", level: "高" },
       { name: "實驗設計建議", level: "中" },
@@ -49,7 +53,6 @@ export const insights: Insight[] = [
     name: "Planning",
     chineseName: "策略規劃",
     benefit: "提升預測、規劃及決策品質",
-    ranks: [9, 10, 4, 2, 0],
     tasks: [
       { name: "需求預測", level: "低" },
       { name: "產能規劃情境", level: "中" },
@@ -61,7 +64,6 @@ export const insights: Insight[] = [
     name: "Biz Support",
     chineseName: "業務支援",
     benefit: "提升企業支援效率與敏捷度",
-    ranks: [6, 8, 3, 2, 0],
     tasks: [
       { name: "內部服務請求", level: "高" },
       { name: "採購審核", level: "中" },
@@ -70,8 +72,7 @@ export const insights: Insight[] = [
   },
 ]
 
-export type HubAsset = "data" | "knowledge" | "agents" | "process" | "rules"
-export type Hub = {
+export type DomainHub = {
   id: string
   name: string
   data: [number, number, number]
@@ -83,8 +84,9 @@ export type Hub = {
   need: { knowledge: [number, number]; agents: number; process: number; rules: [number, number] }
   migrate: number
 }
+export type DomainHubAsset = "data" | "knowledge" | "agents" | "process" | "rules"
 
-export const hubs: Hub[] = [
+export const domainHubs: DomainHub[] = [
   {
     id: "ops",
     name: "Operations",

@@ -32,12 +32,7 @@ export default function KpiCard({ kpi, onClick }: KpiCardProps) {
       >
         {kpi.label}
       </Typography>
-      <Typography
-        component="p"
-        variant="h4"
-      >
-        {kpi.value}
-      </Typography>
+      <Typography variant="h4">{kpi.value}</Typography>
       <Box className={styles.changeSummary}>
         <Typography
           color={changeColor[kpi.changeTone]}

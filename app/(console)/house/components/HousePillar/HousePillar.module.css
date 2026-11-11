@@ -22,23 +22,10 @@
 
 .card {
   display: flex;
-  min-width: 0;
   flex-direction: column;
   align-items: stretch;
   gap: 4px;
-  padding: 10px;
-  background: #ffffffc9;
-  text-align: left;
   overflow-wrap: anywhere;
-}
-
-.card:hover {
-  border-color: #62aaa8;
-}
-
-.card:focus-visible {
-  outline: 3px solid #087f80;
-  outline-offset: -3px;
 }
 
 .progressLabel {
@@ -53,9 +40,6 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
   text-align: center;
 }
 

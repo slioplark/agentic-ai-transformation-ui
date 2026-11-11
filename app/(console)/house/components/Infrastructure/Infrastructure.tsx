@@ -4,13 +4,14 @@ import ProjectDrawerContent, {
   DeploymentProgress,
 } from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
 import { projects, type Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
-import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
+import pageStyles from "../../page.module.css"
 import styles from "./Infrastructure.module.css"
 import InfrastructureInsights from "./InfrastructureInsights"
 
@@ -88,36 +89,27 @@ export default function Infrastructure() {
     <>
       <Box
         component="section"
-        className={styles.section}
+        className={pageStyles.section}
       >
         <Box
-          className={styles.heading}
+          className={pageStyles.heading}
           sx={{ bgcolor: "primary.main", color: "common.white" }}
         >
-          <Typography
-            component="h2"
-            variant="h6"
-            id="infrastructure-title"
-          >
-            AI Infrastructure
-          </Typography>
+          <Typography variant="h6">AI Infrastructure</Typography>
         </Box>
-        <Box className={styles.grid}>
+        <Box className={styles.cards}>
           {cards.map((card) => {
             const project = findProject(card.id)
             const progress = project ? deploymentProgress(project) : 0
             return (
-              <ButtonBase
-                component={Paper}
-                variant="outlined"
-                className={styles.card}
-                sx={{ border: 1, borderColor: "divider", borderRadius: 1 }}
+              <HouseDrawerCard
                 key={card.title}
                 onClick={() => {
                   if (project) {
                     selectProject(project)
                   }
                 }}
+                className={styles.card}
               >
                 <Box className={styles.cardText}>
                   <Typography
@@ -146,7 +138,7 @@ export default function Infrastructure() {
                 >
                   部署進度 {progress}%
                 </Typography>
-              </ButtonBase>
+              </HouseDrawerCard>
             )
           })}
         </Box>

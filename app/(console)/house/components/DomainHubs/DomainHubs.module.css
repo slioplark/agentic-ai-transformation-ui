@@ -1,18 +1,3 @@
-.grid {
-  display: grid;
-  gap: 4px;
-  min-width: 790px;
-}
-
-.heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 8px 12px;
-  border-radius: 8px 8px 0 0;
-}
-
 .row {
   display: grid;
   grid-template-columns: 150px repeat(5, minmax(122px, 1fr));
@@ -25,11 +10,11 @@
 }
 
 .readinessRow .label,
-.readinessRow .cell {
+.readinessRow .readinessCell {
   grid-row: span 3;
 }
 
-.readinessRow .cell {
+.readinessRow .readinessCell {
   display: grid;
   grid-template-rows: subgrid;
   align-items: start;
@@ -41,6 +26,10 @@
   min-width: 0;
   flex-direction: column;
   gap: 4px;
+}
+
+.label,
+.readinessCell {
   padding: 8px;
 }
 
@@ -53,16 +42,10 @@
 .cell {
   font-size: 0.75rem;
   align-items: stretch;
-  text-align: left;
 }
 
-.cell[role="button"]:hover {
-  border-color: #62aaa8;
-}
-
-.cell[role="button"]:focus-visible {
-  outline: 2px solid #2464a0;
-  outline-offset: 2px;
+.readinessCell {
+  background: #ffffff;
 }
 
 .line {
@@ -98,17 +81,17 @@
 }
 
 .coverage.high,
-.cell.high {
+.readinessCell.high {
   background: #e6f4ee;
   color: #14755c;
 }
 .coverage.medium,
-.cell.medium {
+.readinessCell.medium {
   background: #fff3db;
   color: #976019;
 }
 .coverage.low,
-.cell.low {
+.readinessCell.low {
   background: #fcebec;
   color: #b3303b;
 }

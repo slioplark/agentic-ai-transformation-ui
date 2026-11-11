@@ -7,6 +7,7 @@ import {
   type OverviewKpi,
 } from "@(control)/(overview)/overview.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
+import RankDistributionBar, { rankColorForLabel } from "@app/components/RankDistributionBar/RankDistributionBar"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
@@ -19,20 +20,19 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import styles from "./KpiDetailDrawer.module.css"
+import styles from "./KpiDrawerContent.module.css"
 
 type KpiDrawerContentProps = {
   kpi: OverviewKpi
   onClose: () => void
-  titleId: string
 }
 
 const maturityLevels = [
-  { key: "r1", label: "R1 Connected", className: styles.r1 },
-  { key: "r2", label: "R2 Optimized", className: styles.r2 },
-  { key: "r3", label: "R3 Transparent", className: styles.r3 },
-  { key: "r4", label: "R4 Proactive", className: styles.r4 },
-  { key: "r5", label: "R5 Agile", className: styles.r5 },
+  { key: "r1", label: "R1 Connected" },
+  { key: "r2", label: "R2 Optimized" },
+  { key: "r3", label: "R3 Transparent" },
+  { key: "r4", label: "R4 Proactive" },
+  { key: "r5", label: "R5 Agile" },
 ] as const
 
 type MaturityCounts = Pick<MaturityDistribution, "r1" | "r2" | "r3" | "r4" | "r5">
@@ -41,21 +41,15 @@ function maturityTotal(row: MaturityCounts) {
   return row.r1 + row.r2 + row.r3 + row.r4 + row.r5
 }
 
+function maturityRanks(row: MaturityCounts) {
+  return Object.fromEntries(maturityLevels.map(({ key }) => [key, row[key]]))
+}
+
 function maturityShare(row: MaturityDistribution) {
   return ((row.r3 + row.r4 + row.r5) / maturityTotal(row)) * 100
 }
 
-function DrawerHeader({
-  eyebrow,
-  onClose,
-  title,
-  titleId,
-}: {
-  eyebrow: string
-  onClose: () => void
-  title: string
-  titleId: string
-}) {
+function DrawerHeader({ eyebrow, onClose, title }: { eyebrow: string; onClose: () => void; title: string }) {
   return (
     <Stack
       alignItems="flex-start"
@@ -75,12 +69,7 @@ function DrawerHeader({
         >
           {eyebrow}
         </Typography>
-        <Typography
-          id={titleId}
-          variant="h4"
-        >
-          {title}
-        </Typography>
+        <Typography variant="h4">{title}</Typography>
       </Stack>
       <IconButton onClick={onClose}>
         <CloseIcon />
@@ -89,14 +78,13 @@ function DrawerHeader({
   )
 }
 
-function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titleId: string }) {
+function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
   return (
     <>
       <DrawerHeader
         eyebrow="FOREST VIEW / R-LADDER"
         onClose={onClose}
         title="能力成熟度分布"
-        titleId={titleId}
       />
       <Paper
         component="section"
@@ -104,7 +92,7 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
         className={styles.panel}
       >
         <Stack
-          gap={0.5}
+          gap={1}
           useFlexGap
         >
           {maturityDistribution.map((row) => (
@@ -113,20 +101,7 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
               key={row.period}
             >
               <Typography variant="body2">{row.period}</Typography>
-              <Box className={styles.ladderBar}>
-                {maturityLevels.map(({ className, key }) => {
-                  const value = row[key]
-                  return value ? (
-                    <Box
-                      className={className}
-                      key={key}
-                      sx={{ flex: value }}
-                    >
-                      {value}
-                    </Box>
-                  ) : null
-                })}
-              </Box>
+              <RankDistributionBar ranks={maturityRanks(row)} />
               <Typography
                 align="right"
                 variant="body2"
@@ -141,12 +116,15 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
             gap={0.5}
             useFlexGap
           >
-            {maturityLevels.map(({ className, label }) => (
+            {maturityLevels.map(({ key, label }) => (
               <Box
                 className={styles.legendItem}
                 key={label}
               >
-                <Box className={`${styles.swatch} ${className}`} />
+                <Box
+                  sx={{ bgcolor: rankColorForLabel(key) }}
+                  className={styles.swatch}
+                />
                 <Typography variant="caption">{label}</Typography>
               </Box>
             ))}
@@ -164,13 +142,10 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
         variant="outlined"
       >
         <TableContainer>
-          <Table
-            aria-describedby="maturity-table-note"
-            size="small"
-          >
+          <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell>期間</TableCell>
+                <TableCell sx={{ whiteSpace: "nowrap" }}>期間</TableCell>
                 {maturityLevels.map(({ label }) => (
                   <TableCell
                     align="center"
@@ -185,7 +160,7 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
             <TableBody>
               {maturityDistribution.map((row) => (
                 <TableRow key={row.period}>
-                  <TableCell>{row.period}</TableCell>
+                  <TableCell sx={{ whiteSpace: "nowrap" }}>{row.period}</TableCell>
                   {maturityLevels.map(({ key }) => (
                     <TableCell
                       align="center"
@@ -251,14 +226,13 @@ function MaturityDrawerContent({ onClose, titleId }: { onClose: () => void; titl
   )
 }
 
-function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titleId: string }) {
+function BenefitsDrawerContent({ onClose }: { onClose: () => void }) {
   return (
     <>
       <DrawerHeader
         eyebrow="WORK SMARTER / DEMO"
         onClose={onClose}
         title="產能釋放與再投入"
-        titleId={titleId}
       />
       <Typography
         color="text.secondary"
@@ -276,7 +250,6 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
           className={styles.summarySection}
         >
           <Typography
-            id="benefit-verified-label"
             color="text.secondary"
             variant="h4"
           >
@@ -292,7 +265,6 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
           className={styles.summarySection}
         >
           <Typography
-            id="benefit-growth-label"
             color="text.secondary"
             variant="h4"
           >
@@ -312,10 +284,7 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
         variant="outlined"
       >
         <TableContainer>
-          <Table
-            aria-describedby="benefits-table-note"
-            size="small"
-          >
+          <Table size="small">
             <TableHead>
               <TableRow>
                 <TableCell>場景</TableCell>
@@ -354,21 +323,11 @@ function BenefitsDrawerContent({ onClose, titleId }: { onClose: () => void; titl
   )
 }
 
-export default function KpiDrawerContent({ kpi, onClose, titleId }: KpiDrawerContentProps) {
+export default function KpiDrawerContent({ kpi, onClose }: KpiDrawerContentProps) {
   return (
     <>
-      {kpi.drawer === "maturity" ? (
-        <MaturityDrawerContent
-          onClose={onClose}
-          titleId={titleId}
-        />
-      ) : null}
-      {kpi.drawer === "benefits" ? (
-        <BenefitsDrawerContent
-          onClose={onClose}
-          titleId={titleId}
-        />
-      ) : null}
+      {kpi.drawer === "maturity" ? <MaturityDrawerContent onClose={onClose} /> : null}
+      {kpi.drawer === "benefits" ? <BenefitsDrawerContent onClose={onClose} /> : null}
     </>
   )
 }

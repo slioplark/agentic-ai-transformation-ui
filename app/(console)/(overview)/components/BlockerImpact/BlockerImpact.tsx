@@ -40,13 +40,7 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
           gap={0.5}
           useFlexGap
         >
-          <Typography
-            component="h2"
-            id="blocker-impact-title"
-            variant="h4"
-          >
-            阻塞影響範圍 · 受阻項目影響範圍
-          </Typography>
+          <Typography variant="h4">阻塞影響範圍 · 受阻項目影響範圍</Typography>
           <TextButton
             component={Link}
             href="/hubs"
@@ -91,12 +85,7 @@ export default function BlockerImpact({ onSelect }: { onSelect: (project: Projec
                       gap={0.5}
                       useFlexGap
                     >
-                      <Typography
-                        component="h3"
-                        variant="h4"
-                      >
-                        {project.name}
-                      </Typography>
+                      <Typography variant="h4">{project.name}</Typography>
                       <StatusChip
                         status={status}
                         label={status === "error" ? "延誤 / 阻塞" : "有風險"}

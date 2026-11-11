@@ -35,7 +35,6 @@ export default function HomePage() {
   const [activeDetail, setActiveDetail] = useState<ActiveDetail | null>(null)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const router = useRouter()
-  const titleId = "overview-detail-title"
   const closeDrawer = () => setDrawerOpen(false)
 
   const handleKpiClick = (kpi: OverviewKpi) => {
@@ -90,14 +89,6 @@ export default function HomePage() {
           <KpiDrawerContent
             kpi={activeDetail.kpi}
             onClose={closeDrawer}
-            titleId={titleId}
-          />
-        ) : null}
-        {activeDetail?.type === "decision" ? (
-          <DecisionDrawerContent
-            decision={activeDetail.decision}
-            onClose={closeDrawer}
-            titleId={titleId}
           />
         ) : null}
         {activeDetail?.type === "project" ? (
@@ -105,6 +96,12 @@ export default function HomePage() {
             project={activeDetail.project}
             onClose={closeDrawer}
             onSelect={selectProject}
+          />
+        ) : null}
+        {activeDetail?.type === "decision" ? (
+          <DecisionDrawerContent
+            decision={activeDetail.decision}
+            onClose={closeDrawer}
           />
         ) : null}
       </DetailDrawer>

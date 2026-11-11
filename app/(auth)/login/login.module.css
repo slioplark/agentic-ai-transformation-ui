@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  padding: 36px clamp(28px, 5vw, 72px) 28px;
+  padding: 34px 72px;
   color: #fff;
   background-color: #1e3159;
   background-image:
@@ -31,7 +31,6 @@
 }
 .brand > span:last-child {
   display: grid;
-  gap: 4px;
 }
 .brand strong,
 .mobileBrand strong {
@@ -40,7 +39,6 @@
 }
 .brand small {
   color: #b8c5dc;
-  font-size: 9px;
   letter-spacing: 0.12em;
 }
 .brandMark {
@@ -50,7 +48,7 @@
   flex: none;
   place-items: center;
   border: 1px solid rgb(218 230 255 / 52%);
-  border-radius: 9px;
+  border-radius: 8px;
 }
 .brandMark i {
   width: 12px;
@@ -65,14 +63,28 @@
   display: grid;
   max-width: 480px;
   gap: 20px;
-  padding: 60px 0 78px;
+  padding: 60px 0 80px;
 }
-.brandMessage h1 {
+.brandMessage :global(.MuiTypography-h3) {
   margin: 0;
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.35;
+}
+.brandTitle {
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+}
+.brandTitle span {
+  min-width: 100%;
+  white-space: nowrap;
+}
+.brandTitle span:last-child {
+  text-align: justify;
+  text-align-last: justify;
+  text-justify: inter-character;
 }
 .brandMessage p {
   max-width: 350px;
@@ -141,18 +153,18 @@
   min-height: 100vh;
   align-items: center;
   justify-items: center;
-  padding: 42px;
+  padding: 40px;
 }
 .formWrap {
   display: grid;
   width: min(100%, 420px);
-  gap: 26px;
+  gap: 20px;
 }
 .formHeading {
   display: grid;
   gap: 4px;
 }
-.formHeading h2 {
+.formHeading :global(.MuiTypography-h4) {
   margin: 0;
   color: #25344f;
   font-weight: 700;
@@ -195,7 +207,7 @@
   .mobileBrand {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
     color: #25344f;
   }
 }

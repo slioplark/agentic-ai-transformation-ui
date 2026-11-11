@@ -6,5 +6,5 @@ type PageHeaderProps = {
 }
 
 export default function PageHeader({ children }: PageHeaderProps) {
-  return <Typography component="h1" variant="h1">{children}</Typography>
+  return <Typography variant="h1">{children}</Typography>
 }

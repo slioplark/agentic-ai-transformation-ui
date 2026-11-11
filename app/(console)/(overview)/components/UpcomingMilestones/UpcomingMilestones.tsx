@@ -31,13 +31,7 @@ export default function UpcomingMilestones({ onSelect }: { onSelect: (project: P
           gap={0.5}
           useFlexGap
         >
-          <Typography
-            component="h2"
-            id="upcoming-title"
-            variant="h4"
-          >
-            未來 14 天 · 需要守住的承諾
-          </Typography>
+          <Typography variant="h4">未來 14 天 · 需要守住的承諾</Typography>
           <TextButton
             component={Link}
             href="/milestones"

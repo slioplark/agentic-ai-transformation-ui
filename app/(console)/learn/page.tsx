@@ -239,12 +239,7 @@ export default function LearnPage() {
               justifyContent="space-between"
             >
               <Box>
-                <Typography
-                  variant="h4"
-                  component="h2"
-                >
-                  自助與公民開發漏斗
-                </Typography>
+                <Typography variant="h4">自助與公民開發漏斗</Typography>
                 <Typography
                   color="text.secondary"
                   variant="caption"
@@ -254,7 +249,10 @@ export default function LearnPage() {
               </Box>
               <TextButton onClick={() => setDetail(citizenProject)}>詳情 →</TextButton>
             </Stack>
-            <Stack divider={<Divider flexItem />}>
+            <Stack
+              gap={1}
+              divider={<Divider flexItem />}
+            >
               {funnel.map((stage, index) => {
                 const blockers = openIssues.filter((issue) => issue.stage === index)
                 const loss = index ? 1 - stage.current / funnel[index - 1].current : null
@@ -318,12 +316,7 @@ export default function LearnPage() {
             gap={1.5}
           >
             <Box>
-              <Typography
-                variant="h4"
-                component="h2"
-              >
-                回報問題與嚴重度
-              </Typography>
+              <Typography variant="h4">回報問題與嚴重度</Typography>
               <Typography
                 color="text.secondary"
                 variant="caption"
@@ -438,12 +431,7 @@ export default function LearnPage() {
             gap={1.5}
           >
             <Box>
-              <Typography
-                variant="h4"
-                component="h2"
-              >
-                種子教官 · 各 BU × 工具
-              </Typography>
+              <Typography variant="h4">種子教官 · 各 BU × 工具</Typography>
               <Typography
                 color="text.secondary"
                 variant="caption"
@@ -542,12 +530,7 @@ export default function LearnPage() {
             gap={1.5}
           >
             <Box>
-              <Typography
-                variant="h4"
-                component="h2"
-              >
-                即將開課
-              </Typography>
+              <Typography variant="h4">即將開課</Typography>
               <Typography
                 color="text.secondary"
                 variant="caption"
@@ -633,12 +616,7 @@ export default function LearnPage() {
               justifyContent="space-between"
             >
               <Box>
-                <Typography
-                  variant="h4"
-                  component="h2"
-                >
-                  AI Governance 與 ISO/IEC 42001 路徑
-                </Typography>
+                <Typography variant="h4">AI Governance 與 ISO/IEC 42001 路徑</Typography>
                 <Typography
                   color="text.secondary"
                   variant="caption"

@@ -17,12 +17,7 @@ export default function ReportingStatusGrid({ items }: ReportingStatusGridProps)
           key={item.label}
           variant="outlined"
         >
-          <Typography
-            component="p"
-            variant="h4"
-          >
-            {item.value}
-          </Typography>
+          <Typography variant="h4">{item.value}</Typography>
           <Typography
             color="text.secondary"
             variant="body2"

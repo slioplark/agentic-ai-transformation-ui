@@ -38,13 +38,7 @@ export default function TransformationSignalTable({ signals }: TransformationSig
           spacing={0.5}
           useFlexGap
         >
-          <Typography
-            component="h2"
-            id="transformation-signal-title"
-            variant="h4"
-          >
-            轉型真偽檢核 · Elephants in the room
-          </Typography>
+          <Typography variant="h4">轉型真偽檢核 · Elephants in the room</Typography>
           <Typography
             color="text.secondary"
             variant="caption"

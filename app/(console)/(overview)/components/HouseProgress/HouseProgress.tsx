@@ -61,13 +61,7 @@ export default function HouseProgress() {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography
-            id="house-progress-title"
-            variant="h4"
-            component="h2"
-          >
-            房子各層 · 計畫與實際
-          </Typography>
+          <Typography variant="h4">房子各層 · 計畫與實際</Typography>
           <TextButton
             href="/house"
             component={Link}
@@ -94,12 +88,7 @@ export default function HouseProgress() {
                   alignItems="center"
                   justifyContent="space-between"
                 >
-                  <Typography
-                    variant="h4"
-                    component="h3"
-                  >
-                    {area.label}
-                  </Typography>
+                  <Typography variant="h4">{area.label}</Typography>
                   <TextButton
                     sx={{ flexShrink: 0, whiteSpace: "nowrap" }}
                     href={`/milestones?area=${encodeURIComponent(area.name)}`}

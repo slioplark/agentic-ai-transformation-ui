@@ -1,13 +1,14 @@
 import { actualProgress, projects } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
-import type { Hub, HubAsset } from "@(control)/house/house.mock"
+import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
+import type { DomainHub, DomainHubAsset } from "@(control)/house/house.mock"
 import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
-import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
+import pageStyles from "../../page.module.css"
 import styles from "./DomainHubs.module.css"
 
-export const assets: { key: HubAsset; name: string; projectId: string; registry?: string }[] = [
+export const assets: { key: DomainHubAsset; name: string; projectId: string; registry?: string }[] = [
   { key: "data", name: "Domain Data Lakes", projectId: "lake", registry: "Data Directory" },
   { key: "knowledge", name: "AI Knowledge Repositories", projectId: "knowledge", registry: "Knowledge Registry" },
   { key: "agents", name: "Agents Repositories", projectId: "agents", registry: "Agent Registry" },
@@ -15,7 +16,7 @@ export const assets: { key: HubAsset; name: string; projectId: string; registry?
   { key: "rules", name: "Governance & Rx Rules", projectId: "rgate" },
 ]
 
-export function coverage(hub: Hub, asset: HubAsset): [number, number] {
+export function coverage(hub: DomainHub, asset: DomainHubAsset): [number, number] {
   switch (asset) {
     case "data":
       return [hub.data[0], hub.data.reduce((sum, value) => sum + value, 0)]
@@ -34,7 +35,7 @@ function tone(ratio: number) {
   return ratio >= 0.7 ? styles.high : ratio >= 0.4 ? styles.medium : styles.low
 }
 
-function AssetContent({ hub, asset }: { hub: Hub; asset: HubAsset }) {
+function AssetContent({ hub, asset }: { hub: DomainHub; asset: DomainHubAsset }) {
   if (asset === "data") {
     const total = hub.data.reduce((sum, value) => sum + value, 0)
     return (
@@ -112,30 +113,24 @@ function AssetContent({ hub, asset }: { hub: Hub; asset: HubAsset }) {
 }
 
 export default function DomainHubs({
-  hubs,
+  domainHubs,
   onSelect,
   onProject,
 }: {
-  hubs: Hub[]
+  domainHubs: DomainHub[]
   onSelect: (id: string) => void
   onProject: (id: string) => void
 }) {
   return (
     <Box
       component="section"
-      className={styles.grid}
+      className={pageStyles.section}
     >
       <Box
-        className={styles.heading}
+        className={pageStyles.heading}
         sx={{ bgcolor: "secondary.main", color: "common.white" }}
       >
-        <Typography
-          component="h2"
-          variant="h6"
-          id="hubs-title"
-        >
-          Domain Hubs
-        </Typography>
+        <Typography variant="h6">Domain Hubs</Typography>
         <Typography variant="caption">需求覆蓋＝已具備 / 該 BU 需要</Typography>
       </Box>
       {assets.map((asset) => (
@@ -144,12 +139,7 @@ export default function DomainHubs({
           key={asset.key}
         >
           <Box className={styles.label}>
-            <Typography
-              component="h3"
-              variant="subtitle2"
-            >
-              {asset.name}
-            </Typography>
+            <Typography variant="subtitle2">{asset.name}</Typography>
             <TextButton onClick={() => onProject(asset.projectId)}>
               平台進度 {actualProgress(projects.find((project) => project.id === asset.projectId)!)}% →
             </TextButton>
@@ -162,16 +152,13 @@ export default function DomainHubs({
               </Typography>
             ) : null}
           </Box>
-          {hubs.map((hub) => {
+          {domainHubs.map((hub) => {
             const [available, needed] = coverage(hub, asset.key)
             return (
-              <ButtonBase
-                component={Paper}
-                variant="outlined"
-                className={styles.cell}
-                sx={{ border: 1, borderColor: "divider", borderRadius: 1 }}
+              <HouseDrawerCard
                 key={hub.id}
                 onClick={() => onSelect(hub.id)}
+                className={styles.cell}
               >
                 <AssetContent
                   hub={hub}
@@ -180,22 +167,17 @@ export default function DomainHubs({
                 <span className={`${styles.coverage} ${tone(needed ? available / needed : 0)}`}>
                   需求覆蓋 {available}/{needed}
                 </span>
-              </ButtonBase>
+              </HouseDrawerCard>
             )
           })}
         </Box>
       ))}
       <Box className={`${styles.row} ${styles.readinessRow}`}>
         <Box className={styles.label}>
-          <Typography
-            component="h3"
-            variant="subtitle2"
-          >
-            Hub 就緒度
-          </Typography>
+          <Typography variant="subtitle2">Hub 就緒度</Typography>
           <Typography variant="caption">取五項中最弱環節</Typography>
         </Box>
-        {hubs.map((hub) => {
+        {domainHubs.map((hub) => {
           const weakest = assets
             .map((asset) => {
               const [available, needed] = coverage(hub, asset.key)
@@ -204,9 +186,9 @@ export default function DomainHubs({
             .reduce((lowest, current) => (current.ratio < lowest.ratio ? current : lowest))
           return (
             <Paper
-              variant="outlined"
-              className={`${styles.cell} ${tone(weakest.ratio)}`}
               key={hub.id}
+              variant="outlined"
+              className={`${styles.cell} ${styles.readinessCell} ${tone(weakest.ratio)}`}
             >
               <Typography variant="h5">{Math.round(weakest.ratio * 100)}%</Typography>
               <span>最弱：{weakest.name}</span>

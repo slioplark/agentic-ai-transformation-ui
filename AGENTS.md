@@ -24,6 +24,8 @@ Use the simplest parent layout that expresses the intended structure. For siblin
 
 Use MUI `Typography` variants and the shared theme when text needs a typographic role, scale, or weight. Use semantic native elements such as `span`, `strong`, and `label` for inline or semantic text when no Typography variant is needed. Avoid text micro-typography overrides unless they serve a clear design requirement.
 
+For MUI `Typography`, avoid setting `component` and `variant` together by default. Use `variant` on its own when it fully conveys the required output. Add `component` alongside `variant` only when a distinct rendered element is required for DOM semantics, valid nesting, inline/list/container layout, or an explicit contract; keep that exception local and explainable.
+
 ## Component and page structure
 
 Organize pages around meaningful visual or behavioral regions. Extract or reuse components when doing so improves cohesion, consistency, or a domain boundary; avoid both oversized page components and needless wrappers. Keep nontrivial data transformations and state transitions out of large JSX expressions, and use types that reflect the domain data.
@@ -31,6 +33,8 @@ Organize pages around meaningful visual or behavioral regions. Extract or reuse 
 Use semantic HTML and accessible names, keyboard interaction, visible states, and focus behavior. Build responsive layouts from the intended hierarchy and existing breakpoints. Preserve existing app behavior and data contracts unless the request explicitly changes them.
 
 Do not introduce `aria-label` or `aria-labelledby` automatically. Use either attribute only when the user explicitly requests it; do not add them as proactive accessibility annotations or propagate them to similar elements.
+
+Do not add an `id` to `Typography` solely to support an automatically added accessibility attribute. Keep a `Typography` id only when an explicit functional contract requires it, and remove any now-unused id or accessibility-attribute references together.
 
 In JSX opening tags, place shorthand attributes without a value before attributes with a value. Within each group, order attributes by property-name length from short to long, retaining the existing relative order when names have the same length. Apply this rule only to JSX attributes, not object keys, destructuring, types, or imports.
 

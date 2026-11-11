@@ -9,11 +9,10 @@ import {
   snapshot,
   type Project,
 } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
-import ButtonBase from "@mui/material/ButtonBase"
-import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
 import styles from "./HousePillar.module.css"
@@ -65,19 +64,10 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
           >
             {label}
           </Typography>
-          <Typography
-            id={`${kind}-title`}
-            variant="h6"
-            component="h2"
-          >
-            {project.name}
-          </Typography>
+          <Typography variant="h6">{project.name}</Typography>
         </Box>
-        <ButtonBase
-          sx={{ border: 1, borderColor: "divider", borderRadius: 1 }}
-          variant="outlined"
+        <HouseDrawerCard
           onClick={() => selectProject(project)}
-          component={Paper}
           className={styles.card}
         >
           <Box className={styles.progressLabel}>
@@ -107,16 +97,12 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
           >
             {message}
           </Typography>
-        </ButtonBase>
-        <Box
-          component="ul"
-          className={styles.list}
-        >
+        </HouseDrawerCard>
+        <Box className={styles.list}>
           {items.map((item) => (
             <Typography
               key={item}
               variant="body2"
-              component="li"
             >
               {item}
             </Typography>

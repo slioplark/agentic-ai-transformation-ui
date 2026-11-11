@@ -11,10 +11,9 @@ import styles from "./Decisions.module.css"
 type Props = {
   decision: ExecutiveDecision
   onClose: () => void
-  titleId: string
 }
 
-export default function DecisionDrawerContent({ decision, onClose, titleId }: Props) {
+export default function DecisionDrawerContent({ decision, onClose }: Props) {
   return (
     <>
       <Stack
@@ -35,12 +34,7 @@ export default function DecisionDrawerContent({ decision, onClose, titleId }: Pr
           >
             EXECUTIVE DECISION / {decision.id}
           </Typography>
-          <Typography
-            id={titleId}
-            variant="h4"
-          >
-            {decision.title}
-          </Typography>
+          <Typography variant="h4">{decision.title}</Typography>
         </Stack>
         <IconButton onClick={onClose}>
           <CloseIcon />

@@ -1,12 +1,12 @@
 import type { SvgIconComponent } from "@mui/icons-material"
-import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined"
+// import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined"
 import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined"
-import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined"
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined"
-import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined"
+// import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined"
+// import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined"
+// import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined"
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
-import ReorderOutlinedIcon from "@mui/icons-material/ReorderOutlined"
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+// import ReorderOutlinedIcon from "@mui/icons-material/ReorderOutlined"
+// import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import List from "@mui/material/List"
 import ListItemButton from "@mui/material/ListItemButton"
 import ListItemIcon from "@mui/material/ListItemIcon"
@@ -21,9 +21,9 @@ const workspaceItems: readonly NavItem[] = [
   { label: "房子進度圖", href: "/house", icon: HomeOutlinedIcon },
   // { label: "負責人填報", href: "/updates", icon: EditNoteOutlinedIcon },
   // { label: "Domain Hubs", href: "/hubs", icon: GridViewOutlinedIcon },
-  { label: "專案與 D-gate", href: "/milestones", icon: AccountTreeOutlinedIcon },
-  { label: "公民開發與治理", href: "/learn", icon: HistoryOutlinedIcon },
-  { label: "指標與管理規則", href: "/metrics", icon: ReorderOutlinedIcon },
+  // { label: "專案與 D-gate", href: "/milestones", icon: AccountTreeOutlinedIcon },
+  // { label: "公民開發與治理", href: "/learn", icon: HistoryOutlinedIcon },
+  // { label: "指標與管理規則", href: "/metrics", icon: ReorderOutlinedIcon },
   // { label: "帳號與授權", href: "/accounts", icon: SettingsOutlinedIcon },
 ]
 

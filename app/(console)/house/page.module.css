@@ -2,6 +2,21 @@
   container-type: inline-size;
 }
 
+.section {
+  display: grid;
+  gap: 4px;
+  min-width: 790px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+}
+
 .roof {
   display: flex;
   flex-direction: column;

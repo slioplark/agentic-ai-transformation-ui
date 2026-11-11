@@ -1,6 +1,7 @@
 "use client"
 
 import { createTheme } from "@mui/material/styles"
+import type {} from "@mui/x-tree-view/themeAugmentation"
 
 const theme = createTheme({
   palette: {
@@ -22,6 +23,13 @@ const theme = createTheme({
         }),
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        paper: ({ theme }) => ({
+          backgroundColor: theme.palette.background.default,
+        }),
+      },
+    },
     MuiTableCell: {
       styleOverrides: {
         root: { verticalAlign: "middle" },
@@ -29,6 +37,23 @@ const theme = createTheme({
           backgroundColor: "#eaf1f6",
           whiteSpace: "nowrap",
           fontWeight: 700,
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        slotProps: { inputLabel: { shrink: true } },
+      },
+    },
+    MuiTreeItem: {
+      styleOverrides: {
+        content: {
+          "&:hover, &[data-selected], &[data-selected]:hover, &[data-selected][data-focused]": {
+            backgroundColor: "transparent",
+          },
+        },
+        label: {
+          fontSize: "14px",
         },
       },
     },

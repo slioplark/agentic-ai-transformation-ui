@@ -1,30 +1,55 @@
+import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import type { Insight } from "@(control)/house/house.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
-import ButtonBase from "@mui/material/ButtonBase"
-import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
+import pageStyles from "../../page.module.css"
 import styles from "./InsightSolutions.module.css"
 
 const rankLabels = ["Connected", "Optimized", "Transparent", "Proactive", "Agile"]
 const rankColors = ["#c4dbea", "#8fb9d8", "#4f8fbf", "#2464a0", "#132c47"]
 const levelStatus = { 高: "success", 中: "warning", 低: "error" } as const
 
-function InsightCard({ insight, onSelect }: { insight: Insight; onSelect: (id: string) => void }) {
-  const total = insight.ranks.reduce((sum, value) => sum + value, 0)
+export type InsightRanks = [number, number, number, number, number]
+
+export function InsightRankBar({ ranks }: { ranks: InsightRanks }) {
+  return (
+    <Box
+      className={styles.rankBar}
+      aria-hidden="true"
+    >
+      {ranks.map(
+        (value, index) =>
+          value > 0 && (
+            <Box
+              key={rankLabels[index]}
+              sx={{ flexGrow: value, bgcolor: rankColors[index] }}
+            />
+          ),
+      )}
+    </Box>
+  )
+}
+
+function InsightCard({
+  insight,
+  ranks,
+  rankStatus,
+  onSelect,
+}: {
+  insight: Insight
+  ranks: InsightRanks | undefined
+  rankStatus: "loading" | "unavailable" | undefined
+  onSelect: (id: string) => void
+}) {
+  const total = ranks?.reduce((sum, value) => sum + value, 0)
 
   return (
-    <ButtonBase
-      component={Paper}
-      variant="outlined"
-      className={styles.card}
-      sx={{ border: 1, borderColor: "divider", borderRadius: 1 }}
+    <HouseDrawerCard
       onClick={() => onSelect(insight.id)}
+      className={styles.card}
     >
-      <Typography
-        component="h3"
-        variant="h6"
-      >
+      <Typography variant="h6">
         {insight.name}{" "}
         <Typography
           component="span"
@@ -40,39 +65,36 @@ function InsightCard({ insight, onSelect }: { insight: Insight; onSelect: (id: s
       >
         {insight.benefit}
       </Typography>
-      <Box
-        className={styles.rankBar}
-        aria-hidden="true"
-      >
-        {insight.ranks.map(
-          (value, index) =>
-            value > 0 && (
-              <Box
-                key={rankLabels[index]}
-                sx={{ flexGrow: value, bgcolor: rankColors[index] }}
-              />
-            ),
-        )}
-      </Box>
-      <Typography
-        variant="caption"
-        color="text.secondary"
-      >
-        {insight.ranks.map((value, index) => `R${index + 1} ${value}`).join(" · ")}（{total}）
-      </Typography>
+      {ranks ? (
+        <>
+          <InsightRankBar ranks={ranks} />
+          <Typography
+            variant="caption"
+            color="text.secondary"
+          >
+            R1 → R5（{total}）
+          </Typography>
+        </>
+      ) : (
+        <>
+          <Box className={styles.rankBar} />
+          <Typography
+            variant="caption"
+            color="text.secondary"
+          >
+            {rankStatus === "loading" ? "R1–R5 載入中" : "R1–R5 無可用資料"}
+          </Typography>
+        </>
+      )}
       <Typography
         variant="caption"
         color="text.secondary"
       >
         Top tasks 需求滿足度
       </Typography>
-      <Box
-        component="ul"
-        className={styles.tasks}
-      >
+      <Box className={styles.tasks}>
         {insight.tasks.map((task) => (
           <Box
-            component="li"
             className={styles.task}
             key={task.name}
           >
@@ -84,16 +106,20 @@ function InsightCard({ insight, onSelect }: { insight: Insight; onSelect: (id: s
           </Box>
         ))}
       </Box>
-    </ButtonBase>
+    </HouseDrawerCard>
   )
 }
 
 export default function InsightSolutions({
   insights,
   onSelect,
+  rankStatus,
+  ranksByInsight,
 }: {
   insights: Insight[]
   onSelect: (id: string) => void
+  rankStatus: "loading" | "unavailable" | undefined
+  ranksByInsight: ReadonlyMap<string, InsightRanks>
 }) {
   const taskRows = Math.max(1, ...insights.map((insight) => insight.tasks.length))
 
@@ -102,18 +128,12 @@ export default function InsightSolutions({
       component="section"
       sx={{ minWidth: 0 }}
     >
-      <Box className={styles.matrix}>
+      <Box className={pageStyles.section}>
         <Box
-          className={styles.heading}
+          className={pageStyles.heading}
           sx={{ bgcolor: "info.main", color: "common.white" }}
         >
-          <Typography
-            component="h2"
-            id="insight-solutions-title"
-            variant="h6"
-          >
-            Insight Solutions with Rx Gating
-          </Typography>
+          <Typography variant="h6">Insight Solutions with Rx Gating</Typography>
           <Typography variant="caption">
             {rankLabels.map((label, index) => `R${index + 1} ${label}`).join(" · ")} · R4.x
           </Typography>
@@ -123,20 +143,17 @@ export default function InsightSolutions({
           sx={{ "--task-rows": taskRows }}
         >
           <Box className={styles.label}>
-            <Typography
-              component="h3"
-              variant="h6"
-            >
-              Insight
-            </Typography>
+            <Typography variant="h6">Insight</Typography>
             <Typography variant="caption">Forest View R1→R5 能力數</Typography>
             <Typography variant="caption">Top tasks 是否滿足</Typography>
           </Box>
           {insights.map((insight) => (
             <InsightCard
               key={insight.id}
+              ranks={ranksByInsight.get(insight.id)}
               insight={insight}
               onSelect={onSelect}
+              rankStatus={rankStatus}
             />
           ))}
         </Box>

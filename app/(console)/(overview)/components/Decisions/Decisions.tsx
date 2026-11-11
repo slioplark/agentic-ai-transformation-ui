@@ -31,13 +31,7 @@ export default function Decisions({ decisions, onSelect }: Props) {
             gap={0.5}
             useFlexGap
           >
-            <Typography
-              component="h2"
-              id="executive-decisions-title"
-              variant="h4"
-            >
-              需要高層決策
-            </Typography>
+            <Typography variant="h4">需要高層決策</Typography>
             <Chip
               label={`${decisions.length} 項待處理`}
               size="small"
@@ -57,12 +51,7 @@ export default function Decisions({ decisions, onSelect }: Props) {
                 >
                   {decision.id} · 決策期限 {decision.due.slice(5).replace("-", "/")} · {decision.who}
                 </Typography>
-                <Typography
-                  component="h3"
-                  variant="h4"
-                >
-                  {decision.title}
-                </Typography>
+                <Typography variant="h4">{decision.title}</Typography>
                 <Typography
                   color="text.secondary"
                   variant="body2"

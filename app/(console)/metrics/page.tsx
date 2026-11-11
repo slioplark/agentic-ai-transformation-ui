@@ -24,10 +24,7 @@ function PrincipleCard({ description, note, number, statusDetails, title }: (typ
       variant="outlined"
       component="article"
     >
-      <Typography
-        variant="h6"
-        component="h2"
-      >
+      <Typography variant="h6">
         {number} · {title}
       </Typography>
       <Typography
@@ -95,12 +92,7 @@ export default function MetricsPage() {
           useFlexGap
           spacing={1.5}
         >
-          <Typography
-            variant="h5"
-            component="h2"
-          >
-            各區塊第二層指標
-          </Typography>
+          <Typography variant="h5">各區塊第二層指標</Typography>
           <TableContainer>
             <Table
               sx={{ minWidth: 760 }}
@@ -135,12 +127,7 @@ export default function MetricsPage() {
           useFlexGap
           spacing={1.5}
         >
-          <Typography
-            variant="h5"
-            component="h2"
-          >
-            正式資料來源
-          </Typography>
+          <Typography variant="h5">正式資料來源</Typography>
           <TableContainer>
             <Table
               sx={{ minWidth: 760 }}

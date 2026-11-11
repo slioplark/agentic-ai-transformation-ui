@@ -16,7 +16,10 @@ export default function LoginPage() {
           href="/"
           className={styles.brand}
         >
-          <span className={styles.brandMark} aria-hidden="true">
+          <span
+            className={styles.brandMark}
+            aria-hidden="true"
+          >
             <i />
           </span>
           <span>
@@ -25,50 +28,46 @@ export default function LoginPage() {
           </span>
         </Link>
         <div className={styles.brandMessage}>
-          <div className={styles.orbit} aria-hidden="true">
+          <div
+            className={styles.orbit}
+            aria-hidden="true"
+          >
             <span />
             <i />
             <b />
           </div>
-          <Typography variant="h3" component="h1">
-            你的工作台，
-            <br />
-            從這裡開始。
+          <Typography
+            variant="h3"
+            className={styles.brandTitle}
+          >
+            <span>讓 Agentic AI 轉型</span>
+            <span>落地成效看得見</span>
           </Typography>
-          <Typography component="p">
-            登入後即可管理專案、檢視資料，並連接你的服務。
-          </Typography>
+          <Typography>集中掌握各單位的轉型成熟度、專案里程碑與效益指標， 及早辨識風險，推動下一步行動。</Typography>
         </div>
-        <div className={styles.brandFooter}>
-        </div>
+        <div className={styles.brandFooter}></div>
       </section>
       <section className={styles.formPanel}>
         <div className={styles.formWrap}>
           <div className={styles.mobileBrand}>
-            <span className={styles.brandMark} aria-hidden="true">
+            <span
+              className={styles.brandMark}
+              aria-hidden="true"
+            >
               <i />
             </span>
             <strong>AGENTIC AI TRANSFORMATION</strong>
           </div>
           <div className={styles.formHeading}>
-            <Typography variant="h4" component="h2">
-              歡迎回來
-            </Typography>
-            <Typography color="text.secondary" component="p">
-              請輸入公司帳號以登入使用。
-            </Typography>
+            <Typography variant="h4">歡迎回來</Typography>
+            <Typography color="text.secondary">請輸入公司帳號以登入使用。</Typography>
           </div>
-          <Paper variant="outlined" className={styles.formCard}>
+          <Paper
+            variant="outlined"
+            className={styles.formCard}
+          >
             <LoginForm />
           </Paper>
-          <Typography
-            color="text.secondary"
-            variant="body2"
-            className={styles.helpText}
-            component="p"
-          >
-            尚未設定登入服務？請聯絡你的系統管理員。
-          </Typography>
         </div>
       </section>
     </main>
