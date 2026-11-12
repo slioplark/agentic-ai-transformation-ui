@@ -1,13 +1,13 @@
 "use client"
 
-import ProjectDrawerContent from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import {
   daysBetween,
   projectStatus,
   projects,
   snapshot,
   type Project,
-} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+} from "@(control)/(overview)/components/OverMilestones/milestones"
 import PageHeader from "@(control)/components/PageHeader"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import Stack from "@mui/material/Stack"

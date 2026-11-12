@@ -2,32 +2,32 @@
 
 import PageHeader from "@(control)/components/PageHeader"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import BlockerImpact from "./components/BlockerImpact/BlockerImpact"
-import DecisionDrawerContent from "./components/Decisions/DecisionDrawerContent"
-import Decisions from "./components/Decisions/Decisions"
-import HouseProgress from "./components/HouseProgress/HouseProgress"
-import KpiCard from "./components/KpiCard/KpiCard"
-import KpiDrawerContent from "./components/KpiDetailDrawer/KpiDrawerContent"
-import ReportingStatusGrid from "./components/ReportingStatusGrid/ReportingStatusGrid"
-import TransformationSignalTable from "./components/TransformationSignalTable/TransformationSignalTable"
-import ProjectDrawerContent from "./components/UpcomingMilestones/ProjectDrawerContent"
-import UpcomingMilestones from "./components/UpcomingMilestones/UpcomingMilestones"
-import type { Project } from "./components/UpcomingMilestones/milestones"
+import OverMilestones from "./components/OverMilestones/OverMilestones"
+import type { Project } from "./components/OverMilestones/milestones"
+import OverviewBlocker from "./components/OverviewBlocker/OverviewBlocker"
+import OverviewDecisionDrawerContent from "./components/OverviewDecisions/OverviewDecisionDrawerContent"
+import OverviewDecisions from "./components/OverviewDecisions/OverviewDecisions"
+import OverviewHouse from "./components/OverviewHouse/OverviewHouse"
+import OverviewKpi from "./components/OverviewKpi/OverviewKpi"
+import KpiDrawerContent from "./components/OverviewKpiDrawer/KpiDrawerContent"
+import OverviewReporting from "./components/OverviewReporting/OverviewReporting"
+import OverviewTransformationSignalTable from "./components/OverviewTransformationSignalTable/OverviewTransformationSignalTable"
 import {
   executiveDecisions,
   overviewKpis,
   reportingStatusMetrics,
   transformationSignals,
   type ExecutiveDecision,
-  type OverviewKpi,
+  type OverviewKpi as OverviewKpiData,
 } from "./overview.mock"
 import styles from "./page.module.css"
 
 type ActiveDetail =
-  | { type: "kpi"; kpi: OverviewKpi }
+  | { type: "kpi"; kpi: OverviewKpiData }
   | { type: "decision"; decision: ExecutiveDecision }
   | { type: "project"; project: Project }
 
@@ -37,7 +37,7 @@ export default function HomePage() {
   const router = useRouter()
   const closeDrawer = () => setDrawerOpen(false)
 
-  const handleKpiClick = (kpi: OverviewKpi) => {
+  const handleKpiClick = (kpi: OverviewKpiData) => {
     if (kpi.drawer) {
       setActiveDetail({ type: "kpi", kpi })
       setDrawerOpen(true)
@@ -58,27 +58,27 @@ export default function HomePage() {
         useFlexGap
       >
         <PageHeader>成效總覽</PageHeader>
-        <ReportingStatusGrid items={reportingStatusMetrics} />
+        <OverviewReporting items={reportingStatusMetrics} />
         <section className={styles.kpiGrid}>
           {overviewKpis.map((kpi) => (
-            <KpiCard
+            <OverviewKpi
               key={kpi.id}
               kpi={kpi}
               onClick={kpi.drawer || kpi.href ? () => handleKpiClick(kpi) : undefined}
             />
           ))}
         </section>
-        <TransformationSignalTable signals={transformationSignals} />
-        <Decisions
+        <OverviewTransformationSignalTable signals={transformationSignals} />
+        <OverviewDecisions
           decisions={executiveDecisions}
           onSelect={(decision) => {
             setActiveDetail({ type: "decision", decision })
             setDrawerOpen(true)
           }}
         />
-        <UpcomingMilestones onSelect={selectProject} />
-        <BlockerImpact onSelect={selectProject} />
-        <HouseProgress />
+        <OverMilestones onSelect={selectProject} />
+        <OverviewBlocker onSelect={selectProject} />
+        <OverviewHouse />
       </Stack>
       <DetailDrawer
         open={drawerOpen}
@@ -98,7 +98,7 @@ export default function HomePage() {
           />
         ) : null}
         {activeDetail?.type === "decision" ? (
-          <DecisionDrawerContent
+          <OverviewDecisionDrawerContent
             decision={activeDetail.decision}
             onClose={closeDrawer}
           />

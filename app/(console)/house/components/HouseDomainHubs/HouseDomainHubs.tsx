@@ -1,4 +1,4 @@
-import { actualProgress, projects } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import { actualProgress, projects } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import type { DomainHub, DomainHubAsset } from "@(control)/house/house.mock"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -151,17 +151,21 @@ export default function HouseDomainHubs({
             >
               <Box className={styles.label}>
                 <Typography variant="subtitle2">{asset.name}</Typography>
-                <TextButton onClick={() => onProject(asset.projectId)}>
-                  平台進度 {actualProgress(projects.find((project) => project.id === asset.projectId)!)}% →
-                </TextButton>
+
                 {asset.registry ? (
                   <Typography
-                    variant="caption"
                     color="text.secondary"
+                    variant="caption"
                   >
                     {asset.registry} · 待設定
                   </Typography>
                 ) : null}
+                <TextButton
+                  sx={{ alignSelf: "flex-end", mt: "auto" }}
+                  onClick={() => onProject(asset.projectId)}
+                >
+                  平台進度 {actualProgress(projects.find((project) => project.id === asset.projectId)!)}% →
+                </TextButton>
               </Box>
               {domainHubs.map((hub) => {
                 const [available, needed] = coverage(hub, asset.key)

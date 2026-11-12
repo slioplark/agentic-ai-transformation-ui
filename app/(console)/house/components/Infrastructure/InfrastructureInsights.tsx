@@ -1,4 +1,4 @@
-import Sparkline from "@(control)/(overview)/components/Sparkline/Sparkline"
+import Sparkline from "@app/components/Sparkline/Sparkline"
 import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"

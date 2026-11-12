@@ -1,4 +1,4 @@
-import type { Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import type { Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import { areas } from "@(control)/milestones/components/MilestoneFilterBar/MilestoneFilterBar"
 import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
 import Paper from "@mui/material/Paper"

@@ -1,12 +1,12 @@
-import Sparkline from "@(control)/(overview)/components/Sparkline/Sparkline"
+import Sparkline from "@app/components/Sparkline/Sparkline"
 import type { OverviewKpi } from "@(control)/(overview)/overview.mock"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
-import styles from "./KpiCard.module.css"
+import styles from "./OverviewKpi.module.css"
 
-type KpiCardProps = {
+type OverviewKpiProps = {
   kpi: OverviewKpi
   onClick?: () => void
 }
@@ -17,7 +17,7 @@ const changeColor = {
   positive: "success.main",
 } as const
 
-export default function KpiCard({ kpi, onClick }: KpiCardProps) {
+export default function OverviewKpi({ kpi, onClick }: OverviewKpiProps) {
   const content = (
     <>
       <Typography

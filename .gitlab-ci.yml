@@ -1,0 +1,34 @@
+stages:
+  - build
+  - test
+  - deploy
+
+include:
+  - project: 'ci_cd/ci-templates'
+    ref: master
+    file: '/node-templates/node22_17-build.yml'
+  - project: 'ci_cd/ci-templates'
+    ref: master
+    file: '/node-templates/deploy.yml'
+
+build-job:
+  extends: .node-build-template
+  stage: build
+  script:
+    - apt-get install -y curl
+    - curl -I http://10.11.109.148:8081
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - out/
+
+deploy-job:
+  extends: .node-deploy-template
+  stage: deploy
+  script:
+    - '& $FTP_UPLOAD -ftpServer $ftpServer -ftpUser $ftpUser -ftpPassword $ftpPassword
+          -localPath $CI_PROJECT_DIR\out
+          -remotePath "/"'
+  dependencies:
+    - build-job

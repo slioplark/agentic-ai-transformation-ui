@@ -1,10 +1,7 @@
 "use client"
 
+import { getSessionExpiresAt, getSessionUser } from "@lib/session-storage"
 import MenuIcon from "@mui/icons-material/Menu"
-import {
-  getSessionExpiresAt,
-  getSessionUser,
-} from "@lib/session-storage"
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import Drawer from "@mui/material/Drawer"
@@ -17,16 +14,14 @@ import useSWR from "swr"
 import AccountMenu from "./AccountMenu"
 import styles from "./AppShell.module.css"
 import Brand from "./Brand"
-import SidebarNavigation from "./SidebarNavigation"
 import SidebarFooter from "./SidebarFooter"
+import SidebarNavigation from "./SidebarNavigation"
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { data: accountUser, mutate: refreshAccountUser } = useSWR(
-    "client-session",
-    getSessionUser,
-    { revalidateOnFocus: false },
-  )
+  const { data: accountUser, mutate: refreshAccountUser } = useSWR("client-session", getSessionUser, {
+    revalidateOnFocus: false,
+  })
   const router = useRouter()
   const pathname = usePathname()
   const accountUserId = accountUser?.user_id ?? ""
@@ -91,7 +86,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
         </Toolbar>
       </AppBar>
       <Box
-        className={styles.navigationRegion}
+        className={styles.navWrap}
         component="nav"
       >
         <Drawer
@@ -113,7 +108,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
           {drawer}
         </Drawer>
       </Box>
-      <Box className={styles.mainContent} component="main">
+      <Box
+        className={styles.mainContent}
+        component="main"
+      >
         <AccountMenu user={accountUser} />
         {children}
       </Box>

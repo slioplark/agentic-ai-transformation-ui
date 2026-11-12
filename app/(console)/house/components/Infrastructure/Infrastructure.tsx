@@ -2,8 +2,8 @@
 
 import ProjectDrawerContent, {
   DeploymentProgress,
-} from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
-import { projects, type Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+} from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
+import { projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"

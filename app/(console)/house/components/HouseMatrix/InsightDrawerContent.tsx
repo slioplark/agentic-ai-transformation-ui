@@ -1,4 +1,4 @@
-import { projects, projectStatus, type Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+import { projects, projectStatus, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import { assets, coverage } from "@(control)/house/components/HouseDomainHubs/HouseDomainHubs"
 import foresetView from "@(control)/house/foreset-view.mock.json"
 import { taskLevelDescriptions, type DomainHub, type Insight } from "@(control)/house/house.mock"

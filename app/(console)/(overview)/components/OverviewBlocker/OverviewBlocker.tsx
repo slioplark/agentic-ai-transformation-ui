@@ -3,7 +3,7 @@ import {
   projects,
   projectStatus,
   type Project,
-} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+} from "@(control)/(overview)/components/OverMilestones/milestones"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
@@ -12,7 +12,7 @@ import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
-import styles from "./BlockerImpact.module.css"
+import styles from "./OverviewBlocker.module.css"
 
 const blockers = projects
   .filter((project) => projectStatus(project) !== "success")
@@ -22,7 +22,7 @@ const blockers = projects
 
 const maxDownstream = Math.max(1, ...blockers.map(({ downstream }) => downstream.length))
 
-export default function BlockerImpact({ onSelect }: { onSelect: (project: Project) => void }) {
+export default function OverviewBlocker({ onSelect }: { onSelect: (project: Project) => void }) {
   return (
     <Paper
       component="section"

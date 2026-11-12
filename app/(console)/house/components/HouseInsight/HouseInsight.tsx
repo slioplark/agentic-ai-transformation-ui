@@ -1,9 +1,11 @@
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import type { Insight } from "@(control)/house/house.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
+import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
 import Collapse from "@mui/material/Collapse"
 import Typography from "@mui/material/Typography"
+import Link from "next/link"
 import { useState } from "react"
 import pageStyles from "../../page.module.css"
 import styles from "./HouseInsight.module.css"
@@ -150,6 +152,13 @@ export default function HouseInsight({
             <Typography variant="h6">Insight</Typography>
             <Typography variant="caption">Forest View R1→R5 能力數</Typography>
             <Typography variant="caption">Top tasks 是否滿足</Typography>
+            <TextButton
+              sx={{ alignSelf: "flex-end", mt: "auto" }}
+              href="/forest"
+              component={Link}
+            >
+              檢視詳情 →
+            </TextButton>
           </Box>
           {insights.map((insight) => (
             <InsightCard

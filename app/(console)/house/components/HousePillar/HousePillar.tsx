@@ -1,6 +1,6 @@
 "use client"
 
-import ProjectDrawerContent from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import {
   actualProgress,
   daysBetween,
@@ -8,7 +8,7 @@ import {
   projects,
   snapshot,
   type Project,
-} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+} from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"

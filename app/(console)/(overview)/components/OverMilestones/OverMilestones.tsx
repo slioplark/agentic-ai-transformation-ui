@@ -11,9 +11,9 @@ import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
 import { daysBetween, formatDate, upcoming, type Project } from "./milestones"
-import styles from "./UpcomingMilestones.module.css"
+import styles from "./OverMilestones.module.css"
 
-export default function UpcomingMilestones({ onSelect }: { onSelect: (project: Project) => void }) {
+export default function OverMilestones({ onSelect }: { onSelect: (project: Project) => void }) {
   return (
     <Paper
       component="section"

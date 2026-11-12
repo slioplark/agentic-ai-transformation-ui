@@ -9,9 +9,9 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import styles from "./TransformationSignalTable.module.css"
+import styles from "./OverviewTransformationSignalTable.module.css"
 
-type TransformationSignalTableProps = {
+type OverviewTransformationSignalTableProps = {
   signals: readonly TransformationSignal[]
 }
 
@@ -20,7 +20,7 @@ const statusDetails = {
   attention: { status: "warning", label: "注意" },
 } as const
 
-export default function TransformationSignalTable({ signals }: TransformationSignalTableProps) {
+export default function OverviewTransformationSignalTable({ signals }: OverviewTransformationSignalTableProps) {
   return (
     <Paper
       className={styles.panel}

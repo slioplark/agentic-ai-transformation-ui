@@ -1,7 +1,7 @@
 "use client"
 
-import { projects, type Project } from "@(control)/(overview)/components/UpcomingMilestones/milestones"
-import ProjectDrawerContent from "@(control)/(overview)/components/UpcomingMilestones/ProjectDrawerContent"
+import { projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import HouseDomainHubs from "@(control)/house/components/HouseDomainHubs/HouseDomainHubs"
 import HouseInsight, { type InsightRanks } from "@(control)/house/components/HouseInsight/HouseInsight"
 import forestViewBlueprint from "@(control)/house/foreset-view.mock.json"

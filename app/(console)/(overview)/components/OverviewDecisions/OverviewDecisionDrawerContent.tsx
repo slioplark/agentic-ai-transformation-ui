@@ -6,14 +6,14 @@ import IconButton from "@mui/material/IconButton"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
-import styles from "./Decisions.module.css"
+import styles from "./OverviewDecisions.module.css"
 
 type Props = {
   decision: ExecutiveDecision
   onClose: () => void
 }
 
-export default function DecisionDrawerContent({ decision, onClose }: Props) {
+export default function OverviewDecisionDrawerContent({ decision, onClose }: Props) {
   return (
     <>
       <Stack

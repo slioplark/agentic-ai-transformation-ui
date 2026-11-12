@@ -5,14 +5,14 @@ import Chip from "@mui/material/Chip"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
-import styles from "./Decisions.module.css"
+import styles from "./OverviewDecisions.module.css"
 
 type Props = {
   decisions: readonly ExecutiveDecision[]
   onSelect: (decision: ExecutiveDecision) => void
 }
 
-export default function Decisions({ decisions, onSelect }: Props) {
+export default function OverviewDecisions({ decisions, onSelect }: Props) {
   return (
     <>
       <Paper

@@ -6,7 +6,7 @@ import {
   projectStatus,
   snapshot,
   type Project,
-} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+} from "@(control)/(overview)/components/OverMilestones/milestones"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"

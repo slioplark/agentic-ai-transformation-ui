@@ -28,8 +28,8 @@ import {
   redeployTo,
   snapshot,
   type Project,
-} from "./milestones"
-import styles from "./UpcomingMilestones.module.css"
+} from "@(control)/(overview)/components/OverMilestones/milestones"
+import styles from "./ProjectDrawerContent.module.css"
 
 const criteria = [
   "範疇、目標、owner 與原訂時程簽核",

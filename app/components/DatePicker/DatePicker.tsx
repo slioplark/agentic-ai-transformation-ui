@@ -38,7 +38,7 @@ function getDateValue(value: string, format: string): Dayjs | null {
 export default function DatePicker({ disabled, format = "YYYY/MM/DD", label, onValueChange, value }: DatePickerProps) {
   return (
     <Stack
-      gap={0.75}
+      gap={0.5}
       sx={datePickerSx}
     >
       <Typography variant="h6">{label}</Typography>

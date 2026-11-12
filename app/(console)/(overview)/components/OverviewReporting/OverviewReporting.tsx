@@ -1,13 +1,13 @@
 import type { ReportingStatusMetric } from "@(control)/(overview)/overview.mock"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
-import styles from "./ReportingStatusGrid.module.css"
+import styles from "./OverviewReporting.module.css"
 
-type ReportingStatusGridProps = {
+type OverviewReportingProps = {
   items: readonly ReportingStatusMetric[]
 }
 
-export default function ReportingStatusGrid({ items }: ReportingStatusGridProps) {
+export default function OverviewReporting({ items }: OverviewReportingProps) {
   return (
     <section className={styles.grid}>
       {items.map((item) => (

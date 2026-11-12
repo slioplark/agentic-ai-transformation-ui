@@ -5,7 +5,7 @@ import {
   projects,
   projectStatus,
   snapshot,
-} from "@(control)/(overview)/components/UpcomingMilestones/milestones"
+} from "@(control)/(overview)/components/OverMilestones/milestones"
 import { benefitSummary } from "@(control)/(overview)/overview.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -15,7 +15,7 @@ import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
-import styles from "./HouseProgress.module.css"
+import styles from "./OverviewHouse.module.css"
 
 const areas = [
   { name: "Insight Solutions", label: "Insight Solutions · Rx Gating" },
@@ -43,7 +43,7 @@ const money = (amount: number) => `NT$ ${amount.toLocaleString("en-US", { maximu
 const spent = projects.reduce((sum, project) => sum + project.spent, 0)
 const budget = projects.reduce((sum, project) => sum + project.budget, 0)
 
-export default function HouseProgress() {
+export default function OverviewHouse() {
   return (
     <Paper
       variant="outlined"
