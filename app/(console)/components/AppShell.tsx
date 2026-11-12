@@ -19,6 +19,7 @@ import SidebarNavigation from "./SidebarNavigation"
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [desktopCollapsed, setDesktopCollapsed] = useState(false)
   const { data: accountUser, mutate: refreshAccountUser } = useSWR("client-session", getSessionUser, {
     revalidateOnFocus: false,
   })
@@ -52,10 +53,13 @@ export default function AppShell({ children }: { children: ReactNode }) {
 
   const closeMobileDrawer = () => setMobileOpen(false)
 
-  const drawer = (
-    <Box className={styles.drawerContent}>
+  const drawer = (desktop: boolean) => (
+    <Box className={`${styles.drawerContent} ${desktop && desktopCollapsed ? styles.drawerContentCollapsed : ""}`}>
       <Box>
-        <Brand />
+        <Brand
+          onToggle={desktop ? () => setDesktopCollapsed((collapsed) => !collapsed) : undefined}
+          collapsed={desktopCollapsed}
+        />
         <Box className={styles.navigationContainer}>
           <SidebarNavigation
             pathname={pathname}
@@ -86,7 +90,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
         </Toolbar>
       </AppBar>
       <Box
-        className={styles.navWrap}
+        className={`${styles.navWrap} ${desktopCollapsed ? styles.navWrapCollapsed : ""}`}
         component="nav"
       >
         <Drawer
@@ -97,15 +101,17 @@ export default function AppShell({ children }: { children: ReactNode }) {
           slotProps={{ paper: { className: styles.drawerPaper } }}
           ModalProps={{ keepMounted: true }}
         >
-          {drawer}
+          {drawer(false)}
         </Drawer>
         <Drawer
           open
           variant="permanent"
           className={styles.desktopDrawer}
-          slotProps={{ paper: { className: styles.drawerPaper } }}
+          slotProps={{
+            paper: { className: `${styles.drawerPaper} ${desktopCollapsed ? styles.drawerPaperCollapsed : ""}` },
+          }}
         >
-          {drawer}
+          {drawer(true)}
         </Drawer>
       </Box>
       <Box

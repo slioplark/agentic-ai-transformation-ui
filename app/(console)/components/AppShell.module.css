@@ -4,11 +4,14 @@
 }
 
 .drawerHeader {
-  padding: 24px;
+  flex-wrap: wrap;
+  gap: 0 8px;
+  padding: 24px 16px;
 }
 
 .drawerContent {
   display: flex;
+  width: 252px;
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
@@ -22,14 +25,29 @@
   font-weight: 800;
 }
 
+.drawerContentCollapsed .brandName,
+.drawerContentCollapsed .brandTagline,
+.drawerContentCollapsed .navigationLabel,
+.drawerContentCollapsed .drawerFooter {
+  visibility: hidden;
+}
+
 .brandTagline {
-  color: #9fc6d5;
+  flex-basis: 100%;
+  margin: 0 12px;
   font-weight: 800;
+  white-space: nowrap;
+  color: #9fc6d5;
 }
 
 .navWrap {
-  width: 252;
+  width: 252px;
   flex-shrink: 0;
+  transition: width 240ms ease;
+}
+
+.navWrapCollapsed {
+  width: 72px;
 }
 
 .navigationContainer {
@@ -43,12 +61,8 @@
 }
 
 .navigationItem {
-  min-height: 44px;
-  padding: 12px;
+  padding: 10px;
   color: #bdcdda;
-  transition:
-    background-color 160ms ease,
-    color 160ms ease;
 }
 
 .navigationItem:hover {
@@ -111,6 +125,22 @@
   box-sizing: border-box;
   border-right: 0;
   background-color: #132c47;
+  overflow-x: hidden;
+}
+
+.drawerPaperCollapsed {
+  width: 72px;
+}
+
+.desktopDrawer .drawerPaper {
+  transition: width 240ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navWrap,
+  .desktopDrawer .drawerPaper {
+    transition: none;
+  }
 }
 
 .mainContent {
