@@ -3,8 +3,8 @@
   min-width: 0;
   flex-direction: column;
   justify-content: center;
-  gap: 12px;
-  padding: 12px;
+  gap: 8px;
+  padding: 8px;
   border: 1px solid #dce5ec;
   border-top-width: 6px;
   border-radius: 8px;
@@ -43,7 +43,7 @@
   text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .list {
     flex-direction: row;
     flex-wrap: wrap;

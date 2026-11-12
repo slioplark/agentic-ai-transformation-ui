@@ -1,5 +1,5 @@
 import { projects, projectStatus, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
-import { assets, coverage } from "@(control)/house/components/HouseDomainHubs/HouseDomainHubs"
+import { assets, coverage } from "@(control)/house/components/HouseDomainHubs/house-domain-hubs-data"
 import foresetView from "@(control)/house/foreset-view.mock.json"
 import { taskLevelDescriptions, type DomainHub, type Insight } from "@(control)/house/house.mock"
 import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
@@ -21,19 +21,19 @@ import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
 import { useMemo } from "react"
-import ForestViewTree, { buildForestView, type ForestTrunkBlueprint } from "./ForestViewTree"
+import HouseForestTree, { buildForestView, type ForestTrunkBlueprint } from "../HouseForestTree/HouseForestTree"
 
 const levels = { 高: "success", 中: "warning", 低: "error" } as const
 const forestBlueprint: Record<string, ForestTrunkBlueprint[]> = foresetView
 
-type InsightDrawerContentProps = {
+type HouseInsightDrawerContentProps = {
   insight: Insight
   domainHub: DomainHub
   onClose: () => void
   onProject: (project: Project) => void
 }
 
-export default function InsightDrawerContent({ insight, domainHub, onClose, onProject }: InsightDrawerContentProps) {
+export default function HouseInsightDrawerContent({ insight, domainHub, onClose, onProject }: HouseInsightDrawerContentProps) {
   const { data: dtoProjects, error: projectsError, isLoading: isProjectsLoading } = useProjects()
   const weakest = assets
     .map((asset) => {
@@ -121,7 +121,7 @@ export default function InsightDrawerContent({ insight, domainHub, onClose, onPr
                 </strong>
               </Typography>
               <RankDistributionBar ranks={forestRankCounts} />
-              <ForestViewTree
+              <HouseForestTree
                 insightId={insight.id}
                 insightLabel={`${insight.name} ${insight.chineseName}`}
                 trunks={forestView.trunks}

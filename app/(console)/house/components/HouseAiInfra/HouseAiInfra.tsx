@@ -13,7 +13,7 @@ import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
 import pageStyles from "../../page.module.css"
-import styles from "./Infrastructure.module.css"
+import styles from "./HouseAiInfra.module.css"
 import InfrastructureInsights from "./InfrastructureInsights"
 
 type InfrastructureCard = {
@@ -77,7 +77,7 @@ const summaryItems = [
 
 type Detail = { type: "project"; project: Project }
 
-export default function Infrastructure() {
+export default function HouseAiInfra() {
   const [expanded, setExpanded] = useState(true)
   const [detail, setDetail] = useState<Detail | null>(null)
   const [open, setOpen] = useState(false)

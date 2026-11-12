@@ -9,7 +9,7 @@ import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView"
 import { TreeItem } from "@mui/x-tree-view/TreeItem"
 import type { ElementType } from "react"
 import { useState } from "react"
-import ProjectDetailDialog, { type ProjectRoute } from "./ProjectDetailDialog"
+import HouseProjectFormDialog, { type ProjectRoute } from "../HouseProjectFormDialog/HouseProjectFormDialog"
 
 export type ForestTrunkBlueprint = {
   title: string
@@ -41,7 +41,7 @@ export type ForestViewData = {
   ranks: [number, number, number, number, number]
 }
 
-type ForestViewTreeProps = {
+type HouseForestTreeProps = {
   insightId: string
   insightLabel: string
   trunks: readonly ForestTrunk[]
@@ -54,7 +54,7 @@ type SelectedProject = {
 
 const archivedValues = new Set(["1", "true", "yes", "y"])
 
-function ForestViewTreeLabel({
+function HouseForestTreeLabel({
   icon: Icon,
   count,
   title,
@@ -177,7 +177,7 @@ export function buildForestView(
   return { trunks, ranks }
 }
 
-export default function ForestViewTree({ insightId, insightLabel, trunks }: ForestViewTreeProps) {
+export default function HouseForestTree({ insightId, insightLabel, trunks }: HouseForestTreeProps) {
   const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
 
   return (
@@ -192,7 +192,7 @@ export default function ForestViewTree({ insightId, insightLabel, trunks }: Fore
           <TreeItem
             key={trunk.title}
             label={
-              <ForestViewTreeLabel
+              <HouseForestTreeLabel
                 icon={ParkIcon}
                 count={trunk.leafCount}
                 title={trunk.title}
@@ -205,7 +205,7 @@ export default function ForestViewTree({ insightId, insightLabel, trunks }: Fore
                 disabled={branch.leaves.length === 0}
                 key={branch.title}
                 label={
-                  <ForestViewTreeLabel
+                  <HouseForestTreeLabel
                     icon={Polyline}
                     count={branch.leaves.length}
                     title={branch.title}
@@ -217,7 +217,7 @@ export default function ForestViewTree({ insightId, insightLabel, trunks }: Fore
                   <TreeItem
                     key={leaf.id}
                     label={
-                      <ForestViewTreeLabel
+                      <HouseForestTreeLabel
                         icon={EnergySavingsLeafIcon}
                         title={leaf.name}
                         labels={[leaf.digitalLevel, ...(leaf.status ? [leaf.status] : [])]}
@@ -233,7 +233,7 @@ export default function ForestViewTree({ insightId, insightLabel, trunks }: Fore
         ))}
       </SimpleTreeView>
       {selectedProject ? (
-        <ProjectDetailDialog
+        <HouseProjectFormDialog
           key={selectedProject.project.ID}
           route={selectedProject.route}
           project={selectedProject.project}

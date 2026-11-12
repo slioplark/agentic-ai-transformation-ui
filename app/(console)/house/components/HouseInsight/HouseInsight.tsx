@@ -1,5 +1,9 @@
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
-import type { Insight } from "@(control)/house/house.mock"
+import { domainHubs, type DomainHub, type Insight } from "@(control)/house/house.mock"
+import type { Project } from "@(control)/(overview)/components/OverMilestones/milestones"
+import HouseInsightDrawerContent from "@(control)/house/components/HouseInsightDrawerContent/HouseInsightDrawerContent"
+import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
@@ -114,18 +118,33 @@ function InsightCard({
   )
 }
 
+type Detail = { type: "insight"; insight: Insight; domainHub: DomainHub } | { type: "project"; project: Project }
+
 export default function HouseInsight({
   insights,
-  onSelect,
   rankStatus,
   ranksByInsight,
 }: {
   insights: Insight[]
-  onSelect: (id: string) => void
   rankStatus: "loading" | "unavailable" | undefined
   ranksByInsight: ReadonlyMap<string, InsightRanks>
 }) {
   const [expanded, setExpanded] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [detail, setDetail] = useState<Detail | null>(null)
+  const close = () => setOpen(false)
+  const selectProject = (project: Project) => {
+    setDetail({ type: "project", project })
+    setOpen(true)
+  }
+  const selectInsight = (id: string) => {
+    const insight = insights.find((item) => item.id === id)
+    const domainHub = domainHubs.find((item) => item.id === id)
+    if (insight && domainHub) {
+      setDetail({ type: "insight", insight, domainHub })
+      setOpen(true)
+    }
+  }
   const taskRows = Math.max(1, ...insights.map((insight) => insight.tasks.length))
 
   return (
@@ -165,12 +184,32 @@ export default function HouseInsight({
               key={insight.id}
               ranks={ranksByInsight.get(insight.id)}
               insight={insight}
-              onSelect={onSelect}
+              onSelect={selectInsight}
               rankStatus={rankStatus}
             />
           ))}
         </Box>
       </Collapse>
+      <DetailDrawer
+        open={open}
+        onClose={close}
+      >
+        {detail?.type === "insight" ? (
+          <HouseInsightDrawerContent
+            insight={detail.insight}
+            onClose={close}
+            domainHub={detail.domainHub}
+            onProject={selectProject}
+          />
+        ) : null}
+        {detail?.type === "project" ? (
+          <ProjectDrawerContent
+            project={detail.project}
+            onClose={close}
+            onSelect={selectProject}
+          />
+        ) : null}
+      </DetailDrawer>
     </Box>
   )
 }

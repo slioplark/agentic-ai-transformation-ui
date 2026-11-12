@@ -1,6 +1,10 @@
 import { actualProgress, projects } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
-import type { DomainHub, DomainHubAsset } from "@(control)/house/house.mock"
+import { insights, type DomainHub, type DomainHubAsset, type Insight } from "@(control)/house/house.mock"
+import type { Project } from "@(control)/(overview)/components/OverMilestones/milestones"
+import HouseInsightDrawerContent from "@(control)/house/components/HouseInsightDrawerContent/HouseInsightDrawerContent"
+import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import TextButton from "@app/components/TextButton/TextButton"
 import { Stack } from "@mui/material"
 import Box from "@mui/material/Box"
@@ -10,29 +14,10 @@ import Typography from "@mui/material/Typography"
 import { useState } from "react"
 import pageStyles from "../../page.module.css"
 import styles from "./HouseDomainHubs.module.css"
+import { assets, coverage } from "./house-domain-hubs-data"
 
-export const assets: { key: DomainHubAsset; name: string; projectId: string; registry?: string }[] = [
-  { key: "data", name: "Domain Data Lakes", projectId: "lake", registry: "Data Directory" },
-  { key: "knowledge", name: "AI Knowledge Repositories", projectId: "knowledge", registry: "Knowledge Registry" },
-  { key: "agents", name: "Agents Repositories", projectId: "agents", registry: "Agent Registry" },
-  { key: "process", name: "Domain Process Repositories", projectId: "process", registry: "Process Registry" },
-  { key: "rules", name: "Governance & Rx Rules", projectId: "rgate" },
-]
 
-export function coverage(hub: DomainHub, asset: DomainHubAsset): [number, number] {
-  switch (asset) {
-    case "data":
-      return [hub.data[0], hub.data.reduce((sum, value) => sum + value, 0)]
-    case "knowledge":
-      return hub.need.knowledge
-    case "agents":
-      return [hub.agents.reduce((sum, value) => sum + value, 0), hub.need.agents]
-    case "process":
-      return [hub.process, hub.need.process]
-    case "rules":
-      return hub.need.rules
-  }
-}
+type Detail = { type: "insight"; insight: Insight; domainHub: DomainHub } | { type: "project"; project: Project }
 
 function tone(ratio: number) {
   return ratio >= 0.7 ? styles.high : ratio >= 0.4 ? styles.medium : styles.low
@@ -117,14 +102,25 @@ function AssetContent({ hub, asset }: { hub: DomainHub; asset: DomainHubAsset })
 
 export default function HouseDomainHubs({
   domainHubs,
-  onSelect,
-  onProject,
 }: {
   domainHubs: DomainHub[]
-  onSelect: (id: string) => void
-  onProject: (id: string) => void
 }) {
   const [expanded, setExpanded] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [detail, setDetail] = useState<Detail | null>(null)
+  const close = () => setOpen(false)
+  const selectProject = (project: Project) => {
+    setDetail({ type: "project", project })
+    setOpen(true)
+  }
+  const selectInsight = (id: string) => {
+    const insight = insights.find((item) => item.id === id)
+    const domainHub = domainHubs.find((item) => item.id === id)
+    if (insight && domainHub) {
+      setDetail({ type: "insight", insight, domainHub })
+      setOpen(true)
+    }
+  }
 
   return (
     <Box
@@ -162,7 +158,10 @@ export default function HouseDomainHubs({
                 ) : null}
                 <TextButton
                   sx={{ alignSelf: "flex-end", mt: "auto" }}
-                  onClick={() => onProject(asset.projectId)}
+                  onClick={() => {
+                    const project = projects.find((item) => item.id === asset.projectId)
+                    if (project) selectProject(project)
+                  }}
                 >
                   平台進度 {actualProgress(projects.find((project) => project.id === asset.projectId)!)}% →
                 </TextButton>
@@ -172,7 +171,7 @@ export default function HouseDomainHubs({
                 return (
                   <HouseDrawerCard
                     key={hub.id}
-                    onClick={() => onSelect(hub.id)}
+                    onClick={() => selectInsight(hub.id)}
                     className={styles.cell}
                   >
                     <AssetContent
@@ -214,6 +213,26 @@ export default function HouseDomainHubs({
           </Box>
         </Stack>
       </Collapse>
+      <DetailDrawer
+        open={open}
+        onClose={close}
+      >
+        {detail?.type === "insight" ? (
+          <HouseInsightDrawerContent
+            insight={detail.insight}
+            onClose={close}
+            domainHub={detail.domainHub}
+            onProject={selectProject}
+          />
+        ) : null}
+        {detail?.type === "project" ? (
+          <ProjectDrawerContent
+            project={detail.project}
+            onClose={close}
+            onSelect={selectProject}
+          />
+        ) : null}
+      </DetailDrawer>
     </Box>
   )
 }

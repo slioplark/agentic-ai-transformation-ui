@@ -30,8 +30,9 @@
 
 .house {
   display: grid;
+  grid-template-columns: 128px minmax(0, 1fr) 128px;
+  gap: 8px;
   align-items: stretch;
-  gap: 12px;
   padding-top: 8px;
 }
 
@@ -47,4 +48,10 @@
 
 .matrix {
   min-width: 790px;
+}
+
+@media (max-width: 1024px) {
+  .house {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

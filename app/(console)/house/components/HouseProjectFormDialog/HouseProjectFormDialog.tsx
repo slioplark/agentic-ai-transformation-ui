@@ -32,7 +32,7 @@ type ProjectFormDraft = {
   targetDate: string
 }
 
-type ProjectDetailDialogProps = {
+type HouseProjectFormDialogProps = {
   insightLabel: string
   onClose: () => void
   project: Project
@@ -78,7 +78,7 @@ function createProjectFormDraft(project: Project): ProjectFormDraft {
   }
 }
 
-export default function ProjectDetailDialog({ insightLabel, onClose, project, route }: ProjectDetailDialogProps) {
+export default function HouseProjectFormDialog({ insightLabel, onClose, project, route }: HouseProjectFormDialogProps) {
   const [isEditing, setIsEditing] = useState(false)
   const [draft, setDraft] = useState(() => createProjectFormDraft(project))
   const updateDraft = <Key extends keyof ProjectFormDraft>(key: Key, value: ProjectFormDraft[Key]) => {
