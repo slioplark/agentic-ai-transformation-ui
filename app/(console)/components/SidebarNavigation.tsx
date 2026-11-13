@@ -5,7 +5,7 @@ import type { SvgIconComponent } from "@mui/icons-material"
 // import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined"
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
 // import ReorderOutlinedIcon from "@mui/icons-material/ReorderOutlined"
-// import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
 import StackedBarChartOutlinedIcon from "@mui/icons-material/StackedBarChartOutlined"
 import List from "@mui/material/List"
 import ListItemButton from "@mui/material/ListItemButton"
@@ -24,7 +24,7 @@ const workspaceItems: readonly NavItem[] = [
   // { label: "專案與 D-gate", href: "/milestones", icon: AccountTreeOutlinedIcon },
   // { label: "公民開發與治理", href: "/learn", icon: HistoryOutlinedIcon },
   // { label: "指標與管理規則", href: "/metrics", icon: ReorderOutlinedIcon },
-  // { label: "帳號與授權", href: "/accounts", icon: SettingsOutlinedIcon },
+  { label: "帳號與授權", href: "/accounts", icon: SettingsOutlinedIcon },
 ]
 
 type SidebarNavigationProps = {

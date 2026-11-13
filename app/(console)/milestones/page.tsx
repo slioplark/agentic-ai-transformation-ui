@@ -1,6 +1,5 @@
 "use client"
 
-import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import {
   daysBetween,
   projectStatus,
@@ -10,6 +9,7 @@ import {
 } from "@(control)/(overview)/components/OverMilestones/milestones"
 import PageHeader from "@(control)/components/PageHeader"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import { useSearchParams } from "next/navigation"
@@ -19,7 +19,6 @@ import MilestoneFilterBar, {
   type StatusFilter,
 } from "./components/MilestoneFilterBar/MilestoneFilterBar"
 import ProjectMilestoneTable from "./components/ProjectMilestoneTable/ProjectMilestoneTable"
-import styles from "./page.module.css"
 
 const areaFilters = new Set<AreaFilter>(["all", "Insight Solutions", "Domain Hubs", "AI Infrastructure", "Pillars"])
 const snapshotHorizon = new Date(`${snapshot}T00:00:00`)
@@ -75,7 +74,6 @@ function MilestonesPageContent() {
       <Stack
         useFlexGap
         gap={2}
-        className={styles.page}
       >
         <PageHeader>專案與 D-gate</PageHeader>
         <MilestoneFilterBar
@@ -120,7 +118,7 @@ export default function MilestonesPage() {
   return (
     <Suspense
       fallback={
-        <Stack className={styles.page}>
+        <Stack>
           <PageHeader>專案與 D-gate</PageHeader>
         </Stack>
       }
