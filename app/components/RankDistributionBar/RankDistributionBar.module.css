@@ -1,6 +1,5 @@
 .bar {
   display: flex;
-  min-width: 0;
   overflow: hidden;
   border-radius: 4px;
 }

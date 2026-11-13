@@ -4,7 +4,6 @@
   grid-template-rows: subgrid;
   align-items: start;
   row-gap: 4px;
-  min-width: 0;
   padding: 16px;
 }
 

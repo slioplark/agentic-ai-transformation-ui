@@ -203,7 +203,7 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
       <Paper
         component="section"
         variant="outlined"
-        sx={{ p: 2, minWidth: 0 }}
+        sx={{ p: 2 }}
       >
         <Stack gap={2}>
           <Typography variant="h5">專案與 D-gate</Typography>

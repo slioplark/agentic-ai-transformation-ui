@@ -9,7 +9,6 @@
 
 .cellStack {
   display: grid;
-  min-width: 0;
   gap: 4px;
 }
 

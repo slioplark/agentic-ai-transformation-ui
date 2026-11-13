@@ -1,12 +1,12 @@
 import type { SvgIconComponent } from "@mui/icons-material"
 // import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined"
-import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined"
 // import EditNoteOutlinedIcon from "@mui/icons-material/EditNoteOutlined"
 // import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined"
 // import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined"
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined"
 // import ReorderOutlinedIcon from "@mui/icons-material/ReorderOutlined"
 // import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined"
+import StackedBarChartOutlinedIcon from "@mui/icons-material/StackedBarChartOutlined"
 import List from "@mui/material/List"
 import ListItemButton from "@mui/material/ListItemButton"
 import ListItemIcon from "@mui/material/ListItemIcon"
@@ -17,7 +17,7 @@ import styles from "./AppShell.module.css"
 type NavItem = { label: string; href: string; icon: SvgIconComponent }
 
 const workspaceItems: readonly NavItem[] = [
-  { label: "成效總覽", href: "/", icon: DiamondOutlinedIcon },
+  { label: "成效總覽", href: "/", icon: StackedBarChartOutlinedIcon },
   { label: "房子進度圖", href: "/house", icon: HomeOutlinedIcon },
   // { label: "負責人填報", href: "/updates", icon: EditNoteOutlinedIcon },
   // { label: "Domain Hubs", href: "/hubs", icon: GridViewOutlinedIcon },

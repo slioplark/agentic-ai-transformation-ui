@@ -84,7 +84,7 @@ export default function MetricsPage() {
         ))}
       </Box>
       <Paper
-        sx={{ minWidth: 0, p: 2.5 }}
+        sx={{ p: 2.5 }}
         variant="outlined"
         component="section"
       >
@@ -119,7 +119,7 @@ export default function MetricsPage() {
         </Stack>
       </Paper>
       <Paper
-        sx={{ minWidth: 0, p: 2.5 }}
+        sx={{ p: 2.5 }}
         variant="outlined"
         component="section"
       >

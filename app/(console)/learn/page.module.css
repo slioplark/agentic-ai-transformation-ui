@@ -3,7 +3,6 @@
 }
 
 .panel {
-  min-width: 0;
   padding: 20px;
 }
 
@@ -17,7 +16,6 @@
 .funnelDetails {
   display: grid;
   gap: 4px;
-  min-width: 0;
 }
 
 .funnelValue {
