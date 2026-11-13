@@ -2,10 +2,12 @@
   "planning": [
     {
       "title": "前瞻發展規劃",
+      "dept": "RDO",
       "branches": ["流程優化", "策略規劃", "企業績效管理", "策略風險管理", "Technical PM", "Program Delivery"]
     },
     {
       "title": "企業營運規劃",
+      "dept": "COP",
       "branches": [
         "產能布局/資本支出",
         "資本支出執行追蹤",
@@ -23,14 +25,17 @@
   "customer": [
     {
       "title": "行銷管理",
+      "dept": "CM",
       "branches": ["市場資訊收集", "資料分析與儲存", "資料應用", "資料跨部門共享"]
     },
     {
       "title": "銷售",
+      "dept": "Sales",
       "branches": ["業績管理", "產品開案", "市場訊息", "客戶經營"]
     },
     {
       "title": "客戶服務",
+      "dept": "CE",
       "branches": [
         "技術文檔 (DSM)",
         "任務請求",
@@ -49,6 +54,7 @@
   "td": [
     {
       "title": "技術開發",
+      "dept": "TD",
       "branches": [
         "Proposal 技術蒐集研究",
         "Development 開發",
@@ -59,14 +65,17 @@
     },
     {
       "title": "模型",
+      "dept": "Model",
       "branches": ["佈局 Testkey", "測量", "模型開發建置交付", "程式自動化", "MQR"]
     },
     {
       "title": "元件",
+      "dept": "Device",
       "branches": ["電性參數規格", "結構設計與參數", "量測與分析", "協助建立模型"]
     },
     {
       "title": "矽智財",
+      "dept": "IPDS",
       "branches": ["DRC 指令檔", "LVS/LPE 指令檔", "FDK package"]
     }
   ],
@@ -89,6 +98,7 @@
     },
     {
       "title": "製造",
+      "dept": "Fab",
       "branches": [
         "生產排程",
         "值班異常處理",
@@ -104,6 +114,7 @@
     },
     {
       "title": "工程服務",
+      "dept": "ENGS",
       "branches": [
         "新製程驗證",
         "幫助量產",
@@ -119,6 +130,7 @@
     },
     {
       "title": "品質暨可靠度",
+      "dept": "Q&RA",
       "branches": ["客戶品質服務", "進料品質管理", "製程品質管理", "出貨品質管理", "可靠度規格制定", "可靠度驗證執行"]
     }
   ],
@@ -144,18 +156,22 @@
     },
     {
       "title": "人力資源",
+      "dept": "HR",
       "branches": ["人力規劃", "招募", "任用", "訓練發展", "績效考核", "薪酬管理", "人資服務", "異動作業", "離退作業"]
     },
     {
       "title": "法規遵循",
+      "dept": "LA & GC",
       "branches": ["法規更新/鑑別", "分級教育訓練", "法規諮詢", "Legal Audit", "合約管理"]
     },
     {
       "title": "智慧財產",
+      "dept": "IP",
       "branches": ["專利取得/保護", "專利申請獎金", "智財諮詢", "專利爭議處理", "營業秘密管理"]
     },
     {
       "title": "數位",
+      "dept": "Digital",
       "branches": [
         "Infrastructure",
         "Data Platform",
@@ -170,6 +186,7 @@
     },
     {
       "title": "政府關係暨企業溝通",
+      "dept": "PASS",
       "branches": [
         "政策資訊收集",
         "政府溝通",

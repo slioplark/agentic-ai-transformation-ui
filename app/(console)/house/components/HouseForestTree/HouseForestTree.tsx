@@ -1,5 +1,6 @@
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
+import type { ForestTrunk } from "@(control)/components/ForestView/forestViewData"
 import type { Project } from "@lib/api/projects"
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf"
 import ParkIcon from "@mui/icons-material/Park"
@@ -11,35 +12,14 @@ import type { ElementType } from "react"
 import { useState } from "react"
 import HouseProjectFormDialog, { type ProjectRoute } from "../HouseProjectFormDialog/HouseProjectFormDialog"
 
-export type ForestTrunkBlueprint = {
-  title: string
-  branches: readonly string[]
-}
-
-type ForestLeaf = {
-  id: string
-  name: string
-  digitalLevel: string
-  status: string | null
-  project: Project
-  route: ProjectRoute
-}
-
-type ForestBranch = {
-  title: string
-  leaves: ForestLeaf[]
-}
-
-export type ForestTrunk = {
-  title: string
-  leafCount: number
-  branches: ForestBranch[]
-}
-
-export type ForestViewData = {
-  trunks: ForestTrunk[]
-  ranks: [number, number, number, number, number]
-}
+export {
+  buildForestView,
+  type ForestBranch,
+  type ForestLeaf,
+  type ForestTrunk,
+  type ForestTrunkBlueprint,
+  type ForestViewData,
+} from "@(control)/components/ForestView/forestViewData"
 
 type HouseForestTreeProps = {
   insightId: string
@@ -51,8 +31,6 @@ type SelectedProject = {
   project: Project
   route: ProjectRoute
 }
-
-const archivedValues = new Set(["1", "true", "yes", "y"])
 
 function HouseForestTreeLabel({
   icon: Icon,
@@ -121,62 +99,6 @@ function HouseForestTreeLabel({
   )
 }
 
-function isArchived(value: Project["ARCHIVED"]) {
-  return archivedValues.has(
-    String(value ?? "")
-      .trim()
-      .toLowerCase(),
-  )
-}
-
-function getDigitalRank(value: Project["CURRENT_DIGITAL_LEVEL"]) {
-  const normalized = String(value ?? "")
-    .trim()
-    .toUpperCase()
-  const match = normalized.match(/^R?([1-5])$/)
-  return match ? Number(match[1]) : null
-}
-
-export function buildForestView(
-  blueprint: readonly ForestTrunkBlueprint[],
-  projects: readonly Project[],
-): ForestViewData {
-  const trunks: ForestTrunk[] = blueprint.map((trunk) => ({
-    title: trunk.title,
-    leafCount: 0,
-    branches: trunk.branches.map((branch) => ({ title: branch, leaves: [] })),
-  }))
-  const branchesByTrunk = new Map(
-    trunks.map((trunk) => [trunk.title, new Map(trunk.branches.map((branch) => [branch.title, branch]))]),
-  )
-  const trunksByTitle = new Map(trunks.map((trunk) => [trunk.title, trunk]))
-  const ranks: ForestViewData["ranks"] = [0, 0, 0, 0, 0]
-
-  for (const project of projects) {
-    if (isArchived(project.ARCHIVED)) continue
-
-    const rank = getDigitalRank(project.CURRENT_DIGITAL_LEVEL)
-    if (rank === null) continue
-
-    const trunk = trunksByTitle.get(project.CATEGORY)
-    const branch = branchesByTrunk.get(project.CATEGORY)?.get(project.ITEM)
-    if (!trunk || !branch) continue
-
-    branch.leaves.push({
-      id: String(project.ID),
-      name: project.TITLE,
-      digitalLevel: `R${rank}`,
-      status: project.CURRENT_STATUS,
-      project,
-      route: { category: trunk.title, item: branch.title },
-    })
-    trunk.leafCount += 1
-    ranks[rank - 1] += 1
-  }
-
-  return { trunks, ranks }
-}
-
 export default function HouseForestTree({ insightId, insightLabel, trunks }: HouseForestTreeProps) {
   const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
 
@@ -220,7 +142,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
                       <HouseForestTreeLabel
                         icon={EnergySavingsLeafIcon}
                         title={leaf.name}
-                        labels={[leaf.digitalLevel, ...(leaf.status ? [leaf.status] : [])]}
+                        labels={[...(leaf.digitalLevel ? [leaf.digitalLevel] : []), ...(leaf.status ? [leaf.status] : [])]}
                         onTitleClick={() => setSelectedProject({ project: leaf.project, route: leaf.route })}
                       />
                     }

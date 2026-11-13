@@ -176,7 +176,7 @@ export default function HouseInsight({
               href="/forest"
               component={Link}
             >
-              檢視詳情 →
+              Forest View →
             </TextButton>
           </Box>
           {insights.map((insight) => (

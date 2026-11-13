@@ -50,14 +50,12 @@
 }
 
 .blocks {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
-  gap: 4px;
+  column-count: 2;
+  column-gap: 4px;
 }
 
 .ops .blocks {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-count: 4;
 }
 
 .ops .scrollArea {
@@ -65,41 +63,84 @@
 }
 
 .biz .blocks {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 4px;
 }
 
 .block {
+  break-inside: avoid;
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 0;
+  margin-bottom: 4px;
   padding: 4px;
-  border: 1px solid #e3e9eb;
-  border-radius: 12px;
+  border-radius: 8px;
   background: #fff;
   overflow-wrap: anywhere;
 }
 
-.items {
+.branches {
   display: grid;
   gap: 4px;
 }
 
-.item {
-  min-width: 0;
-  padding: 4px;
-  border-radius: 4px;
+.branch:global(.MuiButtonBase-root) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px;
+  text-align: left;
+  border-radius: 8px;
   background: #f4f6f6;
   color: #183449;
   font-size: 0.75rem;
-  line-height: 1.3;
   overflow-wrap: anywhere;
 }
 
+.branch:global(.MuiButtonBase-root):hover {
+  background: #e3edf6;
+}
+
+.branch:global(.MuiButtonBase-root):focus-visible {
+  outline: 2px solid #087f80;
+  outline-offset: 2px;
+}
+
+.branch:global(.MuiButtonBase-root).branch:global(.Mui-disabled) {
+  color: #8b9aa5;
+  background: #f4f6f6;
+}
+
+.branchTitle {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.leafCount {
+  flex-shrink: 0;
+  color: #183449;
+  font-weight: 700;
+}
+
+.message {
+  margin-bottom: -4px;
+}
+
 @media (max-width: 1024px) {
-  .map,
-  .ops .blocks {
+  .map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ops .blocks {
+    column-count: 2;
+  }
+
+  .biz .blocks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -110,6 +151,10 @@
 
   .biz {
     grid-column: auto;
+  }
+
+  .biz .blocks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 

@@ -1,79 +1,117 @@
 "use client"
 
-import ProjectDrawerContent, {
-  DeploymentProgress,
-} from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
-import { projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
+import { formatDate, projectStatus, projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
-import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
+import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
 import Collapse from "@mui/material/Collapse"
-import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
 import pageStyles from "../../page.module.css"
 import styles from "./HouseAiInfra.module.css"
-import InfrastructureInsights from "./InfrastructureInsights"
 
-type InfrastructureCard = {
-  id: string
-  title: string
-  description: string
+const stageLabels = ["POC", "PO 與導入", "首次部署", "二次部署", "全面部署"]
+
+const statusLabels = {
+  error: "延誤 / 阻塞",
+  warning: "有風險",
+  success: "依計畫",
+} as const
+
+const aiInfraCardIds = ["flow", "software", "api", "orchestration"] as const
+const getProject = (id: string) => projects.find((project) => project.id === id)
+
+const clampStage = (value: number) => Math.min(stageLabels.length, Math.max(0, value))
+const progressToStage = (value: number | undefined) => clampStage(Math.floor((value ?? 0) / 20))
+
+function completedStages(project: Project) {
+  const deployment = project.deployment
+  return deployment?.done === undefined ? progressToStage(deployment?.actual) : clampStage(deployment.done)
 }
 
-const cards: readonly InfrastructureCard[] = [
-  {
-    id: "flow",
-    title: "Agentic Flow Automation",
-    description: "AI-agent BPM · HITL & exception handling",
-  },
-  {
-    id: "software",
-    title: "AI-Enabled Software Development",
-    description: "AI coding → AI-assisted SSDLC → Secure Agentic DevOps",
-  },
-  {
-    id: "api",
-    title: "Enterprise API",
-    description: "API gateway · event mesh · tool gateway · agent runtime",
-  },
-  {
-    id: "orchestration",
-    title: "Agent Orchestration",
-    description: "API gateway · event mesh · tool gateway · agent runtime",
-  },
-  {
-    id: "core",
-    title: "AI Core Technology",
-    description: "AI models · UGPT · URAG",
-  },
-  {
-    id: "data",
-    title: "AI-Ready Data Platform",
-    description: "語意層 · 特徵庫 · 向量庫 · 資料庫",
-  },
-  {
-    id: "enterprise",
-    title: "Enterprise Systems",
-    description: "ERP · MES · Workday · Notes",
-  },
-  {
-    id: "sdi",
-    title: "Software-Defined Infrastructure (SDI)",
-    description: "Edge-to-fab 秒級反應 · FinOps",
-  },
-] as const
+function plannedStages(project: Project, completed: number) {
+  const plan = project.deployment?.plan
+  return plan === undefined ? completed : Math.max(completed, progressToStage(plan))
+}
 
-const findProject = (id: string) => projects.find((item) => item.id === id)
-const deploymentProgress = (project: Project) => project.deployment?.actual ?? (project.deployment?.done ?? 0) * 20
+function AiInfraCard({
+  className,
+  onSelect,
+  project,
+}: {
+  className: string
+  onSelect: (project: Project) => void
+  project: Project
+}) {
+  const deployment = project.deployment
+  const completed = completedStages(project)
+  const planned = plannedStages(project, completed)
+  const status = projectStatus(project)
+  const delayed = deployment ? deployment.fc > deployment.base : false
+  const nextStage = stageLabels[completed]
+  const detailClassName = delayed ? `${styles.stageDetail} ${styles.delayed}` : styles.stageDetail
 
-const summaryItems = [
-  { title: "Milestone completion", value: "82%" },
-  { title: "Active developers", value: "350" },
-  { title: "Development efficiency", value: "+28%" },
-  { title: "Delivery health", value: "ON TRACK" },
-]
+  return (
+    <HouseDrawerCard
+      onClick={() => onSelect(project)}
+      className={className}
+    >
+      <Box className={styles.cardHeader}>
+        <Typography variant="subtitle2">{project.name}</Typography>
+        <StatusChip
+          label={statusLabels[status]}
+          status={status}
+        />
+      </Box>
+      {deployment ? (
+        <>
+          <Box className={styles.stageProgress}>
+            <Box className={styles.segments}>
+              {stageLabels.map((label, index) => {
+                const state = index < completed ? styles.complete : index < planned ? styles.late : index === completed ? styles.next : undefined
+                const segmentClassName = state ? `${styles.segment} ${state}` : styles.segment
+                return (
+                  <Box
+                    key={label}
+                    className={segmentClassName}
+                  />
+                )
+              })}
+            </Box>
+            <Box className={styles.stageLabels}>
+              {stageLabels.map((label, index) => (
+                <Typography
+                  key={label}
+                  variant="caption"
+                  className={index === completed ? styles.currentLabel : undefined}
+                >
+                  {label}
+                </Typography>
+              ))}
+            </Box>
+          </Box>
+          <Typography
+            variant="caption"
+            className={detailClassName}
+          >
+            {nextStage
+              ? `下一階段：${nextStage} · 原訂 ${formatDate(deployment.base)}${delayed ? ` → 預測 ${formatDate(deployment.fc)}` : ""}`
+              : "已全面部署"}
+          </Typography>
+        </>
+      ) : (
+        <Typography
+          variant="caption"
+          className={styles.stageDetail}
+        >
+          尚未規劃部署階段
+        </Typography>
+      )}
+    </HouseDrawerCard>
+  )
+}
 
 type Detail = { type: "project"; project: Project }
 
@@ -86,6 +124,11 @@ export default function HouseAiInfra() {
     setOpen(true)
   }
   const close = () => setOpen(false)
+  const aiInfraProjects = aiInfraCardIds.map(getProject).filter((project): project is Project => project !== undefined)
+  const coreProject = getProject("core")
+  const dataProject = getProject("data")
+  const enterpriseProject = getProject("enterprise")
+  const sdiProject = getProject("sdi")
 
   return (
     <>
@@ -105,49 +148,48 @@ export default function HouseAiInfra() {
           timeout="auto"
         >
           <Box className={styles.cards}>
-            {cards.map((card) => {
-              const project = findProject(card.id)
-              const progress = project ? deploymentProgress(project) : 0
-              return (
-                <HouseDrawerCard
-                  key={card.title}
-                  onClick={() => {
-                    if (project) {
-                      selectProject(project)
-                    }
-                  }}
-                  className={styles.card}
-                >
-                  <Box className={styles.cardText}>
-                    <Typography
-                      component="span"
-                      variant="subtitle2"
-                    >
-                      {card.title}
-                    </Typography>
-                    <Typography
-                      component="span"
-                      variant="caption"
-                      color="text.secondary"
-                    >
-                      {card.description}
-                    </Typography>
-                  </Box>
-                  <ThresholdProgress
-                    color="secondary"
-                    value={progress}
-                    className={styles.progress}
+            {aiInfraProjects.map((project) => (
+              <AiInfraCard
+                key={project.id}
+                project={project}
+                onSelect={selectProject}
+                className={styles.card}
+              />
+            ))}
+            {coreProject || dataProject || enterpriseProject ? (
+              <Box className={styles.coreDataLayout}>
+                {coreProject ? (
+                  <AiInfraCard
+                    project={coreProject}
+                    onSelect={selectProject}
+                    className={`${styles.card} ${styles.coreCard}`}
                   />
-                  <Typography
-                    component="span"
-                    variant="caption"
-                    color="text.secondary"
-                  >
-                    部署進度 {progress}%
-                  </Typography>
-                </HouseDrawerCard>
-              )
-            })}
+                ) : null}
+                <Box className={styles.dataEnterpriseColumn}>
+                  {dataProject ? (
+                    <AiInfraCard
+                      project={dataProject}
+                      onSelect={selectProject}
+                      className={styles.card}
+                    />
+                  ) : null}
+                  {enterpriseProject ? (
+                    <AiInfraCard
+                      project={enterpriseProject}
+                      onSelect={selectProject}
+                      className={styles.card}
+                    />
+                  ) : null}
+                </Box>
+              </Box>
+            ) : null}
+            {sdiProject ? (
+              <AiInfraCard
+                project={sdiProject}
+                onSelect={selectProject}
+                className={`${styles.card} ${styles.wide}`}
+              />
+            ) : null}
           </Box>
         </Collapse>
       </Box>
@@ -157,33 +199,8 @@ export default function HouseAiInfra() {
       >
         {detail?.type === "project" ? (
           <ProjectDrawerContent
-            details={
-              <>
-                <DeploymentProgress project={detail.project} />
-                <InfrastructureInsights />
-              </>
-            }
             project={detail.project}
             onClose={close}
-            summary={
-              <Box className={styles.summary}>
-                {summaryItems.map((item) => (
-                  <Paper
-                    key={item.title}
-                    variant="outlined"
-                    className={styles.summaryItem}
-                  >
-                    <Typography
-                      color="text.secondary"
-                      variant="caption"
-                    >
-                      {item.title}
-                    </Typography>
-                    <Typography variant="h6">{item.value}</Typography>
-                  </Paper>
-                ))}
-              </Box>
-            }
             onSelect={selectProject}
           />
         ) : null}

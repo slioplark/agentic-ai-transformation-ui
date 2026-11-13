@@ -2,49 +2,98 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 4px;
+  padding: 4px;
+  border-radius: 8px;
+  background: #e3edf6;
 }
 
 .card {
   display: flex;
-  min-width: 0;
   flex-direction: column;
-  gap: 4px;
-  font-size: 0.75rem;
   align-items: stretch;
-}
-
-.cardText {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   gap: 4px;
+  padding: 8px;
 }
 
-.progress {
-  margin-top: 4px;
-}
-
-.summary {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.summaryItem {
-  min-width: 0;
-  padding: 16px;
-}
-
-.toolList {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.chartLabels {
+.cardHeader {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
+  gap: 8px;
+}
+
+.cardHeader :global(.MuiChip-root) {
+  flex-shrink: 0;
+}
+
+.stageProgress {
+  display: grid;
   gap: 4px;
+}
+
+.segments,
+.stageLabels {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.segment {
+  height: 8px;
+  border-radius: 4px;
+  background: #e1e9ee;
+}
+
+.complete {
+  background: #087f80;
+}
+
+.late {
+  outline: 1px solid #bd3f44;
+  background: repeating-linear-gradient(45deg, #f3c9cb 0 4px, #fcebec 4px 8px);
+}
+
+.next {
+  background: #b7dcd9;
+}
+
+.stageLabels :global(.MuiTypography-root) {
+  color: #5c6d79;
+  text-align: center;
+}
+
+.stageLabels .currentLabel {
+  color: #132c47;
+  font-weight: 600;
+}
+
+.stageDetail {
+  color: #5c6d79;
+}
+
+.stageDetail.delayed {
+  color: #bd3f44;
+}
+
+.coreDataLayout {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.coreCard {
+  height: 100%;
+}
+
+.dataEnterpriseColumn {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.wide {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 425px) {
@@ -52,7 +101,7 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .summary {
-    grid-template-columns: 1fr;
+  .coreDataLayout {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

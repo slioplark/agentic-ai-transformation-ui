@@ -34,7 +34,7 @@ export type Project = {
   reportedAt: string | null
   milestones: Milestone[]
   projectKpi: { name: string; unit: string; baseline: number; target: number; actual: number | null }
-  deployment: { actual?: number; done?: number; base: string; fc: string } | null
+  deployment: { actual?: number; done?: number; plan?: number; base: string; fc: string } | null
 }
 
 export const projects: readonly Project[] = data.projects
