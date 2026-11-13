@@ -42,7 +42,6 @@
 
 .forestTitle {
   padding: 0 4px;
-  border-bottom: 1px solid rgba(24, 52, 73, 0.16);
 }
 
 .scrollArea {
@@ -78,7 +77,7 @@
   margin-bottom: 4px;
   padding: 4px;
   border-radius: 8px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.75);
   overflow-wrap: anywhere;
 }
 
@@ -95,14 +94,14 @@
   padding: 8px;
   text-align: left;
   border-radius: 8px;
-  background: #f4f6f6;
+  background: #e3ebef;
   color: #183449;
   font-size: 0.75rem;
   overflow-wrap: anywhere;
 }
 
 .branch:global(.MuiButtonBase-root):hover {
-  background: #e3edf6;
+  background: #d2e3ec;
 }
 
 .branch:global(.MuiButtonBase-root):focus-visible {
@@ -112,7 +111,7 @@
 
 .branch:global(.MuiButtonBase-root).branch:global(.Mui-disabled) {
   color: #8b9aa5;
-  background: #f4f6f6;
+  background: #e3ebef;
 }
 
 .branchTitle {
