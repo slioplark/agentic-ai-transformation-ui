@@ -62,7 +62,7 @@ function AiInfraCard({
         <Typography variant="subtitle2">{project.name}</Typography>
         <StatusChip
           label={statusLabels[status]}
-          status={status}
+          color={status}
         />
       </Box>
       {deployment ? (

@@ -40,11 +40,11 @@ function PrincipleCard({ description, note, number, statusDetails, title }: (typ
           flexWrap="wrap"
           direction="row"
         >
-          {statusDetails.map(({ label, status }) => (
+          {statusDetails.map(({ label, color }) => (
             <StatusChip
               key={label}
               label={label}
-              status={status}
+              color={color}
             />
           ))}
         </Stack>

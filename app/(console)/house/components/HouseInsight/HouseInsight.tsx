@@ -109,7 +109,7 @@ function InsightCard({
             <Typography variant="caption">{task.name}</Typography>
             <StatusChip
               label={task.level}
-              status={levelStatus[task.level]}
+              color={levelStatus[task.level]}
             />
           </Box>
         ))}

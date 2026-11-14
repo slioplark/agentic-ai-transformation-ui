@@ -87,7 +87,7 @@ export default function OverviewBlocker({ onSelect }: { onSelect: (project: Proj
                     >
                       <Typography variant="h4">{project.name}</Typography>
                       <StatusChip
-                        status={status}
+                        color={status}
                         label={status === "error" ? "延誤 / 阻塞" : "有風險"}
                       />
                     </Stack>

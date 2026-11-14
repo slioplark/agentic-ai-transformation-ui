@@ -72,7 +72,7 @@ export default function ProjectMilestoneRow({
           <StatusChip
             sx={{ justifySelf: "start" }}
             label={statusLabels[status]}
-            status={status}
+            color={status}
           />
           <Typography
             color="text.secondary"

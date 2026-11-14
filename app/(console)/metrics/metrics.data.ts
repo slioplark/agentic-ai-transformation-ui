@@ -1,10 +1,12 @@
+import type { StatusChipColor } from "@app/components/StatusChip/StatusChip"
+
 export type MetricPrinciple = {
   description: string
   note?: string
   number: string
   statusDetails?: readonly {
     label: string
-    status?: "success" | "warning" | "error" | null
+    color?: StatusChipColor
   }[]
   title: string
 }
@@ -47,9 +49,9 @@ export const metricPrinciples: readonly MetricPrinciple[] = [
     title: "Insight 以 Rx 與 top task 滿足度衡量",
     description: "每個 BU 顯示 R1→R5 能力數與 top tasks 需求滿足度。",
     statusDetails: [
-      { label: "高：現有方案滿足主要需求", status: "success" },
-      { label: "中：部分滿足，仍需人工補位", status: "warning" },
-      { label: "低：尚無可用方案", status: "error" },
+      { label: "高：現有方案滿足主要需求", color: "success" },
+      { label: "中：部分滿足，仍需人工補位", color: "warning" },
+      { label: "低：尚無可用方案", color: "error" },
     ],
     note: "Governance & Rx Rules 顯示各 BU R4 / R4.x / R5 已核准與審查中數量。",
   },
@@ -70,9 +72,9 @@ export const metricPrinciples: readonly MetricPrinciple[] = [
     title: "燈號、資料新鮮度與決策期限",
     description: "受阻項目依下游影響數排序，影響最大者升級為高層決策，並列決策人與期限。",
     statusDetails: [
-      { label: "紅：阻塞影響範圍或延後超過 7 日", status: "error" },
-      { label: "黃：延後 1–7 日或已有可識別風險", status: "warning" },
-      { label: "綠：依計畫", status: "success" },
+      { label: "紅：阻塞影響範圍或延後超過 7 日", color: "error" },
+      { label: "黃：延後 1–7 日或已有可識別風險", color: "warning" },
+      { label: "綠：依計畫", color: "success" },
       { label: "灰：超過 7 日未更新" },
     ],
   },

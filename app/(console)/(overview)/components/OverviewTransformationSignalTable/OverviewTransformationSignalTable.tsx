@@ -104,7 +104,7 @@ export default function OverviewTransformationSignalTable({ signals }: OverviewT
                     </TableCell>
                     <TableCell>
                       <StatusChip
-                        status={status.status}
+                        color={status.status}
                         label={status.label}
                       />
                     </TableCell>

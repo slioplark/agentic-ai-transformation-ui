@@ -153,7 +153,7 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
                     <TableCell>
                       <StatusChip
                         label={task.level}
-                        status={levels[task.level]}
+                        color={levels[task.level]}
                       />
                     </TableCell>
                     <TableCell>{taskLevelDescriptions[task.level]}</TableCell>
@@ -192,7 +192,7 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
                         ? "注意"
                         : "正常"
                   }
-                  status={projectStatus(project)}
+                  color={projectStatus(project)}
                 />
                 <TextButton onClick={() => onProject(project)}>檢視明細 →</TextButton>
               </Stack>

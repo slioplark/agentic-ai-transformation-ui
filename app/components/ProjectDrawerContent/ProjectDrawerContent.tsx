@@ -124,7 +124,7 @@ export default function ProjectDrawerContent({
             <Typography variant="h4">{project.name}</Typography>
             <StatusChip
               label={labels[status]}
-              status={status}
+              color={status}
             />
           </Stack>
           <Typography
@@ -353,7 +353,7 @@ export default function ProjectDrawerContent({
                             </Typography>
                             <StatusChip
                               label={gate.done ? "已驗收" : delay > 0 ? `預測延後 ${delay} 天` : "未完成"}
-                              status={gate.done ? "success" : delay > 0 ? "error" : null}
+                              color={gate.done ? "success" : delay > 0 ? "error" : null}
                             />
                           </TableCell>
                           <TableCell>{gate.evidence}</TableCell>

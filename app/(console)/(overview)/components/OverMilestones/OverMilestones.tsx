@@ -99,7 +99,7 @@ export default function OverMilestones({ onSelect }: { onSelect: (project: Proje
                     <TableCell>{project.owner}</TableCell>
                     <TableCell>
                       <StatusChip
-                        status={delay > 0 ? "error" : "success"}
+                        color={delay > 0 ? "error" : "success"}
                         label={delay > 0 ? `延後 ${delay} 天` : "預測如期"}
                       />
                     </TableCell>

@@ -83,7 +83,7 @@ function HouseForestTreeLabel({
             sx={{ flexShrink: 0 }}
             key={label}
             label={label}
-            status="primary"
+            color="primary"
             variant="outlined"
           />
         )
@@ -92,7 +92,7 @@ function HouseForestTreeLabel({
         <StatusChip
           sx={{ flexShrink: 0, ml: "auto" }}
           label={String(count)}
-          status="success"
+          color="success"
         />
       ) : null}
     </Box>

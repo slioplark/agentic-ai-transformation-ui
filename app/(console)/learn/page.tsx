@@ -405,7 +405,7 @@ export default function LearnPage() {
                       <TableCell>
                         <StatusChip
                           label={severity[issue.severity].label}
-                          status={severity[issue.severity].status}
+                          color={severity[issue.severity].status}
                         />
                       </TableCell>
                       <TableCell>{issue.bu}</TableCell>
@@ -651,7 +651,7 @@ export default function LearnPage() {
                       <TableCell>
                         <StatusChip
                           label={item.label}
-                          status={item.status}
+                          color={item.status}
                         />
                       </TableCell>
                     </TableRow>
