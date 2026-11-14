@@ -73,7 +73,7 @@ export default function OverviewBlocker({ onSelect }: { onSelect: (project: Proj
                 >
                   <Stack
                     direction="row"
-                    alignItems="flex-start"
+                    alignItems="center"
                     justifyContent="space-between"
                     gap={0.5}
                     useFlexGap
