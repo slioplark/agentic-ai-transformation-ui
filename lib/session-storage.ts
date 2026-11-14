@@ -48,13 +48,6 @@ function getStoredSession(): StoredSessionPayload | null {
 }
 
 export function getSessionUser(): User | null {
-  return {
-    user_id: "00059539",
-    name: "Mason Chang",
-    email: "mason_chang@umc.com",
-    title: "",
-    department: "SDD",
-  }
   return getStoredSession()?.user ?? null
 }
 
