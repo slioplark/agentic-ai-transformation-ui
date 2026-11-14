@@ -1,8 +1,8 @@
 "use client"
 
-import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined"
 import type { User } from "@lib/api/auth"
 import { clearSessionUser } from "@lib/session-storage"
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined"
 import Avatar from "@mui/material/Avatar"
 import ListItemIcon from "@mui/material/ListItemIcon"
 import ListItemText from "@mui/material/ListItemText"
@@ -30,6 +30,12 @@ export default function AccountMenu({ user }: { user: User }) {
         component="button"
         aria-expanded={Boolean(menuAnchor)}
         aria-haspopup="menu"
+        sx={[
+          (theme) => ({
+            color: "white",
+            background: theme.palette.secondary.main,
+          }),
+        ]}
       >
         {displayName.slice(0, 1)}
       </Avatar>
@@ -38,20 +44,27 @@ export default function AccountMenu({ user }: { user: User }) {
         onClose={() => setMenuAnchor(null)}
         anchorEl={menuAnchor}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
         slotProps={{
           list: { sx: { minWidth: 280 } },
           paper: { sx: { mt: 1 } },
         }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
       >
         <MenuItem className={styles.accountIdentity}>
           <Avatar
-            sx={{ fontSize: 20, height: 44, width: 44 }}
-            className={styles.accountMenuAvatar}
+            sx={[
+              (theme) => ({
+                color: "white",
+                background: theme.palette.secondary.main,
+              }),
+            ]}
           >
             {displayName.slice(0, 1)}
           </Avatar>
-          <ListItemText primary={displayName} secondary={user.user_id} />
+          <ListItemText
+            primary={displayName}
+            secondary={user.user_id}
+          />
         </MenuItem>
         <MenuItem
           onClick={() => {

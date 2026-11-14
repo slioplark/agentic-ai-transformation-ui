@@ -155,23 +155,12 @@
   position: absolute;
   top: 24px;
   right: 24px;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  color: #fff;
-  font-size: 14px;
+  border: none;
   cursor: pointer;
-  border: 0;
-  background-color: #087f80;
 }
 
 .accountIdentity {
   gap: 12px;
-}
-
-.accountMenuAvatar {
-  color: #fff;
-  background-color: #087f80;
 }
 
 @media (max-width: 425px) {
