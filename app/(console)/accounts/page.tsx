@@ -138,7 +138,6 @@ export default function AccountsPage() {
                     {roleLabels[account.role]}
                     <Tooltip title="編輯角色">
                       <IconButton
-                        size="small"
                         color="warning"
                         onClick={(event) => setRoleMenu({ anchor: event.currentTarget, account })}
                       >

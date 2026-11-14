@@ -1,9 +1,9 @@
 "use client"
 
-import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import { projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import PageHeader from "@(control)/components/PageHeader"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
@@ -186,20 +186,25 @@ const trainings = [
   },
 ] as const
 
-const governancePath = [
+const governancePath: readonly {
+  milestone: string
+  due: string
+  label: string
+  status?: "success" | "warning" | "error"
+}[] = [
   { milestone: "高風險模型審查規範核定", due: "2026/11", status: "warning", label: "有風險" },
   { milestone: "AI Governance 委員會成立", due: "2027/03", status: "success", label: "依計畫" },
-  { milestone: "D1–D5 套用至自助與公民開發", due: "2027/03", status: "default", label: "未開始" },
-  { milestone: "ISO/IEC 42001 差距評估", due: "2027/04", status: "default", label: "未開始" },
+  { milestone: "D1–D5 套用至自助與公民開發", due: "2027/03", label: "未開始" },
+  { milestone: "ISO/IEC 42001 差距評估", due: "2027/04", label: "未開始" },
   { milestone: "Responsible AI 框架核定", due: "2027/06", status: "success", label: "依計畫" },
-  { milestone: "ISO/IEC 42001 認證", due: "2027/12", status: "default", label: "未開始" },
-] as const
+  { milestone: "ISO/IEC 42001 認證", due: "2027/12", label: "未開始" },
+]
 
-const severity = {
+const severity: Record<"high" | "medium" | "low", { label: string; status?: "error" | "warning" }> = {
   high: { label: "高", status: "error" },
   medium: { label: "中", status: "warning" },
-  low: { label: "低", status: "default" },
-} as const
+  low: { label: "低" },
+}
 
 const funnelMaximum = Math.max(...funnel.map((stage) => stage.current))
 const openIssues = issues.filter((issue) => issue.status !== "已解決")

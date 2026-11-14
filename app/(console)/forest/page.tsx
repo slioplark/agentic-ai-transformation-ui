@@ -207,14 +207,14 @@ export default function ForestPage() {
               {leaf.digitalLevel && (
                 <StatusChip
                   label={leaf.digitalLevel ?? "未設定"}
-                  color="info"
+                  status="primary"
                   variant="outlined"
                 />
               )}
               {leaf.status ? (
                 <StatusChip
                   label={leaf.status}
-                  color="info"
+                  status="primary"
                   variant="outlined"
                 />
               ) : null}

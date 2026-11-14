@@ -4,7 +4,7 @@ export type MetricPrinciple = {
   number: string
   statusDetails?: readonly {
     label: string
-    status: "default" | "error" | "success" | "warning"
+    status?: "success" | "warning" | "error" | null
   }[]
   title: string
 }
@@ -73,7 +73,7 @@ export const metricPrinciples: readonly MetricPrinciple[] = [
       { label: "紅：阻塞影響範圍或延後超過 7 日", status: "error" },
       { label: "黃：延後 1–7 日或已有可識別風險", status: "warning" },
       { label: "綠：依計畫", status: "success" },
-      { label: "灰：超過 7 日未更新", status: "default" },
+      { label: "灰：超過 7 日未更新" },
     ],
   },
 ]

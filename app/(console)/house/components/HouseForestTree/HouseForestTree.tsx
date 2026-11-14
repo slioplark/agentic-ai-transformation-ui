@@ -1,6 +1,6 @@
+import type { ForestTrunk } from "@(control)/components/ForestView/forestViewData"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
-import type { ForestTrunk } from "@(control)/components/ForestView/forestViewData"
 import type { Project } from "@lib/api/projects"
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf"
 import ParkIcon from "@mui/icons-material/Park"
@@ -82,8 +82,8 @@ function HouseForestTreeLabel({
           <StatusChip
             sx={{ flexShrink: 0 }}
             key={label}
-            color="info"
             label={label}
+            status="primary"
             variant="outlined"
           />
         )
@@ -142,7 +142,10 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
                       <HouseForestTreeLabel
                         icon={EnergySavingsLeafIcon}
                         title={leaf.name}
-                        labels={[...(leaf.digitalLevel ? [leaf.digitalLevel] : []), ...(leaf.status ? [leaf.status] : [])]}
+                        labels={[
+                          ...(leaf.digitalLevel ? [leaf.digitalLevel] : []),
+                          ...(leaf.status ? [leaf.status] : []),
+                        ]}
                         onTitleClick={() => setSelectedProject({ project: leaf.project, route: leaf.route })}
                       />
                     }

@@ -1,7 +1,7 @@
 "use client"
 
 import { createTheme } from "@mui/material/styles"
-import type { } from "@mui/x-tree-view/themeAugmentation"
+import type {} from "@mui/x-tree-view/themeAugmentation"
 
 const theme = createTheme({
   palette: {

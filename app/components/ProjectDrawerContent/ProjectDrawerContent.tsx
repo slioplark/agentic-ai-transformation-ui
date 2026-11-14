@@ -1,3 +1,17 @@
+import {
+  actualProgress,
+  daysBetween,
+  dependencies,
+  downstreamProjects,
+  formatDate,
+  plannedProgress,
+  projects,
+  projectStatus,
+  redeployHours,
+  redeployTo,
+  snapshot,
+  type Project,
+} from "@(control)/(overview)/components/OverMilestones/milestones"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
@@ -15,20 +29,6 @@ import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
 import type { ReactNode } from "react"
-import {
-  actualProgress,
-  daysBetween,
-  dependencies,
-  downstreamProjects,
-  formatDate,
-  plannedProgress,
-  projects,
-  projectStatus,
-  redeployHours,
-  redeployTo,
-  snapshot,
-  type Project,
-} from "@(control)/(overview)/components/OverMilestones/milestones"
 import styles from "./ProjectDrawerContent.module.css"
 
 const criteria = [
@@ -353,7 +353,7 @@ export default function ProjectDrawerContent({
                             </Typography>
                             <StatusChip
                               label={gate.done ? "已驗收" : delay > 0 ? `預測延後 ${delay} 天` : "未完成"}
-                              status={gate.done ? "success" : delay > 0 ? "error" : "default"}
+                              status={gate.done ? "success" : delay > 0 ? "error" : null}
                             />
                           </TableCell>
                           <TableCell>{gate.evidence}</TableCell>

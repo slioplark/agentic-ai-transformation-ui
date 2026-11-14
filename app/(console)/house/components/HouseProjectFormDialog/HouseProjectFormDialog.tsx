@@ -136,12 +136,12 @@ export default function HouseProjectFormDialog({ insightLabel, onClose, project,
               <Typography variant="h4">{getProjectValue(project.TITLE)}</Typography>
               <StatusChip
                 label={getRankValue(project.CURRENT_DIGITAL_LEVEL, "R")}
-                color="info"
+                status="primary"
                 variant="outlined"
               />
               <StatusChip
                 label={getRankValue(project.CURRENT_STATUS, "D")}
-                color="info"
+                status="primary"
                 variant="outlined"
               />
             </Stack>

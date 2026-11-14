@@ -2,35 +2,34 @@
 
 import Chip from "@mui/material/Chip"
 import type { SxProps, Theme } from "@mui/material/styles"
-import { alpha } from "@mui/material/styles"
+import { styled } from "@mui/material/styles"
 
 type StatusChipProps = {
   label: string
-  color?: "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning"
-  status?: "success" | "warning" | "error" | "default"
+  status?: "primary" | "success" | "warning" | "error" | null
   variant?: "filled" | "outlined"
   sx?: SxProps<Theme>
 }
 
-export default function StatusChip({ label, color, status = "default", variant = "filled", sx }: StatusChipProps) {
-  const chipColor = color ?? status
+const StyledChip = styled(Chip, {
+  shouldForwardProp: (prop) => prop !== "status",
+})<Pick<StatusChipProps, "status">>(({ theme, status }) => {
+  if (!status) return {}
 
+  return {
+    color: theme.darken(theme.palette[status].light, 0.6),
+    backgroundColor: theme.lighten(theme.palette[status].light, 0.9),
+  }
+})
+
+export default function StatusChip({ label, status, variant, sx }: StatusChipProps) {
   return (
-    <Chip
-      sx={[
-        (theme) => ({
-          fontWeight: theme.typography.fontWeightBold,
-          ...(variant === "filled" &&
-            chipColor !== "default" && {
-              backgroundColor: alpha(theme.palette[chipColor].main, 0.12),
-              color: theme.palette[chipColor].dark,
-            }),
-        }),
-        ...(Array.isArray(sx) ? sx : [sx]),
-      ]}
+    <StyledChip
+      sx={sx}
       size="small"
       label={label}
-      color={chipColor}
+      color={status ?? undefined}
+      status={status}
       variant={variant}
     />
   )
