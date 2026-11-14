@@ -72,28 +72,17 @@
   background: #d3e3e8;
 }
 
-.coverage {
-  align-self: flex-start;
-  margin: 0 -4px;
-  padding: 0 4px;
-  border-radius: 4px;
-  font-weight: 700;
-}
-
-.coverage.high,
 .readinessCell.high {
-  background: #e6f4ee;
-  color: #14755c;
+  background: #e3eeeb;
+  color: #0e604b;
 }
-.coverage.medium,
 .readinessCell.medium {
-  background: #fff3db;
-  color: #976019;
+  background: #fbe2cc;
+  color: #ac3c00;
 }
-.coverage.low,
 .readinessCell.low {
-  background: #fcebec;
-  color: #b3303b;
+  background: #fae6e6;
+  color: #c62828;
 }
 
 .note {

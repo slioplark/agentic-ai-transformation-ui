@@ -1,8 +1,8 @@
+import type { Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import { actualProgress, projects } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
-import { insights, type DomainHub, type DomainHubAsset, type Insight } from "@(control)/house/house.mock"
-import type { Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseInsightDrawerContent from "@(control)/house/components/HouseInsightDrawerContent/HouseInsightDrawerContent"
+import { insights, type DomainHub, type DomainHubAsset, type Insight } from "@(control)/house/house.mock"
 import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -14,8 +14,8 @@ import Typography from "@mui/material/Typography"
 import { useState } from "react"
 import pageStyles from "../../page.module.css"
 import styles from "./HouseDomainHubs.module.css"
+import HouseDomainHubsStatus from "./HouseDomainHubsStatus"
 import { assets, coverage } from "./house-domain-hubs-data"
-
 
 type Detail = { type: "insight"; insight: Insight; domainHub: DomainHub } | { type: "project"; project: Project }
 
@@ -100,11 +100,7 @@ function AssetContent({ hub, asset }: { hub: DomainHub; asset: DomainHubAsset })
   )
 }
 
-export default function HouseDomainHubs({
-  domainHubs,
-}: {
-  domainHubs: DomainHub[]
-}) {
+export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[] }) {
   const [expanded, setExpanded] = useState(true)
   const [open, setOpen] = useState(false)
   const [detail, setDetail] = useState<Detail | null>(null)
@@ -178,9 +174,10 @@ export default function HouseDomainHubs({
                       hub={hub}
                       asset={asset.key}
                     />
-                    <span className={`${styles.coverage} ${tone(needed ? available / needed : 0)}`}>
-                      需求覆蓋 {available}/{needed}
-                    </span>
+                    <HouseDomainHubsStatus
+                      needed={needed}
+                      available={available}
+                    />
                   </HouseDrawerCard>
                 )
               })}
