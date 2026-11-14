@@ -1,29 +1,35 @@
 import Typography from "@mui/material/Typography"
 import type { SxProps, Theme } from "@mui/material/styles"
-import { styled } from "@mui/material/styles"
+
+type TextBadgeColor = "primary" | "secondary" | "error" | "info" | "success" | "warning"
 
 type TextBadgeProps = {
   label: string
+  color?: TextBadgeColor
   sx?: SxProps<Theme>
 }
 
-const StyledTypography = styled(Typography)<{ component?: "span" }>(({ theme }) => ({
-  display: "inline-flex",
-  alignItems: "center",
-  padding: "0 4px",
-  borderRadius: "4px",
-  fontSize: "10px",
-  color: theme.palette.primary.contrastText,
-  backgroundColor: theme.palette.primary.main,
-}))
-
-export default function TextBadge({ label, sx }: TextBadgeProps) {
+export default function TextBadge({ label, color = "primary", sx }: TextBadgeProps) {
   return (
-    <StyledTypography
-      sx={sx}
+    <Typography
+      sx={[
+        (theme) => ({
+          display: "inline-flex",
+          alignItems: "center",
+          px: "4px",
+          py: "2px",
+          borderRadius: "4px",
+          fontSize: "10px",
+          fontWeight: 600,
+          lineHeight: "9px",
+          color: theme.palette[color].contrastText,
+          backgroundColor: theme.palette[color].main,
+        }),
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
       component="span"
     >
       {label}
-    </StyledTypography>
+    </Typography>
   )
 }
