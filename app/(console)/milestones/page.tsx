@@ -8,7 +8,7 @@ import {
   type Project,
 } from "@(control)/(overview)/components/OverMilestones/milestones"
 import PageHeader from "@(control)/components/PageHeader"
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import Drawer from "@app/components/Drawer/Drawer"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
@@ -98,7 +98,7 @@ function MilestonesPageContent() {
           同樣適用於自助與公民開發。原訂基準不隨預測變動；重新定基準需保留核准人、核准日期與變更原因。
         </Typography>
       </Stack>
-      <DetailDrawer
+      <Drawer
         open={selectedProject !== null}
         onClose={closeDrawer}
       >
@@ -109,7 +109,7 @@ function MilestonesPageContent() {
             onSelect={setSelectedProject}
           />
         ) : null}
-      </DetailDrawer>
+      </Drawer>
     </>
   )
 }

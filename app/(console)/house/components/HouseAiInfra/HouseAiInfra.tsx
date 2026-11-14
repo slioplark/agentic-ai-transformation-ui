@@ -2,7 +2,7 @@
 
 import { formatDate, projectStatus, projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import Drawer from "@app/components/Drawer/Drawer"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
@@ -193,7 +193,7 @@ export default function HouseAiInfra() {
           </Box>
         </Collapse>
       </Box>
-      <DetailDrawer
+      <Drawer
         open={open}
         onClose={close}
       >
@@ -204,7 +204,7 @@ export default function HouseAiInfra() {
             onSelect={selectProject}
           />
         ) : null}
-      </DetailDrawer>
+      </Drawer>
     </>
   )
 }

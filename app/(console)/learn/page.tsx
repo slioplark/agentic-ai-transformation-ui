@@ -2,7 +2,7 @@
 
 import { projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import PageHeader from "@(control)/components/PageHeader"
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import Drawer from "@app/components/Drawer/Drawer"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -668,7 +668,7 @@ export default function LearnPage() {
           </Stack>
         </Paper>
       </Stack>
-      <DetailDrawer
+      <Drawer
         open={Boolean(detail)}
         onClose={() => setDetail(null)}
       >
@@ -679,7 +679,7 @@ export default function LearnPage() {
             onSelect={setDetail}
           />
         ) : null}
-      </DetailDrawer>
+      </Drawer>
     </>
   )
 }

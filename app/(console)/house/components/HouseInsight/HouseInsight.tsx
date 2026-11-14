@@ -2,7 +2,7 @@ import type { Project } from "@(control)/(overview)/components/OverMilestones/mi
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import HouseInsightDrawerContent from "@(control)/house/components/HouseInsightDrawerContent/HouseInsightDrawerContent"
 import { domainHubs, type DomainHub, type Insight } from "@(control)/house/house.mock"
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import Drawer from "@app/components/Drawer/Drawer"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -190,7 +190,7 @@ export default function HouseInsight({
           ))}
         </Box>
       </Collapse>
-      <DetailDrawer
+      <Drawer
         open={open}
         onClose={close}
       >
@@ -209,7 +209,7 @@ export default function HouseInsight({
             onSelect={selectProject}
           />
         ) : null}
-      </DetailDrawer>
+      </Drawer>
     </Box>
   )
 }

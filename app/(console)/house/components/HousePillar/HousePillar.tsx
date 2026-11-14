@@ -10,7 +10,7 @@ import {
   type Project,
 } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import Drawer from "@app/components/Drawer/Drawer"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
@@ -109,7 +109,7 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
           ))}
         </Box>
       </Box>
-      <DetailDrawer
+      <Drawer
         open={open}
         onClose={close}
       >
@@ -120,7 +120,7 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
             onSelect={selectProject}
           />
         ) : null}
-      </DetailDrawer>
+      </Drawer>
     </>
   )
 }

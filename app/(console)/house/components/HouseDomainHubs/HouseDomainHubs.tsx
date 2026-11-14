@@ -3,7 +3,7 @@ import { actualProgress, projects } from "@(control)/(overview)/components/OverM
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import HouseInsightDrawerContent from "@(control)/house/components/HouseInsightDrawerContent/HouseInsightDrawerContent"
 import { insights, type DomainHub, type DomainHubAsset, type Insight } from "@(control)/house/house.mock"
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import Drawer from "@app/components/Drawer/Drawer"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import TextButton from "@app/components/TextButton/TextButton"
 import { Stack } from "@mui/material"
@@ -210,7 +210,7 @@ export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[
           </Box>
         </Stack>
       </Collapse>
-      <DetailDrawer
+      <Drawer
         open={open}
         onClose={close}
       >
@@ -229,7 +229,7 @@ export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[
             onSelect={selectProject}
           />
         ) : null}
-      </DetailDrawer>
+      </Drawer>
     </Box>
   )
 }

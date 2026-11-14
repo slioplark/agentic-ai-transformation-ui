@@ -1,7 +1,7 @@
 "use client"
 
 import PageHeader from "@(control)/components/PageHeader"
-import DetailDrawer from "@app/components/DetailDrawer/DetailDrawer"
+import Drawer from "@app/components/Drawer/Drawer"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
@@ -80,7 +80,7 @@ export default function HomePage() {
         <OverviewBlocker onSelect={selectProject} />
         <OverviewHouse />
       </Stack>
-      <DetailDrawer
+      <Drawer
         open={drawerOpen}
         onClose={closeDrawer}
       >
@@ -103,7 +103,7 @@ export default function HomePage() {
             onClose={closeDrawer}
           />
         ) : null}
-      </DetailDrawer>
+      </Drawer>
     </>
   )
 }
