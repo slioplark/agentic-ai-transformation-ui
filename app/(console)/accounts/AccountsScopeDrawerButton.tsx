@@ -48,10 +48,7 @@ export default function AccountsScopeDrawerButton({
       >
         {draft !== null ? (
           <>
-            <Stack
-              gap={1}
-              sx={{ flex: 1, overflowY: "auto" }}
-            >
+            <Stack gap={3}>
               <Content
                 name={name}
                 onChange={setDraft}

@@ -48,7 +48,7 @@ function AccountsHouseDrawerContent({
   const selectedCount = sections.filter((section) => selectedIds.includes(section.id)).length
 
   return (
-    <Stack gap={3}>
+    <>
       <Stack gap={0.5}>
         <Typography
           color="text.secondary"
@@ -125,7 +125,7 @@ function AccountsHouseDrawerContent({
           ))}
         </FormGroup>
       </Box>
-    </Stack>
+    </>
   )
 }
 
