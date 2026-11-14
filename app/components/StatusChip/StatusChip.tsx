@@ -1,19 +1,15 @@
 "use client"
 
-import type { ChipPropsColorOverrides } from "@mui/material/Chip"
+import type { ChipProps } from "@mui/material/Chip"
 import Chip from "@mui/material/Chip"
 import type { SxProps, Theme } from "@mui/material/styles"
 import { styled } from "@mui/material/styles"
-import type { OverridableStringUnion } from "@mui/types"
+
+export type ChipColor = Exclude<ChipProps["color"], "default" | undefined>
 
 type StatusChipProps = {
   label: string
-  color?:
-    | OverridableStringUnion<
-        "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning",
-        ChipPropsColorOverrides
-      >
-    | undefined
+  color?: ChipColor | null
   variant?: "filled" | "outlined"
   sx?: SxProps<Theme>
 }
@@ -21,7 +17,7 @@ type StatusChipProps = {
 const StyledChip = styled(Chip, {
   shouldForwardProp: (prop) => prop !== "color",
 })<Pick<StatusChipProps, "color">>(({ theme, color }) => {
-  if (!color || color === "default") return {}
+  if (!color) return {}
 
   return {
     color: theme.darken(theme.palette[color].light, 0.6),
