@@ -1,6 +1,6 @@
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import type { TransformationSignal } from "@(control)/(overview)/overview.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
-import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -22,107 +22,98 @@ const statusDetails = {
 
 export default function OverviewTransformationSignalTable({ signals }: OverviewTransformationSignalTableProps) {
   return (
-    <Paper
-      className={styles.panel}
-      component="section"
-      variant="outlined"
-    >
+    <PaperCard>
       <Stack
-        spacing={1.5}
+        alignItems={{ sm: "baseline" }}
+        direction={{ xs: "column", sm: "row" }}
+        justifyContent="space-between"
+        spacing={0.5}
         useFlexGap
       >
-        <Stack
-          alignItems={{ sm: "baseline" }}
-          direction={{ xs: "column", sm: "row" }}
-          justifyContent="space-between"
-          spacing={0.5}
-          useFlexGap
+        <Typography variant="h4">轉型真偽檢核 · Elephants in the room</Typography>
+        <Typography
+          color="text.secondary"
+          variant="caption"
         >
-          <Typography variant="h4">轉型真偽檢核 · Elephants in the room</Typography>
-          <Typography
-            color="text.secondary"
-            variant="caption"
-          >
-            這些訊號不改善，代表只是導入工具，並未改變工作方式
-          </Typography>
-        </Stack>
-
-        <TableContainer>
-          <Table
-            size="small"
-            className={styles.table}
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell>訊號</TableCell>
-                <TableCell>現況</TableCell>
-                <TableCell>4 週前</TableCell>
-                <TableCell>門檻</TableCell>
-                <TableCell>燈號</TableCell>
-                <TableCell>為何重要</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {signals.map((signal) => {
-                const status = statusDetails[signal.status]
-
-                return (
-                  <TableRow key={signal.id}>
-                    <TableCell>
-                      <Typography
-                        component="div"
-                        fontWeight={700}
-                        variant="body2"
-                      >
-                        {signal.label}
-                      </Typography>
-                      <Typography
-                        color="text.secondary"
-                        variant="caption"
-                      >
-                        {signal.englishLabel}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        component="span"
-                        variant="h6"
-                      >
-                        {signal.currentValue}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        color="success.main"
-                        variant="caption"
-                      >
-                        {signal.change}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="caption">{signal.threshold}</Typography>
-                    </TableCell>
-                    <TableCell>
-                      <StatusChip
-                        color={status.status}
-                        label={status.label}
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Typography
-                        color="text.secondary"
-                        variant="caption"
-                      >
-                        {signal.rationale}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
+          這些訊號不改善，代表只是導入工具，並未改變工作方式
+        </Typography>
       </Stack>
-    </Paper>
+
+      <TableContainer>
+        <Table
+          size="small"
+          className={styles.table}
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell>訊號</TableCell>
+              <TableCell>現況</TableCell>
+              <TableCell>4 週前</TableCell>
+              <TableCell>門檻</TableCell>
+              <TableCell>燈號</TableCell>
+              <TableCell>為何重要</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {signals.map((signal) => {
+              const status = statusDetails[signal.status]
+
+              return (
+                <TableRow key={signal.id}>
+                  <TableCell>
+                    <Typography
+                      component="div"
+                      fontWeight={700}
+                      variant="body2"
+                    >
+                      {signal.label}
+                    </Typography>
+                    <Typography
+                      color="text.secondary"
+                      variant="caption"
+                    >
+                      {signal.englishLabel}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography
+                      component="span"
+                      variant="h6"
+                    >
+                      {signal.currentValue}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography
+                      color="success.main"
+                      variant="caption"
+                    >
+                      {signal.change}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="caption">{signal.threshold}</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <StatusChip
+                      color={status.status}
+                      label={status.label}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Typography
+                      color="text.secondary"
+                      variant="caption"
+                    >
+                      {signal.rationale}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              )
+            })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </PaperCard>
   )
 }

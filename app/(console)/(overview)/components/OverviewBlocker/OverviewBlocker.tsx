@@ -4,11 +4,11 @@ import {
   projectStatus,
   type Project,
 } from "@(control)/(overview)/components/OverMilestones/milestones"
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
-import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
@@ -24,111 +24,102 @@ const maxDownstream = Math.max(1, ...blockers.map(({ downstream }) => downstream
 
 export default function OverviewBlocker({ onSelect }: { onSelect: (project: Project) => void }) {
   return (
-    <Paper
-      component="section"
-      variant="outlined"
-      className={styles.panel}
-    >
+    <PaperCard>
       <Stack
-        gap={1.5}
         useFlexGap
+        gap={0.5}
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
       >
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          gap={0.5}
-          useFlexGap
+        <Typography variant="h4">阻塞影響範圍 · 受阻項目影響範圍</Typography>
+        <TextButton
+          component={Link}
+          href="/hubs"
         >
-          <Typography variant="h4">阻塞影響範圍 · 受阻項目影響範圍</Typography>
-          <TextButton
-            component={Link}
-            href="/hubs"
-          >
-            看全部 →
-          </TextButton>
-        </Stack>
+          看全部 →
+        </TextButton>
+      </Stack>
+      <Typography
+        color="text.secondary"
+        variant="caption"
+      >
+        數字為直接與間接依賴此項的下游工作數。
+      </Typography>
+      {blockers.length === 0 ? (
         <Typography
           color="text.secondary"
-          variant="caption"
+          variant="body2"
         >
-          數字為直接與間接依賴此項的下游工作數。
+          目前無已登錄阻塞。
         </Typography>
-        {blockers.length === 0 ? (
-          <Typography
-            color="text.secondary"
-            variant="body2"
-          >
-            目前無已登錄阻塞。
-          </Typography>
-        ) : (
-          <Box className={styles.grid}>
-            {blockers.map(({ project, downstream }) => {
-              const status = projectStatus(project)
-              return (
-                <Box
-                  component="article"
-                  key={project.id}
-                  className={styles.item}
+      ) : (
+        <Box className={styles.grid}>
+          {blockers.map(({ project, downstream }) => {
+            const status = projectStatus(project)
+            return (
+              <Box
+                component="article"
+                key={project.id}
+                className={styles.item}
+              >
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  gap={0.5}
+                  useFlexGap
                 >
                   <Stack
                     direction="row"
                     alignItems="center"
-                    justifyContent="space-between"
+                    flexWrap="wrap"
                     gap={0.5}
                     useFlexGap
                   >
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      flexWrap="wrap"
-                      gap={0.5}
-                      useFlexGap
-                    >
-                      <Typography variant="h4">{project.name}</Typography>
-                      <StatusChip
-                        color={status}
-                        label={status === "error" ? "延誤 / 阻塞" : "有風險"}
-                      />
-                    </Stack>
-                    <TextButton
-                      onClick={() => onSelect(project)}
-                      sx={{ flexShrink: 0 }}
-                    >
-                      詳情 →
-                    </TextButton>
+                    <Typography variant="h4">{project.name}</Typography>
+                    <StatusChip
+                      color={status}
+                      label={status === "error" ? "延誤 / 阻塞" : "有風險"}
+                    />
                   </Stack>
-                  <Stack
-                    direction="row"
-                    alignItems="center"
-                    justifyContent="space-between"
-                    gap={0.5}
-                    useFlexGap
+                  <TextButton
+                    onClick={() => onSelect(project)}
+                    sx={{ flexShrink: 0 }}
                   >
-                    <Typography
-                      color="text.secondary"
-                      variant="body2"
-                    >
-                      {project.issue}
-                    </Typography>
-                    <Typography variant="h6">{downstream.length}</Typography>
-                  </Stack>
-                  <ThresholdProgress
-                    color={project.risk === 2 ? "error" : "secondary"}
-                    value={(downstream.length / maxDownstream) * 100}
-                  />
+                    詳情 →
+                  </TextButton>
+                </Stack>
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  gap={0.5}
+                  useFlexGap
+                >
                   <Typography
                     color="text.secondary"
-                    variant="caption"
+                    variant="body2"
                   >
-                    {downstream.length ? `影響：${downstream.map((item) => item.name).join("、")}` : "無下游依賴"}
+                    {project.issue}
                   </Typography>
-                </Box>
-              )
-            })}
-          </Box>
-        )}
-      </Stack>
-    </Paper>
+                  <Typography variant="h6">{downstream.length}</Typography>
+                </Stack>
+                <ThresholdProgress
+                  color={project.risk === 2 ? "error" : "secondary"}
+                  value={(downstream.length / maxDownstream) * 100}
+                />
+                <Typography
+                  color="text.secondary"
+                  variant="caption"
+                >
+                  {downstream.length ? `影響：${downstream.map((item) => item.name).join("、")}` : "無下游依賴"}
+                </Typography>
+              </Box>
+            )
+          })}
+        </Box>
+      )}
+    </PaperCard>
   )
 }

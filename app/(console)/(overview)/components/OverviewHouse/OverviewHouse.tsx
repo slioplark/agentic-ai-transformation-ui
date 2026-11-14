@@ -1,3 +1,4 @@
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import {
   actualProgress,
   daysBetween,
@@ -11,7 +12,6 @@ import InfoNote from "@app/components/InfoNote/InfoNote"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
-import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
@@ -45,101 +45,92 @@ const budget = projects.reduce((sum, project) => sum + project.budget, 0)
 
 export default function OverviewHouse() {
   return (
-    <Paper
-      variant="outlined"
-      component="section"
-      className={styles.panel}
-    >
+    <PaperCard>
       <Stack
         useFlexGap
-        gap={1.5}
+        gap={0.5}
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
       >
-        <Stack
-          useFlexGap
-          gap={0.5}
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
+        <Typography variant="h4">房子各層 · 計畫與實際</Typography>
+        <TextButton
+          href="/house"
+          component={Link}
         >
-          <Typography variant="h4">房子各層 · 計畫與實際</Typography>
-          <TextButton
-            href="/house"
-            component={Link}
+          打開互動房子 →
+        </TextButton>
+      </Stack>
+      <Box className={styles.grid}>
+        {summaries.map((area) => (
+          <Box
+            key={area.name}
+            component="article"
+            className={styles.row}
           >
-            打開互動房子 →
-          </TextButton>
-        </Stack>
-        <Box className={styles.grid}>
-          {summaries.map((area) => (
-            <Box
-              key={area.name}
-              component="article"
-              className={styles.row}
+            <Stack
+              useFlexGap
+              gap={0.5}
+              className={styles.content}
             >
               <Stack
                 useFlexGap
                 gap={0.5}
-                className={styles.content}
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
               >
-                <Stack
-                  useFlexGap
-                  gap={0.5}
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="space-between"
+                <Typography variant="h4">{area.label}</Typography>
+                <TextButton
+                  sx={{ flexShrink: 0, whiteSpace: "nowrap" }}
+                  href={`/milestones?area=${encodeURIComponent(area.name)}`}
+                  component={Link}
                 >
-                  <Typography variant="h4">{area.label}</Typography>
-                  <TextButton
-                    sx={{ flexShrink: 0, whiteSpace: "nowrap" }}
-                    href={`/milestones?area=${encodeURIComponent(area.name)}`}
-                    component={Link}
-                  >
-                    追進度 →
-                  </TextButton>
-                </Stack>
-                <Typography
-                  color="text.secondary"
-                  variant="caption"
-                >
-                  {area.count} 項 · {area.red} 紅 / {area.amber} 黃 / {area.stale} 灰
-                </Typography>
-                <ThresholdProgress
-                  color="secondary"
-                  value={area.actual}
-                  threshold={area.planned}
-                />
+                  追進度 →
+                </TextButton>
               </Stack>
-              <Stack alignItems="flex-end">
-                <Typography variant="h6">{area.actual}%</Typography>
-                <Typography
-                  color="text.secondary"
-                  variant="caption"
-                >
-                  計畫 {area.planned}%
-                </Typography>
-              </Stack>
-            </Box>
-          ))}
-        </Box>
-        <InfoNote color={spent > budget ? "error" : "success"}>
-          <Stack
-            useFlexGap
-            gap={2}
-            flexWrap="wrap"
-            direction="row"
-          >
-            <Typography variant="body2">
-              累計支出 <strong>{money(spent)}</strong>
-            </Typography>
-            <Typography variant="body2">
-              核定預算 <strong>{money(budget)}</strong>
-            </Typography>
-            <Typography variant="body2">
-              財務已認列價值 <strong>{benefitSummary.recognizedSavings}</strong>
-            </Typography>
-          </Stack>
-        </InfoNote>
-      </Stack>
-    </Paper>
+              <Typography
+                color="text.secondary"
+                variant="caption"
+              >
+                {area.count} 項 · {area.red} 紅 / {area.amber} 黃 / {area.stale} 灰
+              </Typography>
+              <ThresholdProgress
+                color="secondary"
+                value={area.actual}
+                threshold={area.planned}
+              />
+            </Stack>
+            <Stack alignItems="flex-end">
+              <Typography variant="h6">{area.actual}%</Typography>
+              <Typography
+                color="text.secondary"
+                variant="caption"
+              >
+                計畫 {area.planned}%
+              </Typography>
+            </Stack>
+          </Box>
+        ))}
+      </Box>
+      <InfoNote color={spent > budget ? "error" : "success"}>
+        <Stack
+          useFlexGap
+          gap={2}
+          flexWrap="wrap"
+          direction="row"
+        >
+          <Typography variant="body2">
+            累計支出 <strong>{money(spent)}</strong>
+          </Typography>
+          <Typography variant="body2">
+            核定預算 <strong>{money(budget)}</strong>
+          </Typography>
+          <Typography variant="body2">
+            財務已認列價值 <strong>{benefitSummary.recognizedSavings}</strong>
+          </Typography>
+        </Stack>
+      </InfoNote>
+    </PaperCard>
   )
 }
