@@ -14,74 +14,48 @@ import IconButton from "@mui/material/IconButton"
 import Stack from "@mui/material/Stack"
 import Tooltip from "@mui/material/Tooltip"
 import Typography from "@mui/material/Typography"
+import dayjs from "dayjs"
+import customParseFormat from "dayjs/plugin/customParseFormat"
 import { useState } from "react"
+
+dayjs.extend(customParseFormat)
 
 export type ProjectRoute = {
   category: string
   item: string
 }
 
-type ProjectFormDraft = {
-  background: string
-  currentStatus: string
-  developOwner: string
-  dtoPm: string
-  executionOwner: string
-  objective: string
-  scopeGoal: string
-  targetDate: string
-}
-
 type HouseProjectFormDialogProps = {
+  route: ProjectRoute
+  project: Project
   insightLabel: string
   onClose: () => void
-  project: Project
-  route: ProjectRoute
-}
-
-function getProjectValue(value: string | number | boolean | null | undefined) {
-  const normalized = String(value ?? "").trim()
-  return normalized || "—"
-}
-
-function getInputValue(value: string | number | boolean | null | undefined) {
-  return String(value ?? "").trim()
-}
-
-function getOwnerValue(department: string | null, owner: string | null, fallbackDepartment?: string) {
-  const normalizedDepartment = getInputValue(department) || fallbackDepartment || ""
-  return [normalizedDepartment, getInputValue(owner)].filter(Boolean).join(" / ")
 }
 
 function getRankValue(value: Project["CURRENT_DIGITAL_LEVEL"], prefix: "R" | "D") {
-  const normalized = getInputValue(value).toUpperCase()
+  const normalized = String(value ?? "")
+    .trim()
+    .toUpperCase()
   if (!normalized) return `${prefix}—`
   return normalized.startsWith(prefix) ? normalized : `${prefix}${normalized}`
 }
 
-function getLastEditedAt(value: Project["LAST_EDITED_AT"]) {
-  const normalized = getInputValue(value)
-  const match = normalized.match(/^(\d{4}-\d{2}-\d{2})[T\s](\d{2}:\d{2})/)
-  return match ? `${match[1]} ${match[2]}` : normalized || "—"
-}
-
-function createProjectFormDraft(project: Project): ProjectFormDraft {
-  return {
-    background: getInputValue(project.BACKGROUND),
-    currentStatus: getInputValue(project.CURRENT_STATUS_CONTENT),
-    developOwner: getOwnerValue(project.DEVELOP, project.DEVELOP_OWNER),
-    dtoPm: getOwnerValue(null, project.DTO_PM, "DTO"),
-    executionOwner: getOwnerValue(project.EXECUTION, project.EXECUTION_OWNER),
-    objective: getInputValue(project.TARGET),
-    scopeGoal: getInputValue(project.SCOPE_D1),
-    targetDate: getInputValue(project.TARGET_DATE),
-  }
+function getOwnerValue(department: string | null, owner: string | null, fallbackDepartment?: string) {
+  const normalizedDepartment = department?.trim() || fallbackDepartment || ""
+  return [normalizedDepartment, owner?.trim()].filter(Boolean).join(" / ")
 }
 
 export default function HouseProjectFormDialog({ insightLabel, onClose, project, route }: HouseProjectFormDialogProps) {
+  const [draft, setDraft] = useState(() => ({
+    ...project,
+    DTO_PM: getOwnerValue(null, project.DTO_PM, "DTO"),
+    DEVELOP_OWNER: getOwnerValue(project.DEVELOP, project.DEVELOP_OWNER),
+    EXECUTION_OWNER: getOwnerValue(project.EXECUTION, project.EXECUTION_OWNER),
+  }))
   const [isEditing, setIsEditing] = useState(false)
-  const [draft, setDraft] = useState(() => createProjectFormDraft(project))
-  const updateDraft = <Key extends keyof ProjectFormDraft>(key: Key, value: ProjectFormDraft[Key]) => {
+  const targetDate = dayjs(draft.TARGET_DATE?.trim() ?? "", "MM/DD", true)
+  const lastEditedDate = dayjs(project.LAST_EDITED_AT?.trim() ?? "")
+  const updateDraft = (key: keyof typeof draft, value: string) => {
     setDraft((current) => ({ ...current, [key]: value }))
   }
 
@@ -133,7 +107,7 @@ export default function HouseProjectFormDialog({ insightLabel, onClose, project,
               alignItems="center"
               flexWrap="wrap"
             >
-              <Typography variant="h4">{getProjectValue(project.TITLE)}</Typography>
+              <Typography variant="h4">{project.TITLE.trim() || "—"}</Typography>
               <StatusChip
                 label={getRankValue(project.CURRENT_DIGITAL_LEVEL, "R")}
                 color="primary"
@@ -149,7 +123,8 @@ export default function HouseProjectFormDialog({ insightLabel, onClose, project,
               color="text.secondary"
               variant="caption"
             >
-              最後編輯：{getProjectValue(project.LAST_EDITED_BY)} · {getLastEditedAt(project.LAST_EDITED_AT)}
+              最後編輯：{project.LAST_EDITED_BY?.trim() || "—"} ·{" "}
+              {lastEditedDate.isValid() ? lastEditedDate.format("YYYY-MM-DD") : "—"}
             </Typography>
           </Stack>
           <Stack
@@ -182,28 +157,28 @@ export default function HouseProjectFormDialog({ insightLabel, onClose, project,
         >
           <DatePicker
             label="目標完成日"
-            value={draft.targetDate}
+            value={targetDate.isValid() ? targetDate : null}
             format="MM/DD"
             disabled={!isEditing}
-            onValueChange={(value) => updateDraft("targetDate", value)}
+            onChange={(date) => updateDraft("TARGET_DATE", date?.isValid() ? date.format("MM/DD") : "")}
           />
           <TextField
             label="Execution (A) 負責窗口"
-            value={draft.executionOwner}
+            value={draft.EXECUTION_OWNER}
             disabled={!isEditing}
-            onValueChange={(value) => updateDraft("executionOwner", value)}
+            onChange={(event) => updateDraft("EXECUTION_OWNER", event.target.value)}
           />
           <TextField
             label="DTO PM"
-            value={draft.dtoPm}
+            value={draft.DTO_PM}
             disabled={!isEditing}
-            onValueChange={(value) => updateDraft("dtoPm", value)}
+            onChange={(event) => updateDraft("DTO_PM", event.target.value)}
           />
           <TextField
             label="Develop (R) 負責窗口"
-            value={draft.developOwner}
+            value={draft.DEVELOP_OWNER}
             disabled={!isEditing}
-            onValueChange={(value) => updateDraft("developOwner", value)}
+            onChange={(event) => updateDraft("DEVELOP_OWNER", event.target.value)}
           />
           <Box
             sx={{
@@ -216,36 +191,36 @@ export default function HouseProjectFormDialog({ insightLabel, onClose, project,
             <TextField
               multiline
               label="Background"
-              value={draft.background}
+              value={draft.BACKGROUND ?? ""}
               minRows={6}
               disabled={!isEditing}
-              onValueChange={(value) => updateDraft("background", value)}
+              onChange={(event) => updateDraft("BACKGROUND", event.target.value)}
             />
             <TextField
               multiline
               label="Objective"
-              value={draft.objective}
+              value={draft.TARGET ?? ""}
               minRows={6}
               disabled={!isEditing}
-              onValueChange={(value) => updateDraft("objective", value)}
+              onChange={(event) => updateDraft("TARGET", event.target.value)}
             />
             <TextField
               multiline
               label="Scope & Goal"
-              value={draft.scopeGoal}
+              value={draft.SCOPE_D1 ?? ""}
               minRows={6}
               disabled={!isEditing}
-              onValueChange={(value) => updateDraft("scopeGoal", value)}
+              onChange={(event) => updateDraft("SCOPE_D1", event.target.value)}
             />
           </Box>
           <Box sx={{ gridColumn: "1 / -1" }}>
             <TextField
               multiline
               label="Current Status"
-              value={draft.currentStatus}
+              value={draft.CURRENT_STATUS_CONTENT ?? ""}
               minRows={6}
               disabled={!isEditing}
-              onValueChange={(value) => updateDraft("currentStatus", value)}
+              onChange={(event) => updateDraft("CURRENT_STATUS_CONTENT", event.target.value)}
             />
           </Box>
         </Box>

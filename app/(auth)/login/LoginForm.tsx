@@ -45,8 +45,8 @@ export default function LoginForm() {
           type="text"
           label="帳號"
           value={username}
+          onChange={(event) => setUsername(event.target.value)}
           autoComplete="username"
-          onValueChange={setUsername}
         />
         <TextField
           required
@@ -54,6 +54,7 @@ export default function LoginForm() {
           type={showPassword ? "text" : "password"}
           label="密碼"
           value={password}
+          onChange={(event) => setPassword(event.target.value)}
           slotProps={{
             input: {
               endAdornment: (
@@ -69,7 +70,6 @@ export default function LoginForm() {
             },
           }}
           autoComplete="current-password"
-          onValueChange={setPassword}
         />
         {error ? (
           <Alert
