@@ -1,28 +1,23 @@
-import { alpha, styled } from "@mui/material/styles"
-import type { ReactNode } from "react"
+import type { AlertProps } from "@mui/material/Alert"
+import Alert from "@mui/material/Alert"
+import { styled } from "@mui/material/styles"
 
-type InfoNoteProps = {
-  children: ReactNode
-  status?: "success" | "warning" | "error" | "default"
-}
+const StyledAlert = styled(Alert)({
+  padding: "16px",
+  borderLeft: "4px solid currentColor",
+  "& .MuiAlert-message": {
+    padding: 0,
+  },
+})
 
-const InfoNoteRoot = styled("aside", {
-  shouldForwardProp: (prop) => prop !== "status",
-})<Pick<InfoNoteProps, "status">>(({ theme, status }) => ({
-  padding: theme.spacing(1.75, 2.25),
-  color: theme.palette.text.primary,
-  borderLeft: `4px solid ${status === "default" ? theme.palette.text.secondary : theme.palette[status ?? "secondary"].main}`,
-  backgroundColor:
-    status === "default" ? theme.palette.action.hover : status ? alpha(theme.palette[status].main, 0.1) : "#e9f4f2",
-}))
-
-export default function InfoNote({ children, status }: InfoNoteProps) {
+export default function InfoNote({ color = "info", ...props }: AlertProps) {
   return (
-    <InfoNoteRoot
+    <StyledAlert
+      {...props}
+      square
+      icon={false}
       role="note"
-      status={status}
-    >
-      {children}
-    </InfoNoteRoot>
+      color={color}
+    />
   )
 }

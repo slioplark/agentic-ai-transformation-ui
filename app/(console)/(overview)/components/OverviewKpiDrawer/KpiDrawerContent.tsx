@@ -314,7 +314,7 @@ function BenefitsDrawerContent({ onClose }: { onClose: () => void }) {
           計算口徑：相同業務量 × 單次作業時間減少 − 新增人工覆核時間；再投入須有具名工作與 BU 主管確認。
         </Typography>
       </Paper>
-      <InfoNote>
+      <InfoNote color="success">
         <Typography variant="body2">
           建議向 CFO 呈現：釋放的產能承接了多少業務成長、避免了多少新增人力，而非可減少多少人。
         </Typography>

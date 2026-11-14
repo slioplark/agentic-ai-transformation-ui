@@ -1,5 +1,5 @@
-import Sparkline from "@app/components/Sparkline/Sparkline"
 import type { OverviewKpi } from "@(control)/(overview)/overview.mock"
+import Sparkline from "@app/components/Sparkline/Sparkline"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"

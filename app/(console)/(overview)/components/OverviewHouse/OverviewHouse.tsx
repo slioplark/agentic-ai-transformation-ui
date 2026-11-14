@@ -121,7 +121,7 @@ export default function OverviewHouse() {
             </Box>
           ))}
         </Box>
-        <InfoNote status={spent > budget ? "error" : "success"}>
+        <InfoNote color={spent > budget ? "error" : "success"}>
           <Stack
             useFlexGap
             gap={2}
