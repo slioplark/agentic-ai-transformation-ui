@@ -2,16 +2,12 @@
 
 import type { ChipProps } from "@mui/material/Chip"
 import Chip from "@mui/material/Chip"
-import type { SxProps, Theme } from "@mui/material/styles"
 import { styled } from "@mui/material/styles"
 
 export type ChipColor = Exclude<ChipProps["color"], "default" | undefined>
 
-type StatusChipProps = {
-  label: string
-  color?: ChipColor | null
-  variant?: "filled" | "outlined"
-  sx?: SxProps<Theme>
+type StatusChipProps = Omit<ChipProps, "color"> & {
+  color?: ChipColor
 }
 
 const StyledChip = styled(Chip, {
@@ -25,14 +21,12 @@ const StyledChip = styled(Chip, {
   }
 })
 
-export default function StatusChip({ label, color, variant, sx }: StatusChipProps) {
+export default function StatusChip({ color, size = "small", ...props }: StatusChipProps) {
   return (
     <StyledChip
-      sx={sx}
-      size="small"
-      label={label}
-      color={color ?? undefined}
-      variant={variant}
+      size={size}
+      color={color}
+      {...props}
     />
   )
 }

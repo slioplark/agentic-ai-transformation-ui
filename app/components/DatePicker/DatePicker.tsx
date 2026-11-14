@@ -7,29 +7,29 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import { DatePicker as MuiDatePicker, type DatePickerProps } from "@mui/x-date-pickers/DatePicker"
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
 
-const StyledDatePicker = styled(Stack)(({ theme }) => ({
-  "& > .MuiPickersTextField-root .MuiPickersInputBase-root": {
+const StyledDatePicker = styled(MuiDatePicker)(({ theme }) => ({
+  "& .MuiPickersInputBase-root": {
     color: theme.palette.text.primary,
     backgroundColor: theme.palette.background.paper,
   },
-  "& > .MuiPickersTextField-root .MuiButtonBase-root": {
+  "& .MuiButtonBase-root": {
     color: theme.palette.text.primary,
   },
-  "& > .MuiPickersTextField-root .Mui-disabled": {
+  "& .Mui-disabled": {
     cursor: "not-allowed",
   },
 }))
 
 export default function DatePicker({ label, ...props }: DatePickerProps) {
   return (
-    <StyledDatePicker gap={0.5}>
+    <Stack gap={0.5}>
       {label != null ? <Typography variant="h6">{label}</Typography> : null}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <MuiDatePicker
+        <StyledDatePicker
           {...props}
           format="YYYY/MM/DD"
         />
       </LocalizationProvider>
-    </StyledDatePicker>
+    </Stack>
   )
 }

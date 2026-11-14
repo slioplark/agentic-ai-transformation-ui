@@ -1,12 +1,20 @@
+"use client"
+
 import type { ButtonProps } from "@mui/material/Button"
 import Button from "@mui/material/Button"
+import { styled } from "@mui/material/styles"
 
-export default function TextButton({ sx, ...props }: ButtonProps) {
+const StyledButton = styled(Button)({
+  width: "fit-content",
+  minWidth: 0,
+  padding: "4px",
+})
+
+export default function TextButton(props: ButtonProps) {
   return (
-    <Button
-      variant="text"
+    <StyledButton
       size="small"
-      sx={[{ width: "fit-content", minWidth: 0, p: "4px" }, ...(Array.isArray(sx) ? sx : [sx])]}
+      variant="text"
       {...props}
     />
   )

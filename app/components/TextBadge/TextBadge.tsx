@@ -8,8 +8,6 @@ type TextBadgeProps = {
 }
 
 const StyledTypography = styled(Typography)<{ component?: "span" }>(({ theme }) => ({
-  display: "inline-flex",
-  alignItems: "center",
   padding: "0 4px",
   borderRadius: "4px",
   fontSize: "10px",
@@ -20,8 +18,8 @@ const StyledTypography = styled(Typography)<{ component?: "span" }>(({ theme }) 
 export default function TextBadge({ label, sx }: TextBadgeProps) {
   return (
     <StyledTypography
-      sx={sx}
       component="span"
+      sx={sx}
     >
       {label}
     </StyledTypography>

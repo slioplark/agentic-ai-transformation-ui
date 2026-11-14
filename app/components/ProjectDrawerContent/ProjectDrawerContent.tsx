@@ -353,7 +353,7 @@ export default function ProjectDrawerContent({
                             </Typography>
                             <StatusChip
                               label={gate.done ? "已驗收" : delay > 0 ? `預測延後 ${delay} 天` : "未完成"}
-                              color={gate.done ? "success" : delay > 0 ? "error" : null}
+                              color={gate.done ? "success" : delay > 0 ? "error" : undefined}
                             />
                           </TableCell>
                           <TableCell>{gate.evidence}</TableCell>
