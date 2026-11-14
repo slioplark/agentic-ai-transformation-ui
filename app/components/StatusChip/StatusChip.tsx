@@ -6,14 +6,14 @@ import type { SxProps, Theme } from "@mui/material/styles"
 import { styled } from "@mui/material/styles"
 import type { OverridableStringUnion } from "@mui/types"
 
-export type StatusChipColor = OverridableStringUnion<
-  "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning",
-  ChipPropsColorOverrides
-> | null
-
 type StatusChipProps = {
   label: string
-  color?: StatusChipColor
+  color?:
+    | OverridableStringUnion<
+        "default" | "primary" | "secondary" | "error" | "info" | "success" | "warning",
+        ChipPropsColorOverrides
+      >
+    | undefined
   variant?: "filled" | "outlined"
   sx?: SxProps<Theme>
 }
