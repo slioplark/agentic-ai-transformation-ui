@@ -82,7 +82,7 @@ function AccountsInsightDrawerContent({
   )
 
   return (
-    <Stack gap={3}>
+    <>
       <Stack gap={0.5}>
         <Typography
           color="text.secondary"
@@ -133,7 +133,7 @@ function AccountsInsightDrawerContent({
         sx={{
           display: "grid",
           gridTemplateColumns: { xs: "minmax(0, 1fr)", sm: "repeat(2, minmax(0, 1fr))" },
-          gap: 3,
+          gap: 2,
         }}
       >
         {groups.map(({ insight, projectIds, items }) => {
@@ -240,7 +240,7 @@ function AccountsInsightDrawerContent({
           )
         })}
       </Box>
-    </Stack>
+    </>
   )
 }
 

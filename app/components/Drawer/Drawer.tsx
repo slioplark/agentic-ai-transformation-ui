@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles"
 
 const StyledDrawer = styled(MuiDrawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
-    gap: 24,
+    gap: 16,
     width: "50%",
     padding: 24,
     backgroundColor: theme.palette.background.default,

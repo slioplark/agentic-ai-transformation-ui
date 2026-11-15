@@ -48,13 +48,11 @@ export default function AccountsScopeDrawerButton({
       >
         {draft !== null ? (
           <>
-            <Stack gap={3}>
-              <Content
-                name={name}
-                onChange={setDraft}
-                selectedIds={draft}
-              />
-            </Stack>
+            <Content
+              name={name}
+              onChange={setDraft}
+              selectedIds={draft}
+            />
             <Stack
               gap={1}
               direction="row"

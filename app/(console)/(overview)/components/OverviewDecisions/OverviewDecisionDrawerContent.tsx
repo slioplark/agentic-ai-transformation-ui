@@ -1,5 +1,4 @@
 import type { ExecutiveDecision } from "@(control)/(overview)/overview.mock"
-import InfoNote from "@app/components/InfoNote/InfoNote"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
@@ -105,9 +104,6 @@ export default function OverviewDecisionDrawerContent({ decision, onClose }: Pro
           {decision.project} · 議題 owner：{decision.owner}
         </Typography>
       </Paper>
-      <InfoNote>
-        <Typography variant="body2">此頁為決策資訊示範，沒有送出核准或通知功能。</Typography>
-      </InfoNote>
     </>
   )
 }
