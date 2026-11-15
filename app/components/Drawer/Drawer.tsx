@@ -9,6 +9,9 @@ const StyledDrawer = styled(MuiDrawer)(({ theme }) => ({
     width: "50%",
     padding: 24,
     backgroundColor: theme.palette.background.default,
+    "@media (max-width: 1024px)": {
+      width: "75%",
+    },
     "@media (max-width: 425px)": {
       width: "100%",
       padding: 16,

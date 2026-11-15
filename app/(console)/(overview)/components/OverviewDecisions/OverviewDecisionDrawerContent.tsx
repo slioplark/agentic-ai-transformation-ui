@@ -1,8 +1,8 @@
 import type { ExecutiveDecision } from "@(control)/(overview)/overview.mock"
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
-import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import styles from "./OverviewDecisions.module.css"
@@ -40,10 +40,7 @@ export default function OverviewDecisionDrawerContent({ decision, onClose }: Pro
         </IconButton>
       </Stack>
       <Box className={styles.details}>
-        <Paper
-          variant="outlined"
-          className={styles.detail}
-        >
+        <PaperCard>
           <Typography
             color="text.secondary"
             variant="caption"
@@ -51,11 +48,8 @@ export default function OverviewDecisionDrawerContent({ decision, onClose }: Pro
             決策期限
           </Typography>
           <Typography variant="h6">{decision.due.replaceAll("-", "/")}</Typography>
-        </Paper>
-        <Paper
-          variant="outlined"
-          className={styles.detail}
-        >
+        </PaperCard>
+        <PaperCard>
           <Typography
             color="text.secondary"
             variant="caption"
@@ -63,13 +57,9 @@ export default function OverviewDecisionDrawerContent({ decision, onClose }: Pro
             建議決策人
           </Typography>
           <Typography variant="h6">{decision.who}</Typography>
-        </Paper>
+        </PaperCard>
       </Box>
-      <Paper
-        component="section"
-        variant="outlined"
-        className={styles.detail}
-      >
+      <PaperCard>
         <Stack
           gap={2}
           useFlexGap
@@ -93,17 +83,13 @@ export default function OverviewDecisionDrawerContent({ decision, onClose }: Pro
             <Typography variant="body2">{decision.options}</Typography>
           </Box>
         </Stack>
-      </Paper>
-      <Paper
-        component="section"
-        variant="outlined"
-        className={styles.detail}
-      >
+      </PaperCard>
+      <PaperCard>
         <Typography variant="h4">連動專案與責任</Typography>
         <Typography variant="body2">
           {decision.project} · 議題 owner：{decision.owner}
         </Typography>
-      </Paper>
+      </PaperCard>
     </>
   )
 }

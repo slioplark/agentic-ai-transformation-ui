@@ -1,16 +1,3 @@
-.panel {
-  display: grid;
-  gap: 16px;
-  padding: 16px;
-}
-
-.tablePanel {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-}
-
 .summaryGrid {
   display: flex;
   gap: 16px;
@@ -19,10 +6,6 @@
 .summaryGrid > section {
   flex: 1 1 0;
   min-width: 0;
-}
-
-.summarySection {
-  padding: 16px;
 }
 
 .ladderRow {

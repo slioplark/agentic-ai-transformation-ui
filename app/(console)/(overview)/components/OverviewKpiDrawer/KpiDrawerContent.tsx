@@ -7,11 +7,11 @@ import {
   type OverviewKpi,
 } from "@(control)/(overview)/overview.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import RankDistributionBar, { rankColorForLabel } from "@app/components/RankDistributionBar/RankDistributionBar"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
-import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -86,11 +86,7 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
         onClose={onClose}
         title="能力成熟度分布"
       />
-      <Paper
-        component="section"
-        variant="outlined"
-        className={styles.panel}
-      >
+      <PaperCard>
         <Stack
           gap={1}
           useFlexGap
@@ -136,11 +132,8 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
             </Typography>
           </Stack>
         </Stack>
-      </Paper>
-      <Paper
-        className={styles.tablePanel}
-        variant="outlined"
-      >
+      </PaperCard>
+      <PaperCard>
         <TableContainer>
           <Table size="small">
             <TableHead>
@@ -181,11 +174,8 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
         >
           歷史與目標供趨勢比較。
         </Typography>
-      </Paper>
-      <Paper
-        className={styles.tablePanel}
-        variant="outlined"
-      >
+      </PaperCard>
+      <PaperCard>
         <Typography variant="h4">各 BU 分布（2026-Q4）</Typography>
         <TableContainer>
           <Table size="small">
@@ -221,7 +211,7 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
             </TableBody>
           </Table>
         </TableContainer>
-      </Paper>
+      </PaperCard>
     </>
   )
 }
@@ -244,11 +234,7 @@ function BenefitsDrawerContent({ onClose }: { onClose: () => void }) {
         component="section"
         className={styles.summaryGrid}
       >
-        <Paper
-          component="section"
-          variant="outlined"
-          className={styles.summarySection}
-        >
+        <PaperCard>
           <Typography
             color="text.secondary"
             variant="h4"
@@ -258,12 +244,8 @@ function BenefitsDrawerContent({ onClose }: { onClose: () => void }) {
           <Typography variant="h6">
             {benefitSummary.freedHours} h / {benefitSummary.redeployedHours} h · {benefitSummary.redeploymentRate}
           </Typography>
-        </Paper>
-        <Paper
-          component="section"
-          variant="outlined"
-          className={styles.summarySection}
-        >
+        </PaperCard>
+        <PaperCard>
           <Typography
             color="text.secondary"
             variant="h4"
@@ -277,12 +259,9 @@ function BenefitsDrawerContent({ onClose }: { onClose: () => void }) {
           >
             成本避免；財務已認列 {benefitSummary.recognizedSavings}
           </Typography>
-        </Paper>
+        </PaperCard>
       </Box>
-      <Paper
-        className={styles.tablePanel}
-        variant="outlined"
-      >
+      <PaperCard>
         <TableContainer>
           <Table size="small">
             <TableHead>
@@ -313,7 +292,7 @@ function BenefitsDrawerContent({ onClose }: { onClose: () => void }) {
         >
           計算口徑：相同業務量 × 單次作業時間減少 − 新增人工覆核時間；再投入須有具名工作與 BU 主管確認。
         </Typography>
-      </Paper>
+      </PaperCard>
       <InfoNote color="success">
         <Typography variant="body2">
           建議向 CFO 呈現：釋放的產能承接了多少業務成長、避免了多少新增人力，而非可減少多少人。

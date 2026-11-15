@@ -12,6 +12,7 @@ import {
   snapshot,
   type Project,
 } from "@(control)/(overview)/components/OverMilestones/milestones"
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
@@ -19,7 +20,6 @@ import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import Chip from "@mui/material/Chip"
 import IconButton from "@mui/material/IconButton"
-import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -47,11 +47,7 @@ const labels = {
 export function DeploymentProgress({ project }: { project: Project }) {
   const status = projectStatus(project)
   return project.deployment ? (
-    <Paper
-      variant="outlined"
-      component="section"
-      className={styles.detail}
-    >
+    <PaperCard>
       <Stack
         useFlexGap
         gap={0.5}
@@ -68,7 +64,7 @@ export function DeploymentProgress({ project }: { project: Project }) {
           原訂 {formatDate(project.deployment.base)} · 預測 {formatDate(project.deployment.fc)}
         </Typography>
       </Stack>
-    </Paper>
+    </PaperCard>
   ) : null
 }
 
@@ -146,10 +142,7 @@ export default function ProjectDrawerContent({
       </Stack>
       {summary ?? (
         <Box className={styles.summary}>
-          <Paper
-            variant="outlined"
-            className={styles.detail}
-          >
+          <PaperCard>
             <Typography
               color="text.secondary"
               variant="caption"
@@ -163,11 +156,8 @@ export default function ProjectDrawerContent({
             >
               Sponsor：{project.sponsor}
             </Typography>
-          </Paper>
-          <Paper
-            variant="outlined"
-            className={styles.detail}
-          >
+          </PaperCard>
+          <PaperCard>
             <Stack
               useFlexGap
               gap={0.5}
@@ -187,11 +177,8 @@ export default function ProjectDrawerContent({
                 threshold={plannedProgress(project)}
               />
             </Stack>
-          </Paper>
-          <Paper
-            variant="outlined"
-            className={styles.detail}
-          >
+          </PaperCard>
+          <PaperCard>
             <Typography
               color="text.secondary"
               variant="caption"
@@ -206,11 +193,8 @@ export default function ProjectDrawerContent({
               基準 {kpi.baseline} → 目標 {kpi.target} {kpi.unit}
               {attainment === null ? "" : ` · 達成 ${attainment}%`}
             </Typography>
-          </Paper>
-          <Paper
-            variant="outlined"
-            className={styles.detail}
-          >
+          </PaperCard>
+          <PaperCard>
             <Typography
               color="text.secondary"
               variant="caption"
@@ -224,16 +208,12 @@ export default function ProjectDrawerContent({
             >
               {formatDate(project.updated)} 更新 · 預算 NT${project.budget}M / 支出 {project.spent}M
             </Typography>
-          </Paper>
+          </PaperCard>
         </Box>
       )}
       {details ?? (
         <>
-          <Paper
-            variant="outlined"
-            component="section"
-            className={styles.detail}
-          >
+          <PaperCard>
             <Stack
               useFlexGap
               gap={0.5}
@@ -270,13 +250,9 @@ export default function ProjectDrawerContent({
                 </Typography>
               ) : null}
             </Stack>
-          </Paper>
+          </PaperCard>
           <DeploymentProgress project={project} />
-          <Paper
-            variant="outlined"
-            component="section"
-            className={styles.detail}
-          >
+          <PaperCard>
             <Stack
               useFlexGap
               gap={0.5}
@@ -299,12 +275,8 @@ export default function ProjectDrawerContent({
                   : "已通過 D5；進入效益與採用追蹤。"}
               </Typography>
             </Stack>
-          </Paper>
-          <Paper
-            variant="outlined"
-            component="section"
-            className={styles.detail}
-          >
+          </PaperCard>
+          <PaperCard>
             <Stack
               useFlexGap
               gap={0.5}
@@ -364,12 +336,8 @@ export default function ProjectDrawerContent({
                 </Table>
               </TableContainer>
             </Stack>
-          </Paper>
-          <Paper
-            variant="outlined"
-            component="section"
-            className={styles.detail}
-          >
+          </PaperCard>
+          <PaperCard>
             <Stack
               useFlexGap
               gap={0.5}
@@ -414,13 +382,9 @@ export default function ProjectDrawerContent({
                 </Typography>
               ) : null}
             </Stack>
-          </Paper>
+          </PaperCard>
           {project.hours ? (
-            <Paper
-              variant="outlined"
-              component="section"
-              className={styles.detail}
-            >
+            <PaperCard>
               <Typography variant="h4">產能釋放與再投入</Typography>
               <Typography variant="body2">
                 每月釋放 {project.hours} h，再投入 {redeployHours[project.id]} h 至「{redeployTo[project.id]}」。
@@ -431,7 +395,7 @@ export default function ProjectDrawerContent({
               >
                 由流程 owner 驗證；未經財務認列，不視為現金收益。
               </Typography>
-            </Paper>
+            </PaperCard>
           ) : null}
           <Typography
             color="text.secondary"

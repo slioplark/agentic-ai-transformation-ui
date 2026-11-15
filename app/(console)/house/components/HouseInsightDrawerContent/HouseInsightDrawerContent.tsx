@@ -3,6 +3,7 @@ import { assets, coverage } from "@(control)/house/components/HouseDomainHubs/ho
 import foresetView from "@(control)/house/foreset-view.mock.json"
 import { taskLevelDescriptions, type DomainHub, type Insight } from "@(control)/house/house.mock"
 import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import RankDistributionBar from "@app/components/RankDistributionBar/RankDistributionBar"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -11,7 +12,6 @@ import { useProjects } from "@lib/hooks/use-projects"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
-import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -92,11 +92,7 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
           <CloseIcon />
         </IconButton>
       </Stack>
-      <Paper
-        component="section"
-        variant="outlined"
-        sx={{ p: 2 }}
-      >
+      <PaperCard>
         <Stack gap={1}>
           <Typography variant="h5">Forest View</Typography>
           {isProjectsLoading ? (
@@ -129,12 +125,8 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
             </>
           ) : null}
         </Stack>
-      </Paper>
-      <Paper
-        component="section"
-        variant="outlined"
-        sx={{ p: 2 }}
-      >
+      </PaperCard>
+      <PaperCard>
         <Stack gap={2}>
           <Typography variant="h5">Top tasks 需求滿足度</Typography>
           <TableContainer>
@@ -199,12 +191,8 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
             </Stack>
           ) : null}
         </Stack>
-      </Paper>
-      <Paper
-        component="section"
-        variant="outlined"
-        sx={{ p: 2 }}
-      >
+      </PaperCard>
+      <PaperCard>
         <Stack gap={2}>
           <Typography variant="h5">專案與 D-gate</Typography>
           {project ? (
@@ -241,7 +229,7 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
             </Typography>
           )}
         </Stack>
-      </Paper>
+      </PaperCard>
     </>
   )
 }
