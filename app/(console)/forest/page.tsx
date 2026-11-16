@@ -15,7 +15,7 @@ import TextBadge from "@app/components/TextBadge/TextBadge"
 import type { Project } from "@lib/api/projects"
 import { useProjects } from "@lib/hooks/use-projects"
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf"
-import { Divider } from "@mui/material"
+import { Chip, Divider } from "@mui/material"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
 import ListItemIcon from "@mui/material/ListItemIcon"
@@ -43,13 +43,27 @@ type SelectedProject = {
 
 const forestOrder: ForestId[] = ["planning", "customer", "td", "ops", "biz"]
 const insightNames = new Map(insights.map((insight) => [insight.id, insight.name]))
-const forestBuildOptions = { includeUnranked: true }
 const maturityStatuses = [
-  { label: "R1: Connected", color: "error" },
-  { label: "R2: Optimized", color: "warning" },
-  { label: "R3: Transparent", color: "info" },
-  { label: "R4: Proactive", color: "success" },
-  { label: "R5: Agile", color: "secondary" },
+  {
+    label: "R1: Connected",
+    color: "error",
+  },
+  {
+    label: "R2: Optimized",
+    color: "warning",
+  },
+  {
+    label: "R3: Transparent",
+    color: "info",
+  },
+  {
+    label: "R4: Proactive",
+    color: "secondary",
+  },
+  {
+    label: "R5: Agile",
+    color: "success",
+  },
 ] as const
 
 function getInsightLabel(id: ForestId) {
@@ -64,7 +78,7 @@ export default function ForestPage() {
     const views = new Map<ForestId, ForestViewData>()
 
     for (const id of forestOrder) {
-      views.set(id, buildForestView(forestBlueprint[id], data ?? [], forestBuildOptions))
+      views.set(id, buildForestView(forestBlueprint[id], data ?? [], { includeUnranked: true }))
     }
 
     return views
@@ -94,10 +108,11 @@ export default function ForestPage() {
         justifyContent="flex-end"
       >
         {maturityStatuses.map(({ label, color }) => (
-          <StatusChip
+          <Chip
             key={label}
             color={color}
             label={label}
+            onClick={() => {}}
           />
         ))}
       </Stack>
@@ -125,7 +140,7 @@ export default function ForestPage() {
                 variant="h6"
                 className={styles.forestTitle}
               >
-                {insightLabel}
+                {insightLabel} Insight
               </Typography>
               <Divider />
               <Box
