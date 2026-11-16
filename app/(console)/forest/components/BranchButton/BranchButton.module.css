@@ -1,0 +1,50 @@
+.branch:global(.MuiButtonBase-root) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px;
+  text-align: left;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.count {
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.progressBorder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.progressBorder rect {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 18 82;
+  animation: traceBorder 2.5s linear infinite;
+}
+
+@keyframes traceBorder {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressBorder {
+    display: none;
+  }
+}

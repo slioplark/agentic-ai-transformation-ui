@@ -17,7 +17,6 @@ import { useProjects } from "@lib/hooks/use-projects"
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf"
 import { Chip, Divider } from "@mui/material"
 import Box from "@mui/material/Box"
-import ButtonBase from "@mui/material/ButtonBase"
 import ListItemIcon from "@mui/material/ListItemIcon"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
@@ -25,6 +24,7 @@ import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import type { MouseEvent } from "react"
 import { useMemo, useState } from "react"
+import BranchButton from "./components/BranchButton/BranchButton"
 import styles from "./page.module.css"
 
 type ForestId = keyof typeof forestBlueprint
@@ -72,7 +72,9 @@ function getInsightLabel(id: ForestId) {
 
 export default function ForestPage() {
   const [openBranch, setOpenBranch] = useState<OpenBranch | null>(null)
+  const [selectedRank, setSelectedRank] = useState<number | null>(null)
   const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
+
   const { data, error, isLoading } = useProjects()
   const forestViews = useMemo(() => {
     const views = new Map<ForestId, ForestViewData>()
@@ -107,12 +109,13 @@ export default function ForestPage() {
         direction="row"
         justifyContent="flex-end"
       >
-        {maturityStatuses.map(({ label, color }) => (
+        {maturityStatuses.map(({ label, color }, index) => (
           <Chip
             key={label}
-            color={color}
             label={label}
-            onClick={() => {}}
+            color={color}
+            variant={selectedRank === index ? "filled" : "outlined"}
+            onClick={() => setSelectedRank((current) => (current === index ? null : index))}
           />
         ))}
       </Stack>
@@ -169,27 +172,14 @@ export default function ForestPage() {
                       </Stack>
                       <Box className={styles.branches}>
                         {trunk.branches.map((branch) => (
-                          <ButtonBase
+                          <BranchButton
                             key={branch.title}
+                            title={branch.title}
+                            count={branch.leaves.length}
+                            status={branch.leaves.length > 0 ? "ongoing" : "pending"}
                             onClick={(event) => openBranchMenu(event, insightLabel, branch.leaves)}
                             disabled={isUnavailable || branch.leaves.length === 0}
-                            className={styles.branch}
-                          >
-                            <Box
-                              className={styles.branchTitle}
-                              component="span"
-                            >
-                              {branch.title}
-                            </Box>
-                            {branch.leaves.length > 0 ? (
-                              <Box
-                                className={styles.leafCount}
-                                component="span"
-                              >
-                                {branch.leaves.length}
-                              </Box>
-                            ) : null}
-                          </ButtonBase>
+                          />
                         ))}
                       </Box>
                     </Box>

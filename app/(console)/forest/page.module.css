@@ -86,45 +86,6 @@
   gap: 4px;
 }
 
-.branch:global(.MuiButtonBase-root) {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 8px;
-  text-align: left;
-  border-radius: 8px;
-  background: #e3ebef;
-  color: #183449;
-  font-size: 0.75rem;
-  overflow-wrap: anywhere;
-}
-
-.branch:global(.MuiButtonBase-root):hover {
-  background: #d2e3ec;
-}
-
-.branch:global(.MuiButtonBase-root):focus-visible {
-  outline: 2px solid #087f80;
-  outline-offset: 2px;
-}
-
-.branch:global(.MuiButtonBase-root).branch:global(.Mui-disabled) {
-  color: #8b9aa5;
-  background: #e3ebef;
-}
-
-.branchTitle {
-  min-width: 0;
-  overflow-wrap: anywhere;
-}
-
-.leafCount {
-  flex-shrink: 0;
-  color: #183449;
-  font-weight: 700;
-}
-
 .message {
   margin-bottom: -4px;
 }
