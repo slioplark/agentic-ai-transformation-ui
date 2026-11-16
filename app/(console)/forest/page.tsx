@@ -12,7 +12,6 @@ import forestBlueprint from "@(control)/house/foreset-view.mock.json"
 import { insights } from "@(control)/house/house.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextBadge from "@app/components/TextBadge/TextBadge"
-import { getErrorMessage } from "@lib/api/client"
 import type { Project } from "@lib/api/projects"
 import { useProjects } from "@lib/hooks/use-projects"
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf"
@@ -109,15 +108,6 @@ export default function ForestPage() {
           className={styles.message}
         >
           正在載入專案資料…
-        </Typography>
-      ) : null}
-      {error ? (
-        <Typography
-          color="error"
-          variant="body2"
-          className={styles.message}
-        >
-          無法載入專案資料：{getErrorMessage(error)}
         </Typography>
       ) : null}
       <Box className={styles.map}>

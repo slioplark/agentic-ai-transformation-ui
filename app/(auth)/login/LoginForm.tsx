@@ -5,22 +5,21 @@ import { useSignIn } from "@lib/hooks/use-sign-in"
 import { setSessionUser } from "@lib/session-storage"
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined"
 import Visibility from "@mui/icons-material/VisibilityOutlined"
-import Alert from "@mui/material/Alert"
 import Button from "@mui/material/Button"
 import IconButton from "@mui/material/IconButton"
 import InputAdornment from "@mui/material/InputAdornment"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
-import { useState, type FormEvent } from "react"
+import { useState, type SubmitEvent } from "react"
 
 export default function LoginForm() {
   const router = useRouter()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
-  const { error, isMutating, trigger } = useSignIn()
+  const { isMutating, trigger } = useSignIn()
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
 
@@ -32,7 +31,7 @@ export default function LoginForm() {
       setSessionUser(response.user)
       router.replace("/")
     } catch {
-      // The error alert below reports failed sign-in attempts.
+      // AppProviders reports failed sign-in attempts.
     }
   }
 
@@ -71,14 +70,6 @@ export default function LoginForm() {
           }}
           autoComplete="current-password"
         />
-        {error ? (
-          <Alert
-            role="alert"
-            severity="error"
-          >
-            {error instanceof Error ? error.message : "登入失敗，請稍後再試。"}
-          </Alert>
-        ) : null}
         <Button
           type="submit"
           variant="contained"

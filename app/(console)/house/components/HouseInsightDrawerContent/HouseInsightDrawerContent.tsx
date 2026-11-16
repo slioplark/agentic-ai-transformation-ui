@@ -8,7 +8,6 @@ import PaperCard from "@app/components/PaperCard/PaperCard"
 import RankDistributionBar from "@app/components/RankDistributionBar/RankDistributionBar"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
-import { getErrorMessage } from "@lib/api/client"
 import { useProjects } from "@lib/hooks/use-projects"
 import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
@@ -32,7 +31,12 @@ type HouseInsightDrawerContentProps = {
   onProject: (projectId: string) => void
 }
 
-export default function HouseInsightDrawerContent({ insight, domainHub, navigation, onProject }: HouseInsightDrawerContentProps) {
+export default function HouseInsightDrawerContent({
+  insight,
+  domainHub,
+  navigation,
+  onProject,
+}: HouseInsightDrawerContentProps) {
   const { data: dtoProjects, error: projectsError, isLoading: isProjectsLoading } = useProjects()
   const weakest = assets
     .map((asset) => {
@@ -101,10 +105,10 @@ export default function HouseInsightDrawerContent({ insight, domainHub, navigati
             </Typography>
           ) : projectsError ? (
             <Typography
-              color="error"
+              color="text.secondary"
               variant="body2"
             >
-              無法讀取 Project：{getErrorMessage(projectsError)}
+              專案資料暫時無法使用。
             </Typography>
           ) : forestView && forestRanks ? (
             <>
