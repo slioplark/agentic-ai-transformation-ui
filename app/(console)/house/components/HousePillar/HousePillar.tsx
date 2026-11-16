@@ -7,14 +7,14 @@ import {
   plannedProgress,
   projects,
   snapshot,
-  type Project,
-} from "@(control)/(overview)/components/OverMilestones/milestones"
+  type ProjectData,
+} from "@(control)/data/projects.mock"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import Drawer from "@app/components/Drawer/Drawer"
+import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
-import { useState } from "react"
 import styles from "./HousePillar.module.css"
 
 const pillars = {
@@ -29,8 +29,7 @@ const pillars = {
 } as const
 
 export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
-  const [detail, setDetail] = useState<Project | null>(null)
-  const [open, setOpen] = useState(false)
+  const { drawer, contentKey, isOpen, navigation, open, push } = useDrawerStack<string>()
   const project = projects.find((item) => item.id === kind)!
   const { label, items } = pillars[kind]
   const actual = actualProgress(project)
@@ -45,11 +44,9 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
           ? `下一關 ${nextGate.name.split(" ·")[0]} · ${nextGate.baseline.slice(5).replace("-", "/")}`
           : "已完成 D5"
         : project.issue
-  const selectProject = (selected: Project) => {
-    setDetail(selected)
-    setOpen(true)
+  const openProject = (selected: ProjectData) => {
+    open(selected.id)
   }
-  const close = () => setOpen(false)
 
   return (
     <>
@@ -67,7 +64,7 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
           <Typography variant="h6">{project.name}</Typography>
         </Box>
         <HouseDrawerCard
-          onClick={() => selectProject(project)}
+          onClick={() => openProject(project)}
           className={styles.card}
         >
           <Box className={styles.progressLabel}>
@@ -110,14 +107,15 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
         </Box>
       </Box>
       <Drawer
-        open={open}
-        onClose={close}
+        open={isOpen}
+        onClose={navigation.onClose}
+        contentKey={contentKey}
       >
-        {detail ? (
+        {drawer ? (
           <ProjectDrawerContent
-            project={detail}
-            onClose={close}
-            onSelect={selectProject}
+            projectId={drawer}
+            onProject={push}
+            navigation={navigation}
           />
         ) : null}
       </Drawer>

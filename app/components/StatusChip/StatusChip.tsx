@@ -24,9 +24,9 @@ const StyledChip = styled(Chip, {
 export default function StatusChip({ color, size = "small", ...props }: StatusChipProps) {
   return (
     <StyledChip
+      {...props}
       size={size}
       color={color}
-      {...props}
     />
   )
 }

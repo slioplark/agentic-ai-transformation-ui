@@ -1,8 +1,9 @@
 "use client"
 
-import { formatDate, projectStatus, projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
+import { formatDate, projectStatus, projects, type ProjectData } from "@(control)/data/projects.mock"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import Drawer from "@app/components/Drawer/Drawer"
+import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Box from "@mui/material/Box"
@@ -26,24 +27,24 @@ const getProject = (id: string) => projects.find((project) => project.id === id)
 const clampStage = (value: number) => Math.min(stageLabels.length, Math.max(0, value))
 const progressToStage = (value: number | undefined) => clampStage(Math.floor((value ?? 0) / 20))
 
-function completedStages(project: Project) {
+function completedStages(project: ProjectData) {
   const deployment = project.deployment
   return deployment?.done === undefined ? progressToStage(deployment?.actual) : clampStage(deployment.done)
 }
 
-function plannedStages(project: Project, completed: number) {
+function plannedStages(project: ProjectData, completed: number) {
   const plan = project.deployment?.plan
   return plan === undefined ? completed : Math.max(completed, progressToStage(plan))
 }
 
 function AiInfraCard({
   className,
-  onSelect,
+  onOpen,
   project,
 }: {
   className: string
-  onSelect: (project: Project) => void
-  project: Project
+  onOpen: (project: ProjectData) => void
+  project: ProjectData
 }) {
   const deployment = project.deployment
   const completed = completedStages(project)
@@ -55,7 +56,7 @@ function AiInfraCard({
 
   return (
     <HouseDrawerCard
-      onClick={() => onSelect(project)}
+      onClick={() => onOpen(project)}
       className={className}
     >
       <Box className={styles.cardHeader}>
@@ -113,18 +114,16 @@ function AiInfraCard({
   )
 }
 
-type Detail = { type: "project"; project: Project }
+type Detail = { type: "project"; projectId: string }
 
 export default function HouseAiInfra() {
   const [expanded, setExpanded] = useState(true)
-  const [detail, setDetail] = useState<Detail | null>(null)
-  const [open, setOpen] = useState(false)
-  const selectProject = (project: Project) => {
-    setDetail({ type: "project", project })
-    setOpen(true)
+  const { drawer, contentKey, isOpen, navigation, open, push } = useDrawerStack<Detail>()
+  const openProject = (project: ProjectData) => {
+    open({ type: "project", projectId: project.id })
   }
-  const close = () => setOpen(false)
-  const aiInfraProjects = aiInfraCardIds.map(getProject).filter((project): project is Project => project !== undefined)
+  const pushProject = (projectId: string) => push({ type: "project", projectId })
+  const aiInfraProjects = aiInfraCardIds.map(getProject).filter((project): project is ProjectData => project !== undefined)
   const coreProject = getProject("core")
   const dataProject = getProject("data")
   const enterpriseProject = getProject("enterprise")
@@ -152,32 +151,32 @@ export default function HouseAiInfra() {
               <AiInfraCard
                 key={project.id}
                 project={project}
-                onSelect={selectProject}
                 className={styles.card}
+                onOpen={openProject}
               />
             ))}
             {coreProject || dataProject || enterpriseProject ? (
               <Box className={styles.coreDataLayout}>
                 {coreProject ? (
                   <AiInfraCard
-                    project={coreProject}
-                    onSelect={selectProject}
                     className={`${styles.card} ${styles.coreCard}`}
+                    project={coreProject}
+                    onOpen={openProject}
                   />
                 ) : null}
                 <Box className={styles.dataEnterpriseColumn}>
                   {dataProject ? (
                     <AiInfraCard
-                      project={dataProject}
-                      onSelect={selectProject}
                       className={styles.card}
+                      project={dataProject}
+                      onOpen={openProject}
                     />
                   ) : null}
                   {enterpriseProject ? (
                     <AiInfraCard
-                      project={enterpriseProject}
-                      onSelect={selectProject}
                       className={styles.card}
+                      project={enterpriseProject}
+                      onOpen={openProject}
                     />
                   ) : null}
                 </Box>
@@ -185,23 +184,24 @@ export default function HouseAiInfra() {
             ) : null}
             {sdiProject ? (
               <AiInfraCard
-                project={sdiProject}
-                onSelect={selectProject}
                 className={`${styles.card} ${styles.wide}`}
+                project={sdiProject}
+                onOpen={openProject}
               />
             ) : null}
           </Box>
         </Collapse>
       </Box>
       <Drawer
-        open={open}
-        onClose={close}
+        open={isOpen}
+        onClose={navigation.onClose}
+        contentKey={contentKey}
       >
-        {detail?.type === "project" ? (
+        {drawer?.type === "project" ? (
           <ProjectDrawerContent
-            project={detail.project}
-            onClose={close}
-            onSelect={selectProject}
+            projectId={drawer.projectId}
+            onProject={pushProject}
+            navigation={navigation}
           />
         ) : null}
       </Drawer>

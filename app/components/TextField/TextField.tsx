@@ -7,7 +7,6 @@ export default function TextField({ label, minRows, maxRows, multiline, ...props
     <Stack gap={0.5}>
       {label != null ? <Typography variant="h6">{label}</Typography> : null}
       <MuiTextField
-        fullWidth
         {...props}
         minRows={minRows}
         maxRows={maxRows ?? (multiline ? minRows : undefined)}

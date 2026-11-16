@@ -1,4 +1,4 @@
-import type { StatusChipColor } from "@app/components/StatusChip/StatusChip"
+import type { ChipColor } from "@app/components/StatusChip/StatusChip"
 
 export type MetricPrinciple = {
   description: string
@@ -6,7 +6,7 @@ export type MetricPrinciple = {
   number: string
   statusDetails?: readonly {
     label: string
-    color?: StatusChipColor
+    color?: ChipColor
   }[]
   title: string
 }

@@ -1,5 +1,5 @@
 import { overviewSnapshot } from "@(control)/(overview)/overview.mock"
-import data from "./milestones.mock.json"
+import data from "./projects.mock.json"
 
 export type Milestone = {
   name: string
@@ -11,7 +11,7 @@ export type Milestone = {
   evidence: string
 }
 
-export type Project = {
+export type ProjectData = {
   id: string
   area: string
   name: string
@@ -37,7 +37,8 @@ export type Project = {
   deployment: { actual?: number; done?: number; plan?: number; base: string; fc: string } | null
 }
 
-export const projects: readonly Project[] = data.projects
+export const projects: readonly ProjectData[] = data.projects
+export const getProjectById = (id: string) => projects.find((project) => project.id === id)
 export const dependencies: Record<string, string[]> = data.dependency
 export const redeployTo: Record<string, string> = data.redeployTo
 export const redeployHours: Record<string, number> = data.redeployHrs
@@ -52,11 +53,11 @@ export const upcoming = projects
   .sort((a, b) => a.gate.baseline.localeCompare(b.gate.baseline))
 export const formatDate = (date: string) => date.replaceAll("-", "/")
 export const daysBetween = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 86400000)
-export const actualProgress = (project: Project) =>
+export const actualProgress = (project: ProjectData) =>
   project.milestones.filter((gate) => gate.done).reduce((sum, gate) => sum + gate.weight, 0)
-export const plannedProgress = (project: Project) =>
+export const plannedProgress = (project: ProjectData) =>
   project.milestones.filter((gate) => gate.baseline <= snapshot).reduce((sum, gate) => sum + gate.weight, 0)
-export function projectStatus(project: Project) {
+export function projectStatus(project: ProjectData) {
   const late = Math.max(
     0,
     project.deployment ? daysBetween(project.deployment.base, project.deployment.fc) : 0,

@@ -1,17 +1,16 @@
-import { projects, projectStatus, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
+import { projects, projectStatus } from "@(control)/data/projects.mock"
 import { assets, coverage } from "@(control)/house/components/HouseDomainHubs/house-domain-hubs-data"
 import foresetView from "@(control)/house/foreset-view.mock.json"
 import { taskLevelDescriptions, type DomainHub, type Insight } from "@(control)/house/house.mock"
 import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
+import DrawerHeaderActions, { type DrawerNavigation } from "@app/components/Drawer/DrawerHeaderActions"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import RankDistributionBar from "@app/components/RankDistributionBar/RankDistributionBar"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import { getErrorMessage } from "@lib/api/client"
 import { useProjects } from "@lib/hooks/use-projects"
-import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
-import IconButton from "@mui/material/IconButton"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -29,11 +28,11 @@ const forestBlueprint: Record<string, ForestTrunkBlueprint[]> = foresetView
 type HouseInsightDrawerContentProps = {
   insight: Insight
   domainHub: DomainHub
-  onClose: () => void
-  onProject: (project: Project) => void
+  navigation: DrawerNavigation
+  onProject: (projectId: string) => void
 }
 
-export default function HouseInsightDrawerContent({ insight, domainHub, onClose, onProject }: HouseInsightDrawerContentProps) {
+export default function HouseInsightDrawerContent({ insight, domainHub, navigation, onProject }: HouseInsightDrawerContentProps) {
   const { data: dtoProjects, error: projectsError, isLoading: isProjectsLoading } = useProjects()
   const weakest = assets
     .map((asset) => {
@@ -88,9 +87,7 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
             待遷移 R4 方案 {domainHub.migrate} 項
           </Typography>
         </Stack>
-        <IconButton onClick={onClose}>
-          <CloseIcon />
-        </IconButton>
+        <DrawerHeaderActions {...navigation} />
       </Stack>
       <PaperCard>
         <Stack gap={1}>
@@ -186,7 +183,7 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
                   }
                   color={projectStatus(project)}
                 />
-                <TextButton onClick={() => onProject(project)}>檢視明細 →</TextButton>
+                <TextButton onClick={() => onProject(project.id)}>檢視明細 →</TextButton>
               </Stack>
             </Stack>
           ) : null}
@@ -215,7 +212,7 @@ export default function HouseInsightDrawerContent({ insight, domainHub, onClose,
                 <TableBody>
                   <ProjectMilestoneRow
                     project={project}
-                    onSelect={onProject}
+                    onOpen={(openedProject) => onProject(openedProject.id)}
                   />
                 </TableBody>
               </Table>

@@ -1,8 +1,8 @@
-import type { Project } from "@(control)/(overview)/components/OverMilestones/milestones"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import HouseInsightDrawerContent from "@(control)/house/components/HouseInsightDrawerContent/HouseInsightDrawerContent"
 import { domainHubs, type DomainHub, type Insight } from "@(control)/house/house.mock"
 import Drawer from "@app/components/Drawer/Drawer"
+import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -43,18 +43,18 @@ function InsightCard({
   insight,
   ranks,
   rankStatus,
-  onSelect,
+  onOpen,
 }: {
   insight: Insight
   ranks: InsightRanks | undefined
   rankStatus: "loading" | "unavailable" | undefined
-  onSelect: (id: string) => void
+  onOpen: (id: string) => void
 }) {
   const total = ranks?.reduce((sum, value) => sum + value, 0)
 
   return (
     <HouseDrawerCard
-      onClick={() => onSelect(insight.id)}
+      onClick={() => onOpen(insight.id)}
       className={styles.card}
     >
       <Typography variant="h6">
@@ -118,7 +118,7 @@ function InsightCard({
   )
 }
 
-type Detail = { type: "insight"; insight: Insight; domainHub: DomainHub } | { type: "project"; project: Project }
+type Detail = { type: "insight"; insight: Insight; domainHub: DomainHub } | { type: "project"; projectId: string }
 
 export default function HouseInsight({
   insights,
@@ -130,19 +130,13 @@ export default function HouseInsight({
   ranksByInsight: ReadonlyMap<string, InsightRanks>
 }) {
   const [expanded, setExpanded] = useState(true)
-  const [open, setOpen] = useState(false)
-  const [detail, setDetail] = useState<Detail | null>(null)
-  const close = () => setOpen(false)
-  const selectProject = (project: Project) => {
-    setDetail({ type: "project", project })
-    setOpen(true)
-  }
-  const selectInsight = (id: string) => {
+  const { drawer, contentKey, isOpen, navigation, open, push } = useDrawerStack<Detail>()
+  const pushProject = (projectId: string) => push({ type: "project", projectId })
+  const openInsight = (id: string) => {
     const insight = insights.find((item) => item.id === id)
     const domainHub = domainHubs.find((item) => item.id === id)
     if (insight && domainHub) {
-      setDetail({ type: "insight", insight, domainHub })
-      setOpen(true)
+      open({ type: "insight", insight, domainHub })
     }
   }
   const taskRows = Math.max(1, ...insights.map((insight) => insight.tasks.length))
@@ -184,29 +178,30 @@ export default function HouseInsight({
               key={insight.id}
               ranks={ranksByInsight.get(insight.id)}
               insight={insight}
-              onSelect={selectInsight}
+              onOpen={openInsight}
               rankStatus={rankStatus}
             />
           ))}
         </Box>
       </Collapse>
       <Drawer
-        open={open}
-        onClose={close}
+        open={isOpen}
+        onClose={navigation.onClose}
+        contentKey={contentKey}
       >
-        {detail?.type === "insight" ? (
+        {drawer?.type === "insight" ? (
           <HouseInsightDrawerContent
-            insight={detail.insight}
-            onClose={close}
-            domainHub={detail.domainHub}
-            onProject={selectProject}
+            insight={drawer.insight}
+            domainHub={drawer.domainHub}
+            onProject={pushProject}
+            navigation={navigation}
           />
         ) : null}
-        {detail?.type === "project" ? (
+        {drawer?.type === "project" ? (
           <ProjectDrawerContent
-            project={detail.project}
-            onClose={close}
-            onSelect={selectProject}
+            projectId={drawer.projectId}
+            onProject={pushProject}
+            navigation={navigation}
           />
         ) : null}
       </Drawer>

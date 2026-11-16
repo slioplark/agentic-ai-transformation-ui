@@ -2,8 +2,8 @@ import {
   downstreamProjects,
   projects,
   projectStatus,
-  type Project,
-} from "@(control)/(overview)/components/OverMilestones/milestones"
+  type ProjectData,
+} from "@(control)/data/projects.mock"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -22,7 +22,7 @@ const blockers = projects
 
 const maxDownstream = Math.max(1, ...blockers.map(({ downstream }) => downstream.length))
 
-export default function OverviewBlocker({ onSelect }: { onSelect: (project: Project) => void }) {
+export default function OverviewBlocker({ onOpen }: { onOpen: (project: ProjectData) => void }) {
   return (
     <PaperCard>
       <Stack
@@ -84,7 +84,7 @@ export default function OverviewBlocker({ onSelect }: { onSelect: (project: Proj
                     />
                   </Stack>
                   <TextButton
-                    onClick={() => onSelect(project)}
+                    onClick={() => onOpen(project)}
                     sx={{ flexShrink: 0 }}
                   >
                     詳情 →

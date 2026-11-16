@@ -5,10 +5,11 @@ import {
   projectStatus,
   projects,
   snapshot,
-  type Project,
-} from "@(control)/(overview)/components/OverMilestones/milestones"
+  type ProjectData,
+} from "@(control)/data/projects.mock"
 import PageHeader from "@(control)/components/PageHeader"
 import Drawer from "@app/components/Drawer/Drawer"
+import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
@@ -25,10 +26,10 @@ const snapshotHorizon = new Date(`${snapshot}T00:00:00`)
 snapshotHorizon.setDate(snapshotHorizon.getDate() + 14)
 const horizon = snapshotHorizon.toISOString().slice(0, 10)
 
-const isStale = (project: Project) => daysBetween(project.updated, snapshot) > 7
-const isUpcoming = (project: Project) =>
+const isStale = (project: ProjectData) => daysBetween(project.updated, snapshot) > 7
+const isUpcoming = (project: ProjectData) =>
   project.milestones.some((gate) => !gate.done && gate.baseline >= snapshot && gate.baseline <= horizon)
-const isOverdue = (project: Project) => project.milestones.some((gate) => !gate.done && gate.baseline < snapshot)
+const isOverdue = (project: ProjectData) => project.milestones.some((gate) => !gate.done && gate.baseline < snapshot)
 
 function MilestonesPageContent() {
   const searchParams = useSearchParams()
@@ -38,7 +39,7 @@ function MilestonesPageContent() {
   )
   const [query, setQuery] = useState("")
   const [status, setStatus] = useState<StatusFilter>("all")
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const { drawer, contentKey, isOpen, navigation, open, push } = useDrawerStack<string>()
 
   const visibleProjects = useMemo(() => {
     const normalizedQuery = query.trim().toLocaleLowerCase()
@@ -59,15 +60,13 @@ function MilestonesPageContent() {
         return matchesQuery && matchesArea && matchesStatus
       })
       .sort((first, second) => {
-        const rank = (project: Project) => {
+        const rank = (project: ProjectData) => {
           const statusRank = { error: 0, warning: 2, success: 3 }[projectStatus(project)]
           return isStale(project) ? Math.min(1, statusRank) : statusRank
         }
         return rank(first) - rank(second) || first.name.localeCompare(second.name, "zh-Hant")
       })
   }, [area, query, status])
-
-  const closeDrawer = () => setSelectedProject(null)
 
   return (
     <>
@@ -87,7 +86,7 @@ function MilestonesPageContent() {
           onStatusChange={setStatus}
         />
         <ProjectMilestoneTable
-          onSelect={setSelectedProject}
+          onOpen={(project) => open(project.id)}
           projects={visibleProjects}
         />
         <Typography
@@ -99,14 +98,15 @@ function MilestonesPageContent() {
         </Typography>
       </Stack>
       <Drawer
-        open={selectedProject !== null}
-        onClose={closeDrawer}
+        open={isOpen}
+        onClose={navigation.onClose}
+        contentKey={contentKey}
       >
-        {selectedProject ? (
+        {drawer ? (
           <ProjectDrawerContent
-            project={selectedProject}
-            onClose={closeDrawer}
-            onSelect={setSelectedProject}
+            projectId={drawer}
+            onProject={push}
+            navigation={navigation}
           />
         ) : null}
       </Drawer>

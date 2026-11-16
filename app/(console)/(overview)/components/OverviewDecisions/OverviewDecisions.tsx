@@ -1,4 +1,4 @@
-import type { ExecutiveDecision } from "@(control)/(overview)/overview.mock"
+import type { DecisionData } from "../../data/overviewDecisions.mock"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
@@ -9,11 +9,11 @@ import Typography from "@mui/material/Typography"
 import styles from "./OverviewDecisions.module.css"
 
 type Props = {
-  decisions: readonly ExecutiveDecision[]
-  onSelect: (decision: ExecutiveDecision) => void
+  decisions: readonly DecisionData[]
+  onOpen: (decision: DecisionData) => void
 }
 
-export default function OverviewDecisions({ decisions, onSelect }: Props) {
+export default function OverviewDecisions({ decisions, onOpen }: Props) {
   return (
     <PaperCard>
       <Stack
@@ -52,7 +52,7 @@ export default function OverviewDecisions({ decisions, onSelect }: Props) {
             </Typography>
             <TextButton
               className={styles.action}
-              onClick={() => onSelect(decision)}
+              onClick={() => onOpen(decision)}
             >
               看選項與影響 →
             </TextButton>

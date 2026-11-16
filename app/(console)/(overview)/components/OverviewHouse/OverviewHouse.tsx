@@ -6,8 +6,8 @@ import {
   projects,
   projectStatus,
   snapshot,
-} from "@(control)/(overview)/components/OverMilestones/milestones"
-import { benefitSummary } from "@(control)/(overview)/overview.mock"
+} from "@(control)/data/projects.mock"
+import { benefitSummary } from "../../data/overviewKpis.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"

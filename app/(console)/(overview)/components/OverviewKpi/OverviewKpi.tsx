@@ -1,4 +1,4 @@
-import type { OverviewKpi } from "@(control)/(overview)/overview.mock"
+import type { KpiData } from "../../data/overviewKpis.mock"
 import Sparkline from "@app/components/Sparkline/Sparkline"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography"
 import styles from "./OverviewKpi.module.css"
 
 type OverviewKpiProps = {
-  kpi: OverviewKpi
+  kpi: KpiData
   onClick?: () => void
 }
 

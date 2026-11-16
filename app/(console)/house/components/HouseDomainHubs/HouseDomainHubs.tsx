@@ -1,9 +1,9 @@
-import type { Project } from "@(control)/(overview)/components/OverMilestones/milestones"
-import { actualProgress, projects } from "@(control)/(overview)/components/OverMilestones/milestones"
+import { actualProgress, projects, type ProjectData } from "@(control)/data/projects.mock"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import HouseInsightDrawerContent from "@(control)/house/components/HouseInsightDrawerContent/HouseInsightDrawerContent"
 import { insights, type DomainHub, type DomainHubAsset, type Insight } from "@(control)/house/house.mock"
 import Drawer from "@app/components/Drawer/Drawer"
+import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import TextButton from "@app/components/TextButton/TextButton"
 import { Stack } from "@mui/material"
@@ -17,7 +17,7 @@ import styles from "./HouseDomainHubs.module.css"
 import HouseDomainHubsStatus from "./HouseDomainHubsStatus"
 import { assets, coverage } from "./house-domain-hubs-data"
 
-type Detail = { type: "insight"; insight: Insight; domainHub: DomainHub } | { type: "project"; project: Project }
+type Detail = { type: "insight"; insight: Insight; domainHub: DomainHub } | { type: "project"; projectId: string }
 
 function tone(ratio: number) {
   return ratio >= 0.7 ? styles.high : ratio >= 0.4 ? styles.medium : styles.low
@@ -102,19 +102,16 @@ function AssetContent({ hub, asset }: { hub: DomainHub; asset: DomainHubAsset })
 
 export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[] }) {
   const [expanded, setExpanded] = useState(true)
-  const [open, setOpen] = useState(false)
-  const [detail, setDetail] = useState<Detail | null>(null)
-  const close = () => setOpen(false)
-  const selectProject = (project: Project) => {
-    setDetail({ type: "project", project })
-    setOpen(true)
+  const { drawer, contentKey, isOpen, navigation, open, push } = useDrawerStack<Detail>()
+  const openProject = (project: ProjectData) => {
+    open({ type: "project", projectId: project.id })
   }
-  const selectInsight = (id: string) => {
+  const pushProject = (projectId: string) => push({ type: "project", projectId })
+  const openInsight = (id: string) => {
     const insight = insights.find((item) => item.id === id)
     const domainHub = domainHubs.find((item) => item.id === id)
     if (insight && domainHub) {
-      setDetail({ type: "insight", insight, domainHub })
-      setOpen(true)
+      open({ type: "insight", insight, domainHub })
     }
   }
 
@@ -156,7 +153,7 @@ export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[
                   sx={{ alignSelf: "flex-end", mt: "auto" }}
                   onClick={() => {
                     const project = projects.find((item) => item.id === asset.projectId)
-                    if (project) selectProject(project)
+                    if (project) openProject(project)
                   }}
                 >
                   平台進度 {actualProgress(projects.find((project) => project.id === asset.projectId)!)}% →
@@ -167,7 +164,7 @@ export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[
                 return (
                   <HouseDrawerCard
                     key={hub.id}
-                    onClick={() => selectInsight(hub.id)}
+                    onClick={() => openInsight(hub.id)}
                     className={styles.cell}
                   >
                     <AssetContent
@@ -211,22 +208,23 @@ export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[
         </Stack>
       </Collapse>
       <Drawer
-        open={open}
-        onClose={close}
+        open={isOpen}
+        onClose={navigation.onClose}
+        contentKey={contentKey}
       >
-        {detail?.type === "insight" ? (
+        {drawer?.type === "insight" ? (
           <HouseInsightDrawerContent
-            insight={detail.insight}
-            onClose={close}
-            domainHub={detail.domainHub}
-            onProject={selectProject}
+            insight={drawer.insight}
+            domainHub={drawer.domainHub}
+            onProject={pushProject}
+            navigation={navigation}
           />
         ) : null}
-        {detail?.type === "project" ? (
+        {drawer?.type === "project" ? (
           <ProjectDrawerContent
-            project={detail.project}
-            onClose={close}
-            onSelect={selectProject}
+            projectId={drawer.projectId}
+            onProject={pushProject}
+            navigation={navigation}
           />
         ) : null}
       </Drawer>

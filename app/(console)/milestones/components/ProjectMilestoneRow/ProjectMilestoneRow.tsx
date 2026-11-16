@@ -5,8 +5,8 @@ import {
   plannedProgress,
   projectStatus,
   snapshot,
-  type Project,
-} from "@(control)/(overview)/components/OverMilestones/milestones"
+  type ProjectData,
+} from "@(control)/data/projects.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
@@ -18,18 +18,18 @@ import styles from "./ProjectMilestoneRow.module.css"
 
 const statusLabels = { error: "紅燈 / 阻塞", warning: "黃燈 / 風險", success: "綠燈 / 依計畫" } as const
 
-const percentage = (project: Project) => {
+const percentage = (project: ProjectData) => {
   const { actual, baseline, target } = project.projectKpi
   if (actual === null || target === baseline) return null
   return Math.round(Math.min(1, Math.max(0, (actual - baseline) / (target - baseline))) * 100)
 }
 
 export default function ProjectMilestoneRow({
-  onSelect,
+  onOpen,
   project,
 }: {
-  onSelect: (project: Project) => void
-  project: Project
+  onOpen: (project: ProjectData) => void
+  project: ProjectData
 }) {
   const status = projectStatus(project)
   const actual = actualProgress(project)
@@ -43,13 +43,13 @@ export default function ProjectMilestoneRow({
     <TableRow
       hover
       role="button"
-      onClick={() => onSelect(project)}
+      onClick={() => onOpen(project)}
       tabIndex={0}
       className={styles.row}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault()
-          onSelect(project)
+          onOpen(project)
         }
       }}
     >

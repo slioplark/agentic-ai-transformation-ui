@@ -2,12 +2,12 @@
 
 import PageHeader from "@(control)/components/PageHeader"
 import Drawer from "@app/components/Drawer/Drawer"
+import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
 import OverMilestones from "./components/OverMilestones/OverMilestones"
-import type { Project } from "./components/OverMilestones/milestones"
+import type { ProjectData } from "@(control)/data/projects.mock"
 import OverviewBlocker from "./components/OverviewBlocker/OverviewBlocker"
 import OverviewDecisionDrawerContent from "./components/OverviewDecisions/OverviewDecisionDrawerContent"
 import OverviewDecisions from "./components/OverviewDecisions/OverviewDecisions"
@@ -16,39 +16,34 @@ import OverviewKpi from "./components/OverviewKpi/OverviewKpi"
 import KpiDrawerContent from "./components/OverviewKpiDrawer/KpiDrawerContent"
 import OverviewReporting from "./components/OverviewReporting/OverviewReporting"
 import OverviewTransformationSignalTable from "./components/OverviewTransformationSignalTable/OverviewTransformationSignalTable"
-import {
-  executiveDecisions,
-  overviewKpis,
-  reportingStatusMetrics,
-  transformationSignals,
-  type ExecutiveDecision,
-  type OverviewKpi as OverviewKpiData,
-} from "./overview.mock"
+import { decisionData, type DecisionData } from "./data/overviewDecisions.mock"
+import { kpiData, type KpiData } from "./data/overviewKpis.mock"
+import { reportingStatusMetrics, transformationSignals } from "./overview.mock"
 import styles from "./page.module.css"
 
-type ActiveDetail =
-  | { type: "kpi"; kpi: OverviewKpiData }
-  | { type: "decision"; decision: ExecutiveDecision }
-  | { type: "project"; project: Project }
+type OverviewDrawerItem =
+  | { type: "kpi"; kpiId: KpiData["id"] }
+  | { type: "project"; projectId: ProjectData["id"] }
+  | { type: "decision"; decisionId: DecisionData["id"] }
 
 export default function HomePage() {
-  const [activeDetail, setActiveDetail] = useState<ActiveDetail | null>(null)
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const { drawer, contentKey, isOpen, navigation, open, push } = useDrawerStack<OverviewDrawerItem>()
   const router = useRouter()
-  const closeDrawer = () => setDrawerOpen(false)
 
-  const handleKpiClick = (kpi: OverviewKpiData) => {
+  const handleKpiClick = (kpi: KpiData) => {
     if (kpi.drawer) {
-      setActiveDetail({ type: "kpi", kpi })
-      setDrawerOpen(true)
+      open({ type: "kpi", kpiId: kpi.id })
       return
     }
     if (kpi.href) router.push(kpi.href)
   }
 
-  const selectProject = (project: Project) => {
-    setActiveDetail({ type: "project", project })
-    setDrawerOpen(true)
+  const openProject = (project: ProjectData) => {
+    open({ type: "project", projectId: project.id })
+  }
+
+  const pushProject = (projectId: string) => {
+    push({ type: "project", projectId })
   }
 
   return (
@@ -60,7 +55,7 @@ export default function HomePage() {
         <PageHeader>成效總覽</PageHeader>
         <OverviewReporting items={reportingStatusMetrics} />
         <section className={styles.kpiGrid}>
-          {overviewKpis.map((kpi) => (
+          {kpiData.map((kpi) => (
             <OverviewKpi
               key={kpi.id}
               kpi={kpi}
@@ -70,37 +65,37 @@ export default function HomePage() {
         </section>
         <OverviewTransformationSignalTable signals={transformationSignals} />
         <OverviewDecisions
-          decisions={executiveDecisions}
-          onSelect={(decision) => {
-            setActiveDetail({ type: "decision", decision })
-            setDrawerOpen(true)
+          decisions={decisionData}
+          onOpen={(decision) => {
+            open({ type: "decision", decisionId: decision.id })
           }}
         />
-        <OverMilestones onSelect={selectProject} />
-        <OverviewBlocker onSelect={selectProject} />
+        <OverMilestones onOpen={openProject} />
+        <OverviewBlocker onOpen={openProject} />
         <OverviewHouse />
       </Stack>
       <Drawer
-        open={drawerOpen}
-        onClose={closeDrawer}
+        open={isOpen}
+        onClose={navigation.onClose}
+        contentKey={contentKey}
       >
-        {activeDetail?.type === "kpi" ? (
+        {drawer?.type === "kpi" ? (
           <KpiDrawerContent
-            kpi={activeDetail.kpi}
-            onClose={closeDrawer}
+            kpiId={drawer.kpiId}
+            onClose={navigation.onClose}
           />
         ) : null}
-        {activeDetail?.type === "project" ? (
+        {drawer?.type === "project" ? (
           <ProjectDrawerContent
-            project={activeDetail.project}
-            onClose={closeDrawer}
-            onSelect={selectProject}
+            projectId={drawer.projectId}
+            onProject={pushProject}
+            navigation={navigation}
           />
         ) : null}
-        {activeDetail?.type === "decision" ? (
+        {drawer?.type === "decision" ? (
           <OverviewDecisionDrawerContent
-            decision={activeDetail.decision}
-            onClose={closeDrawer}
+            decisionId={drawer.decisionId}
+            onClose={navigation.onClose}
           />
         ) : null}
       </Drawer>

@@ -10,16 +10,16 @@ import {
   redeployHours,
   redeployTo,
   snapshot,
-  type Project,
-} from "@(control)/(overview)/components/OverMilestones/milestones"
+  type ProjectData,
+  getProjectById,
+} from "@(control)/data/projects.mock"
+import DrawerHeaderActions, { type DrawerNavigation } from "@app/components/Drawer/DrawerHeaderActions"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
-import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import Chip from "@mui/material/Chip"
-import IconButton from "@mui/material/IconButton"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -44,7 +44,7 @@ const labels = {
   success: "依計畫",
 } as const
 
-export function DeploymentProgress({ project }: { project: Project }) {
+export function DeploymentProgress({ project }: { project: ProjectData }) {
   const status = projectStatus(project)
   return project.deployment ? (
     <PaperCard>
@@ -69,18 +69,22 @@ export function DeploymentProgress({ project }: { project: Project }) {
 }
 
 export default function ProjectDrawerContent({
-  project,
-  onClose,
-  onSelect,
+  navigation,
+  onProject,
+  projectId,
   summary,
   details,
 }: {
-  project: Project
-  onClose: () => void
-  onSelect: (project: Project) => void
+  navigation: DrawerNavigation
+  onProject: (projectId: string) => void
+  projectId: string
   summary?: ReactNode
   details?: ReactNode
 }) {
+  const project = getProjectById(projectId)
+
+  if (!project) return null
+
   const next = project.milestones.find((gate) => !gate.done)
   const downstream = downstreamProjects(project.id)
   const upstream = (dependencies[project.id] || []).flatMap((id) => projects.filter((item) => item.id === id))
@@ -136,9 +140,7 @@ export default function ProjectDrawerContent({
             />
           ) : null}
         </Stack>
-        <IconButton onClick={onClose}>
-          <CloseIcon />
-        </IconButton>
+        <DrawerHeaderActions {...navigation} />
       </Stack>
       {summary ?? (
         <Box className={styles.summary}>
@@ -362,7 +364,7 @@ export default function ProjectDrawerContent({
                         {item.issue}
                       </Typography>
                     </Box>
-                    <TextButton onClick={() => onSelect(item)}>查看 →</TextButton>
+                    <TextButton onClick={() => onProject(item.id)}>查看 →</TextButton>
                   </Stack>
                 ))
               ) : (

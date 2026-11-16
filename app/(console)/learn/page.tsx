@@ -1,8 +1,9 @@
 "use client"
 
-import { projects, type Project } from "@(control)/(overview)/components/OverMilestones/milestones"
+import { projects } from "@(control)/data/projects.mock"
 import PageHeader from "@(control)/components/PageHeader"
 import Drawer from "@app/components/Drawer/Drawer"
+import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -19,7 +20,6 @@ import TableFooter from "@mui/material/TableFooter"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import { useState } from "react"
 import styles from "./page.module.css"
 
 const tools = ["Vibe coding", "Codex", "UGPT", "Skills", "Tableau", "AgilePoint"] as const
@@ -216,7 +216,7 @@ const total = (values: readonly number[]) => values.reduce((sum, value) => sum +
 const dateLabel = (date: string) => date.slice(5).replace("-", "/")
 
 export default function LearnPage() {
-  const [detail, setDetail] = useState<Project | null>(null)
+  const { drawer, contentKey, isOpen, navigation, open, push } = useDrawerStack<string>()
 
   return (
     <>
@@ -252,7 +252,7 @@ export default function LearnPage() {
                   累計 · 細線為 4 週前
                 </Typography>
               </Box>
-              <TextButton onClick={() => setDetail(citizenProject)}>詳情 →</TextButton>
+              <TextButton onClick={() => open(citizenProject.id)}>詳情 →</TextButton>
             </Stack>
             <Stack
               gap={1}
@@ -629,7 +629,7 @@ export default function LearnPage() {
                   委員會與框架 2027 年中 · 認證 2027 年底
                 </Typography>
               </Box>
-              <TextButton onClick={() => setDetail(governanceProject)}>詳情 →</TextButton>
+              <TextButton onClick={() => open(governanceProject.id)}>詳情 →</TextButton>
             </Stack>
             <TableContainer className={styles.tableContainer}>
               <Table
@@ -669,14 +669,15 @@ export default function LearnPage() {
         </Paper>
       </Stack>
       <Drawer
-        open={Boolean(detail)}
-        onClose={() => setDetail(null)}
+        open={isOpen}
+        onClose={navigation.onClose}
+        contentKey={contentKey}
       >
-        {detail ? (
+        {drawer ? (
           <ProjectDrawerContent
-            project={detail}
-            onClose={() => setDetail(null)}
-            onSelect={setDetail}
+            projectId={drawer}
+            onProject={push}
+            navigation={navigation}
           />
         ) : null}
       </Drawer>

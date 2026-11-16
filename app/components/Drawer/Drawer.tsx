@@ -2,6 +2,7 @@
 
 import MuiDrawer, { type DrawerProps } from "@mui/material/Drawer"
 import { styled } from "@mui/material/styles"
+import { useLayoutEffect, useRef } from "react"
 
 const StyledDrawer = styled(MuiDrawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
@@ -19,10 +20,23 @@ const StyledDrawer = styled(MuiDrawer)(({ theme }) => ({
   },
 }))
 
-export default function Drawer({ anchor = "right", ...props }: DrawerProps) {
+type Props = DrawerProps & {
+  contentKey?: number
+}
+
+export default function Drawer({ anchor = "right", contentKey, ...props }: Props) {
+  const drawerRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    if (contentKey !== undefined && props.open) {
+      drawerRef.current?.querySelector<HTMLElement>(".MuiDrawer-paper")?.scrollTo({ top: 0 })
+    }
+  }, [contentKey, props.open])
+
   return (
     <StyledDrawer
       {...props}
+      ref={drawerRef}
       anchor={anchor}
     />
   )

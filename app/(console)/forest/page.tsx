@@ -45,6 +45,13 @@ type SelectedProject = {
 const forestOrder: ForestId[] = ["planning", "customer", "td", "ops", "biz"]
 const insightNames = new Map(insights.map((insight) => [insight.id, insight.name]))
 const forestBuildOptions = { includeUnranked: true }
+const maturityStatuses = [
+  { label: "R1: Connected", color: "error" },
+  { label: "R2: Optimized", color: "warning" },
+  { label: "R3: Transparent", color: "info" },
+  { label: "R4: Proactive", color: "success" },
+  { label: "R5: Agile", color: "secondary" },
+] as const
 
 function getInsightLabel(id: ForestId) {
   return insightNames.get(id) ?? id
@@ -81,6 +88,20 @@ export default function ForestPage() {
   return (
     <Stack gap={2}>
       <PageHeader>Forest View</PageHeader>
+      <Stack
+        gap={1}
+        flexWrap="wrap"
+        direction="row"
+        justifyContent="flex-end"
+      >
+        {maturityStatuses.map(({ label, color }) => (
+          <StatusChip
+            key={label}
+            color={color}
+            label={label}
+          />
+        ))}
+      </Stack>
       {isLoading ? (
         <Typography
           color="text.secondary"
@@ -206,7 +227,7 @@ export default function ForestPage() {
               </Typography>
               {leaf.digitalLevel && (
                 <StatusChip
-                  label={leaf.digitalLevel ?? "未設定"}
+                  label={leaf.digitalLevel}
                   color="primary"
                   variant="outlined"
                 />

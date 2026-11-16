@@ -1,4 +1,4 @@
-import type { Project } from "@(control)/(overview)/components/OverMilestones/milestones"
+import type { ProjectData } from "@(control)/data/projects.mock"
 import { areas } from "@(control)/milestones/components/MilestoneFilterBar/MilestoneFilterBar"
 import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
 import Paper from "@mui/material/Paper"
@@ -13,12 +13,12 @@ import { alpha } from "@mui/material/styles"
 import styles from "./ProjectMilestoneTable.module.css"
 
 type ProjectMilestoneTableProps = {
-  onSelect: (project: Project) => void
-  projects: readonly Project[]
+  onOpen: (project: ProjectData) => void
+  projects: readonly ProjectData[]
 }
 
-export default function ProjectMilestoneTable({ onSelect, projects }: ProjectMilestoneTableProps) {
-  const groups = new Map<string, Project[]>(areas.slice(1).map((area) => [area, []]))
+export default function ProjectMilestoneTable({ onOpen, projects }: ProjectMilestoneTableProps) {
+  const groups = new Map<string, ProjectData[]>(areas.slice(1).map((area) => [area, []]))
   for (const project of projects) {
     const group = groups.get(project.area) ?? []
     group.push(project)
@@ -67,7 +67,7 @@ export default function ProjectMilestoneTable({ onSelect, projects }: ProjectMil
                   <ProjectMilestoneRow
                     key={project.id}
                     project={project}
-                    onSelect={onSelect}
+                    onOpen={onOpen}
                   />
                 ))}
               </TableBody>

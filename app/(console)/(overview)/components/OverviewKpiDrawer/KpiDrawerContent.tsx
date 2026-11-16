@@ -2,10 +2,10 @@ import {
   benefitScenarios,
   benefitSummary,
   businessUnitMaturity,
+  getKpiById,
   maturityDistribution,
   type MaturityDistribution,
-  type OverviewKpi,
-} from "@(control)/(overview)/overview.mock"
+} from "../../data/overviewKpis.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import RankDistributionBar, { rankColorForLabel } from "@app/components/RankDistributionBar/RankDistributionBar"
@@ -23,7 +23,7 @@ import Typography from "@mui/material/Typography"
 import styles from "./KpiDrawerContent.module.css"
 
 type KpiDrawerContentProps = {
-  kpi: OverviewKpi
+  kpiId: string
   onClose: () => void
 }
 
@@ -302,7 +302,11 @@ function BenefitsDrawerContent({ onClose }: { onClose: () => void }) {
   )
 }
 
-export default function KpiDrawerContent({ kpi, onClose }: KpiDrawerContentProps) {
+export default function KpiDrawerContent({ kpiId, onClose }: KpiDrawerContentProps) {
+  const kpi = getKpiById(kpiId)
+
+  if (!kpi) return null
+
   return (
     <>
       {kpi.drawer === "maturity" ? <MaturityDrawerContent onClose={onClose} /> : null}

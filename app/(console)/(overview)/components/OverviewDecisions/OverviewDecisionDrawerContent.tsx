@@ -1,18 +1,22 @@
-import type { ExecutiveDecision } from "@(control)/(overview)/overview.mock"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import CloseIcon from "@mui/icons-material/Close"
 import Box from "@mui/material/Box"
 import IconButton from "@mui/material/IconButton"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
+import { getDecisionById } from "../../data/overviewDecisions.mock"
 import styles from "./OverviewDecisions.module.css"
 
 type Props = {
-  decision: ExecutiveDecision
+  decisionId: string
   onClose: () => void
 }
 
-export default function OverviewDecisionDrawerContent({ decision, onClose }: Props) {
+export default function OverviewDecisionDrawerContent({ decisionId, onClose }: Props) {
+  const decision = getDecisionById(decisionId)
+
+  if (!decision) return null
+
   return (
     <>
       <Stack
