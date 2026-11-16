@@ -1,9 +1,9 @@
-import type { KpiData } from "../../data/overviewKpis.mock"
 import Sparkline from "@app/components/Sparkline/Sparkline"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
 import Paper from "@mui/material/Paper"
 import Typography from "@mui/material/Typography"
+import type { KpiData } from "../../data/overviewKpis.mock"
 import styles from "./OverviewKpi.module.css"
 
 type OverviewKpiProps = {
@@ -70,9 +70,6 @@ export default function OverviewKpi({ kpi, onClick }: OverviewKpiProps) {
           borderColor: "divider",
           borderRadius: 1,
           "&:hover": { borderColor: "secondary.main" },
-          "&:focus-visible": {
-            outlineColor: "secondary.main",
-          },
         }}
       >
         {content}

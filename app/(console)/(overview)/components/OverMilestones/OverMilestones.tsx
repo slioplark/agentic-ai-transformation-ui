@@ -1,3 +1,4 @@
+import { daysBetween, formatDate, upcoming, type ProjectData } from "@(control)/data/projects.mock"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -10,7 +11,6 @@ import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
-import { daysBetween, formatDate, upcoming, type ProjectData } from "@(control)/data/projects.mock"
 import styles from "./OverMilestones.module.css"
 
 export default function OverMilestones({ onOpen }: { onOpen: (project: ProjectData) => void }) {
@@ -61,14 +61,7 @@ export default function OverMilestones({ onOpen }: { onOpen: (project: ProjectDa
                       onOpen(project)
                     }
                   }}
-                  sx={{
-                    cursor: "pointer",
-                    "&:focus-visible": {
-                      outline: "2px solid",
-                      outlineColor: "secondary.main",
-                      outlineOffset: "-2px",
-                    },
-                  }}
+                  sx={{ cursor: "pointer" }}
                 >
                   <TableCell>
                     <Typography

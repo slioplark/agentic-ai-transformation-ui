@@ -15,8 +15,11 @@ import TextBadge from "@app/components/TextBadge/TextBadge"
 import type { Project } from "@lib/api/projects"
 import { useProjects } from "@lib/hooks/use-projects"
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf"
+import FullscreenIcon from "@mui/icons-material/Fullscreen"
+import FullscreenExitIcon from "@mui/icons-material/FullscreenExit"
 import { Chip, Divider } from "@mui/material"
 import Box from "@mui/material/Box"
+import ButtonBase from "@mui/material/ButtonBase"
 import ListItemIcon from "@mui/material/ListItemIcon"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
@@ -74,6 +77,7 @@ export default function ForestPage() {
   const [openBranch, setOpenBranch] = useState<OpenBranch | null>(null)
   const [selectedRank, setSelectedRank] = useState<number | null>(null)
   const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
+  const [expandedInsight, setExpandedInsight] = useState<ForestId | null>(null)
 
   const { data, error, isLoading } = useProjects()
   const forestViews = useMemo(() => {
@@ -98,6 +102,71 @@ export default function ForestPage() {
 
     setOpenBranch(null)
     setSelectedProject({ insightLabel: openBranch.insightLabel, project: leaf.project, route: leaf.route })
+  }
+
+  const ForestMap = (id: ForestId, isExpanded: boolean) => {
+    const label = getInsightLabel(id)
+    const forestView = forestViews.get(id)
+
+    return (
+      <Box
+        key={id}
+        component="section"
+        className={`${styles.forest} ${styles[id]} ${isExpanded ? styles.expanded : ""}`}
+      >
+        <Box className={styles.forestHeader}>
+          <Typography variant="h6">{label} Insight</Typography>
+          <ButtonBase
+            className={styles.titleAction}
+            onClick={() => setExpandedInsight(isExpanded ? null : id)}
+          >
+            {isExpanded ? <FullscreenExitIcon /> : <FullscreenIcon />}
+            {isExpanded ? "收合" : "展開"}
+          </ButtonBase>
+        </Box>
+        <Divider />
+        <Box
+          tabIndex={0}
+          className={styles.scrollArea}
+        >
+          <Box className={styles.blocks}>
+            {forestView?.trunks.map((trunk) => (
+              <Box
+                key={trunk.title}
+                className={styles.block}
+              >
+                <Stack
+                  sx={{ px: 0.5 }}
+                  flexWrap="wrap"
+                  direction="row"
+                  alignItems="center"
+                >
+                  <Typography
+                    sx={{ mr: 0.5 }}
+                    variant="subtitle2"
+                  >
+                    {trunk.title}
+                  </Typography>
+                  {trunk.dept ? <TextBadge label={trunk.dept} /> : null}
+                </Stack>
+                <Box className={styles.branches}>
+                  {trunk.branches.map((branch) => (
+                    <BranchButton
+                      key={branch.title}
+                      title={branch.title}
+                      count={branch.leaves.length}
+                      status={branch.leaves.length > 0 ? "ongoing" : "pending"}
+                      onClick={(event) => openBranchMenu(event, label, branch.leaves)}
+                      disabled={isUnavailable || branch.leaves.length === 0}
+                    />
+                  ))}
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    )
   }
 
   return (
@@ -129,66 +198,9 @@ export default function ForestPage() {
         </Typography>
       ) : null}
       <Box className={styles.map}>
-        {forestOrder.map((id) => {
-          const insightLabel = getInsightLabel(id)
-          const forestView = forestViews.get(id)
-
-          return (
-            <Box
-              key={id}
-              component="section"
-              className={`${styles.forest} ${styles[id]}`}
-            >
-              <Typography
-                variant="h6"
-                className={styles.forestTitle}
-              >
-                {insightLabel} Insight
-              </Typography>
-              <Divider />
-              <Box
-                tabIndex={0}
-                className={styles.scrollArea}
-              >
-                <Box className={styles.blocks}>
-                  {forestView?.trunks.map((trunk) => (
-                    <Box
-                      key={trunk.title}
-                      className={styles.block}
-                    >
-                      <Stack
-                        sx={{ px: 0.5 }}
-                        flexWrap="wrap"
-                        direction="row"
-                        alignItems="center"
-                      >
-                        <Typography
-                          sx={{ mr: 0.5 }}
-                          variant="subtitle2"
-                        >
-                          {trunk.title}
-                        </Typography>
-                        {trunk.dept ? <TextBadge label={trunk.dept} /> : null}
-                      </Stack>
-                      <Box className={styles.branches}>
-                        {trunk.branches.map((branch) => (
-                          <BranchButton
-                            key={branch.title}
-                            title={branch.title}
-                            count={branch.leaves.length}
-                            status={branch.leaves.length > 0 ? "ongoing" : "pending"}
-                            onClick={(event) => openBranchMenu(event, insightLabel, branch.leaves)}
-                            disabled={isUnavailable || branch.leaves.length === 0}
-                          />
-                        ))}
-                      </Box>
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
-            </Box>
-          )
-        })}
+        {forestOrder
+          .filter((id) => expandedInsight === null || expandedInsight === id)
+          .map((id) => ForestMap(id, expandedInsight === id))}
       </Box>
       <Menu
         open={Boolean(openBranch)}

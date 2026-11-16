@@ -40,8 +40,12 @@
   border-color: #a4a69b;
 }
 
-.forestTitle {
-  padding: 0 4px;
+.forestHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px;
 }
 
 .scrollArea {
@@ -124,4 +128,8 @@
   .biz .blocks {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+.expanded {
+  grid-column: 1 / -1;
 }
