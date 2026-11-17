@@ -3,7 +3,16 @@ import type { Project } from "@lib/api/projects"
 export type ForestTrunkBlueprint = {
   title: string
   dept?: string
-  branches: readonly string[]
+  branches: readonly ForestBranchBlueprint[]
+  interviewStatus?: string
+}
+
+export type ForestBranchMaturityStatus = string
+export type ForestInterviewStatus = "pending" | "ongoing" | "completed"
+
+export type ForestBranchBlueprint = {
+  title: string
+  maturityStatus?: ForestBranchMaturityStatus
 }
 
 export type ForestProjectRoute = {
@@ -22,14 +31,16 @@ export type ForestLeaf = {
 
 export type ForestBranch = {
   title: string
+  maturityStatus?: ForestBranchMaturityStatus
   leaves: ForestLeaf[]
 }
 
 export type ForestTrunk = {
-  title: string
   dept?: string
-  leafCount: number
+  title: string
   branches: ForestBranch[]
+  leafCount: number
+  interviewStatus: ForestInterviewStatus
 }
 
 export type ForestViewData = {
@@ -66,10 +77,15 @@ export function buildForestView(
   { includeUnranked = false }: BuildForestViewOptions = {},
 ): ForestViewData {
   const trunks: ForestTrunk[] = blueprint.map((trunk) => ({
-    title: trunk.title,
     dept: trunk.dept,
+    title: trunk.title,
+    branches: trunk.branches.map((branch) => ({
+      title: branch.title,
+      maturityStatus: branch.maturityStatus,
+      leaves: [],
+    })),
     leafCount: 0,
-    branches: trunk.branches.map((branch) => ({ title: branch, leaves: [] })),
+    interviewStatus: (trunk.interviewStatus ?? "pending") as ForestInterviewStatus,
   }))
   const branchesByTrunk = new Map(
     trunks.map((trunk) => [trunk.title, new Map(trunk.branches.map((branch) => [branch.title, branch]))]),

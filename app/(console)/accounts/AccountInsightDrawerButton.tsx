@@ -1,11 +1,13 @@
 "use client"
 
+import type { ForestTrunkBlueprint } from "@(control)/components/ForestView/forestViewData"
 import forestBlueprint from "@(control)/house/foreset-view.mock.json"
 import { insights } from "@(control)/house/house.mock"
 import SearchIcon from "@mui/icons-material/Search"
 import Box from "@mui/material/Box"
 import Checkbox from "@mui/material/Checkbox"
 import FormControlLabel from "@mui/material/FormControlLabel"
+import IconButton from "@mui/material/IconButton"
 import InputAdornment from "@mui/material/InputAdornment"
 import Stack from "@mui/material/Stack"
 import TextField from "@mui/material/TextField"
@@ -18,16 +20,16 @@ type TreeItem = { id: string; label: string; children?: TreeItem[]; projectId?: 
 
 const selectionPropagation = { parents: true, descendants: true }
 const isItemSelectionDisabled = (item: TreeItem) => Boolean(item.disabled)
-const blueprints: Record<string, typeof forestBlueprint.ops> = forestBlueprint
+const blueprints: Record<string, ForestTrunkBlueprint[]> = forestBlueprint
 const mockGroups = insights.map((insight) => ({
   insight,
   trunks: (blueprints[insight.id] ?? []).map((trunk, trunkIndex) => ({
     title: trunk.title,
     branches: trunk.branches.map((branch, branchIndex) => ({
-      title: branch,
+      title: branch.title,
       leaves: ["數位化", "智慧化"].map((suffix, projectIndex) => ({
         id: `mock:${insight.id}:${trunkIndex}:${branchIndex}:${projectIndex}`,
-        name: `${branch}${suffix}專案`,
+        name: `${branch.title}${suffix}專案`,
       })),
     })),
   })),
@@ -42,18 +44,18 @@ function AccountsInsightDrawerContent({
   selectedIds: string[]
   onChange: (ids: string[]) => void
 }) {
-  const [search, setSearch] = useState("")
-  const query = search.trim().toLowerCase()
+  const [searchTerm, setSearchTerm] = useState("")
+  const [searchQuery, setSearchQuery] = useState("")
   const groups = mockGroups.map(({ insight, trunks }) => {
     const projectIds = trunks.flatMap((trunk) =>
       trunk.branches.flatMap((branch) => branch.leaves.map((leaf) => leaf.id)),
     )
     const items: TreeItem[] = trunks.flatMap((trunk, trunkIndex) => {
-      const trunkMatches = trunk.title.toLowerCase().includes(query)
+      const trunkMatches = trunk.title.toLowerCase().includes(searchQuery)
       const children: TreeItem[] = trunk.branches.flatMap((branch, branchIndex) => {
-        const branchMatches = trunkMatches || branch.title.toLowerCase().includes(query)
-        const leaves = branch.leaves.filter((leaf) => branchMatches || leaf.name.toLowerCase().includes(query))
-        if (query && leaves.length === 0) return []
+        const branchMatches = trunkMatches || branch.title.toLowerCase().includes(searchQuery)
+        const leaves = branch.leaves.filter((leaf) => branchMatches || leaf.name.toLowerCase().includes(searchQuery))
+        if (searchQuery && leaves.length === 0) return []
         return [
           {
             id: `branch:${trunkIndex}:${branchIndex}`,
@@ -63,7 +65,7 @@ function AccountsInsightDrawerContent({
           },
         ]
       })
-      if (query && children.length === 0) return []
+      if (searchQuery && children.length === 0) return []
       return [
         {
           id: `trunk:${trunkIndex}`,
@@ -93,27 +95,30 @@ function AccountsInsightDrawerContent({
         <Typography variant="h3">{name}</Typography>
       </Stack>
       <Stack
-        direction={{ xs: "column", sm: "row" }}
-        alignItems={{ sm: "center" }}
+        flexWrap="wrap"
+        alignItems="center"
+        flexDirection="row"
         justifyContent="space-between"
         gap={0.5}
       >
         <TextField
-          fullWidth
-          sx={{ maxWidth: { sm: 320 } }}
           size="small"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
           slotProps={{
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <SearchIcon />
+                  <IconButton
+                    edge="end"
+                    onClick={() => setSearchQuery(searchTerm.trim().toLowerCase())}
+                  >
+                    <SearchIcon fontSize="small" />
+                  </IconButton>
                 </InputAdornment>
               ),
             },
           }}
-          placeholder="搜尋專案或分類"
         />
         <Typography
           color="text.secondary"
@@ -207,14 +212,14 @@ function AccountsInsightDrawerContent({
                 <RichTreeView
                   checkboxSelection
                   multiSelect
-                  key={query}
+                  key={searchQuery}
                   sx={{ p: 1, minWidth: "max-content" }}
                   items={items}
                   isItemSelectionDisabled={isItemSelectionDisabled}
                   expansionTrigger="iconContainer"
                   selectedItems={visibleIds.filter((id) => selectedIds.includes(id)).map((id) => `project:${id}`)}
                   defaultExpandedItems={
-                    query
+                    searchQuery
                       ? items.flatMap((trunk) => [trunk.id, ...(trunk.children ?? []).map((branch) => branch.id)])
                       : []
                   }

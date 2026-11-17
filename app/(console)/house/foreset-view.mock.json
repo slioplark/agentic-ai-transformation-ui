@@ -3,22 +3,73 @@
     {
       "title": "前瞻發展規劃",
       "dept": "RDO",
-      "branches": ["流程優化", "策略規劃", "企業績效管理", "策略風險管理", "Technical PM", "Program Delivery"]
+      "interviewStatus": "pending",
+      "branches": [
+        {
+          "title": "流程優化"
+        },
+        {
+          "title": "策略規劃"
+        },
+        {
+          "title": "企業績效管理"
+        },
+        {
+          "title": "策略風險管理"
+        },
+        {
+          "title": "Technical PM"
+        },
+        {
+          "title": "Program Delivery"
+        }
+      ]
     },
     {
       "title": "企業營運規劃",
       "dept": "COP",
+      "interviewStatus": "pending",
       "branches": [
-        "產能布局/資本支出",
-        "資本支出執行追蹤",
-        "企業長期績效預估",
-        "成本競爭力分析",
-        "標準成本計算整合",
-        "產能規劃與佈建",
-        "投片管理及交期",
-        "成本指標訂定",
-        "報價流程",
-        "客戶需求管理"
+        {
+          "title": "產能布局/資本支出",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "資本支出執行追蹤",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "企業長期績效預估",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "成本競爭力分析",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "標準成本計算整合",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "產能規劃與佈建",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "投片管理及交期",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "成本指標訂定",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "報價流程",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "客戶需求管理",
+          "maturityStatus": "R2"
+        }
       ]
     }
   ],
@@ -26,175 +77,608 @@
     {
       "title": "行銷管理",
       "dept": "CM",
-      "branches": ["市場資訊收集", "資料分析與儲存", "資料應用", "資料跨部門共享"]
+      "interviewStatus": "pending",
+      "branches": [
+        {
+          "title": "市場資訊收集",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "資料分析與儲存",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "資料應用",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "資料跨部門共享",
+          "maturityStatus": "R2"
+        }
+      ]
     },
     {
       "title": "銷售",
       "dept": "Sales",
-      "branches": ["業績管理", "產品開案", "市場訊息", "客戶經營"]
+      "interviewStatus": "completed",
+      "branches": [
+        {
+          "title": "業績管理",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "產品開案",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "市場訊息",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "客戶經營",
+          "maturityStatus": "R2"
+        }
+      ]
     },
     {
       "title": "客戶服務",
       "dept": "CE",
+      "interviewStatus": "pending",
       "branches": [
-        "技術文檔 (DSM)",
-        "任務請求",
-        "Tapeout管理流程優化",
-        "產品/產能管理",
-        "客戶需求管理",
-        "文檔維護",
-        "任務追蹤"
+        {
+          "title": "技術文檔 (DSM)",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "任務請求",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "Tapeout管理流程優化",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "產品/產能管理",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "客戶需求管理",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "文檔維護",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "任務追蹤",
+          "maturityStatus": "R1"
+        }
       ]
     },
     {
       "title": "CTO",
-      "branches": ["前瞻技術研究", "前瞻技術評估"]
+      "interviewStatus": "ongoing",
+      "branches": [
+        {
+          "title": "前瞻技術研究"
+        },
+        {
+          "title": "前瞻技術評估"
+        }
+      ]
     }
   ],
   "td": [
     {
       "title": "技術開發",
       "dept": "TD",
+      "interviewStatus": "pending",
       "branches": [
-        "Proposal 技術蒐集研究",
-        "Development 開發",
-        "Verification 驗證",
-        "Validation 確效",
-        "Transfer/Pilot"
+        {
+          "title": "Proposal 技術蒐集研究",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "Development 開發",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "Verification 驗證",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "Validation 確效",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "Transfer/Pilot",
+          "maturityStatus": "R1"
+        }
       ]
     },
     {
       "title": "模型",
       "dept": "Model",
-      "branches": ["佈局 Testkey", "測量", "模型開發建置交付", "程式自動化", "MQR"]
+      "interviewStatus": "pending",
+      "branches": [
+        {
+          "title": "佈局 Testkey",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "測量",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "模型開發建置交付",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "程式自動化",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "MQR",
+          "maturityStatus": "R2"
+        }
+      ]
     },
     {
       "title": "元件",
       "dept": "Device",
-      "branches": ["電性參數規格", "結構設計與參數", "量測與分析", "協助建立模型"]
+      "interviewStatus": "pending",
+      "branches": [
+        {
+          "title": "電性參數規格",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "結構設計與參數",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "量測與分析",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "協助建立模型",
+          "maturityStatus": "R2"
+        }
+      ]
     },
     {
       "title": "矽智財",
       "dept": "IPDS",
-      "branches": ["DRC 指令檔", "LVS/LPE 指令檔", "FDK package"]
+      "interviewStatus": "pending",
+      "branches": [
+        {
+          "title": "DRC 指令檔",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "LVS/LPE 指令檔",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "FDK package",
+          "maturityStatus": "R1"
+        }
+      ]
     }
   ],
   "ops": [
     {
       "title": "供應鏈",
+      "interviewStatus": "completed",
       "branches": [
-        "採購價格預測",
-        "採購風險管理",
-        "採購流程管理",
-        "決策資訊管理",
-        "採購智能化",
-        "供應商評估",
-        "供應商黑名單監控",
-        "物料需求規劃",
-        "物料差異管控",
-        "收/發料管理",
-        "特殊物料庫管"
+        {
+          "title": "採購價格預測",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "採購風險管理",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "採購流程管理",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "決策資訊管理",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "採購智能化",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "供應商評估",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "供應商黑名單監控",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "物料需求規劃",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "物料差異管控",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "收/發料管理",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "特殊物料庫管",
+          "maturityStatus": "R2"
+        }
       ]
     },
     {
       "title": "製造",
       "dept": "Fab",
+      "interviewStatus": "pending",
       "branches": [
-        "生產排程",
-        "值班異常處理",
-        "瑕疵分類管理",
-        "產品整合管理",
-        "機台保養維修",
-        "EDA分析",
-        "生產虛擬預測",
-        "程式參數管理",
-        "ESG",
-        "生產成本管理"
+        {
+          "title": "生產排程",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "值班異常處理",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "瑕疵分類管理",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "產品整合管理",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "機台保養維修",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "EDA分析",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "生產虛擬預測",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "程式參數管理",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "ESG",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "生產成本管理",
+          "maturityStatus": "R4"
+        }
       ]
     },
     {
       "title": "工程服務",
       "dept": "ENGS",
+      "interviewStatus": "pending",
       "branches": [
-        "新製程驗證",
-        "幫助量產",
-        "材料分析",
-        "Source Data Mgmt",
-        "Mask Tooling",
-        "Verification",
-        "Mask Prod / IQA",
-        "R&D Engineering",
-        "Turnkey Operation",
-        "UOQA Inspection"
+        {
+          "title": "新製程驗證",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "幫助量產",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "材料分析",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "Source Data Mgmt",
+          "maturityStatus": "R5"
+        },
+        {
+          "title": "Mask Tooling",
+          "maturityStatus": "R5"
+        },
+        {
+          "title": "Verification",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "Mask Prod / IQA",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "R&D Engineering",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "Turnkey Operation",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "UOQA Inspection",
+          "maturityStatus": "R3"
+        }
       ]
     },
     {
       "title": "品質暨可靠度",
       "dept": "Q&RA",
-      "branches": ["客戶品質服務", "進料品質管理", "製程品質管理", "出貨品質管理", "可靠度規格制定", "可靠度驗證執行"]
+      "interviewStatus": "ongoing",
+      "branches": [
+        {
+          "title": "客戶品質服務",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "進料品質管理",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "製程品質管理",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "出貨品質管理",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "可靠度規格制定",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "可靠度驗證執行",
+          "maturityStatus": "R1"
+        }
+      ]
     }
   ],
   "biz": [
     {
       "title": "財務會計稽核",
+      "interviewStatus": "pending",
       "branches": [
-        "信用管理",
-        "資金管理",
-        "保險作業",
-        "投資管理",
-        "股務作業",
-        "投資人關係",
-        "營運支援",
-        "日常會計",
-        "結帳與合併報表",
-        "資產管理",
-        "稅務管理",
-        "內控制度建立",
-        "內控自評",
-        "查核作業"
+        {
+          "title": "信用管理",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "資金管理",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "保險作業",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "投資管理",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "股務作業",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "投資人關係",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "營運支援",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "日常會計",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "結帳與合併報表",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "資產管理",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "稅務管理",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "內控制度建立",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "內控自評",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "查核作業",
+          "maturityStatus": "R1"
+        }
       ]
     },
     {
       "title": "人力資源",
       "dept": "HR",
-      "branches": ["人力規劃", "招募", "任用", "訓練發展", "績效考核", "薪酬管理", "人資服務", "異動作業", "離退作業"]
+      "interviewStatus": "pending",
+      "branches": [
+        {
+          "title": "人力規劃",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "招募",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "任用",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "訓練發展",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "績效考核",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "薪酬管理",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "人資服務",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "異動作業",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "離退作業",
+          "maturityStatus": "R1"
+        }
+      ]
     },
     {
       "title": "法規遵循",
       "dept": "LA & GC",
-      "branches": ["法規更新/鑑別", "分級教育訓練", "法規諮詢", "Legal Audit", "合約管理"]
+      "interviewStatus": "pending",
+      "branches": [
+        {
+          "title": "法規更新/鑑別",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "分級教育訓練",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "法規諮詢",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "Legal Audit",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "合約管理",
+          "maturityStatus": "R2"
+        }
+      ]
     },
     {
       "title": "智慧財產",
       "dept": "IP",
-      "branches": ["專利取得/保護", "專利申請獎金", "智財諮詢", "專利爭議處理", "營業秘密管理"]
+      "interviewStatus": "pending",
+      "branches": [
+        {
+          "title": "專利取得/保護",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "專利申請獎金",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "智財諮詢",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "專利爭議處理",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "營業秘密管理",
+          "maturityStatus": "R2"
+        }
+      ]
     },
     {
       "title": "數位",
       "dept": "Digital",
+      "interviewStatus": "pending",
       "branches": [
-        "Infrastructure",
-        "Data Platform",
-        "Process Automation",
-        "Business Intelligence",
-        "AIoT",
-        "Analytic AI",
-        "Generative AI",
-        "Agentic AI",
-        "Cyber Security"
+        {
+          "title": "Infrastructure",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "Data Platform",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "Process Automation",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "Business Intelligence",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "AIoT",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "Analytic AI",
+          "maturityStatus": "R5"
+        },
+        {
+          "title": "Generative AI",
+          "maturityStatus": "R5"
+        },
+        {
+          "title": "Agentic AI",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "Cyber Security",
+          "maturityStatus": "R1"
+        }
       ]
     },
     {
       "title": "政府關係暨企業溝通",
       "dept": "PASS",
+      "interviewStatus": "pending",
       "branches": [
-        "政策資訊收集",
-        "政府溝通",
-        "地緣政治風險分析",
-        "媒體輿情",
-        "社群媒體經營",
-        "官網管理",
-        "品牌行銷內容管理"
+        {
+          "title": "政策資訊收集",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "政府溝通",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "地緣政治風險分析",
+          "maturityStatus": "R1"
+        },
+        {
+          "title": "媒體輿情",
+          "maturityStatus": "R3"
+        },
+        {
+          "title": "社群媒體經營",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "官網管理",
+          "maturityStatus": "R2"
+        },
+        {
+          "title": "品牌行銷內容管理",
+          "maturityStatus": "R1"
+        }
       ]
     }
   ]

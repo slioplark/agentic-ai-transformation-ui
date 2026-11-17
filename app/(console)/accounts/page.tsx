@@ -2,19 +2,18 @@
 
 import PageHeader from "@(control)/components/PageHeader"
 import EditIcon from "@mui/icons-material/Edit"
+import SearchIcon from "@mui/icons-material/Search"
 import Button from "@mui/material/Button"
 import Dialog from "@mui/material/Dialog"
 import DialogActions from "@mui/material/DialogActions"
 import DialogContent from "@mui/material/DialogContent"
 import DialogContentText from "@mui/material/DialogContentText"
 import DialogTitle from "@mui/material/DialogTitle"
-import FormControl from "@mui/material/FormControl"
 import IconButton from "@mui/material/IconButton"
-import InputLabel from "@mui/material/InputLabel"
+import InputAdornment from "@mui/material/InputAdornment"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import Paper from "@mui/material/Paper"
-import Select from "@mui/material/Select"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -37,17 +36,17 @@ function scopeLabel(account: Account, count: number) {
 }
 
 export default function AccountsPage() {
-  const [accounts, setAccounts] = useState(initialAccounts)
-  const [search, setSearch] = useState("")
-  const [roleFilter, setRoleFilter] = useState<AccountRole | "all">("all")
   const [roleMenu, setRoleMenu] = useState<{ anchor: HTMLElement; account: Account } | null>(null)
+  const [accounts, setAccounts] = useState(initialAccounts)
+  const [roleFilter, setRoleFilter] = useState<AccountRole | "">("")
   const [roleChange, setRoleChange] = useState<{ account: Account; role: AccountRole } | null>(null)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [searchQuery, setSearchQuery] = useState("")
 
-  const query = search.trim().toLowerCase()
   const filteredAccounts = accounts.filter(
     ({ user, role }) =>
-      (roleFilter === "all" || role === roleFilter) &&
-      [user.name, user.email, user.department, user.user_id].some((value) => value.toLowerCase().includes(query)),
+      (roleFilter === "" || role === roleFilter) &&
+      [user.name, user.email, user.department, user.user_id].some((value) => value.toLowerCase().includes(searchQuery)),
   )
 
   const updateScope = (accountId: string, scope: "houseSectionIds" | "projectIds", ids: string[]) => {
@@ -70,36 +69,47 @@ export default function AccountsPage() {
       <PageHeader>帳號與授權</PageHeader>
       <Stack
         gap={2}
-        direction={{ xs: "column", sm: "row" }}
+        flexWrap="wrap"
+        direction="row"
+        alignItems="flex-start"
       >
         <TextField
-          fullWidth
           size="small"
           label="搜尋"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          slotProps={{
+            input: {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    edge="end"
+                    onClick={() => setSearchQuery(searchTerm.trim().toLowerCase())}
+                  >
+                    <SearchIcon fontSize="small" />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            },
+          }}
         />
-        <FormControl
+        <TextField
+          select
           size="small"
-          sx={{ minWidth: 180 }}
+          label="角色"
+          value={roleFilter}
+          onChange={(event) => setRoleFilter(event.target.value as AccountRole | "")}
         >
-          <InputLabel>角色</InputLabel>
-          <Select
-            label="角色"
-            value={roleFilter}
-            onChange={(event) => setRoleFilter(event.target.value as AccountRole | "all")}
-          >
-            <MenuItem value="all">全部角色</MenuItem>
-            {Object.entries(roleLabels).map(([value, label]) => (
-              <MenuItem
-                key={value}
-                value={value}
-              >
-                {label}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+          <MenuItem value="">All</MenuItem>
+          {Object.entries(roleLabels).map(([value, label]) => (
+            <MenuItem
+              key={value}
+              value={value}
+            >
+              {label}
+            </MenuItem>
+          ))}
+        </TextField>
       </Stack>
       <TableContainer
         component={Paper}

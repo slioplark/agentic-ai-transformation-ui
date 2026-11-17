@@ -30,13 +30,20 @@ const theme = createTheme({
         }),
       },
     },
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          minWidth: 240,
+        },
+      },
+    },
     MuiTableCell: {
       styleOverrides: {
         root: { verticalAlign: "middle" },
         head: {
-          backgroundColor: "#eaf1f6",
-          whiteSpace: "nowrap",
           fontWeight: 700,
+          whiteSpace: "nowrap",
+          backgroundColor: "#eaf1f6",
         },
       },
     },

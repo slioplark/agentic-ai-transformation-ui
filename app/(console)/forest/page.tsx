@@ -27,7 +27,7 @@ import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import type { MouseEvent } from "react"
 import { useMemo, useState } from "react"
-import BranchButton from "./components/BranchButton/BranchButton"
+import BranchButton, { type BranchColor } from "./components/BranchButton/BranchButton"
 import styles from "./page.module.css"
 
 type ForestId = keyof typeof forestBlueprint
@@ -46,38 +46,36 @@ type SelectedProject = {
 
 const forestOrder: ForestId[] = ["planning", "customer", "td", "ops", "biz"]
 const insightNames = new Map(insights.map((insight) => [insight.id, insight.name]))
-const maturityStatuses = [
-  {
-    label: "R1: Connected",
-    color: "error",
-  },
-  {
-    label: "R2: Optimized",
-    color: "warning",
-  },
-  {
-    label: "R3: Transparent",
-    color: "info",
-  },
-  {
-    label: "R4: Proactive",
-    color: "secondary",
-  },
-  {
-    label: "R5: Agile",
-    color: "success",
-  },
+const interviewStatuses = [
+  { value: "pending", label: "待訪談" },
+  { value: "ongoing", label: "訪談中" },
+  { value: "completed", label: "已完成" },
 ] as const
+const maturityStatuses = [
+  { rank: "R1", label: "R1: Connected", color: "error" },
+  { rank: "R2", label: "R2: Optimized", color: "warning" },
+  { rank: "R3", label: "R3: Transparent", color: "info" },
+  { rank: "R4", label: "R4: Proactive", color: "secondary" },
+  { rank: "R5", label: "R5: Agile", color: "success" },
+] as const satisfies readonly { rank: string; label: string; color: BranchColor }[]
+
+type MaturityStatus = (typeof maturityStatuses)[number]["rank"]
+type InterviewStatus = (typeof interviewStatuses)[number]["value"]
 
 function getInsightLabel(id: ForestId) {
   return insightNames.get(id) ?? id
 }
 
+function getMaturityStatus(maturityStatus: string | undefined) {
+  return maturityStatuses.find(({ rank }) => rank === maturityStatus)?.color
+}
+
 export default function ForestPage() {
   const [openBranch, setOpenBranch] = useState<OpenBranch | null>(null)
-  const [selectedRank, setSelectedRank] = useState<number | null>(null)
+  const [selectedRank, setSelectedRank] = useState<MaturityStatus | null>(null)
   const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
   const [expandedInsight, setExpandedInsight] = useState<ForestId | null>(null)
+  const [selectedInterviewStatus, setSelectedInterviewStatus] = useState<InterviewStatus | null>(null)
 
   const { data, error, isLoading } = useProjects()
   const forestViews = useMemo(() => {
@@ -89,8 +87,6 @@ export default function ForestPage() {
 
     return views
   }, [data])
-  const isUnavailable = isLoading || Boolean(error)
-
   const openBranchMenu = (event: MouseEvent<HTMLElement>, insightLabel: string, leaves: ForestLeaf[]) => {
     setOpenBranch({ anchorElement: event.currentTarget, insightLabel, leaves })
   }
@@ -130,39 +126,81 @@ export default function ForestPage() {
           className={styles.scrollArea}
         >
           <Box className={styles.blocks}>
-            {forestView?.trunks.map((trunk) => (
-              <Box
-                key={trunk.title}
-                className={styles.block}
-              >
-                <Stack
-                  sx={{ px: 0.5 }}
-                  flexWrap="wrap"
-                  direction="row"
-                  alignItems="center"
+            {forestView?.trunks.map((trunk) => {
+              const isDimmed = selectedInterviewStatus !== null && trunk.interviewStatus !== selectedInterviewStatus
+
+              return (
+                <Box
+                  sx={(theme) => ({
+                    opacity: isDimmed ? 0.28 : 1,
+                    transition: theme.transitions.create("opacity"),
+                  })}
+                  key={trunk.title}
+                  className={styles.block}
                 >
-                  <Typography
-                    sx={{ mr: 0.5 }}
-                    variant="subtitle2"
-                  >
-                    {trunk.title}
-                  </Typography>
-                  {trunk.dept ? <TextBadge label={trunk.dept} /> : null}
-                </Stack>
-                <Box className={styles.branches}>
-                  {trunk.branches.map((branch) => (
-                    <BranchButton
-                      key={branch.title}
-                      title={branch.title}
-                      count={branch.leaves.length}
-                      status={branch.leaves.length > 0 ? "ongoing" : "pending"}
-                      onClick={(event) => openBranchMenu(event, label, branch.leaves)}
-                      disabled={isUnavailable || branch.leaves.length === 0}
+                  {trunk.interviewStatus === "ongoing" ? (
+                    <Box
+                      sx={{ color: "success.main" }}
+                      component="svg"
+                      focusable="false"
+                      className={styles.progressBorder}
+                      aria-hidden="true"
+                    >
+                      <rect
+                        x="1"
+                        y="1"
+                        rx="7"
+                        fill="none"
+                        width="calc(100% - 2px)"
+                        height="calc(100% - 2px)"
+                        pathLength="100"
+                      />
+                    </Box>
+                  ) : null}
+                  {selectedInterviewStatus === "pending" && trunk.interviewStatus === "pending" ? (
+                    <Box
+                      sx={(theme) => ({
+                        border: `2px dashed ${theme.palette.primary.main}`,
+                        boxSizing: "border-box",
+                      })}
+                      className={styles.pendingInterviewBorder}
                     />
-                  ))}
+                  ) : null}
+                  <Stack
+                    sx={{ px: 0.5 }}
+                    flexWrap="wrap"
+                    direction="row"
+                    alignItems="center"
+                  >
+                    <Typography
+                      sx={{ mr: 0.5 }}
+                      variant="subtitle2"
+                    >
+                      {trunk.title}
+                    </Typography>
+                    {trunk.dept ? <TextBadge label={trunk.dept} /> : null}
+                  </Stack>
+                  <Box className={styles.branches}>
+                    {trunk.branches.map((branch) => {
+                      const isDimmed = selectedRank !== null && branch.maturityStatus !== selectedRank
+
+                      return (
+                        <BranchButton
+                          key={branch.title}
+                          color={getMaturityStatus(branch.maturityStatus)}
+                          count={branch.leaves.length}
+                          title={branch.title}
+                          dimmed={isDimmed}
+                          variant={trunk.interviewStatus}
+                          onClick={(event) => openBranchMenu(event, label, branch.leaves)}
+                          disabled={isLoading || Boolean(error) || branch.leaves.length === 0}
+                        />
+                      )
+                    })}
+                  </Box>
                 </Box>
-              </Box>
-            ))}
+              )
+            })}
           </Box>
         </Box>
       </Box>
@@ -176,17 +214,38 @@ export default function ForestPage() {
         gap={1}
         flexWrap="wrap"
         direction="row"
-        justifyContent="flex-end"
+        alignItems="center"
+        justifyContent="space-between"
       >
-        {maturityStatuses.map(({ label, color }, index) => (
-          <Chip
-            key={label}
-            label={label}
-            color={color}
-            variant={selectedRank === index ? "filled" : "outlined"}
-            onClick={() => setSelectedRank((current) => (current === index ? null : index))}
-          />
-        ))}
+        <Stack
+          gap={1}
+          direction="row"
+        >
+          {interviewStatuses.map(({ label, value }) => (
+            <Chip
+              key={value}
+              label={label}
+              color="primary"
+              variant={selectedInterviewStatus === value ? "filled" : "outlined"}
+              onClick={() => setSelectedInterviewStatus((current) => (current === value ? null : value))}
+            />
+          ))}
+        </Stack>
+        <Stack
+          gap={1}
+          flexWrap="wrap"
+          direction="row"
+        >
+          {maturityStatuses.map(({ rank, label, color }) => (
+            <Chip
+              key={label}
+              label={label}
+              color={color}
+              variant={selectedRank === rank ? "filled" : "outlined"}
+              onClick={() => setSelectedRank((current) => (current === rank ? null : rank))}
+            />
+          ))}
+        </Stack>
       </Stack>
       {isLoading ? (
         <Typography
