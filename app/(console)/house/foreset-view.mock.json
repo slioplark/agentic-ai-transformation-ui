@@ -6,22 +6,28 @@
       "interviewStatus": "pending",
       "branches": [
         {
-          "title": "流程優化"
+          "title": "流程優化",
+          "unit": "P&M"
         },
         {
-          "title": "策略規劃"
+          "title": "策略規劃",
+          "unit": "SPPM"
         },
         {
-          "title": "企業績效管理"
+          "title": "企業績效管理",
+          "unit": "SPPM"
         },
         {
-          "title": "策略風險管理"
+          "title": "策略風險管理",
+          "unit": "SPPM"
         },
         {
-          "title": "Technical PM"
+          "title": "Technical PM",
+          "unit": "PD"
         },
         {
-          "title": "Program Delivery"
+          "title": "Program Delivery",
+          "unit": "PD"
         }
       ]
     },
@@ -32,42 +38,52 @@
       "branches": [
         {
           "title": "產能布局/資本支出",
+          "unit": "CP",
           "maturityStatus": "R2"
         },
         {
           "title": "資本支出執行追蹤",
+          "unit": "CP",
           "maturityStatus": "R2"
         },
         {
           "title": "企業長期績效預估",
+          "unit": "CP",
           "maturityStatus": "R2"
         },
         {
           "title": "成本競爭力分析",
+          "unit": "CP",
           "maturityStatus": "R1"
         },
         {
           "title": "標準成本計算整合",
+          "unit": "CP",
           "maturityStatus": "R2"
         },
         {
           "title": "產能規劃與佈建",
+          "unit": "OP",
           "maturityStatus": "R3"
         },
         {
           "title": "投片管理及交期",
+          "unit": "OP",
           "maturityStatus": "R3"
         },
         {
           "title": "成本指標訂定",
+          "unit": "OP",
           "maturityStatus": "R3"
         },
         {
           "title": "報價流程",
+          "unit": "CBS",
           "maturityStatus": "R1"
         },
         {
           "title": "客戶需求管理",
+          "unit": "CBS",
           "maturityStatus": "R2"
         }
       ]
@@ -273,46 +289,57 @@
       "branches": [
         {
           "title": "採購價格預測",
+          "unit": "採購",
           "maturityStatus": "R1"
         },
         {
           "title": "採購風險管理",
+          "unit": "採購",
           "maturityStatus": "R2"
         },
         {
           "title": "採購流程管理",
+          "unit": "採購",
           "maturityStatus": "R3"
         },
         {
           "title": "決策資訊管理",
+          "unit": "採購",
           "maturityStatus": "R1"
         },
         {
           "title": "採購智能化",
+          "unit": "採購",
           "maturityStatus": "R1"
         },
         {
           "title": "供應商評估",
+          "unit": "供應商管理",
           "maturityStatus": "R3"
         },
         {
           "title": "供應商黑名單監控",
+          "unit": "供應商管理",
           "maturityStatus": "R2"
         },
         {
           "title": "物料需求規劃",
+          "unit": "物料管理",
           "maturityStatus": "R3"
         },
         {
           "title": "物料差異管控",
+          "unit": "物料管理",
           "maturityStatus": "R3"
         },
         {
           "title": "收/發料管理",
+          "unit": "庫存管理",
           "maturityStatus": "R2"
         },
         {
           "title": "特殊物料庫管",
+          "unit": "庫存管理",
           "maturityStatus": "R2"
         }
       ]
@@ -371,42 +398,52 @@
       "branches": [
         {
           "title": "新製程驗證",
+          "unit": "PED",
           "maturityStatus": "R3"
         },
         {
           "title": "幫助量產",
+          "unit": "PED",
           "maturityStatus": "R3"
         },
         {
           "title": "材料分析",
+          "unit": "PED",
           "maturityStatus": "R3"
         },
         {
           "title": "Source Data Mgmt",
+          "unit": "MES",
           "maturityStatus": "R5"
         },
         {
           "title": "Mask Tooling",
+          "unit": "MES",
           "maturityStatus": "R5"
         },
         {
           "title": "Verification",
+          "unit": "MES",
           "maturityStatus": "R4"
         },
         {
           "title": "Mask Prod / IQA",
+          "unit": "MES",
           "maturityStatus": "R4"
         },
         {
           "title": "R&D Engineering",
+          "unit": "TPES",
           "maturityStatus": "R3"
         },
         {
           "title": "Turnkey Operation",
+          "unit": "TPES",
           "maturityStatus": "R3"
         },
         {
           "title": "UOQA Inspection",
+          "unit": "TPES",
           "maturityStatus": "R3"
         }
       ]
@@ -418,26 +455,32 @@
       "branches": [
         {
           "title": "客戶品質服務",
+          "unit": "QA",
           "maturityStatus": "R2"
         },
         {
           "title": "進料品質管理",
+          "unit": "QA",
           "maturityStatus": "R2"
         },
         {
           "title": "製程品質管理",
+          "unit": "QA",
           "maturityStatus": "R3"
         },
         {
           "title": "出貨品質管理",
+          "unit": "QA",
           "maturityStatus": "R3"
         },
         {
           "title": "可靠度規格制定",
+          "unit": "RT&A",
           "maturityStatus": "R1"
         },
         {
           "title": "可靠度驗證執行",
+          "unit": "RT&A",
           "maturityStatus": "R1"
         }
       ]
@@ -450,58 +493,72 @@
       "branches": [
         {
           "title": "信用管理",
+          "unit": "財務",
           "maturityStatus": "R2"
         },
         {
           "title": "資金管理",
+          "unit": "財務",
           "maturityStatus": "R2"
         },
         {
           "title": "保險作業",
+          "unit": "財務",
           "maturityStatus": "R1"
         },
         {
           "title": "投資管理",
+          "unit": "財務",
           "maturityStatus": "R1"
         },
         {
           "title": "股務作業",
+          "unit": "財務",
           "maturityStatus": "R1"
         },
         {
           "title": "投資人關係",
+          "unit": "財務",
           "maturityStatus": "R1"
         },
         {
           "title": "營運支援",
+          "unit": "會計",
           "maturityStatus": "R2"
         },
         {
           "title": "日常會計",
+          "unit": "會計",
           "maturityStatus": "R2"
         },
         {
           "title": "結帳與合併報表",
+          "unit": "會計",
           "maturityStatus": "R2"
         },
         {
           "title": "資產管理",
+          "unit": "會計",
           "maturityStatus": "R4"
         },
         {
           "title": "稅務管理",
+          "unit": "會計",
           "maturityStatus": "R1"
         },
         {
           "title": "內控制度建立",
+          "unit": "稽核",
           "maturityStatus": "R2"
         },
         {
           "title": "內控自評",
+          "unit": "稽核",
           "maturityStatus": "R2"
         },
         {
           "title": "查核作業",
+          "unit": "稽核",
           "maturityStatus": "R1"
         }
       ]
@@ -653,30 +710,37 @@
       "branches": [
         {
           "title": "政策資訊收集",
+          "unit": "PA",
           "maturityStatus": "R1"
         },
         {
           "title": "政府溝通",
+          "unit": "PA",
           "maturityStatus": "R1"
         },
         {
           "title": "地緣政治風險分析",
+          "unit": "PA",
           "maturityStatus": "R1"
         },
         {
           "title": "媒體輿情",
+          "unit": "CC",
           "maturityStatus": "R3"
         },
         {
           "title": "社群媒體經營",
+          "unit": "CC",
           "maturityStatus": "R2"
         },
         {
           "title": "官網管理",
+          "unit": "CC",
           "maturityStatus": "R2"
         },
         {
           "title": "品牌行銷內容管理",
+          "unit": "CC",
           "maturityStatus": "R1"
         }
       ]

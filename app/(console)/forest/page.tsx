@@ -11,7 +11,6 @@ import HouseProjectFormDialog from "@(control)/house/components/HouseProjectForm
 import forestBlueprint from "@(control)/house/foreset-view.mock.json"
 import { insights } from "@(control)/house/house.mock"
 import StatusChip from "@app/components/StatusChip/StatusChip"
-import TextBadge from "@app/components/TextBadge/TextBadge"
 import type { Project } from "@lib/api/projects"
 import { useProjects } from "@lib/hooks/use-projects"
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf"
@@ -27,7 +26,8 @@ import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import type { MouseEvent } from "react"
 import { useMemo, useState } from "react"
-import BranchButton, { type BranchColor } from "./components/BranchButton/BranchButton"
+import { type BranchColor } from "./components/BranchButton/BranchButton"
+import ForestTrunk from "./components/ForestTrunk/ForestTrunk"
 import styles from "./page.module.css"
 
 type ForestId = keyof typeof forestBlueprint
@@ -49,7 +49,7 @@ const insightNames = new Map(insights.map((insight) => [insight.id, insight.name
 const interviewStatuses = [
   { value: "pending", label: "待訪談" },
   { value: "ongoing", label: "訪談中" },
-  { value: "completed", label: "已完成" },
+  { value: "completed", label: "已訪談" },
 ] as const
 const maturityStatuses = [
   { rank: "R1", label: "R1: Connected", color: "error" },
@@ -125,80 +125,22 @@ export default function ForestPage() {
           tabIndex={0}
           className={styles.scrollArea}
         >
-          <Box className={styles.blocks}>
+          <Box className={styles.trunks}>
             {forestView?.trunks.map((trunk) => {
               const isDimmed = selectedInterviewStatus !== null && trunk.interviewStatus !== selectedInterviewStatus
 
               return (
-                <Box
-                  sx={(theme) => ({
-                    opacity: isDimmed ? 0.28 : 1,
-                    transition: theme.transitions.create("opacity"),
-                  })}
+                <ForestTrunk
                   key={trunk.title}
-                  className={styles.block}
-                >
-                  {trunk.interviewStatus === "ongoing" ? (
-                    <Box
-                      sx={{ color: "success.main" }}
-                      component="svg"
-                      focusable="false"
-                      className={styles.progressBorder}
-                      aria-hidden="true"
-                    >
-                      <rect
-                        x="1"
-                        y="1"
-                        rx="7"
-                        fill="none"
-                        width="calc(100% - 2px)"
-                        height="calc(100% - 2px)"
-                        pathLength="100"
-                      />
-                    </Box>
-                  ) : null}
-                  {selectedInterviewStatus === "pending" && trunk.interviewStatus === "pending" ? (
-                    <Box
-                      sx={(theme) => ({
-                        border: `2px dashed ${theme.palette.primary.main}`,
-                        boxSizing: "border-box",
-                      })}
-                      className={styles.pendingInterviewBorder}
-                    />
-                  ) : null}
-                  <Stack
-                    sx={{ px: 0.5 }}
-                    flexWrap="wrap"
-                    direction="row"
-                    alignItems="center"
-                  >
-                    <Typography
-                      sx={{ mr: 0.5 }}
-                      variant="subtitle2"
-                    >
-                      {trunk.title}
-                    </Typography>
-                    {trunk.dept ? <TextBadge label={trunk.dept} /> : null}
-                  </Stack>
-                  <Box className={styles.branches}>
-                    {trunk.branches.map((branch) => {
-                      const isDimmed = selectedRank !== null && branch.maturityStatus !== selectedRank
-
-                      return (
-                        <BranchButton
-                          key={branch.title}
-                          color={getMaturityStatus(branch.maturityStatus)}
-                          count={branch.leaves.length}
-                          title={branch.title}
-                          dimmed={isDimmed}
-                          variant={trunk.interviewStatus}
-                          onClick={(event) => openBranchMenu(event, label, branch.leaves)}
-                          disabled={isLoading || Boolean(error) || branch.leaves.length === 0}
-                        />
-                      )
-                    })}
-                  </Box>
-                </Box>
+                  trunk={trunk}
+                  isDimmed={isDimmed}
+                  hasError={Boolean(error)}
+                  isLoading={isLoading}
+                  selectedRank={selectedRank}
+                  onOpenBranch={(event, leaves) => openBranchMenu(event, label, leaves)}
+                  getBranchColor={getMaturityStatus}
+                  isPendingHighlighted={selectedInterviewStatus === "pending" && trunk.interviewStatus === "pending"}
+                />
               )
             })}
           </Box>
@@ -208,7 +150,10 @@ export default function ForestPage() {
   }
 
   return (
-    <Stack gap={2}>
+    <Stack
+      height="100%"
+      gap={2}
+    >
       <PageHeader>Forest View</PageHeader>
       <Stack
         gap={1}
@@ -256,7 +201,7 @@ export default function ForestPage() {
           正在載入專案資料…
         </Typography>
       ) : null}
-      <Box className={styles.map}>
+      <Box className={`${styles.map} ${expandedInsight ? styles.mapExpanded : ""}`}>
         {forestOrder
           .filter((id) => expandedInsight === null || expandedInsight === id)
           .map((id) => ForestMap(id, expandedInsight === id))}

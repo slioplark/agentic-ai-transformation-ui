@@ -1,8 +1,10 @@
 .map {
   display: grid;
+  grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
   grid-template-columns: 1fr 1fr 1fr 2fr;
-  align-items: stretch;
   gap: 4px;
+  flex: 1 1 0;
+  min-height: 0;
 }
 
 .forest {
@@ -49,37 +51,55 @@
 }
 
 .scrollArea {
-  overflow-x: auto;
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 
-.blocks {
-  column-count: 2;
-  column-gap: 4px;
-}
-
-.ops .blocks {
-  column-count: 4;
-}
-
-.ops .scrollArea {
-  overflow: visible;
-}
-
-.biz .blocks {
+.customer .trunks,
+.td .trunks {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  align-items: stretch;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: column;
   gap: 4px;
+  height: 100%;
+}
+
+.planning .trunks,
+.ops .trunks {
+  display: grid;
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 4px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.planning .trunks {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ops .trunks {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.biz .trunks {
+  display: grid;
+  grid-auto-rows: minmax(0, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 .block {
   position: relative;
-  break-inside: avoid;
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 0;
-  margin-bottom: 4px;
+  min-height: 0;
   padding: 4px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.75);
@@ -120,21 +140,48 @@
   gap: 4px;
 }
 
+.branchArea {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
 .message {
   margin-bottom: -4px;
 }
 
 @media (max-width: 1024px) {
   .map {
+    grid-template-rows: none;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex: 0 1 auto;
   }
 
-  .ops .blocks {
-    column-count: 2;
+  .planning .trunks,
+  .customer .trunks,
+  .td .trunks,
+  .ops .trunks,
+  .biz .trunks {
+    height: auto;
   }
 
-  .biz .blocks {
+  .planning .trunks,
+  .ops .trunks,
+  .biz .trunks {
+    grid-auto-rows: auto;
+    overflow: visible;
+  }
+
+  .ops .trunks {
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: column;
+  }
+
+  .biz .trunks {
+    grid-template-rows: repeat(2, auto);
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-flow: column;
   }
 }
 
@@ -147,19 +194,32 @@
     grid-column: auto;
   }
 
-  .biz .blocks {
+  .biz .trunks {
+    grid-template-rows: repeat(3, auto);
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 425px) {
-  .blocks,
-  .ops .blocks,
-  .biz .blocks {
+  .planning .trunks,
+  .customer .trunks,
+  .td .trunks,
+  .ops .trunks,
+  .biz .trunks {
+    grid-template-rows: none;
     grid-template-columns: minmax(0, 1fr);
+    grid-auto-flow: row;
   }
 }
 
 .expanded {
   grid-column: 1 / -1;
+}
+
+.mapExpanded {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.mapExpanded .expanded {
+  grid-row: 1;
 }

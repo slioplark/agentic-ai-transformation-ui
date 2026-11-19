@@ -11,6 +11,7 @@ export type ForestBranchMaturityStatus = string
 export type ForestInterviewStatus = "pending" | "ongoing" | "completed"
 
 export type ForestBranchBlueprint = {
+  unit?: string
   title: string
   maturityStatus?: ForestBranchMaturityStatus
 }
@@ -30,6 +31,7 @@ export type ForestLeaf = {
 }
 
 export type ForestBranch = {
+  unit?: string
   title: string
   maturityStatus?: ForestBranchMaturityStatus
   leaves: ForestLeaf[]
@@ -80,6 +82,7 @@ export function buildForestView(
     dept: trunk.dept,
     title: trunk.title,
     branches: trunk.branches.map((branch) => ({
+      unit: branch.unit,
       title: branch.title,
       maturityStatus: branch.maturityStatus,
       leaves: [],
