@@ -1,6 +1,6 @@
 "use client"
 
-import { getSessionExpiresAt, getSessionUser } from "@lib/session-storage"
+import { getSessionExpiresAt, getSessionUser, sessionCacheKey } from "@lib/session-storage"
 import MenuIcon from "@mui/icons-material/Menu"
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
@@ -20,7 +20,7 @@ import SidebarNavigation from "./SidebarNavigation"
 export default function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [desktopCollapsed, setDesktopCollapsed] = useState(false)
-  const { data: accountUser, mutate: refreshAccountUser } = useSWR("client-session", getSessionUser, {
+  const { data: accountUser, isValidating, mutate: refreshAccountUser } = useSWR(sessionCacheKey, getSessionUser, {
     revalidateOnFocus: false,
   })
   const router = useRouter()
@@ -28,8 +28,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const accountUserId = accountUser?.user_id ?? ""
 
   useEffect(() => {
-    if (accountUser === null) router.replace("/login")
-  }, [accountUser, router])
+    if (accountUser === null && !isValidating) router.replace("/login")
+  }, [accountUser, isValidating, router])
 
   useEffect(() => {
     if (!accountUserId) return

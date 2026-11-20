@@ -1,7 +1,7 @@
 "use client"
 
 import type { User } from "@lib/api/auth"
-import { clearSessionUser } from "@lib/session-storage"
+import { clearSessionUser, sessionCacheKey } from "@lib/session-storage"
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined"
 import Avatar from "@mui/material/Avatar"
 import ListItemIcon from "@mui/material/ListItemIcon"
@@ -10,17 +10,27 @@ import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { useSWRConfig } from "swr"
 import styles from "./AppShell.module.css"
 
-function getChineseName(name: string) {
+function getChineseName(name: string, fallback: string) {
   const chineseName = name.split(/[-–—]/).at(-1)?.trim()
-  return chineseName || name.trim()
+  return chineseName || name.trim() || fallback
 }
 
 export default function AccountMenu({ user }: { user: User }) {
-  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null)
   const router = useRouter()
-  const displayName = getChineseName(user.name)
+  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null)
+  const { mutate } = useSWRConfig()
+
+  const displayName = getChineseName(user.name, user.user_id)
+
+  async function handleSignOut() {
+    clearSessionUser()
+    setMenuAnchor(null)
+    await mutate(sessionCacheKey, null, { revalidate: false })
+    router.replace("/login")
+  }
 
   return (
     <>
@@ -66,13 +76,7 @@ export default function AccountMenu({ user }: { user: User }) {
             secondary={user.user_id}
           />
         </MenuItem>
-        <MenuItem
-          onClick={() => {
-            clearSessionUser()
-            setMenuAnchor(null)
-            router.push("/login")
-          }}
-        >
+        <MenuItem onClick={handleSignOut}>
           <ListItemIcon>
             <LogoutOutlinedIcon fontSize="small" />
           </ListItemIcon>

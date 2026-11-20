@@ -1,6 +1,7 @@
 import type { User } from "@lib/api/auth"
 
 const sessionUserKey = "agentic-ai-transformation.user"
+export const sessionCacheKey = "client-session"
 export const sessionDurationMs = 8 * 60 * 60 * 1000
 
 type StoredSessionPayload = {
@@ -8,24 +9,29 @@ type StoredSessionPayload = {
   expiresAt: number
 }
 
-function isUser(value: unknown): value is User {
-  if (typeof value !== "object" || value === null) return false
+function parseStoredUser(value: unknown): User | null {
+  if (typeof value !== "object" || value === null) return null
 
   const user = value as Partial<User>
-  return (
-    typeof user.user_id === "string" &&
-    typeof user.name === "string" &&
-    typeof user.email === "string" &&
-    typeof user.title === "string" &&
-    typeof user.department === "string"
-  )
+  if (!user.user_id) return null
+
+  return {
+    user_id: user.user_id,
+    name: user.name ?? "",
+    email: user.email ?? "",
+    title: user.title ?? "",
+    department: user.department ?? "",
+  }
 }
 
-function isStoredSessionPayload(value: unknown): value is StoredSessionPayload {
-  if (typeof value !== "object" || value === null) return false
+function parseStoredSessionPayload(value: unknown): StoredSessionPayload | null {
+  if (typeof value !== "object" || value === null) return null
 
-  const session = value as Partial<StoredSessionPayload>
-  return isUser(session.user) && typeof session.expiresAt === "number" && Number.isFinite(session.expiresAt)
+  const session = value as { user?: unknown; expiresAt?: unknown }
+  const user = parseStoredUser(session.user)
+  if (!user || typeof session.expiresAt !== "number" || !Number.isFinite(session.expiresAt)) return null
+
+  return { user, expiresAt: session.expiresAt }
 }
 
 function getStoredSession(): StoredSessionPayload | null {
@@ -35,8 +41,8 @@ function getStoredSession(): StoredSessionPayload | null {
   if (!storedSession) return null
 
   try {
-    const session: unknown = JSON.parse(storedSession)
-    if (!isStoredSessionPayload(session) || session.expiresAt <= Date.now()) {
+    const session = parseStoredSessionPayload(JSON.parse(storedSession))
+    if (!session || session.expiresAt <= Date.now()) {
       clearSessionUser()
       return null
     }
@@ -55,12 +61,15 @@ export function getSessionExpiresAt(): number | null {
   return getStoredSession()?.expiresAt ?? null
 }
 
-export function setSessionUser(user: User) {
+export function setSessionUser(user: User): User {
+  if (user.user_id === "") throw new Error("Sign-in response is missing user_id")
+
   const session: StoredSessionPayload = {
     user,
     expiresAt: Date.now() + sessionDurationMs,
   }
   sessionStorage.setItem(sessionUserKey, JSON.stringify(session))
+  return user
 }
 
 export function clearSessionUser() {

@@ -2,7 +2,7 @@
 
 import TextField from "@app/components/TextField/TextField"
 import { useSignIn } from "@lib/hooks/use-sign-in"
-import { setSessionUser } from "@lib/session-storage"
+import { sessionCacheKey, setSessionUser } from "@lib/session-storage"
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined"
 import Visibility from "@mui/icons-material/VisibilityOutlined"
 import Button from "@mui/material/Button"
@@ -11,12 +11,15 @@ import InputAdornment from "@mui/material/InputAdornment"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
 import { useState, type SubmitEvent } from "react"
+import { useSWRConfig } from "swr"
 
 export default function LoginForm() {
   const router = useRouter()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
+
+  const { mutate } = useSWRConfig()
   const { isMutating, trigger } = useSignIn()
 
   async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
@@ -28,7 +31,8 @@ export default function LoginForm() {
         username: String(formData.get("username") ?? ""),
         password: String(formData.get("password") ?? ""),
       })
-      setSessionUser(response.user)
+      const user = setSessionUser(response.user)
+      await mutate(sessionCacheKey, user, { revalidate: false })
       router.replace("/")
     } catch {
       // AppProviders reports failed sign-in attempts.
