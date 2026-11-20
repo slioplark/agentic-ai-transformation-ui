@@ -34,7 +34,7 @@
     {
       "title": "企業營運規劃",
       "dept": "COP",
-      "interviewStatus": "pending",
+      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "產能布局/資本支出",
@@ -93,7 +93,7 @@
     {
       "title": "行銷管理",
       "dept": "CM",
-      "interviewStatus": "pending",
+      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "市場資訊收集",
@@ -116,7 +116,7 @@
     {
       "title": "銷售",
       "dept": "Sales",
-      "interviewStatus": "completed",
+      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "業績管理",
@@ -139,7 +139,7 @@
     {
       "title": "客戶服務",
       "dept": "CE",
-      "interviewStatus": "pending",
+      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "技術文檔 (DSM)",
@@ -173,7 +173,7 @@
     },
     {
       "title": "CTO",
-      "interviewStatus": "ongoing",
+      "interviewStatus": "pending",
       "branches": [
         {
           "title": "前瞻技術研究"
@@ -186,8 +186,8 @@
   ],
   "td": [
     {
-      "title": "技術開發",
-      "dept": "TD",
+      "title": "TD",
+      "dept": "TD INT",
       "interviewStatus": "pending",
       "branches": [
         {
@@ -213,8 +213,14 @@
       ]
     },
     {
-      "title": "模型",
-      "dept": "Model",
+      "title": "TD",
+      "dept": "TD Module",
+      "interviewStatus": "pending",
+      "branches": []
+    },
+    {
+      "title": "元件 & 模型",
+      "dept": "Device & Model",
       "interviewStatus": "pending",
       "branches": [
         {
@@ -236,14 +242,7 @@
         {
           "title": "MQR",
           "maturityStatus": "R2"
-        }
-      ]
-    },
-    {
-      "title": "元件",
-      "dept": "Device",
-      "interviewStatus": "pending",
-      "branches": [
+        },
         {
           "title": "電性參數規格",
           "maturityStatus": "R2"
@@ -285,31 +284,31 @@
   "ops": [
     {
       "title": "供應鏈",
-      "interviewStatus": "completed",
+      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "採購價格預測",
-          "unit": "採購",
+          "unit": "OS",
           "maturityStatus": "R1"
         },
         {
           "title": "採購風險管理",
-          "unit": "採購",
+          "unit": "OS",
           "maturityStatus": "R2"
         },
         {
           "title": "採購流程管理",
-          "unit": "採購",
+          "unit": "OS",
           "maturityStatus": "R3"
         },
         {
           "title": "決策資訊管理",
-          "unit": "採購",
+          "unit": "OS",
           "maturityStatus": "R1"
         },
         {
           "title": "採購智能化",
-          "unit": "採購",
+          "unit": "OS",
           "maturityStatus": "R1"
         },
         {
@@ -324,30 +323,95 @@
         },
         {
           "title": "物料需求規劃",
-          "unit": "物料管理",
+          "unit": "MPWM",
           "maturityStatus": "R3"
         },
         {
           "title": "物料差異管控",
-          "unit": "物料管理",
+          "unit": "MPWM",
           "maturityStatus": "R3"
         },
         {
+          "title":"PARTS & IDM 需求規劃",
+          "unit": "MPWM",
+          "maturityStatus": "R5"
+        },
+        {
+          "title":"DM 物料需求規劃差異管控及分析",
+          "unit": "MPWM",
+          "maturityStatus": "R5"
+        },
+        {
+          "title":"MP 物料 Plan 及待辦事項管控",
+          "unit": "MPWM",
+          "maturityStatus": "R5"
+        },
+        {
+          "title":"請購需求計算及管理",
+          "unit": "MPWM",
+          "maturityStatus": "R5"
+        },
+        {
+          "title":"廠商交期管理",
+          "unit": "MPWM",
+          "maturityStatus": "R5"
+        },
+        {
+          "title":"New Tool Management",
+          "unit": "MPWM",
+          "maturityStatus": "R5"
+        },
+        {
+          "title":"LIFE TIME 管理及異常分析",
+          "unit": "MPWM",
+          "maturityStatus": "R5"
+        },
+        {
+          "title":"風險監控",
+          "unit": "MPWM",
+          "maturityStatus": "R5"
+        },
+        {
           "title": "收/發料管理",
-          "unit": "庫存管理",
+          "unit": "MPWM",
           "maturityStatus": "R2"
         },
         {
           "title": "特殊物料庫管",
-          "unit": "庫存管理",
+          "unit": "MPWM",
           "maturityStatus": "R2"
+        },
+        {
+          "title": "收貨管理",
+          "unit":"MPWM",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "發料管理",
+          "unit":"MPWM",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "存貨盤點",
+          "unit":"MPWM",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "報廢管理",
+          "unit":"MPWM",
+          "maturityStatus": "R4"
+        },
+        {
+          "title": "庫房巡檢",
+          "unit":"MPWM",
+          "maturityStatus": "R4"
         }
       ]
     },
     {
       "title": "製造",
       "dept": "Fab",
-      "interviewStatus": "pending",
+      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "生產排程",
@@ -414,12 +478,12 @@
         {
           "title": "Source Data Mgmt",
           "unit": "MES",
-          "maturityStatus": "R5"
+          "maturityStatus": "R4"
         },
         {
           "title": "Mask Tooling",
           "unit": "MES",
-          "maturityStatus": "R5"
+          "maturityStatus": "R4"
         },
         {
           "title": "Verification",
@@ -450,7 +514,7 @@
     },
     {
       "title": "品質暨可靠度",
-      "dept": "Q&RA",
+      "dept": "Q & RA",
       "interviewStatus": "ongoing",
       "branches": [
         {

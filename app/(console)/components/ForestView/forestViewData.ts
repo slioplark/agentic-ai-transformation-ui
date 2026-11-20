@@ -38,6 +38,7 @@ export type ForestBranch = {
 }
 
 export type ForestTrunk = {
+  id: string
   dept?: string
   title: string
   branches: ForestBranch[]
@@ -56,6 +57,10 @@ type BuildForestViewOptions = {
 
 const archivedValues = new Set(["1", "true", "yes", "y"])
 const digitalRankPattern = /^R?([1-5])$/
+
+function getForestTrunkId(title: string, dept?: string) {
+  return `${title}_${dept ?? ""}`
+}
 
 function isArchived(value: Project["ARCHIVED"]) {
   return archivedValues.has(
@@ -79,6 +84,7 @@ export function buildForestView(
   { includeUnranked = false }: BuildForestViewOptions = {},
 ): ForestViewData {
   const trunks: ForestTrunk[] = blueprint.map((trunk) => ({
+    id: getForestTrunkId(trunk.title, trunk.dept),
     dept: trunk.dept,
     title: trunk.title,
     branches: trunk.branches.map((branch) => ({

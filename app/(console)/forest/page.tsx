@@ -131,7 +131,7 @@ export default function ForestPage() {
 
               return (
                 <ForestTrunk
-                  key={trunk.title}
+                  key={trunk.id}
                   trunk={trunk}
                   isDimmed={isDimmed}
                   hasError={Boolean(error)}
@@ -139,7 +139,9 @@ export default function ForestPage() {
                   selectedRank={selectedRank}
                   onOpenBranch={(event, leaves) => openBranchMenu(event, label, leaves)}
                   getBranchColor={getMaturityStatus}
-                  isPendingHighlighted={selectedInterviewStatus === "pending" && trunk.interviewStatus === "pending"}
+                  isPendingHighlighted={
+                    selectedInterviewStatus === "pending" && trunk.interviewStatus === "pending"
+                  }
                 />
               )
             })}

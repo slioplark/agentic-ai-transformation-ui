@@ -11,9 +11,12 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-height: 0;
+  height: 100%;
   padding: 4px;
   border: 1px solid;
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .planning {
@@ -52,7 +55,17 @@
 
 .scrollArea {
   flex: 1 1 auto;
+  min-height: 0;
   overflow: hidden;
+}
+
+.planning .trunks {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  height: 100%;
+  min-height: 0;
 }
 
 .customer .trunks,
@@ -60,27 +73,31 @@
   display: grid;
   grid-template-rows: repeat(2, minmax(0, 1fr));
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-flow: column;
   gap: 4px;
+  height: 100%;
+  min-height: 0;
+}
+
+.planning .block,
+.customer .block,
+.td .block {
   height: 100%;
 }
 
-.planning .trunks,
+.planning .branchArea,
+.customer .branchArea,
+.td .branchArea {
+  max-height: none;
+}
+
 .ops .trunks {
   display: grid;
   grid-auto-rows: minmax(0, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 4px;
   height: 100%;
   min-height: 0;
   overflow: hidden;
-}
-
-.planning .trunks {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.ops .trunks {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .biz .trunks {
@@ -95,11 +112,13 @@
 
 .block {
   position: relative;
+  break-inside: avoid;
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 0;
   min-height: 0;
+  margin-bottom: 4px;
   padding: 4px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.75);
@@ -143,7 +162,18 @@
 .branchArea {
   flex: 1 1 auto;
   min-height: 0;
+  max-height: calc(var(--forest-map-height) * 0.6 - 48px);
   overflow: auto;
+}
+
+.ops .block,
+.biz .block {
+  height: 100%;
+}
+
+.ops .branchArea,
+.biz .branchArea {
+  max-height: none;
 }
 
 .message {
@@ -157,31 +187,42 @@
     flex: 0 1 auto;
   }
 
+  .branchArea {
+    max-height: none;
+  }
+
   .planning .trunks,
   .customer .trunks,
-  .td .trunks,
-  .ops .trunks,
-  .biz .trunks {
+  .td .trunks {
+    grid-template-rows: none;
     height: auto;
   }
 
-  .planning .trunks,
-  .ops .trunks,
-  .biz .trunks {
-    grid-auto-rows: auto;
-    overflow: visible;
+  .planning .block,
+  .customer .block,
+  .td .block {
+    height: auto;
   }
 
   .ops .trunks {
-    grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-flow: column;
+    display: block;
+    column-count: 2;
+    column-gap: 4px;
+    height: auto;
+    overflow: visible;
   }
 
   .biz .trunks {
-    grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-auto-flow: column;
+    display: block;
+    column-count: 3;
+    column-gap: 4px;
+    height: auto;
+    overflow: visible;
+  }
+
+  .ops .block,
+  .biz .block {
+    height: auto;
   }
 }
 
@@ -194,21 +235,21 @@
     grid-column: auto;
   }
 
+  .planning .trunks,
+  .customer .trunks,
+  .td .trunks {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .biz .trunks {
-    grid-template-rows: repeat(3, auto);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-count: 2;
   }
 }
 
 @media (max-width: 425px) {
-  .planning .trunks,
-  .customer .trunks,
-  .td .trunks,
   .ops .trunks,
   .biz .trunks {
-    grid-template-rows: none;
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-flow: row;
+    column-count: 1;
   }
 }
 
