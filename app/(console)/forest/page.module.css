@@ -11,12 +11,9 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  min-height: 0;
-  height: 100%;
   padding: 4px;
   border: 1px solid;
   border-radius: 12px;
-  overflow: hidden;
 }
 
 .planning {
@@ -53,29 +50,26 @@
   padding: 4px;
 }
 
-.scrollArea {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.planning .trunks {
+.trunks {
   display: grid;
-  grid-template-rows: minmax(0, 1fr);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 4px;
   height: 100%;
   min-height: 0;
+}
+
+.planning .trunks,
+.customer .trunks,
+.td .trunks {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.planning .trunks {
+  grid-template-rows: minmax(0, 1fr);
 }
 
 .customer .trunks,
 .td .trunks {
-  display: grid;
   grid-template-rows: repeat(2, minmax(0, 1fr));
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 4px;
-  height: 100%;
-  min-height: 0;
 }
 
 .planning .block,
@@ -90,24 +84,18 @@
   max-height: none;
 }
 
-.ops .trunks {
-  display: grid;
+.ops .trunks,
+.biz .trunks {
   grid-auto-rows: minmax(0, 1fr);
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 4px;
-  height: 100%;
-  min-height: 0;
   overflow: hidden;
 }
 
+.ops .trunks {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .biz .trunks {
-  display: grid;
-  grid-auto-rows: minmax(0, 1fr);
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 4px;
-  min-height: 0;
-  height: 100%;
-  overflow: hidden;
 }
 
 .block {
@@ -180,79 +168,6 @@
   margin-bottom: -4px;
 }
 
-@media (max-width: 1024px) {
-  .map {
-    grid-template-rows: none;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    flex: 0 1 auto;
-  }
-
-  .branchArea {
-    max-height: none;
-  }
-
-  .planning .trunks,
-  .customer .trunks,
-  .td .trunks {
-    grid-template-rows: none;
-    height: auto;
-  }
-
-  .planning .block,
-  .customer .block,
-  .td .block {
-    height: auto;
-  }
-
-  .ops .trunks {
-    display: block;
-    column-count: 2;
-    column-gap: 4px;
-    height: auto;
-    overflow: visible;
-  }
-
-  .biz .trunks {
-    display: block;
-    column-count: 3;
-    column-gap: 4px;
-    height: auto;
-    overflow: visible;
-  }
-
-  .ops .block,
-  .biz .block {
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .map {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .biz {
-    grid-column: auto;
-  }
-
-  .planning .trunks,
-  .customer .trunks,
-  .td .trunks {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .biz .trunks {
-    column-count: 2;
-  }
-}
-
-@media (max-width: 425px) {
-  .ops .trunks,
-  .biz .trunks {
-    column-count: 1;
-  }
-}
-
 .expanded {
   grid-column: 1 / -1;
 }
@@ -263,4 +178,35 @@
 
 .mapExpanded .expanded {
   grid-row: 1;
+}
+
+@media (max-width: 1024px) {
+  .map {
+    flex: none;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .forest {
+    max-height: 60vh;
+  }
+
+  .ops .trunks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .biz .trunks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 425px) {
+  .map {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .biz .trunks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

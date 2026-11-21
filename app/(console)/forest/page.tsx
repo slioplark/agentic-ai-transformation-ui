@@ -121,31 +121,24 @@ export default function ForestPage() {
           </ButtonBase>
         </Box>
         <Divider />
-        <Box
-          tabIndex={0}
-          className={styles.scrollArea}
-        >
-          <Box className={styles.trunks}>
-            {forestView?.trunks.map((trunk) => {
-              const isDimmed = selectedInterviewStatus !== null && trunk.interviewStatus !== selectedInterviewStatus
+        <Box className={styles.trunks}>
+          {forestView?.trunks.map((trunk) => {
+            const isDimmed = selectedInterviewStatus !== null && trunk.interviewStatus !== selectedInterviewStatus
 
-              return (
-                <ForestTrunk
-                  key={trunk.id}
-                  trunk={trunk}
-                  isDimmed={isDimmed}
-                  hasError={Boolean(error)}
-                  isLoading={isLoading}
-                  selectedRank={selectedRank}
-                  onOpenBranch={(event, leaves) => openBranchMenu(event, label, leaves)}
-                  getBranchColor={getMaturityStatus}
-                  isPendingHighlighted={
-                    selectedInterviewStatus === "pending" && trunk.interviewStatus === "pending"
-                  }
-                />
-              )
-            })}
-          </Box>
+            return (
+              <ForestTrunk
+                key={trunk.id}
+                trunk={trunk}
+                isDimmed={isDimmed}
+                hasError={Boolean(error)}
+                isLoading={isLoading}
+                selectedRank={selectedRank}
+                onOpenBranch={(event, leaves) => openBranchMenu(event, label, leaves)}
+                getBranchColor={getMaturityStatus}
+                isPendingHighlighted={selectedInterviewStatus === "pending" && trunk.interviewStatus === "pending"}
+              />
+            )
+          })}
         </Box>
       </Box>
     )
