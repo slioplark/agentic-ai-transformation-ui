@@ -2,7 +2,7 @@ import { projects, projectStatus } from "@(control)/data/projects.mock"
 import { assets, coverage } from "@(control)/house/components/HouseDomainHubs/house-domain-hubs-data"
 import foresetView from "@(control)/house/foreset-view.mock.json"
 import { taskLevelDescriptions, type DomainHub, type Insight } from "@(control)/house/house.mock"
-import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
+import MilestoneTableRow from "@(control)/milestones/components/MilestoneTableRow/MilestoneTableRow"
 import DrawerHeaderActions, { type DrawerNavigation } from "@app/components/Drawer/DrawerHeaderActions"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import RankDistributionBar from "@app/components/RankDistributionBar/RankDistributionBar"
@@ -214,7 +214,7 @@ export default function HouseInsightDrawerContent({
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <ProjectMilestoneRow
+                  <MilestoneTableRow
                     project={project}
                     onOpen={(openedProject) => onProject(openedProject.id)}
                   />

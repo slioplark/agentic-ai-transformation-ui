@@ -1,6 +1,6 @@
 import type { ProjectData } from "@(control)/data/projects.mock"
 import { areas } from "@(control)/milestones/components/MilestoneFilterBar/MilestoneFilterBar"
-import ProjectMilestoneRow from "@(control)/milestones/components/ProjectMilestoneRow/ProjectMilestoneRow"
+import MilestoneTableRow from "@(control)/milestones/components/MilestoneTableRow/MilestoneTableRow"
 import Paper from "@mui/material/Paper"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
@@ -10,14 +10,14 @@ import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
 import { alpha } from "@mui/material/styles"
-import styles from "./ProjectMilestoneTable.module.css"
+import styles from "./MilestoneTable.module.css"
 
-type ProjectMilestoneTableProps = {
+type MilestoneTableProps = {
   onOpen: (project: ProjectData) => void
   projects: readonly ProjectData[]
 }
 
-export default function ProjectMilestoneTable({ onOpen, projects }: ProjectMilestoneTableProps) {
+export default function MilestoneTable({ onOpen, projects }: MilestoneTableProps) {
   const groups = new Map<string, ProjectData[]>(areas.slice(1).map((area) => [area, []]))
   for (const project of projects) {
     const group = groups.get(project.area) ?? []
@@ -64,7 +64,7 @@ export default function ProjectMilestoneTable({ onOpen, projects }: ProjectMiles
                   </TableCell>
                 </TableRow>
                 {group.map((project) => (
-                  <ProjectMilestoneRow
+                  <MilestoneTableRow
                     key={project.id}
                     project={project}
                     onOpen={onOpen}

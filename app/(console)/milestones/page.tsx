@@ -1,13 +1,7 @@
 "use client"
 
-import {
-  daysBetween,
-  projectStatus,
-  projects,
-  snapshot,
-  type ProjectData,
-} from "@(control)/data/projects.mock"
 import PageHeader from "@(control)/components/PageHeader"
+import { daysBetween, projectStatus, projects, snapshot, type ProjectData } from "@(control)/data/projects.mock"
 import Drawer from "@app/components/Drawer/Drawer"
 import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
@@ -19,7 +13,7 @@ import MilestoneFilterBar, {
   type AreaFilter,
   type StatusFilter,
 } from "./components/MilestoneFilterBar/MilestoneFilterBar"
-import ProjectMilestoneTable from "./components/ProjectMilestoneTable/ProjectMilestoneTable"
+import MilestoneTable from "./components/MilestoneTable/MilestoneTable"
 
 const areaFilters = new Set<AreaFilter>(["all", "Insight Solutions", "Domain Hubs", "AI Infrastructure", "Pillars"])
 const snapshotHorizon = new Date(`${snapshot}T00:00:00`)
@@ -85,7 +79,7 @@ function MilestonesPageContent() {
           onQueryChange={setQuery}
           onStatusChange={setStatus}
         />
-        <ProjectMilestoneTable
+        <MilestoneTable
           onOpen={(project) => open(project.id)}
           projects={visibleProjects}
         />

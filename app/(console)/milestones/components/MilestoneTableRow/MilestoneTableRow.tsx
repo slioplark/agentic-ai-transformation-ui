@@ -14,7 +14,7 @@ import Chip from "@mui/material/Chip"
 import TableCell from "@mui/material/TableCell"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import styles from "./ProjectMilestoneRow.module.css"
+import styles from "./MilestoneTableRow.module.css"
 
 const statusLabels = { error: "紅燈 / 阻塞", warning: "黃燈 / 風險", success: "綠燈 / 依計畫" } as const
 
@@ -24,7 +24,7 @@ const percentage = (project: ProjectData) => {
   return Math.round(Math.min(1, Math.max(0, (actual - baseline) / (target - baseline))) * 100)
 }
 
-export default function ProjectMilestoneRow({
+export default function MilestoneTableRow({
   onOpen,
   project,
 }: {
