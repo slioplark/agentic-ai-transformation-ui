@@ -1,7 +1,7 @@
 "use client"
 
-import { projects } from "@(control)/data/projects.mock"
 import PageHeader from "@(control)/components/PageHeader"
+import { projects } from "@(control)/data/projects.mock"
 import Drawer from "@app/components/Drawer/Drawer"
 import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
@@ -222,7 +222,6 @@ export default function LearnPage() {
     <>
       <PageHeader>公民開發與治理</PageHeader>
       <Stack
-        useFlexGap
         gap={2.25}
         className={styles.page}
       >
@@ -231,12 +230,8 @@ export default function LearnPage() {
           component="section"
           className={styles.panel}
         >
-          <Stack
-            useFlexGap
-            gap={2}
-          >
+          <Stack gap={2}>
             <Stack
-              useFlexGap
               gap={0.5}
               direction="row"
               flexWrap="wrap"
@@ -316,10 +311,7 @@ export default function LearnPage() {
           component="section"
           className={styles.panel}
         >
-          <Stack
-            useFlexGap
-            gap={1.5}
-          >
+          <Stack gap={1.5}>
             <Box>
               <Typography variant="h4">回報問題與嚴重度</Typography>
               <Typography
@@ -431,10 +423,7 @@ export default function LearnPage() {
           component="section"
           className={styles.panel}
         >
-          <Stack
-            useFlexGap
-            gap={1.5}
-          >
+          <Stack gap={1.5}>
             <Box>
               <Typography variant="h4">種子教官 · 各 BU × 工具</Typography>
               <Typography
@@ -530,10 +519,7 @@ export default function LearnPage() {
           component="section"
           className={styles.panel}
         >
-          <Stack
-            useFlexGap
-            gap={1.5}
-          >
+          <Stack gap={1.5}>
             <Box>
               <Typography variant="h4">即將開課</Typography>
               <Typography
@@ -608,12 +594,8 @@ export default function LearnPage() {
           component="section"
           className={styles.panel}
         >
-          <Stack
-            useFlexGap
-            gap={2}
-          >
+          <Stack gap={2}>
             <Stack
-              useFlexGap
               gap={0.5}
               direction="row"
               flexWrap="wrap"

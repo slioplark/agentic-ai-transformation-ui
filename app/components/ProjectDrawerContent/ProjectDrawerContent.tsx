@@ -4,6 +4,7 @@ import {
   dependencies,
   downstreamProjects,
   formatDate,
+  getProjectById,
   plannedProgress,
   projects,
   projectStatus,
@@ -11,7 +12,6 @@ import {
   redeployTo,
   snapshot,
   type ProjectData,
-  getProjectById,
 } from "@(control)/data/projects.mock"
 import DrawerHeaderActions, { type DrawerNavigation } from "@app/components/Drawer/DrawerHeaderActions"
 import PaperCard from "@app/components/PaperCard/PaperCard"
@@ -48,10 +48,7 @@ export function DeploymentProgress({ project }: { project: ProjectData }) {
   const status = projectStatus(project)
   return project.deployment ? (
     <PaperCard>
-      <Stack
-        useFlexGap
-        gap={0.5}
-      >
+      <Stack gap={0.5}>
         <Typography variant="h4">部署進度</Typography>
         <ThresholdProgress
           color={status}
@@ -97,14 +94,12 @@ export default function ProjectDrawerContent({
   return (
     <>
       <Stack
-        useFlexGap
         gap={2}
         direction="row"
         alignItems="flex-start"
         justifyContent="space-between"
       >
         <Stack
-          useFlexGap
           gap={0.5}
           alignItems="flex-start"
         >
@@ -115,7 +110,6 @@ export default function ProjectDrawerContent({
             {project.area} / {project.id.toUpperCase()}
           </Typography>
           <Stack
-            useFlexGap
             gap={0.5}
             flexWrap="wrap"
             direction="row"
@@ -160,10 +154,7 @@ export default function ProjectDrawerContent({
             </Typography>
           </PaperCard>
           <PaperCard>
-            <Stack
-              useFlexGap
-              gap={0.5}
-            >
+            <Stack gap={0.5}>
               <Typography
                 color="text.secondary"
                 variant="caption"
@@ -216,12 +207,8 @@ export default function ProjectDrawerContent({
       {details ?? (
         <>
           <PaperCard>
-            <Stack
-              useFlexGap
-              gap={0.5}
-            >
+            <Stack gap={0.5}>
               <Stack
-                useFlexGap
                 gap={0.5}
                 direction="row"
                 alignItems="center"
@@ -255,10 +242,7 @@ export default function ProjectDrawerContent({
           </PaperCard>
           <DeploymentProgress project={project} />
           <PaperCard>
-            <Stack
-              useFlexGap
-              gap={0.5}
-            >
+            <Stack gap={0.5}>
               <Typography variant="h4">下一步與復原計畫</Typography>
               <Typography variant="body2">
                 <strong>{project.issue}</strong>
@@ -279,10 +263,7 @@ export default function ProjectDrawerContent({
             </Stack>
           </PaperCard>
           <PaperCard>
-            <Stack
-              useFlexGap
-              gap={0.5}
-            >
+            <Stack gap={0.5}>
               <Typography variant="h4">D-gate · 排程基準與實際</Typography>
               <Typography
                 color="text.secondary"
@@ -340,15 +321,11 @@ export default function ProjectDrawerContent({
             </Stack>
           </PaperCard>
           <PaperCard>
-            <Stack
-              useFlexGap
-              gap={0.5}
-            >
+            <Stack gap={0.5}>
               <Typography variant="h4">上游依賴</Typography>
               {upstream.length ? (
                 upstream.map((item) => (
                   <Stack
-                    useFlexGap
                     key={item.id}
                     gap={0.5}
                     direction="row"

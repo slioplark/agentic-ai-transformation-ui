@@ -31,10 +31,7 @@ export default function HousePage() {
   }, [data])
 
   return (
-    <Stack
-      useFlexGap
-      spacing={2}
-    >
+    <Stack gap={2}>
       <PageHeader>房子進度圖</PageHeader>
       <Box component="section">
         <Box
@@ -55,7 +52,6 @@ export default function HousePage() {
             tabIndex={0}
           >
             <Stack
-              useFlexGap
               gap={0.5}
               className={styles.matrix}
             >

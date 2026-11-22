@@ -5,7 +5,6 @@ import Select, { type SelectChangeEvent } from "@mui/material/Select"
 import Stack from "@mui/material/Stack"
 import TextField from "@mui/material/TextField"
 import Typography from "@mui/material/Typography"
-import styles from "./MilestoneFilterBar.module.css"
 
 export const areas = ["all", "Insight Solutions", "Domain Hubs", "AI Infrastructure", "Pillars"] as const
 export const statusFilters = ["all", "error", "warning", "success", "stale", "upcoming", "overdue"] as const
@@ -57,16 +56,15 @@ export default function MilestoneFilterBar({
 
   return (
     <Stack
-      useFlexGap
       gap={1.5}
+      flexWrap="wrap"
       direction="row"
       alignItems="center"
       justifyContent="space-between"
     >
       <Stack
-        useFlexGap
         gap={1.5}
-        className={styles.controls}
+        flexWrap="wrap"
         direction="row"
       >
         <TextField
@@ -76,10 +74,7 @@ export default function MilestoneFilterBar({
           value={query}
           onChange={(event) => onQueryChange(event.target.value)}
         />
-        <FormControl
-          size="small"
-          className={styles.control}
-        >
+        <FormControl size="small">
           <InputLabel id="milestone-area-label">房子區塊</InputLabel>
           <Select
             label="房子區塊"
@@ -97,10 +92,7 @@ export default function MilestoneFilterBar({
             ))}
           </Select>
         </FormControl>
-        <FormControl
-          size="small"
-          className={styles.control}
-        >
+        <FormControl size="small">
           <InputLabel id="milestone-status-label">狀態</InputLabel>
           <Select
             label="狀態"

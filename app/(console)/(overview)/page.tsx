@@ -1,13 +1,13 @@
 "use client"
 
 import PageHeader from "@(control)/components/PageHeader"
+import type { ProjectData } from "@(control)/data/projects.mock"
 import Drawer from "@app/components/Drawer/Drawer"
 import useDrawerStack from "@app/components/Drawer/useDrawerStack"
 import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
 import OverMilestones from "./components/OverMilestones/OverMilestones"
-import type { ProjectData } from "@(control)/data/projects.mock"
 import OverviewBlocker from "./components/OverviewBlocker/OverviewBlocker"
 import OverviewDecisionDrawerContent from "./components/OverviewDecisions/OverviewDecisionDrawerContent"
 import OverviewDecisions from "./components/OverviewDecisions/OverviewDecisions"
@@ -48,10 +48,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Stack
-        spacing={2}
-        useFlexGap
-      >
+      <Stack gap={2}>
         <PageHeader>成效總覽</PageHeader>
         <OverviewReporting items={reportingStatusMetrics} />
         <section className={styles.kpiGrid}>

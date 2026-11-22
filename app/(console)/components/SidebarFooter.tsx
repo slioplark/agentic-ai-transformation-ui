@@ -4,11 +4,20 @@ import styles from "./AppShell.module.css"
 
 export default function SidebarFooter() {
   return (
-    <Stack spacing={0.5} className={styles.drawerFooter} useFlexGap>
-      <Typography className={styles.footerText} variant="caption">
+    <Stack
+      gap={0.5}
+      className={styles.drawerFooter}
+    >
+      <Typography
+        className={styles.footerText}
+        variant="caption"
+      >
         Work Smarter · Execute Better
       </Typography>
-      <Typography className={styles.footerSubtext} variant="caption">
+      <Typography
+        className={styles.footerSubtext}
+        variant="caption"
+      >
         Learn Faster
       </Typography>
     </Stack>

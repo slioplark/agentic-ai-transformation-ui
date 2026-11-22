@@ -64,10 +64,7 @@ function MilestonesPageContent() {
 
   return (
     <>
-      <Stack
-        useFlexGap
-        gap={2}
-      >
+      <Stack gap={2}>
         <PageHeader>專案與 D-gate</PageHeader>
         <MilestoneFilterBar
           area={area}

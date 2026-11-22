@@ -35,7 +35,6 @@ function PrincipleCard({ description, note, number, statusDetails, title }: (typ
       </Typography>
       {statusDetails ? (
         <Stack
-          useFlexGap
           gap={0.5}
           flexWrap="wrap"
           direction="row"
@@ -63,10 +62,7 @@ function PrincipleCard({ description, note, number, statusDetails, title }: (typ
 
 export default function MetricsPage() {
   return (
-    <Stack
-      useFlexGap
-      gap={2}
-    >
+    <Stack gap={2}>
       <PageHeader>指標與管理規則</PageHeader>
       <Box
         sx={{
@@ -88,10 +84,7 @@ export default function MetricsPage() {
         variant="outlined"
         component="section"
       >
-        <Stack
-          useFlexGap
-          spacing={1.5}
-        >
+        <Stack gap={1.5}>
           <Typography variant="h5">各區塊第二層指標</Typography>
           <TableContainer>
             <Table
@@ -123,10 +116,7 @@ export default function MetricsPage() {
         variant="outlined"
         component="section"
       >
-        <Stack
-          useFlexGap
-          spacing={1.5}
-        >
+        <Stack gap={1.5}>
           <Typography variant="h5">正式資料來源</Typography>
           <TableContainer>
             <Table

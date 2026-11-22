@@ -1,4 +1,3 @@
-import PaperCard from "@app/components/PaperCard/PaperCard"
 import {
   actualProgress,
   daysBetween,
@@ -7,14 +6,15 @@ import {
   projectStatus,
   snapshot,
 } from "@(control)/data/projects.mock"
-import { benefitSummary } from "../../data/overviewKpis.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import TextButton from "@app/components/TextButton/TextButton"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
+import { benefitSummary } from "../../data/overviewKpis.mock"
 import styles from "./OverviewHouse.module.css"
 
 const areas = [
@@ -47,7 +47,6 @@ export default function OverviewHouse() {
   return (
     <PaperCard>
       <Stack
-        useFlexGap
         gap={0.5}
         direction="row"
         alignItems="center"
@@ -69,12 +68,10 @@ export default function OverviewHouse() {
             className={styles.row}
           >
             <Stack
-              useFlexGap
               gap={0.5}
               className={styles.content}
             >
               <Stack
-                useFlexGap
                 gap={0.5}
                 direction="row"
                 alignItems="center"
@@ -115,7 +112,6 @@ export default function OverviewHouse() {
       </Box>
       <InfoNote color={spent > budget ? "error" : "success"}>
         <Stack
-          useFlexGap
           gap={2}
           flexWrap="wrap"
           direction="row"

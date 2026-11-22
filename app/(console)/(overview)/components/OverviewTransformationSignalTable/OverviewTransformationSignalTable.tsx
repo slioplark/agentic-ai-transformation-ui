@@ -1,5 +1,5 @@
-import PaperCard from "@app/components/PaperCard/PaperCard"
 import type { TransformationSignal } from "@(control)/(overview)/overview.mock"
+import PaperCard from "@app/components/PaperCard/PaperCard"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import Stack from "@mui/material/Stack"
 import Table from "@mui/material/Table"
@@ -23,13 +23,7 @@ const statusDetails = {
 export default function OverviewTransformationSignalTable({ signals }: OverviewTransformationSignalTableProps) {
   return (
     <PaperCard>
-      <Stack
-        alignItems={{ sm: "baseline" }}
-        direction={{ xs: "column", sm: "row" }}
-        justifyContent="space-between"
-        spacing={0.5}
-        useFlexGap
-      >
+      <Stack gap={0.5}>
         <Typography variant="h4">轉型真偽檢核 · Elephants in the room</Typography>
         <Typography
           color="text.secondary"

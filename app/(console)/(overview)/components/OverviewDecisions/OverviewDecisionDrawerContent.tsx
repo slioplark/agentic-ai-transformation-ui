@@ -20,16 +20,14 @@ export default function OverviewDecisionDrawerContent({ decisionId, onClose }: P
   return (
     <>
       <Stack
+        gap={2}
         direction="row"
         alignItems="flex-start"
         justifyContent="space-between"
-        gap={2}
-        useFlexGap
       >
         <Stack
           gap={0.5}
           alignItems="flex-start"
-          useFlexGap
         >
           <Typography
             color="secondary.main"
@@ -64,10 +62,7 @@ export default function OverviewDecisionDrawerContent({ decisionId, onClose }: P
         </PaperCard>
       </Box>
       <PaperCard>
-        <Stack
-          gap={2}
-          useFlexGap
-        >
+        <Stack gap={2}>
           <Box>
             <Typography variant="h4">為何現在需要決策</Typography>
             <Typography variant="body2">{decision.impact}</Typography>

@@ -17,7 +17,6 @@ export default function OverMilestones({ onOpen }: { onOpen: (project: ProjectDa
   return (
     <PaperCard>
       <Stack
-        useFlexGap
         gap={0.5}
         direction="row"
         alignItems="center"

@@ -1,4 +1,3 @@
-import type { DecisionData } from "../../data/overviewDecisions.mock"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import TextButton from "@app/components/TextButton/TextButton"
 import Box from "@mui/material/Box"
@@ -6,6 +5,7 @@ import Chip from "@mui/material/Chip"
 import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
+import type { DecisionData } from "../../data/overviewDecisions.mock"
 import styles from "./OverviewDecisions.module.css"
 
 type Props = {
@@ -17,7 +17,6 @@ export default function OverviewDecisions({ decisions, onOpen }: Props) {
   return (
     <PaperCard>
       <Stack
-        useFlexGap
         gap={0.5}
         direction="row"
         alignItems="center"

@@ -1,11 +1,3 @@
-import {
-  benefitScenarios,
-  benefitSummary,
-  businessUnitMaturity,
-  getKpiById,
-  maturityDistribution,
-  type MaturityDistribution,
-} from "../../data/overviewKpis.mock"
 import InfoNote from "@app/components/InfoNote/InfoNote"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import RankDistributionBar, { rankColorForLabel } from "@app/components/RankDistributionBar/RankDistributionBar"
@@ -20,6 +12,14 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
+import {
+  benefitScenarios,
+  benefitSummary,
+  businessUnitMaturity,
+  getKpiById,
+  maturityDistribution,
+  type MaturityDistribution,
+} from "../../data/overviewKpis.mock"
 import styles from "./KpiDrawerContent.module.css"
 
 type KpiDrawerContentProps = {
@@ -52,16 +52,14 @@ function maturityShare(row: MaturityDistribution) {
 function DrawerHeader({ eyebrow, onClose, title }: { eyebrow: string; onClose: () => void; title: string }) {
   return (
     <Stack
-      alignItems="flex-start"
-      direction="row"
-      justifyContent="space-between"
       gap={2}
-      useFlexGap
+      direction="row"
+      alignItems="flex-start"
+      justifyContent="space-between"
     >
       <Stack
         gap={0.5}
         alignItems="flex-start"
-        useFlexGap
       >
         <Typography
           color="secondary.main"
@@ -87,10 +85,7 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
         title="能力成熟度分布"
       />
       <PaperCard>
-        <Stack
-          gap={1}
-          useFlexGap
-        >
+        <Stack gap={1}>
           {maturityDistribution.map((row) => (
             <Box
               className={`${styles.ladderRow} ${row.kind === "target" ? styles.targetRow : ""}`}
@@ -107,10 +102,9 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
             </Box>
           ))}
           <Stack
-            direction="row"
-            flexWrap="wrap"
             gap={0.5}
-            useFlexGap
+            flexWrap="wrap"
+            direction="row"
           >
             {maturityLevels.map(({ key, label }) => (
               <Box

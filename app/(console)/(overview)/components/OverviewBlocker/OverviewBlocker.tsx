@@ -1,9 +1,4 @@
-import {
-  downstreamProjects,
-  projects,
-  projectStatus,
-  type ProjectData,
-} from "@(control)/data/projects.mock"
+import { downstreamProjects, projects, projectStatus, type ProjectData } from "@(control)/data/projects.mock"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import StatusChip from "@app/components/StatusChip/StatusChip"
 import TextButton from "@app/components/TextButton/TextButton"
@@ -26,7 +21,6 @@ export default function OverviewBlocker({ onOpen }: { onOpen: (project: ProjectD
   return (
     <PaperCard>
       <Stack
-        useFlexGap
         gap={0.5}
         direction="row"
         alignItems="center"
@@ -68,14 +62,12 @@ export default function OverviewBlocker({ onOpen }: { onOpen: (project: ProjectD
                   alignItems="center"
                   justifyContent="space-between"
                   gap={0.5}
-                  useFlexGap
                 >
                   <Stack
                     direction="row"
                     alignItems="center"
                     flexWrap="wrap"
                     gap={0.5}
-                    useFlexGap
                   >
                     <Typography variant="h4">{project.name}</Typography>
                     <StatusChip
@@ -95,7 +87,6 @@ export default function OverviewBlocker({ onOpen }: { onOpen: (project: ProjectD
                   alignItems="center"
                   justifyContent="space-between"
                   gap={0.5}
-                  useFlexGap
                 >
                   <Typography
                     color="text.secondary"
