@@ -1,11 +1,15 @@
-import type { ForestBranch, ForestLeaf, ForestTrunk as ForestTrunkData } from "@(control)/components/ForestView/forestViewData"
+import type {
+  ForestBranch,
+  ForestLeaf,
+  ForestTrunk as ForestTrunkData,
+} from "@(control)/components/ForestView/forestViewData"
 import TextBadge from "@app/components/TextBadge/TextBadge"
 import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import type { MouseEvent } from "react"
-import BranchButton, { type BranchColor } from "../BranchButton/BranchButton"
 import styles from "../../page.module.css"
+import BranchButton, { type BranchColor } from "../BranchButton/BranchButton"
 
 type ForestBranchGroup = {
   unit?: string
@@ -14,9 +18,7 @@ type ForestBranchGroup = {
 
 type ForestTrunkProps = {
   trunk: ForestTrunkData
-  hasError: boolean
   isDimmed: boolean
-  isLoading: boolean
   selectedRank: string | null
   isPendingHighlighted: boolean
   getBranchColor: (maturityStatus: string | undefined) => BranchColor | undefined
@@ -39,9 +41,7 @@ function groupBranchesByUnit(branches: ForestBranch[]) {
 
 export default function ForestTrunk({
   trunk,
-  hasError,
   isDimmed,
-  isLoading,
   selectedRank,
   isPendingHighlighted,
   getBranchColor,
@@ -59,7 +59,7 @@ export default function ForestTrunk({
         dimmed={isDimmed}
         variant={trunk.interviewStatus}
         onClick={(event) => onOpenBranch(event, branch.leaves)}
-        disabled={isLoading || hasError || branch.leaves.length === 0}
+        disabled={branch.leaves.length === 0}
       />
     )
   }
@@ -68,13 +68,15 @@ export default function ForestTrunk({
     <Stack
       key={groupKey}
       gap={0.5}
-      sx={
-        group.unit
-          ? { p: 0.5, borderRadius: 1, backgroundColor: "action.hover" }
-          : undefined
-      }
+      sx={group.unit ? { p: 0.5, borderRadius: 1, backgroundColor: "action.hover" } : undefined}
     >
-      {group.unit ? <TextBadge label={group.unit} color="primary" variant="outlined" /> : null}
+      {group.unit ? (
+        <TextBadge
+          label={group.unit}
+          color="primary"
+          variant="outlined"
+        />
+      ) : null}
       <Box className={styles.branches}>{group.branches.map(renderBranch)}</Box>
     </Stack>
   )
@@ -127,7 +129,12 @@ export default function ForestTrunk({
         >
           {trunk.title}
         </Typography>
-        {trunk.dept ? <TextBadge label={trunk.dept} color="primary" /> : null}
+        {trunk.dept ? (
+          <TextBadge
+            label={trunk.dept}
+            color="primary"
+          />
+        ) : null}
       </Stack>
       <Stack
         className={styles.branchArea}

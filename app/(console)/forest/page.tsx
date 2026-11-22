@@ -77,7 +77,7 @@ export default function ForestPage() {
   const [expandedInsight, setExpandedInsight] = useState<ForestId | null>(null)
   const [selectedInterviewStatus, setSelectedInterviewStatus] = useState<InterviewStatus | null>(null)
 
-  const { data, error, isLoading } = useProjects()
+  const { data, isLoading } = useProjects()
   const forestViews = useMemo(() => {
     const views = new Map<ForestId, ForestViewData>()
 
@@ -130,8 +130,6 @@ export default function ForestPage() {
                 key={trunk.id}
                 trunk={trunk}
                 isDimmed={isDimmed}
-                hasError={Boolean(error)}
-                isLoading={isLoading}
                 selectedRank={selectedRank}
                 onOpenBranch={(event, leaves) => openBranchMenu(event, label, leaves)}
                 getBranchColor={getMaturityStatus}
