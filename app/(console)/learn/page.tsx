@@ -359,11 +359,8 @@ export default function LearnPage() {
                 </Typography>
               </Box>
             </Box>
-            <TableContainer className={styles.tableContainer}>
-              <Table
-                size="small"
-                className={styles.issueTable}
-              >
+            <TableContainer>
+              <Table size="small">
                 <TableHead>
                   <TableRow>
                     <TableCell>問題</TableCell>
@@ -433,7 +430,7 @@ export default function LearnPage() {
                 紅色 0＝該 BU 此工具無教官
               </Typography>
             </Box>
-            <TableContainer className={styles.tableContainer}>
+            <TableContainer>
               <Table
                 size="small"
                 className={styles.seedTable}
@@ -529,11 +526,8 @@ export default function LearnPage() {
                 未來 4 週
               </Typography>
             </Box>
-            <TableContainer className={styles.tableContainer}>
-              <Table
-                size="small"
-                className={styles.trainingTable}
-              >
+            <TableContainer>
+              <Table size="small">
                 <TableHead>
                   <TableRow>
                     <TableCell>日期</TableCell>
@@ -613,11 +607,8 @@ export default function LearnPage() {
               </Box>
               <TextButton onClick={() => open(governanceProject.id)}>詳情 →</TextButton>
             </Stack>
-            <TableContainer className={styles.tableContainer}>
-              <Table
-                size="small"
-                className={styles.governanceTable}
-              >
+            <TableContainer>
+              <Table size="small">
                 <TableHead>
                   <TableRow>
                     <TableCell>里程碑</TableCell>

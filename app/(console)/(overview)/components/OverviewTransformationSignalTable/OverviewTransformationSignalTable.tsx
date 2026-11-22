@@ -9,7 +9,6 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
-import styles from "./OverviewTransformationSignalTable.module.css"
 
 type OverviewTransformationSignalTableProps = {
   signals: readonly TransformationSignal[]
@@ -36,7 +35,7 @@ export default function OverviewTransformationSignalTable({ signals }: OverviewT
       <TableContainer>
         <Table
           size="small"
-          className={styles.table}
+          sx={{ whiteSpace: "nowrap" }}
         >
           <TableHead>
             <TableRow>

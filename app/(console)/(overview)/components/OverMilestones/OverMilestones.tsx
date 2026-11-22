@@ -11,7 +11,6 @@ import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Typography from "@mui/material/Typography"
 import Link from "next/link"
-import styles from "./OverMilestones.module.css"
 
 export default function OverMilestones({ onOpen }: { onOpen: (project: ProjectData) => void }) {
   return (
@@ -31,10 +30,7 @@ export default function OverMilestones({ onOpen }: { onOpen: (project: ProjectDa
         </TextButton>
       </Stack>
       <TableContainer>
-        <Table
-          size="small"
-          className={styles.table}
-        >
+        <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>區塊 / D-gate</TableCell>

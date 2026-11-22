@@ -71,26 +71,6 @@
   border-left: 1px solid var(--mui-palette-divider, #dce5ec);
 }
 
-.tableContainer {
-  overflow-x: auto;
-}
-
-.issueTable {
-  min-width: 850px;
-}
-
-.seedTable {
-  min-width: 760px;
-}
-
-.trainingTable {
-  min-width: 850px;
-}
-
-.governanceTable {
-  min-width: 560px;
-}
-
 .seedTable :global(tbody .MuiTableCell-root),
 .seedTable :global(tfoot .MuiTableCell-root) {
   text-align: center;

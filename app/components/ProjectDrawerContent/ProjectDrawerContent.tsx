@@ -274,7 +274,7 @@ export default function ProjectDrawerContent({
               <TableContainer>
                 <Table
                   size="small"
-                  className={styles.table}
+                  sx={{ whiteSpace: "nowrap" }}
                 >
                   <TableHead>
                     <TableRow>

@@ -1,11 +1,3 @@
-.panel {
-  overflow: hidden;
-}
-
-.table {
-  min-width: 1320px;
-}
-
 .empty {
   padding: 24px;
   text-align: center;

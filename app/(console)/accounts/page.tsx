@@ -112,13 +112,10 @@ export default function AccountsPage() {
         </TextField>
       </Stack>
       <TableContainer
-        component={Paper}
         variant="outlined"
+        component={Paper}
       >
-        <Table
-          size="small"
-          sx={{ minWidth: 850 }}
-        >
+        <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>姓名</TableCell>

@@ -200,7 +200,7 @@ export default function HouseInsightDrawerContent({
             <TableContainer>
               <Table
                 size="small"
-                sx={{ minWidth: 1320 }}
+                sx={{ whiteSpace: "nowrap" }}
               >
                 <TableHead>
                   <TableRow>
