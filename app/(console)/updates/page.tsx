@@ -3,12 +3,13 @@
 import PageHeader from "@(control)/components/PageHeader"
 import FormFields from "@app/components/FormFields/FormFields"
 import PaperCard from "@app/components/PaperCard/PaperCard"
+import CloseIcon from "@mui/icons-material/Close"
 import Alert from "@mui/material/Alert"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Checkbox from "@mui/material/Checkbox"
-import Divider from "@mui/material/Divider"
 import FormControlLabel from "@mui/material/FormControlLabel"
+import IconButton from "@mui/material/IconButton"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import { useState } from "react"
@@ -28,7 +29,7 @@ import {
 } from "./insight-form-config"
 
 export default function UpdatesPage() {
-  const { control, getValues, reset, setError, trigger } = useForm<InsightFormValues>({ defaultValues })
+  const { control, getValues, setError, trigger } = useForm<InsightFormValues>({ defaultValues })
   const { fields: tasks, append, remove } = useFieldArray({ control, name: "tasks" })
   const values = useWatch({ control })
   const [checkedValues, setCheckedValues] = useState<string | null>(null)
@@ -49,6 +50,20 @@ export default function UpdatesPage() {
     setCheckedValues(valid && snapshot === JSON.stringify(getValues()) ? snapshot : null)
   }
 
+  const saveAction = (
+    <>
+      {checkedValues !== null && checkedValues === JSON.stringify(values) ? (
+        <Alert severity="success">欄位檢查通過。此示範表單不會儲存資料。</Alert>
+      ) : null}
+      <Button
+        variant="contained"
+        onClick={handleCheck}
+      >
+        儲存並同步
+      </Button>
+    </>
+  )
+
   return (
     <Stack gap={2}>
       <PageHeader>負責人填報</PageHeader>
@@ -61,12 +76,41 @@ export default function UpdatesPage() {
       <Box
         sx={{
           display: "grid",
-          gap: 2,
           gridTemplateColumns: { xs: "1fr", lg: "minmax(0, 1fr) 280px" },
           alignItems: "start",
+          gap: 2,
         }}
       >
-        <Stack gap={2}>
+        <Stack
+          gap={2}
+          sx={{
+            gridColumn: { lg: 2 },
+            gridRow: { lg: 1 },
+            position: { lg: "sticky" },
+            top: { lg: 16 },
+            maxHeight: { lg: "calc(100vh - 32px)" },
+            overflowY: { lg: "auto" },
+          }}
+        >
+          <PaperCard>
+            <Typography variant="h5">填報提示</Typography>
+            <Typography variant="body2">1. 先確認項目範圍與責任人。</Typography>
+            <Typography variant="body2">2. 現況寫「已完成什麼、尚缺什麼」。</Typography>
+            <Typography variant="body2">3. 下一步要有可交付的承諾。</Typography>
+            <Typography variant="body2">4. 有阻塞請填解除日；需要決策請填決策人與期限。</Typography>
+            <Typography variant="body2">5. 檢查前確認 D-gate 的日期及證據。</Typography>
+          </PaperCard>
+          <Stack
+            gap={1}
+            sx={{ display: { xs: "none", lg: "flex" } }}
+          >
+            {saveAction}
+          </Stack>
+        </Stack>
+        <Stack
+          gap={2}
+          sx={{ gridColumn: { lg: 1 }, gridRow: { lg: 1 } }}
+        >
           <PaperCard>
             <Typography variant="h5">01 · 項目內容與現況</Typography>
             <FormFields
@@ -109,7 +153,10 @@ export default function UpdatesPage() {
               </Typography>
             ) : null}
             {tasks.map((task, index) => (
-              <PaperCard key={task.id}>
+              <Stack
+                key={task.id}
+                gap={2}
+              >
                 <Stack
                   gap={1}
                   direction="row"
@@ -117,13 +164,18 @@ export default function UpdatesPage() {
                   justifyContent="space-between"
                 >
                   <Typography variant="h6">待辦 {index + 1}</Typography>
-                  <Button onClick={() => remove(index)}>移除</Button>
+                  <IconButton
+                    title={`移除待辦 ${index + 1}`}
+                    onClick={() => remove(index)}
+                  >
+                    <CloseIcon />
+                  </IconButton>
                 </Stack>
                 <FormFields
                   control={control}
                   configs={taskConfigs(index)}
                 />
-              </PaperCard>
+              </Stack>
             ))}
           </PaperCard>
           <PaperCard>
@@ -134,10 +186,7 @@ export default function UpdatesPage() {
             >
               權重固定且合計 100%。需依序完成；已驗收需填實際日期、首次通過結果與證據。
             </Typography>
-            <Stack
-              gap={2}
-              divider={<Divider />}
-            >
+            <Stack gap={2}>
               {project.milestones.map((gate, index) => (
                 <Stack
                   key={gate.name}
@@ -228,38 +277,21 @@ export default function UpdatesPage() {
             />
           </PaperCard>
           {checkedValues !== null && checkedValues === JSON.stringify(values) ? (
-            <Alert severity="success">欄位檢查通過。此示範表單不會儲存資料。</Alert>
+            <Alert
+              sx={{ display: { xs: "flex", lg: "none" }, position: "sticky", bottom: 68, zIndex: 1 }}
+              severity="success"
+            >
+              欄位檢查通過。此示範表單不會儲存資料。
+            </Alert>
           ) : null}
-          <Stack
-            gap={1}
-            flexWrap="wrap"
-            direction="row"
+          <Button
+            sx={{ display: { xs: "inline-flex", lg: "none" }, position: "sticky", bottom: 16, zIndex: 1, mx: 2 }}
+            variant="contained"
+            onClick={handleCheck}
           >
-            <Button
-              variant="contained"
-              onClick={handleCheck}
-            >
-              檢查填報
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={() => {
-                reset()
-                setCheckedValues(null)
-              }}
-            >
-              還原示範資料
-            </Button>
-          </Stack>
+            儲存並同步
+          </Button>
         </Stack>
-        <PaperCard>
-          <Typography variant="h5">填報提示</Typography>
-          <Typography variant="body2">1. 先確認項目範圍與責任人。</Typography>
-          <Typography variant="body2">2. 現況寫「已完成什麼、尚缺什麼」。</Typography>
-          <Typography variant="body2">3. 下一步要有可交付的承諾。</Typography>
-          <Typography variant="body2">4. 有阻塞請填解除日；需要決策請填決策人與期限。</Typography>
-          <Typography variant="body2">5. 檢查前確認 D-gate 的日期及證據。</Typography>
-        </PaperCard>
       </Box>
     </Stack>
   )
