@@ -1,6 +1,5 @@
 "use client"
 
-import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import {
   actualProgress,
   daysBetween,
@@ -12,17 +11,22 @@ import {
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
 import Drawer from "@app/components/Drawer/Drawer"
 import useDrawerStack from "@app/components/Drawer/useDrawerStack"
+import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDrawerContent"
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
+import Diversity3Icon from "@mui/icons-material/Diversity3"
+import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import styles from "./HousePillar.module.css"
 
 const pillars = {
   governance: {
+    icon: SecurityOutlinedIcon,
     label: "信任與資安",
     items: ["政策與規範", "風險管理", "資料安全", "模型安全", "隱私保護", "合規與稽核", "責任與倫理"],
   },
   citizen: {
+    icon: Diversity3Icon,
     label: "數位素養",
     items: ["AI 素養", "分級培育", "(L1/L2/L3)", "應用開發能力", "跨部門協作", "創新文化", "持續學習"],
   },
@@ -31,7 +35,7 @@ const pillars = {
 export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
   const { drawer, contentKey, isOpen, navigation, open, push } = useDrawerStack<string>()
   const project = projects.find((item) => item.id === kind)!
-  const { label, items } = pillars[kind]
+  const { icon: Icon, label, items } = pillars[kind]
   const actual = actualProgress(project)
   const planned = plannedProgress(project)
   const overdue = daysBetween(project.updated, snapshot)
@@ -54,15 +58,12 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
         component="section"
         className={`${styles.pillar} ${styles[kind]}`}
       >
-        <Box>
-          <Typography
-            color={kind === "governance" ? "secondary.main" : "info.main"}
-            variant="caption"
-          >
-            {label}
-          </Typography>
-          <Typography variant="h6">{project.name}</Typography>
-        </Box>
+        <Icon
+          color={kind === "governance" ? "secondary" : "info"}
+          fontSize="large"
+        />
+        <Typography color={kind === "governance" ? "secondary.main" : "info.main"}>{label}</Typography>
+        <Typography>{project.name}</Typography>
         <HouseDrawerCard
           onClick={() => openProject(project)}
           className={styles.card}

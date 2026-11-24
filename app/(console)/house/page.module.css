@@ -30,7 +30,7 @@
 
 .house {
   display: grid;
-  grid-template-columns: 128px minmax(0, 1fr) 128px;
+  grid-template-columns: 136px minmax(0, 1fr) 136px;
   gap: 8px;
   align-items: stretch;
   padding-top: 8px;

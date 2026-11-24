@@ -37,8 +37,8 @@ export default function HousePage() {
         <Box
           className={styles.roof}
           sx={{
-            bgcolor: "primary.main",
             color: "common.white",
+            bgcolor: "primary.main",
           }}
         >
           <Typography variant="h3">UMC Agentic AI Transformation</Typography>
