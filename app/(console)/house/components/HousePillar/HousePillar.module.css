@@ -2,12 +2,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 8px;
   padding: 8px;
   border: 1px solid #dce5ec;
   border-top-width: 6px;
   border-radius: 8px;
+}
+
+.pillar::before,
+.pillar::after {
+  content: "";
+}
+
+.pillar::before {
+  flex: 1;
+}
+
+.pillar::after {
+  flex: 2;
 }
 
 .governance {
@@ -43,6 +55,11 @@
 }
 
 @media (max-width: 1024px) {
+  .pillar::before,
+  .pillar::after {
+    display: none;
+  }
+
   .list {
     flex-direction: row;
     flex-wrap: wrap;
