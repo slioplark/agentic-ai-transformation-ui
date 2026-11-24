@@ -272,10 +272,7 @@ export default function ProjectDrawerContent({
                 權重總和 100% · 來源：示範資料；尚未串接 DTO tracking sheet
               </Typography>
               <TableContainer>
-                <Table
-                  size="small"
-                  sx={{ whiteSpace: "nowrap" }}
-                >
+                <Table>
                   <TableHead>
                     <TableRow>
                       <TableCell>關卡 / 驗收條件</TableCell>

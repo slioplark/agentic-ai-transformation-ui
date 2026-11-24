@@ -1,6 +1,6 @@
 "use client"
 
-import { createTheme } from "@mui/material/styles"
+import { alpha, createTheme } from "@mui/material/styles"
 import type {} from "@mui/x-tree-view/themeAugmentation"
 
 const theme = createTheme({
@@ -45,14 +45,16 @@ const theme = createTheme({
         },
       },
     },
+    MuiTable: {
+      defaultProps: { size: "small" },
+      styleOverrides: { root: { whiteSpace: "nowrap" } },
+    },
     MuiTableCell: {
       styleOverrides: {
         root: { verticalAlign: "middle" },
-        head: {
-          fontWeight: 700,
-          whiteSpace: "nowrap",
-          backgroundColor: "#eaf1f6",
-        },
+        head: ({ theme }) => ({
+          backgroundColor: alpha(theme.palette.info.main, 0.12),
+        }),
       },
     },
     MuiTextField: {

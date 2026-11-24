@@ -129,10 +129,10 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
       </PaperCard>
       <PaperCard>
         <TableContainer>
-          <Table size="small">
+          <Table>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ whiteSpace: "nowrap" }}>期間</TableCell>
+                <TableCell>期間</TableCell>
                 {maturityLevels.map(({ label }) => (
                   <TableCell
                     align="center"
@@ -147,7 +147,7 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
             <TableBody>
               {maturityDistribution.map((row) => (
                 <TableRow key={row.period}>
-                  <TableCell sx={{ whiteSpace: "nowrap" }}>{row.period}</TableCell>
+                  <TableCell>{row.period}</TableCell>
                   {maturityLevels.map(({ key }) => (
                     <TableCell
                       align="center"
@@ -172,7 +172,7 @@ function MaturityDrawerContent({ onClose }: { onClose: () => void }) {
       <PaperCard>
         <Typography variant="h4">各 BU 分布（2026-Q4）</Typography>
         <TableContainer>
-          <Table size="small">
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell>BU</TableCell>
@@ -257,7 +257,7 @@ function BenefitsDrawerContent({ onClose }: { onClose: () => void }) {
       </Box>
       <PaperCard>
         <TableContainer>
-          <Table size="small">
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell>場景</TableCell>

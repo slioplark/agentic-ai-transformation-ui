@@ -360,7 +360,7 @@ export default function LearnPage() {
               </Box>
             </Box>
             <TableContainer>
-              <Table size="small">
+              <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>問題</TableCell>
@@ -431,10 +431,7 @@ export default function LearnPage() {
               </Typography>
             </Box>
             <TableContainer>
-              <Table
-                size="small"
-                className={styles.seedTable}
-              >
+              <Table className={styles.seedTable}>
                 <TableHead>
                   <TableRow>
                     <TableCell>BU</TableCell>
@@ -527,7 +524,7 @@ export default function LearnPage() {
               </Typography>
             </Box>
             <TableContainer>
-              <Table size="small">
+              <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>日期</TableCell>
@@ -608,7 +605,7 @@ export default function LearnPage() {
               <TextButton onClick={() => open(governanceProject.id)}>詳情 →</TextButton>
             </Stack>
             <TableContainer>
-              <Table size="small">
+              <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>里程碑</TableCell>

@@ -78,10 +78,7 @@ function DomainHubAssets({ domainHub }: { domainHub: DomainHub }) {
       <Stack gap={2}>
         <Typography variant="h5">Domain Hub 資產</Typography>
         <TableContainer>
-          <Table
-            size="small"
-            sx={{ whiteSpace: "nowrap" }}
-          >
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell>資產</TableCell>

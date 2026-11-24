@@ -30,10 +30,7 @@ export default function MilestoneTable({ onOpen, projects }: MilestoneTableProps
       variant="outlined"
       component={Paper}
     >
-      <Table
-        size="small"
-        sx={{ whiteSpace: "nowrap" }}
-      >
+      <Table>
         <TableHead>
           <TableRow>
             <TableCell>區塊 / 執行專案</TableCell>

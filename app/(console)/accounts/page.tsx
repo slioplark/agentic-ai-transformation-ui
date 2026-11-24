@@ -115,7 +115,7 @@ export default function AccountsPage() {
         variant="outlined"
         component={Paper}
       >
-        <Table size="small">
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell>姓名</TableCell>

@@ -30,7 +30,7 @@ export default function OverMilestones({ onOpen }: { onOpen: (project: ProjectDa
         </TextButton>
       </Stack>
       <TableContainer>
-        <Table size="small">
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell>區塊 / D-gate</TableCell>

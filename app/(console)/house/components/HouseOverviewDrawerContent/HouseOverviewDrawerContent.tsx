@@ -147,7 +147,7 @@ export default function HouseOverviewDrawerContent({
         <Stack gap={2}>
           <Typography variant="h5">Top tasks 需求滿足度</Typography>
           <TableContainer>
-            <Table size="small">
+            <Table>
               <TableHead>
                 <TableRow>
                   <TableCell>Top task</TableCell>

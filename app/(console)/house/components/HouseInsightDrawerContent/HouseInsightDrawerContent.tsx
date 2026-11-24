@@ -39,10 +39,7 @@ export default function HouseInsightDrawerContent({
           <Typography variant="h5">專案與 D-gate</Typography>
           {project ? (
             <TableContainer>
-              <Table
-                sx={{ whiteSpace: "nowrap" }}
-                size="small"
-              >
+              <Table>
                 <TableHead>
                   <TableRow>
                     <TableCell>區塊 / 執行專案</TableCell>

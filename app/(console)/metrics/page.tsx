@@ -87,7 +87,7 @@ export default function MetricsPage() {
         <Stack gap={1.5}>
           <Typography variant="h5">各區塊第二層指標</Typography>
           <TableContainer>
-            <Table size="small">
+            <Table>
               <TableHead>
                 <TableRow>
                   <TableCell>區塊</TableCell>
@@ -116,7 +116,7 @@ export default function MetricsPage() {
         <Stack gap={1.5}>
           <Typography variant="h5">正式資料來源</Typography>
           <TableContainer>
-            <Table size="small">
+            <Table>
               <TableHead>
                 <TableRow>
                   <TableCell>資料</TableCell>

@@ -33,10 +33,7 @@ export default function OverviewTransformationSignalTable({ signals }: OverviewT
       </Stack>
 
       <TableContainer>
-        <Table
-          size="small"
-          sx={{ whiteSpace: "nowrap" }}
-        >
+        <Table>
           <TableHead>
             <TableRow>
               <TableCell>訊號</TableCell>
