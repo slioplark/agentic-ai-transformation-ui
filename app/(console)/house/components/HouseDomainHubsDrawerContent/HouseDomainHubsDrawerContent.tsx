@@ -66,7 +66,17 @@ function CoverageProgress({ available, needed }: { available: number; needed: nu
   )
 }
 
-function DomainHubAssets({ domainHub }: { domainHub: DomainHub }) {
+export default function HouseDomainHubsDrawerContent({
+  insight,
+  domainHub,
+  onProject,
+  navigation,
+}: {
+  insight: Insight
+  domainHub: DomainHub
+  onProject: (projectId: string) => void
+  navigation: DrawerNavigation
+}) {
   const assetCoverages = assets.map((asset) => {
     const [available, needed] = coverage(domainHub, asset.key)
     return { asset, available, needed, ratio: needed ? available / needed : 0 }
@@ -74,8 +84,14 @@ function DomainHubAssets({ domainHub }: { domainHub: DomainHub }) {
   const weakest = assetCoverages.reduce((lowest, current) => (current.ratio < lowest.ratio ? current : lowest))
 
   return (
-    <PaperCard>
-      <Stack gap={2}>
+    <>
+      <HouseOverviewDrawerContent
+        insight={insight}
+        domainHub={domainHub}
+        onProject={onProject}
+        navigation={navigation}
+      />
+      <PaperCard>
         <Typography variant="h5">Domain Hub 資產</Typography>
         <TableContainer>
           <Table>
@@ -141,31 +157,7 @@ function DomainHubAssets({ domainHub }: { domainHub: DomainHub }) {
         >
           紅框＝最弱環節。需求覆蓋分母由 BU 於 Forest View 規劃時核定；數字為示範。
         </Typography>
-      </Stack>
-    </PaperCard>
-  )
-}
-
-export default function HouseDomainHubsDrawerContent({
-  insight,
-  domainHub,
-  onProject,
-  navigation,
-}: {
-  insight: Insight
-  domainHub: DomainHub
-  onProject: (projectId: string) => void
-  navigation: DrawerNavigation
-}) {
-  return (
-    <>
-      <HouseOverviewDrawerContent
-        insight={insight}
-        domainHub={domainHub}
-        onProject={onProject}
-        navigation={navigation}
-      />
-      <DomainHubAssets domainHub={domainHub} />
+      </PaperCard>
     </>
   )
 }
