@@ -3,7 +3,7 @@ import type { Insight } from "@(control)/house/house.mock"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import RankDistributionBar from "@app/components/RankDistributionBar/RankDistributionBar"
 import { useProjects } from "@lib/hooks/use-projects"
-import { Box, Stack } from "@mui/material"
+import { Stack } from "@mui/material"
 import Skeleton from "@mui/material/Skeleton"
 import Typography from "@mui/material/Typography"
 import { useMemo } from "react"
@@ -40,7 +40,7 @@ export default function HouseForestView({ insight }: { insight: Insight }) {
   return (
     <PaperCard>
       <Typography variant="h5">Forest View</Typography>
-      <Box>
+      <Stack gap={1}>
         {isLoading ? (
           <>
             <Skeleton />
@@ -48,22 +48,32 @@ export default function HouseForestView({ insight }: { insight: Insight }) {
             <Skeleton />
           </>
         ) : !error && forestRanks ? (
-          <Stack gap={1}>
-            <RankDistributionBar ranks={forestRankCounts} />
-            {forestTargetRankDistributions.map(({ year, ranks }) => (
-              <RankDistributionBar
+          <>
+            {[{ year: "2026", ranks: forestRankCounts }, ...forestTargetRankDistributions].map(({ year, ranks }) => (
+              <Stack
+                sx={{ "& > :last-child": { flex: 1 } }}
                 key={year}
-                ranks={ranks}
-              />
+                gap={1}
+                direction="row"
+                alignItems="center"
+              >
+                <Typography
+                  sx={{ width: 40, flexShrink: 0 }}
+                  variant="body2"
+                >
+                  {year}
+                </Typography>
+                <RankDistributionBar ranks={ranks} />
+              </Stack>
             ))}
-          </Stack>
+          </>
         ) : null}
         <HouseForestTree
           id={insight.id}
           label={`${insight.name} ${insight.chineseName}`}
           trunks={forestView.trunks}
         />
-      </Box>
+      </Stack>
     </PaperCard>
   )
 }
