@@ -20,7 +20,7 @@ type TreeItem = { id: string; label: string; children?: TreeItem[]; projectId?: 
 
 const selectionPropagation = { parents: true, descendants: true }
 const isItemSelectionDisabled = (item: TreeItem) => Boolean(item.disabled)
-const blueprints: Record<string, ForestTrunkBlueprint[]> = forestBlueprint
+const blueprints = forestBlueprint as Record<string, ForestTrunkBlueprint[]>
 const mockGroups = insights.map((insight) => ({
   insight,
   trunks: (blueprints[insight.id] ?? []).map((trunk, trunkIndex) => ({

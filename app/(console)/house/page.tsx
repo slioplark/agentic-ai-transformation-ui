@@ -15,7 +15,7 @@ import { buildForestView, type ForestTrunkBlueprint } from "./components/HouseFo
 import HousePillar from "./components/HousePillar/HousePillar"
 import styles from "./page.module.css"
 
-const forestBlueprint: Record<string, ForestTrunkBlueprint[]> = forestViewBlueprint
+const forestBlueprint = forestViewBlueprint as Record<string, ForestTrunkBlueprint[]>
 
 export default function HousePage() {
   const { data, error, isLoading } = useProjects()

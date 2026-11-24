@@ -1,6 +1,6 @@
 "use client"
 
-import TextField from "@app/components/TextField/TextField"
+import FormFields, { type FormRowConfig } from "@app/components/FormFields/FormFields"
 import { useSignIn } from "@lib/hooks/use-sign-in"
 import { sessionCacheKey, setSessionUser } from "@lib/session-storage"
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined"
@@ -10,27 +10,28 @@ import IconButton from "@mui/material/IconButton"
 import InputAdornment from "@mui/material/InputAdornment"
 import Stack from "@mui/material/Stack"
 import { useRouter } from "next/navigation"
-import { useState, type SubmitEvent } from "react"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
 import { useSWRConfig } from "swr"
+
+type LoginFormValues = {
+  username: string
+  password: string
+}
 
 export default function LoginForm() {
   const router = useRouter()
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
 
+  const { control, handleSubmit } = useForm<LoginFormValues>({
+    defaultValues: { username: "", password: "" },
+  })
   const { mutate } = useSWRConfig()
   const { isMutating, trigger } = useSignIn()
 
-  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-
+  async function handleSignIn({ username, password }: LoginFormValues) {
     try {
-      const response = await trigger({
-        username: String(formData.get("username") ?? ""),
-        password: String(formData.get("password") ?? ""),
-      })
+      const response = await trigger({ username, password })
       const user = setSessionUser(response.user)
       await mutate(sessionCacheKey, user, { revalidate: false })
       router.replace("/")
@@ -39,26 +40,25 @@ export default function LoginForm() {
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <Stack gap={2}>
-        <TextField
-          required
-          name="username"
-          type="text"
-          label="帳號"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          autoComplete="username"
-        />
-        <TextField
-          required
-          name="password"
-          type={showPassword ? "text" : "password"}
-          label="密碼"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          slotProps={{
+  const configs: FormRowConfig<LoginFormValues>[] = [
+    {
+      fields: [
+        {
+          type: "text",
+          name: "username",
+          label: "帳號",
+          required: true,
+        },
+      ],
+    },
+    {
+      fields: [
+        {
+          type: showPassword ? "text" : "password",
+          name: "password",
+          label: "密碼",
+          required: true,
+          slotProps: {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
@@ -71,8 +71,21 @@ export default function LoginForm() {
                 </InputAdornment>
               ),
             },
-          }}
-          autoComplete="current-password"
+          },
+        },
+      ],
+    },
+  ]
+
+  return (
+    <form
+      noValidate
+      onSubmit={handleSubmit(handleSignIn)}
+    >
+      <Stack gap={2}>
+        <FormFields
+          control={control}
+          configs={configs}
         />
         <Button
           type="submit"

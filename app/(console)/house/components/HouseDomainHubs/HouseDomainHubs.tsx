@@ -1,6 +1,6 @@
 import { actualProgress, projects, type ProjectData } from "@(control)/data/projects.mock"
+import HouseDomainHubsDrawerContent from "@(control)/house/components/HouseDomainHubsDrawerContent/HouseDomainHubsDrawerContent"
 import HouseDrawerCard from "@(control)/house/components/HouseDrawerCard/HouseDrawerCard"
-import HouseInsightDrawerContent from "@(control)/house/components/HouseInsightDrawerContent/HouseInsightDrawerContent"
 import { insights, type DomainHub, type DomainHubAsset, type Insight } from "@(control)/house/house.mock"
 import Drawer from "@app/components/Drawer/Drawer"
 import useDrawerStack from "@app/components/Drawer/useDrawerStack"
@@ -17,7 +17,7 @@ import styles from "./HouseDomainHubs.module.css"
 import HouseDomainHubsStatus from "./HouseDomainHubsStatus"
 import { assets, coverage } from "./house-domain-hubs-data"
 
-type Detail = { type: "insight"; insight: Insight; domainHub: DomainHub } | { type: "project"; projectId: string }
+type Detail = { type: "domainHub"; insight: Insight; domainHub: DomainHub } | { type: "project"; projectId: string }
 
 function tone(ratio: number) {
   return ratio >= 0.7 ? styles.high : ratio >= 0.4 ? styles.medium : styles.low
@@ -106,14 +106,13 @@ export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[
   const openProject = (project: ProjectData) => {
     open({ type: "project", projectId: project.id })
   }
-  const pushProject = (projectId: string) => push({ type: "project", projectId })
-  const openInsight = (id: string) => {
-    const insight = insights.find((item) => item.id === id)
-    const domainHub = domainHubs.find((item) => item.id === id)
-    if (insight && domainHub) {
-      open({ type: "insight", insight, domainHub })
+  const openDomainHub = (domainHub: DomainHub) => {
+    const insight = insights.find((item) => item.id === domainHub.id)
+    if (insight) {
+      open({ type: "domainHub", insight, domainHub })
     }
   }
+  const pushProject = (projectId: string) => push({ type: "project", projectId })
 
   return (
     <Box
@@ -164,7 +163,7 @@ export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[
                 return (
                   <HouseDrawerCard
                     key={hub.id}
-                    onClick={() => openInsight(hub.id)}
+                    onClick={() => openDomainHub(hub)}
                     className={styles.cell}
                   >
                     <AssetContent
@@ -212,8 +211,8 @@ export default function HouseDomainHubs({ domainHubs }: { domainHubs: DomainHub[
         onClose={navigation.onClose}
         contentKey={contentKey}
       >
-        {drawer?.type === "insight" ? (
-          <HouseInsightDrawerContent
+        {drawer?.type === "domainHub" ? (
+          <HouseDomainHubsDrawerContent
             insight={drawer.insight}
             domainHub={drawer.domainHub}
             onProject={pushProject}

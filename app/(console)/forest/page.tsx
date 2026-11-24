@@ -2,8 +2,10 @@
 
 import {
   buildForestView,
+  type ForestInterviewStatus,
   type ForestLeaf,
   type ForestProjectRoute,
+  type ForestTrunkBlueprint,
   type ForestViewData,
 } from "@(control)/components/ForestView/forestViewData"
 import PageHeader from "@(control)/components/PageHeader"
@@ -46,11 +48,12 @@ type SelectedProject = {
 
 const forestOrder: ForestId[] = ["planning", "customer", "td", "ops", "biz"]
 const insightNames = new Map(insights.map((insight) => [insight.id, insight.name]))
+const forestBlueprints = forestBlueprint as Record<ForestId, ForestTrunkBlueprint[]>
 const interviewStatuses = [
   { value: "pending", label: "待訪談" },
   { value: "ongoing", label: "訪談中" },
   { value: "completed", label: "已訪談" },
-] as const
+] as const satisfies readonly { value: ForestInterviewStatus; label: string }[]
 const maturityStatuses = [
   { rank: "R1", label: "R1: Connected", color: "error" },
   { rank: "R2", label: "R2: Optimized", color: "warning" },
@@ -60,8 +63,6 @@ const maturityStatuses = [
 ] as const satisfies readonly { rank: string; label: string; color: BranchColor }[]
 
 type MaturityStatus = (typeof maturityStatuses)[number]["rank"]
-type InterviewStatus = (typeof interviewStatuses)[number]["value"]
-
 function getInsightLabel(id: ForestId) {
   return insightNames.get(id) ?? id
 }
@@ -75,14 +76,14 @@ export default function ForestPage() {
   const [selectedRank, setSelectedRank] = useState<MaturityStatus | null>(null)
   const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
   const [expandedInsight, setExpandedInsight] = useState<ForestId | null>(null)
-  const [selectedInterviewStatus, setSelectedInterviewStatus] = useState<InterviewStatus | null>(null)
+  const [selectedInterviewStatus, setSelectedInterviewStatus] = useState<ForestInterviewStatus | null>(null)
 
   const { data, isLoading } = useProjects()
   const forestViews = useMemo(() => {
     const views = new Map<ForestId, ForestViewData>()
 
     for (const id of forestOrder) {
-      views.set(id, buildForestView(forestBlueprint[id], data ?? [], { includeUnranked: true }))
+      views.set(id, buildForestView(forestBlueprints[id], data ?? [], { includeUnranked: true }))
     }
 
     return views
@@ -123,7 +124,9 @@ export default function ForestPage() {
         <Divider />
         <Box className={styles.trunks}>
           {forestView?.trunks.map((trunk) => {
-            const isDimmed = selectedInterviewStatus !== null && trunk.interviewStatus !== selectedInterviewStatus
+            const isDimmed =
+              selectedInterviewStatus !== null &&
+              !trunk.branches.some((branch) => branch.interviewStatus === selectedInterviewStatus)
 
             return (
               <ForestTrunk
@@ -131,9 +134,10 @@ export default function ForestPage() {
                 trunk={trunk}
                 isDimmed={isDimmed}
                 selectedRank={selectedRank}
-                onOpenBranch={(event, leaves) => openBranchMenu(event, label, leaves)}
                 getBranchColor={getMaturityStatus}
+                onOpenBranch={(event, leaves) => openBranchMenu(event, label, leaves)}
                 isPendingHighlighted={selectedInterviewStatus === "pending" && trunk.interviewStatus === "pending"}
+                selectedInterviewStatus={selectedInterviewStatus}
               />
             )
           })}

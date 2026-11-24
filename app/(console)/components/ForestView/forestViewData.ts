@@ -1,19 +1,19 @@
 import type { Project } from "@lib/api/projects"
 
+export type ForestBranchMaturityStatus = string
+export type ForestInterviewStatus = "pending" | "ongoing" | "completed"
+
 export type ForestTrunkBlueprint = {
   title: string
   dept?: string
   branches: readonly ForestBranchBlueprint[]
-  interviewStatus?: string
 }
-
-export type ForestBranchMaturityStatus = string
-export type ForestInterviewStatus = "pending" | "ongoing" | "completed"
 
 export type ForestBranchBlueprint = {
   unit?: string
   title: string
   maturityStatus?: ForestBranchMaturityStatus
+  interviewStatus: ForestInterviewStatus
 }
 
 export type ForestProjectRoute = {
@@ -34,6 +34,7 @@ export type ForestBranch = {
   unit?: string
   title: string
   maturityStatus?: ForestBranchMaturityStatus
+  interviewStatus: ForestInterviewStatus
   leaves: ForestLeaf[]
 }
 
@@ -78,24 +79,42 @@ function getDigitalRank(value: Project["CURRENT_DIGITAL_LEVEL"]) {
   return match ? Number(match[1]) : null
 }
 
+function getTrunkInterviewStatus(branches: readonly ForestBranch[]): ForestInterviewStatus {
+  if (branches.length === 0) return "pending"
+
+  let allCompleted = true
+
+  for (const branch of branches) {
+    if (branch.interviewStatus === "ongoing") return "ongoing"
+    if (branch.interviewStatus !== "completed") allCompleted = false
+  }
+
+  return allCompleted ? "completed" : "pending"
+}
+
 export function buildForestView(
   blueprint: readonly ForestTrunkBlueprint[],
   projects: readonly Project[],
   { includeUnranked = false }: BuildForestViewOptions = {},
 ): ForestViewData {
-  const trunks: ForestTrunk[] = blueprint.map((trunk) => ({
-    id: getForestTrunkId(trunk.title, trunk.dept),
-    dept: trunk.dept,
-    title: trunk.title,
-    branches: trunk.branches.map((branch) => ({
+  const trunks: ForestTrunk[] = blueprint.map((trunk) => {
+    const branches = trunk.branches.map((branch) => ({
       unit: branch.unit,
       title: branch.title,
       maturityStatus: branch.maturityStatus,
+      interviewStatus: branch.interviewStatus,
       leaves: [],
-    })),
-    leafCount: 0,
-    interviewStatus: (trunk.interviewStatus ?? "pending") as ForestInterviewStatus,
-  }))
+    }))
+
+    return {
+      id: getForestTrunkId(trunk.title, trunk.dept),
+      dept: trunk.dept,
+      title: trunk.title,
+      branches,
+      leafCount: 0,
+      interviewStatus: getTrunkInterviewStatus(branches),
+    }
+  })
   const branchesByTrunk = new Map(
     trunks.map((trunk) => [trunk.title, new Map(trunk.branches.map((branch) => [branch.title, branch]))]),
   )

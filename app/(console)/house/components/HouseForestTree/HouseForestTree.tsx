@@ -112,7 +112,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
       >
         {trunks.map((trunk) => (
           <TreeItem
-            key={trunk.title}
+            key={trunk.id}
             label={
               <HouseForestTreeLabel
                 icon={ParkIcon}
@@ -120,7 +120,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
                 title={trunk.title}
               />
             }
-            itemId={`${insightId}-${trunk.title}`}
+            itemId={`${insightId}-${trunk.id}`}
           >
             {trunk.branches.map((branch) => (
               <TreeItem
@@ -133,7 +133,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
                     title={branch.title}
                   />
                 }
-                itemId={`${insightId}-${trunk.title}-${branch.title}`}
+                itemId={`${insightId}-${trunk.id}-${branch.title}`}
               >
                 {branch.leaves.map((leaf) => (
                   <TreeItem
@@ -149,7 +149,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
                         onTitleClick={() => setSelectedProject({ project: leaf.project, route: leaf.route })}
                       />
                     }
-                    itemId={`${insightId}-${trunk.title}-${branch.title}-${leaf.id}`}
+                    itemId={`${insightId}-${trunk.id}-${branch.title}-${leaf.id}`}
                   />
                 ))}
               </TreeItem>

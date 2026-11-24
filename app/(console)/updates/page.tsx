@@ -4,7 +4,6 @@ import PageHeader from "@(control)/components/PageHeader"
 import FormFields from "@app/components/FormFields/FormFields"
 import PaperCard from "@app/components/PaperCard/PaperCard"
 import CloseIcon from "@mui/icons-material/Close"
-import Alert from "@mui/material/Alert"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Checkbox from "@mui/material/Checkbox"
@@ -50,20 +49,6 @@ export default function UpdatesPage() {
     setCheckedValues(valid && snapshot === JSON.stringify(getValues()) ? snapshot : null)
   }
 
-  const saveAction = (
-    <>
-      {checkedValues !== null && checkedValues === JSON.stringify(values) ? (
-        <Alert severity="success">欄位檢查通過。此示範表單不會儲存資料。</Alert>
-      ) : null}
-      <Button
-        variant="contained"
-        onClick={handleCheck}
-      >
-        儲存並同步
-      </Button>
-    </>
-  )
-
   return (
     <Stack gap={2}>
       <PageHeader>負責人填報</PageHeader>
@@ -100,12 +85,13 @@ export default function UpdatesPage() {
             <Typography variant="body2">4. 有阻塞請填解除日；需要決策請填決策人與期限。</Typography>
             <Typography variant="body2">5. 檢查前確認 D-gate 的日期及證據。</Typography>
           </PaperCard>
-          <Stack
-            gap={1}
+          <Button
+            variant="contained"
+            onClick={handleCheck}
             sx={{ display: { xs: "none", lg: "flex" } }}
           >
-            {saveAction}
-          </Stack>
+            儲存並同步
+          </Button>
         </Stack>
         <Stack
           gap={2}
@@ -276,18 +262,10 @@ export default function UpdatesPage() {
               configs={insightConfigs}
             />
           </PaperCard>
-          {checkedValues !== null && checkedValues === JSON.stringify(values) ? (
-            <Alert
-              sx={{ display: { xs: "flex", lg: "none" }, position: "sticky", bottom: 68, zIndex: 1 }}
-              severity="success"
-            >
-              欄位檢查通過。此示範表單不會儲存資料。
-            </Alert>
-          ) : null}
           <Button
-            sx={{ display: { xs: "inline-flex", lg: "none" }, position: "sticky", bottom: 16, zIndex: 1, mx: 2 }}
             variant="contained"
             onClick={handleCheck}
+            sx={{ display: { xs: "inline-flex", lg: "none" }, position: "sticky", bottom: 16, mx: 2, zIndex: 1 }}
           >
             儲存並同步
           </Button>

@@ -1,7 +1,7 @@
 "use client"
 
 import { createTheme } from "@mui/material/styles"
-import type { } from "@mui/x-tree-view/themeAugmentation"
+import type {} from "@mui/x-tree-view/themeAugmentation"
 
 const theme = createTheme({
   palette: {
@@ -34,6 +34,14 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           minWidth: 240,
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          marginLeft: 0,
+          marginRight: 0,
         },
       },
     },

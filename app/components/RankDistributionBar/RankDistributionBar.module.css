@@ -1,7 +1,9 @@
 .bar {
   display: flex;
+  min-height: 24px;
   overflow: hidden;
   border-radius: 4px;
+  background-color: #eaf1f6;
 }
 
 .segment {

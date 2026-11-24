@@ -5,6 +5,7 @@ import SelectField, { type SelectFieldOption } from "@app/components/SelectField
 import TextField from "@app/components/TextField/TextField"
 import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
+import type { TextFieldProps } from "@mui/material/TextField"
 import dayjs from "dayjs"
 import {
   Controller,
@@ -15,19 +16,21 @@ import {
   type RegisterOptions,
 } from "react-hook-form"
 
-export type FieldConfig<T extends FieldValues> = {
+type TextFieldConfig = Pick<TextFieldProps, "slotProps">
+
+export type FieldConfig<T extends FieldValues> = TextFieldConfig & {
   name: FieldPath<T>
   label: string
-  helperText?: string
   required?: boolean
   disabled?: boolean
+  helperText?: string
   defaultValue?: FieldPathValue<T, FieldPath<T>>
   rules?: Omit<RegisterOptions<T, FieldPath<T>>, "disabled" | "valueAsDate" | "valueAsNumber" | "setValueAs">
 } & (
-  | { type: "text"; multiline?: boolean; minRows?: number }
-  | { type: "password" | "date" | "number" }
-  | { type: "select"; options: readonly SelectFieldOption[] }
-)
+    | { type: "text"; multiline?: boolean; minRows?: number }
+    | { type: "password" | "date" | "number" }
+    | { type: "select"; options: readonly SelectFieldOption[] }
+  )
 
 export type FormRowConfig<T extends FieldValues> = {
   fields: readonly [FieldConfig<T>, ...FieldConfig<T>[]]
@@ -54,7 +57,7 @@ function FormField<T extends FieldValues>({ control, config }: { control: Contro
           name: field.name,
           label: config.label,
           disabled: field.disabled,
-          required: config.required,
+          slotProps: config.slotProps,
         }
 
         if (config.type === "date") {
@@ -70,7 +73,6 @@ function FormField<T extends FieldValues>({ control, config }: { control: Contro
                 textField: {
                   onBlur: field.onBlur,
                   inputRef: field.ref,
-                  required: config.required,
                   error: !!fieldState.error,
                   helperText: fieldState.error?.message ?? config.helperText,
                 },

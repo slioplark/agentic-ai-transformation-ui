@@ -1,5 +1,6 @@
 import type {
   ForestBranch,
+  ForestInterviewStatus,
   ForestLeaf,
   ForestTrunk as ForestTrunkData,
 } from "@(control)/components/ForestView/forestViewData"
@@ -20,6 +21,7 @@ type ForestTrunkProps = {
   trunk: ForestTrunkData
   isDimmed: boolean
   selectedRank: string | null
+  selectedInterviewStatus: ForestInterviewStatus | null
   isPendingHighlighted: boolean
   getBranchColor: (maturityStatus: string | undefined) => BranchColor | undefined
   onOpenBranch: (event: MouseEvent<HTMLButtonElement>, leaves: ForestLeaf[]) => void
@@ -43,21 +45,24 @@ export default function ForestTrunk({
   trunk,
   isDimmed,
   selectedRank,
+  selectedInterviewStatus,
   isPendingHighlighted,
   getBranchColor,
   onOpenBranch,
 }: ForestTrunkProps) {
   const renderBranch = (branch: ForestBranch) => {
-    const isDimmed = selectedRank !== null && branch.maturityStatus !== selectedRank
+    const isDimmed =
+      (selectedRank !== null && branch.maturityStatus !== selectedRank) ||
+      (selectedInterviewStatus !== null && branch.interviewStatus !== selectedInterviewStatus)
 
     return (
       <BranchButton
         key={branch.title}
-        color={getBranchColor(branch.maturityStatus)}
         count={branch.leaves.length}
         title={branch.title}
+        color={getBranchColor(branch.maturityStatus)}
         dimmed={isDimmed}
-        variant={trunk.interviewStatus}
+        variant={branch.interviewStatus}
         onClick={(event) => onOpenBranch(event, branch.leaves)}
         disabled={branch.leaves.length === 0}
       />

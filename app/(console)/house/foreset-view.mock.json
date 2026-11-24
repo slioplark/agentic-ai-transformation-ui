@@ -3,88 +3,102 @@
     {
       "title": "前瞻發展規劃",
       "dept": "RDO",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "流程優化",
-          "unit": "P&M"
+          "unit": "P&M",
+          "interviewStatus": "pending"
         },
         {
           "title": "策略規劃",
-          "unit": "SPPM"
+          "unit": "SPPM",
+          "interviewStatus": "pending"
         },
         {
           "title": "企業績效管理",
-          "unit": "SPPM"
+          "unit": "SPPM",
+          "interviewStatus": "pending"
         },
         {
           "title": "策略風險管理",
-          "unit": "SPPM"
+          "unit": "SPPM",
+          "interviewStatus": "pending"
         },
         {
           "title": "Technical PM",
-          "unit": "PD"
+          "unit": "PD",
+          "interviewStatus": "pending"
         },
         {
           "title": "Program Delivery",
-          "unit": "PD"
+          "unit": "PD",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "企業營運規劃",
       "dept": "COP",
-      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "產能布局/資本支出",
           "unit": "CP",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "資本支出執行追蹤",
           "unit": "CP",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "企業長期績效預估",
           "unit": "CP",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "成本競爭力分析",
           "unit": "CP",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "標準成本計算整合",
           "unit": "CP",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "產能規劃與佈建",
           "unit": "OP",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "投片管理及交期",
           "unit": "OP",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "成本指標訂定",
           "unit": "OP",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "報價流程",
           "unit": "CBS",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "客戶需求管理",
           "unit": "CBS",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         }
       ]
     }
@@ -93,93 +107,106 @@
     {
       "title": "行銷管理",
       "dept": "CM",
-      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "市場資訊收集",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "資料分析與儲存",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "資料應用",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "資料跨部門共享",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         }
       ]
     },
     {
       "title": "銷售",
       "dept": "Sales",
-      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "業績管理",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "產品開案",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "市場訊息",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "客戶經營",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         }
       ]
     },
     {
       "title": "客戶服務",
       "dept": "CE",
-      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "技術文檔 (DSM)",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "任務請求",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "Tapeout管理流程優化",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "產品/產能管理",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "客戶需求管理",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "文檔維護",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "任務追蹤",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         }
       ]
     },
     {
       "title": "CTO",
-      "interviewStatus": "pending",
       "branches": [
         {
-          "title": "前瞻技術研究"
+          "title": "前瞻技術研究",
+          "interviewStatus": "pending"
         },
         {
-          "title": "前瞻技術評估"
+          "title": "前瞻技術評估",
+          "interviewStatus": "pending"
         }
       ]
     }
@@ -188,95 +215,108 @@
     {
       "title": "TD",
       "dept": "TD INT",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "Proposal 技術蒐集研究",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "Development 開發",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "Verification 驗證",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "Validation 確效",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "Transfer/Pilot",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "TD",
       "dept": "TD Module",
-      "interviewStatus": "pending",
       "branches": []
     },
     {
       "title": "元件 & 模型",
       "dept": "Device & Model",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "佈局 Testkey",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "測量",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "模型開發建置交付",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "程式自動化",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "MQR",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "電性參數規格",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "結構設計與參數",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "量測與分析",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "協助建立模型",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "矽智財",
       "dept": "IPDS",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "DRC 指令檔",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "LVS/LPE 指令檔",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "FDK package",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         }
       ]
     }
@@ -284,268 +324,314 @@
   "ops": [
     {
       "title": "供應鏈",
-      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "採購價格預測",
           "unit": "OS",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "採購風險管理",
           "unit": "OS",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "採購流程管理",
           "unit": "OS",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "決策資訊管理",
           "unit": "OS",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "採購智能化",
           "unit": "OS",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "供應商評估",
           "unit": "供應商管理",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "供應商黑名單監控",
           "unit": "供應商管理",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "物料需求規劃",
           "unit": "MPWM",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "completed"
         },
         {
           "title": "物料差異管控",
           "unit": "MPWM",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "completed"
         },
         {
-          "title":"PARTS & IDM 需求規劃",
+          "title": "PARTS & IDM 需求規劃",
           "unit": "MPWM",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "completed"
         },
         {
-          "title":"DM 物料需求規劃差異管控及分析",
+          "title": "DM 物料需求規劃差異管控及分析",
           "unit": "MPWM",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "completed"
         },
         {
-          "title":"MP 物料 Plan 及待辦事項管控",
+          "title": "MP 物料 Plan 及待辦事項管控",
           "unit": "MPWM",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "completed"
         },
         {
-          "title":"請購需求計算及管理",
+          "title": "請購需求計算及管理",
           "unit": "MPWM",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "completed"
         },
         {
-          "title":"廠商交期管理",
+          "title": "廠商交期管理",
           "unit": "MPWM",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "completed"
         },
         {
-          "title":"New Tool Management",
+          "title": "New Tool Management",
           "unit": "MPWM",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "completed"
         },
         {
-          "title":"LIFE TIME 管理及異常分析",
+          "title": "LIFE TIME 管理及異常分析",
           "unit": "MPWM",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "completed"
         },
         {
-          "title":"風險監控",
+          "title": "風險監控",
           "unit": "MPWM",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "completed"
         },
         {
           "title": "收/發料管理",
           "unit": "MPWM",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "completed"
         },
         {
           "title": "特殊物料庫管",
           "unit": "MPWM",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "completed"
         },
         {
           "title": "收貨管理",
-          "unit":"MPWM",
-          "maturityStatus": "R4"
+          "unit": "MPWM",
+          "maturityStatus": "R4",
+          "interviewStatus": "completed"
         },
         {
           "title": "發料管理",
-          "unit":"MPWM",
-          "maturityStatus": "R4"
+          "unit": "MPWM",
+          "maturityStatus": "R4",
+          "interviewStatus": "completed"
         },
         {
           "title": "存貨盤點",
-          "unit":"MPWM",
-          "maturityStatus": "R4"
+          "unit": "MPWM",
+          "maturityStatus": "R4",
+          "interviewStatus": "completed"
         },
         {
           "title": "報廢管理",
-          "unit":"MPWM",
-          "maturityStatus": "R4"
+          "unit": "MPWM",
+          "maturityStatus": "R4",
+          "interviewStatus": "completed"
         },
         {
           "title": "庫房巡檢",
-          "unit":"MPWM",
-          "maturityStatus": "R4"
+          "unit": "MPWM",
+          "maturityStatus": "R4",
+          "interviewStatus": "completed"
         }
       ]
     },
     {
       "title": "製造",
       "dept": "Fab",
-      "interviewStatus": "ongoing",
       "branches": [
         {
           "title": "生產排程",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "值班異常處理",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "瑕疵分類管理",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "產品整合管理",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "機台保養維修",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "EDA分析",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "生產虛擬預測",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "程式參數管理",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "ESG",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "生產成本管理",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "ongoing"
         }
       ]
     },
     {
       "title": "工程服務",
       "dept": "ENGS",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "新製程驗證",
           "unit": "PED",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "幫助量產",
           "unit": "PED",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "材料分析",
           "unit": "PED",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "Source Data Mgmt",
           "unit": "MES",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "pending"
         },
         {
           "title": "Mask Tooling",
           "unit": "MES",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "pending"
         },
         {
           "title": "Verification",
           "unit": "MES",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "pending"
         },
         {
           "title": "Mask Prod / IQA",
           "unit": "MES",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "pending"
         },
         {
           "title": "R&D Engineering",
           "unit": "TPES",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "Turnkey Operation",
           "unit": "TPES",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "UOQA Inspection",
           "unit": "TPES",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "品質暨可靠度",
-      "dept": "Q & RA",
-      "interviewStatus": "ongoing",
+      "dept": "Q&RA",
       "branches": [
         {
           "title": "客戶品質服務",
           "unit": "QA",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "進料品質管理",
           "unit": "QA",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "製程品質管理",
           "unit": "QA",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "出貨品質管理",
           "unit": "QA",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "ongoing"
         },
         {
           "title": "可靠度規格制定",
           "unit": "RT&A",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "completed"
         },
         {
           "title": "可靠度驗證執行",
           "unit": "RT&A",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "completed"
         }
       ]
     }
@@ -553,259 +639,302 @@
   "biz": [
     {
       "title": "財務會計稽核",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "信用管理",
           "unit": "財務",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "資金管理",
           "unit": "財務",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "保險作業",
           "unit": "財務",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "投資管理",
           "unit": "財務",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "股務作業",
           "unit": "財務",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "投資人關係",
           "unit": "財務",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "營運支援",
           "unit": "會計",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "日常會計",
           "unit": "會計",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "結帳與合併報表",
           "unit": "會計",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "資產管理",
           "unit": "會計",
-          "maturityStatus": "R4"
+          "maturityStatus": "R4",
+          "interviewStatus": "pending"
         },
         {
           "title": "稅務管理",
           "unit": "會計",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "內控制度建立",
           "unit": "稽核",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "內控自評",
           "unit": "稽核",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "查核作業",
           "unit": "稽核",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "人力資源",
       "dept": "HR",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "人力規劃",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "招募",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "任用",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "訓練發展",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "績效考核",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "薪酬管理",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "人資服務",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "異動作業",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "離退作業",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "法規遵循",
       "dept": "LA & GC",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "法規更新/鑑別",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "分級教育訓練",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "法規諮詢",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "Legal Audit",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "合約管理",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "智慧財產",
       "dept": "IP",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "專利取得/保護",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "專利申請獎金",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "智財諮詢",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "專利爭議處理",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "營業秘密管理",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "數位",
       "dept": "Digital",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "Infrastructure",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "Data Platform",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "Process Automation",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "Business Intelligence",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "AIoT",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "Analytic AI",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "pending"
         },
         {
           "title": "Generative AI",
-          "maturityStatus": "R5"
+          "maturityStatus": "R5",
+          "interviewStatus": "pending"
         },
         {
           "title": "Agentic AI",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "Cyber Security",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         }
       ]
     },
     {
       "title": "政府關係暨企業溝通",
       "dept": "PASS",
-      "interviewStatus": "pending",
       "branches": [
         {
           "title": "政策資訊收集",
           "unit": "PA",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "政府溝通",
           "unit": "PA",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "地緣政治風險分析",
           "unit": "PA",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         },
         {
           "title": "媒體輿情",
           "unit": "CC",
-          "maturityStatus": "R3"
+          "maturityStatus": "R3",
+          "interviewStatus": "pending"
         },
         {
           "title": "社群媒體經營",
           "unit": "CC",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "官網管理",
           "unit": "CC",
-          "maturityStatus": "R2"
+          "maturityStatus": "R2",
+          "interviewStatus": "pending"
         },
         {
           "title": "品牌行銷內容管理",
           "unit": "CC",
-          "maturityStatus": "R1"
+          "maturityStatus": "R1",
+          "interviewStatus": "pending"
         }
       ]
     }
