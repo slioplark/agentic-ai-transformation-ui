@@ -22,8 +22,8 @@ export {
 } from "@(control)/components/ForestView/forestViewData"
 
 type HouseForestTreeProps = {
-  insightId: string
-  insightLabel: string
+  id: string
+  label: string
   trunks: readonly ForestTrunk[]
 }
 
@@ -99,7 +99,7 @@ function HouseForestTreeLabel({
   )
 }
 
-export default function HouseForestTree({ insightId, insightLabel, trunks }: HouseForestTreeProps) {
+export default function HouseForestTree({ id, label, trunks }: HouseForestTreeProps) {
   const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
 
   return (
@@ -120,7 +120,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
                 title={trunk.title}
               />
             }
-            itemId={`${insightId}-${trunk.id}`}
+            itemId={`${id}-${trunk.id}`}
           >
             {trunk.branches.map((branch) => (
               <TreeItem
@@ -133,7 +133,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
                     title={branch.title}
                   />
                 }
-                itemId={`${insightId}-${trunk.id}-${branch.title}`}
+                itemId={`${id}-${trunk.id}-${branch.title}`}
               >
                 {branch.leaves.map((leaf) => (
                   <TreeItem
@@ -149,7 +149,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
                         onTitleClick={() => setSelectedProject({ project: leaf.project, route: leaf.route })}
                       />
                     }
-                    itemId={`${insightId}-${trunk.id}-${branch.title}-${leaf.id}`}
+                    itemId={`${id}-${trunk.id}-${branch.title}-${leaf.id}`}
                   />
                 ))}
               </TreeItem>
@@ -163,7 +163,7 @@ export default function HouseForestTree({ insightId, insightLabel, trunks }: Hou
           route={selectedProject.route}
           project={selectedProject.project}
           onClose={() => setSelectedProject(null)}
-          insightLabel={insightLabel}
+          insightLabel={label}
         />
       ) : null}
     </>
