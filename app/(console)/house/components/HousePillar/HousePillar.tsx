@@ -15,6 +15,7 @@ import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDr
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Diversity3Icon from "@mui/icons-material/Diversity3"
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined"
+import { Divider } from "@mui/material"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import styles from "./HousePillar.module.css"
@@ -58,53 +59,56 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
         component="section"
         className={`${styles.pillar} ${styles[kind]}`}
       >
-        <Icon
-          color={kind === "governance" ? "secondary" : "info"}
-          fontSize="large"
-        />
-        <Typography color={kind === "governance" ? "secondary.main" : "info.main"}>{label}</Typography>
-        <Typography>{project.name}</Typography>
-        <HouseDrawerCard
-          onClick={() => openProject(project)}
-          className={styles.card}
-        >
-          <Box className={styles.progressLabel}>
-            <Typography
-              variant="h5"
-              component="span"
-            >
-              {actual}%
-            </Typography>
+        <Box className={styles.content}>
+          <Icon
+            color={kind === "governance" ? "secondary" : "info"}
+            fontSize="large"
+          />
+          <Typography color={kind === "governance" ? "secondary.main" : "info.main"}>{label}</Typography>
+          <Typography>{project.name}</Typography>
+          <HouseDrawerCard
+            onClick={() => openProject(project)}
+            className={styles.card}
+          >
+            <Box className={styles.progressLabel}>
+              <Typography
+                variant="h5"
+                component="span"
+              >
+                {actual}%
+              </Typography>
+              <Typography
+                color="text.secondary"
+                variant="caption"
+                component="span"
+              >
+                計畫 {planned}%
+              </Typography>
+            </Box>
+            <ThresholdProgress
+              color="secondary"
+              value={actual}
+              threshold={planned}
+            />
             <Typography
               color="text.secondary"
               variant="caption"
               component="span"
             >
-              計畫 {planned}%
+              {message}
             </Typography>
+          </HouseDrawerCard>
+          <Divider sx={{ width: "100%" }}></Divider>
+          <Box className={styles.list}>
+            {items.map((item) => (
+              <Typography
+                key={item}
+                variant="body2"
+              >
+                {item}
+              </Typography>
+            ))}
           </Box>
-          <ThresholdProgress
-            color="secondary"
-            value={actual}
-            threshold={planned}
-          />
-          <Typography
-            color="text.secondary"
-            variant="caption"
-            component="span"
-          >
-            {message}
-          </Typography>
-        </HouseDrawerCard>
-        <Box className={styles.list}>
-          {items.map((item) => (
-            <Typography
-              key={item}
-              variant="body2"
-            >
-              {item}
-            </Typography>
-          ))}
         </Box>
       </Box>
       <Drawer

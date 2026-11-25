@@ -1,35 +1,77 @@
+.governance {
+  --pillar-accent: #087f80;
+  --pillar-edge: #a9cfca;
+  --pillar-fill: #e3f2ef;
+  --pillar-shade: #cbe4df;
+  --pillar-cap: #d7ebe7;
+}
+
+.citizen {
+  --pillar-accent: #2464a0;
+  --pillar-edge: #afc9e1;
+  --pillar-fill: #e6eef8;
+  --pillar-shade: #d0e0f0;
+  --pillar-cap: #dbe8f5;
+}
+
 .pillar {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 2fr);
+  padding: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--pillar-shade) 0 4px,
+    var(--pillar-fill) 4px calc(100% - 4px),
+    var(--pillar-shade) calc(100% - 4px)
+  );
+  text-align: center;
+}
+
+.content {
   display: flex;
+  grid-row: 2;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 8px;
-  border: 1px solid #dce5ec;
-  border-top-width: 6px;
-  border-radius: 8px;
 }
 
 .pillar::before,
 .pillar::after {
   content: "";
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  height: 20px;
+  background:
+    var(--pillar-band),
+    linear-gradient(
+      90deg,
+      var(--pillar-edge) 0 1px,
+      transparent 1px calc(100% - 1px),
+      var(--pillar-edge) calc(100% - 1px)
+    ),
+    var(--pillar-cap);
 }
 
 .pillar::before {
-  flex: 1;
+  top: 0;
+  --pillar-band: linear-gradient(
+    var(--pillar-accent) 0 4px,
+    transparent 4px calc(100% - 1px),
+    var(--pillar-edge) calc(100% - 1px)
+  );
+  border-radius: 3px 3px 0 0;
 }
 
 .pillar::after {
-  flex: 2;
-}
-
-.governance {
-  border-top-color: #087f80;
-  background: #e3f2ef;
-}
-
-.citizen {
-  border-top-color: #2464a0;
-  background: #e6eef8;
+  bottom: 0;
+  --pillar-band: linear-gradient(
+    var(--pillar-edge) 0 1px,
+    transparent 1px calc(100% - 4px),
+    var(--pillar-accent) calc(100% - 4px)
+  );
+  border-radius: 0 0 3px 3px;
 }
 
 .card {
@@ -37,6 +79,8 @@
   flex-direction: column;
   align-items: stretch;
   gap: 4px;
+  width: 100%;
+  text-align: left;
   overflow-wrap: anywhere;
 }
 
@@ -52,12 +96,21 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
-  .pillar::before,
-  .pillar::after {
-    display: none;
+  .pillar {
+    grid-template-rows: auto;
+    padding: 36px;
+  }
+
+  .content {
+    grid-row: auto;
+  }
+
+  .card {
+    max-width: 320px;
   }
 
   .list {
