@@ -12,19 +12,23 @@ import PageHeader from "@(control)/components/PageHeader"
 import HouseProjectFormDialog from "@(control)/house/components/HouseProjectFormDialog/HouseProjectFormDialog"
 import forestBlueprint from "@(control)/house/foreset-view.mock.json"
 import { insights } from "@(control)/house/house.mock"
-import StatusChip from "@app/components/StatusChip/StatusChip"
 import type { Project } from "@lib/api/projects"
 import { useProjects } from "@lib/hooks/use-projects"
 import EnergySavingsLeafIcon from "@mui/icons-material/EnergySavingsLeaf"
 import FullscreenIcon from "@mui/icons-material/Fullscreen"
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit"
-import { Chip, Divider } from "@mui/material"
 import Box from "@mui/material/Box"
 import ButtonBase from "@mui/material/ButtonBase"
+import Chip from "@mui/material/Chip"
+import Divider from "@mui/material/Divider"
 import ListItemIcon from "@mui/material/ListItemIcon"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import Stack from "@mui/material/Stack"
+import Step from "@mui/material/Step"
+import type { StepIconProps } from "@mui/material/StepIcon"
+import StepLabel from "@mui/material/StepLabel"
+import Stepper from "@mui/material/Stepper"
 import Typography from "@mui/material/Typography"
 import type { MouseEvent } from "react"
 import { useMemo, useState } from "react"
@@ -69,6 +73,22 @@ function getInsightLabel(id: ForestId) {
 
 function getMaturityStatus(maturityStatus: string | undefined) {
   return maturityStatuses.find(({ rank }) => rank === maturityStatus)?.color
+}
+
+function RankStepIcon({ active, className, completed }: StepIconProps) {
+  return (
+    <Box
+      sx={(theme) => ({
+        display: "block",
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        backgroundColor: active || completed ? theme.palette.primary.main : theme.palette.text.disabled,
+      })}
+      component="span"
+      className={className}
+    />
+  )
 }
 
 export default function ForestPage() {
@@ -209,12 +229,12 @@ export default function ForestPage() {
         anchorEl={openBranch?.anchorElement ?? null}
         slotProps={{ list: { dense: true }, paper: { sx: { maxWidth: 420 } } }}
       >
-        {openBranch?.leaves.map((leaf) => (
+        {openBranch?.leaves.flatMap((leaf, index, leaves) => [
           <MenuItem
             key={leaf.id}
             onClick={() => selectProject(leaf)}
           >
-            <ListItemIcon sx={{ minWidth: 32 }}>
+            <ListItemIcon>
               <EnergySavingsLeafIcon
                 color="success"
                 fontSize="small"
@@ -222,34 +242,39 @@ export default function ForestPage() {
             </ListItemIcon>
             <Stack
               sx={{ width: "100%", minWidth: 0 }}
-              gap={0.75}
-              direction="row"
-              alignItems="center"
+              gap={0.5}
             >
               <Typography
+                sx={{ minWidth: 0 }}
                 noWrap
-                sx={{ flex: 1, minWidth: 0 }}
                 variant="body2"
               >
                 {leaf.name}
               </Typography>
-              {leaf.digitalLevel && (
-                <StatusChip
-                  label={leaf.digitalLevel}
-                  color="primary"
-                  variant="outlined"
-                />
-              )}
-              {leaf.status ? (
-                <StatusChip
-                  label={leaf.status}
-                  color="primary"
-                  variant="outlined"
-                />
+              {leaf.digitalLevel && leaf.targetDigitalRank ? (
+                <Stepper
+                  sx={{ width: "100%" }}
+                  activeStep={0}
+                >
+                  <Step>
+                    <StepLabel slots={{ stepIcon: RankStepIcon }}>{leaf.digitalLevel}</StepLabel>
+                  </Step>
+                  <Step>
+                    <StepLabel slots={{ stepIcon: RankStepIcon }}>{leaf.targetDigitalRank}</StepLabel>
+                  </Step>
+                </Stepper>
               ) : null}
             </Stack>
-          </MenuItem>
-        ))}
+          </MenuItem>,
+          ...(index < leaves.length - 1
+            ? [
+                <Divider
+                  key={index}
+                  component="li"
+                />,
+              ]
+            : []),
+        ])}
       </Menu>
       {selectedProject ? (
         <HouseProjectFormDialog

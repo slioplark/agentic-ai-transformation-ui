@@ -45,6 +45,16 @@ const theme = createTheme({
         },
       },
     },
+    MuiStepper: {
+      styleOverrides: {
+        root: {
+          "& .MuiStep-root": {
+            paddingLeft: 0,
+            paddingRight: 0,
+          },
+        },
+      },
+    },
     MuiTable: {
       defaultProps: { size: "small" },
       styleOverrides: { root: { whiteSpace: "nowrap" } },

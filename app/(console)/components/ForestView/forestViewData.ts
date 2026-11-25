@@ -25,6 +25,7 @@ export type ForestLeaf = {
   id: string
   name: string
   digitalLevel: string | null
+  targetDigitalRank: string | null
   status: string | null
   project: Project
   route: ForestProjectRoute
@@ -125,6 +126,7 @@ export function buildForestView(
     if (isArchived(project.ARCHIVED)) continue
 
     const rank = getDigitalRank(project.CURRENT_DIGITAL_LEVEL)
+    const targetRank = getDigitalRank(project.DIGITAL_RANK)
     if (rank === null && !includeUnranked) continue
 
     const trunk = trunksByTitle.get(project.CATEGORY)
@@ -135,6 +137,7 @@ export function buildForestView(
       id: String(project.ID),
       name: project.TITLE,
       digitalLevel: rank === null ? null : `R${rank}`,
+      targetDigitalRank: targetRank === null ? null : `R${targetRank}`,
       status: project.CURRENT_STATUS,
       project,
       route: { category: trunk.title, item: branch.title },
