@@ -15,7 +15,6 @@ import ProjectDrawerContent from "@app/components/ProjectDrawerContent/ProjectDr
 import ThresholdProgress from "@app/components/ThresholdProgress/ThresholdProgress"
 import Diversity3Icon from "@mui/icons-material/Diversity3"
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined"
-import { Divider } from "@mui/material"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import styles from "./HousePillar.module.css"
@@ -98,7 +97,6 @@ export default function HousePillar({ kind }: { kind: keyof typeof pillars }) {
               {message}
             </Typography>
           </HouseDrawerCard>
-          <Divider sx={{ width: "100%" }}></Divider>
           <Box className={styles.list}>
             {items.map((item) => (
               <Typography
